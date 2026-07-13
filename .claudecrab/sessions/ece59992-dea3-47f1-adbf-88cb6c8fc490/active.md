@@ -28,6 +28,11 @@ _This file is automatically injected into Claude's context at the start of every
 - 部署定阿里云托管：RDS PostgreSQL(pgvector) + OSS + 1×ECS(Meilisearch/爬虫/沙箱) + 百炼 Qwen API（替代 DeepSeek，推理成本归零）+ Redis(Tair) 仅做缓存/队列。
 - Redis 定位：推荐结果缓存/限流/任务队列，不替代 PG 主存储。
 
+## Decisions (第四轮，已写入 DESIGN.md §7.6)
+
+- 核心约束：闭世界推荐（LLM 只能引用检索返回的组件 id，输出前校验）、查空兜底（宁说没有不许编）、缺口日志驱动采集、意图先分型（单件型 vs 方案型）再检索。
+- 范围扩大确认：不限编程 — 覆盖泛 AI 工具生态（图像生成/平面设计/室内装修等垂直场景）。
+
 ## Open questions
 
 - MVP 形态（搜索引擎 vs 对话推荐 vs 两者结合）待用户确认后再进入工程实现。
