@@ -231,9 +231,11 @@ A newly enabled plugin loads on your **NEXT message** (plugins attach when a tur
 Installing NEW plugins from a marketplace runs code and is admin-only (the Plugins page) —
 this tool only toggles plugins already in the library.
 <!-- PLUGINS_TOOL_END -->
-
 <!-- ROLE_REF_BEGIN -->
 ## Your role
 
 Your role for this project is defined in [`ROLE.md`](./ROLE.md). **Read it first** before responding, and let it shape your tone, focus, and what you proactively bring up.
 <!-- ROLE_REF_END -->
+
+
+See WORKSPACE.md for related bots in this workspace.
