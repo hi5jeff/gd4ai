@@ -1,0 +1,44 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/claudecrab/storage/projects/274d1f51-7166-426b-ae80-a8a430518e5f/.claudecrab/hooks/session-start.sh"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/claudecrab/storage/projects/274d1f51-7166-426b-ae80-a8a430518e5f/.claudecrab/hooks/pre-compact.sh"
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/claudecrab/storage/projects/274d1f51-7166-426b-ae80-a8a430518e5f/.claudecrab/hooks/post-compact.sh"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/claudecrab/storage/projects/274d1f51-7166-426b-ae80-a8a430518e5f/.claudecrab/hooks/session-end.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
