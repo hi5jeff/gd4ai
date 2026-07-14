@@ -40,6 +40,23 @@ _This file is automatically injected into Claude's context at the start of every
 - 安全：数据服务只绑内网，公网仅应用端口+SSH。后期 pg_dump 迁 RDS。
 - 等待用户提供：ECS IP + SSH 凭证（+ 可选 OSS bucket AK 用于备份）。
 
+## Decisions (第六轮，进入实施；已写入 DESIGN.md §7.7 + MEMORY.md)
+
+- LLM 实测定型：在线推荐 deepseek-v4-pro（8s, JSON可靠），离线加工 deepseek-v4-flash；glm-4.7/qwen3.7-plus 淘汰（慢/截断）。走 mdbox 网关（OpenAI 兼容）。
+- Embedding：mdbox 无合适文本模型 → 227 上本地 BGE-M3（TEI CPU 容器）。
+- 拓扑：226=前端，227=后端+全部数据服务。OSS 凭证在 .env（已 gitignore）。
+- 已产出 infra/docker-compose.yml + provision.sh + backup.sh。
+
+## Blocked
+
+- ⚠️ 两台服务器 SSH 拒绝（无公钥）。已把本机 ~/.ssh/id_ed25519.pub 给用户，等安装后才能部署。
+
+## Next (机器可登录后)
+
+1. 227: 上传 infra/ → 跑 provision.sh → 验证 4 容器 + pgvector + 备份 cron
+2. 定稿组件 YAML schema + 种子数据 30~50 条（覆盖六类验收用例）
+3. 后端 API（检索+编排+校验）→ 226 前端
+
 ## Open questions
 
 - MVP 形态（搜索引擎 vs 对话推荐 vs 两者结合）待用户确认后再进入工程实现。
