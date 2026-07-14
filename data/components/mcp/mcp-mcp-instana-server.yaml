@@ -1,0 +1,18 @@
+id: mcp-mcp-instana-server
+type: mcp
+kind: tool
+name: MCP Instana Server
+description_zh: 可观测性平台的MCP服务器，提供自动仪表化的应用监控和基础设施可见性。
+host_tools:
+- any
+scenarios:
+- devtools
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.instana.com

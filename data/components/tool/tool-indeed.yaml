@@ -1,0 +1,19 @@
+id: tool-indeed
+type: tool
+kind: tool
+name: Indeed
+description_zh: 跨行业、跨经验级别的综合求职平台，支持职位发现、薪资研究、雇主评价及招聘市场分析。
+host_tools:
+- any
+scenarios:
+- efficiency
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.indeed.com

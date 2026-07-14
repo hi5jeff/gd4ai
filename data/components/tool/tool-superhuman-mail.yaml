@@ -1,0 +1,19 @@
+id: tool-superhuman-mail
+type: tool
+kind: tool
+name: Superhuman Mail
+description_zh: 高速邮件和日历管理，AI起草个性化回复、自动化跟进和日程协调。
+host_tools:
+- any
+scenarios:
+- efficiency
+- office
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://superhuman.com

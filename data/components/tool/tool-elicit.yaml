@@ -1,0 +1,18 @@
+id: tool-elicit
+type: tool
+kind: tool
+name: Elicit
+description_zh: 搜索和分析科学论文，自动化文献综述，提取研究结果，辅助证据综合。
+host_tools:
+- any
+scenarios:
+- research
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://elicit.com

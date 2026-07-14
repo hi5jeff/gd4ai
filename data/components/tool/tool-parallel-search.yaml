@@ -1,0 +1,20 @@
+id: tool-parallel-search
+type: tool
+kind: tool
+name: Parallel Search
+description_zh: 为AI代理优化的免费、token高效的网页搜索API，用于答案 grounding 和低token检索。
+host_tools:
+- any
+scenarios:
+- agent
+- rag
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://parallel.ai

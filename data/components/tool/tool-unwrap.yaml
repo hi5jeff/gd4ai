@@ -1,0 +1,19 @@
+id: tool-unwrap
+type: tool
+kind: tool
+name: Unwrap
+description_zh: 客户反馈分析工具，跨渠道聚合分析反馈，发现产品主题和情感倾向。
+host_tools:
+- any
+scenarios:
+- data-analysis
+- efficiency
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.unwrap.ai

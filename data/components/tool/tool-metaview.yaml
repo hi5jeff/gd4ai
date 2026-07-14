@@ -1,0 +1,19 @@
+id: tool-metaview
+type: tool
+kind: tool
+name: Metaview
+description_zh: AI招聘与面试智能工具，提供面试转录与总结、候选人搜索及自动更新ATS系统功能。
+host_tools:
+- any
+scenarios:
+- efficiency
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.metaview.ai

@@ -1,0 +1,19 @@
+id: tool-midpage-legal-research
+type: tool
+kind: tool
+name: Midpage Legal Research
+description_zh: 法律研究和工作产品工具，支持案例法搜索、法律引文分析、简报起草支持和特定司法管辖区研究。
+host_tools:
+- any
+scenarios:
+- research
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.midpage.ai

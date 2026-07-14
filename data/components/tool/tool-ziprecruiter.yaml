@@ -1,0 +1,19 @@
+id: tool-ziprecruiter
+type: tool
+kind: tool
+name: ZipRecruiter
+description_zh: AI驱动的求职市场平台，支持搜索美国职位、薪资研究及求职者与雇主的智能匹配。
+host_tools:
+- any
+scenarios:
+- efficiency
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.ziprecruiter.com

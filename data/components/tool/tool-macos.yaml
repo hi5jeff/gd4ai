@@ -1,0 +1,20 @@
+id: tool-macos
+type: tool
+kind: tool
+name: macOS
+description_zh: 轻量级macOS系统交互工具，用于基本的Mac控制、窗口管理和系统查询。
+host_tools:
+- any
+scenarios:
+- automation
+- efficiency
+- devtools
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://support.apple.com/guide/terminal/use-applescript-apd44b0e5b2-3b9b-46de-8bfc-4741be13ef5bos

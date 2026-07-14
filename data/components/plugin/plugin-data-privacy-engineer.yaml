@@ -1,0 +1,19 @@
+id: plugin-data-privacy-engineer
+type: plugin
+kind: tool
+name: data-privacy-engineer
+description_zh: 数据隐私工程师插件，保护用户数据隐私并确保合规。
+host_tools:
+- any
+scenarios:
+- security
+- data-analysis
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: ''

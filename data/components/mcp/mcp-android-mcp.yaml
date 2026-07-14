@@ -1,0 +1,18 @@
+id: mcp-android-mcp
+type: mcp
+kind: tool
+name: Android-MCP
+description_zh: 通过MCP协议控制Android设备，适用于应用测试、移动自动化工作流和设备管理。
+host_tools:
+- any
+scenarios:
+- automation
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  repo: https://github.com/CursorTouch/Android-MCP

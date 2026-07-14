@@ -1,0 +1,20 @@
+id: plugin-pr-review-toolkit
+type: plugin
+kind: tool
+name: pr-review-toolkit
+description_zh: 代码审查工具包，集成Claude Code的斜杠命令和钩子，帮助团队高效进行Pull Request审查。
+host_tools:
+- any
+scenarios:
+- coding
+- devtools
+- efficiency
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: ./plugins/pr-review-toolkit

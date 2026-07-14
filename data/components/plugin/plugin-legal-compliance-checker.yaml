@@ -1,0 +1,19 @@
+id: plugin-legal-compliance-checker
+type: plugin
+kind: tool
+name: legal-compliance-checker
+description_zh: 法律合规检查插件，检查AI系统是否符合法律法规要求。
+host_tools:
+- any
+scenarios:
+- security
+- finance
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: ''

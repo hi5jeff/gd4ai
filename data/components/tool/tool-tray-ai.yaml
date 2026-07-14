@@ -1,0 +1,20 @@
+id: tool-tray-ai
+type: tool
+kind: tool
+name: Tray.ai
+description_zh: AI编排平台，提供iPaaS、Agent构建器和700+连接器，内置治理和MCP工具策略。
+host_tools:
+- any
+scenarios:
+- automation
+- agent
+- efficiency
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://tray.ai

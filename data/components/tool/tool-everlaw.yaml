@@ -1,0 +1,19 @@
+id: tool-everlaw
+type: tool
+kind: tool
+name: Everlaw
+description_zh: 搜索和探索 Everlaw 电子发现数据库，支持诉讼文档审查、取证活页夹构建和预测编码查询。
+host_tools:
+- any
+scenarios:
+- research
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.everlaw.com

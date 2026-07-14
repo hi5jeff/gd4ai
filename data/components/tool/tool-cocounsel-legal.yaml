@@ -1,0 +1,19 @@
+id: tool-cocounsel-legal
+type: tool
+kind: tool
+name: CoCounsel Legal
+description_zh: Thomson Reuters 基于 Claude 的法律 AI，提供 Westlaw 级研究、合同审查、取证准备和简报起草。
+host_tools:
+- any
+scenarios:
+- research
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://legal.thomsonreuters.com/en/c/cocounsel

@@ -1,0 +1,18 @@
+id: tool-definely
+type: tool
+kind: tool
+name: Definely
+description_zh: 为法律团队提供结构化合同审查工具，支持定义术语审查、交叉引用检查和长合同内定义级导航。
+host_tools:
+- any
+scenarios:
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.definely.com

@@ -1,0 +1,19 @@
+id: plugin-read-and-send-imessages
+type: plugin
+kind: tool
+name: Read and Send iMessages
+description_zh: 作为Claude插件，实现Apple iMessage的读取和发送，用于消息自动化、对话历史查询和快速回复。
+host_tools:
+- any
+scenarios:
+- automation
+- efficiency
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://claude.com/plugins/imessage

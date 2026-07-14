@@ -1,0 +1,20 @@
+id: tool-awesome-claude-connectors
+type: tool
+kind: tool
+name: awesome-claude-connectors
+description_zh: A comprehensive directory of every connector in Anthropic's official Claude Connectors Directory — 343 verified
+  MCP integrations, organized by category with descriptions and use cases.
+host_tools:
+- any
+scenarios:
+- research
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+  stars: 63
+source:
+  repo: https://github.com/rdmgator12/awesome-claude-connectors

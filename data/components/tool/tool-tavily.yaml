@@ -1,0 +1,20 @@
+id: tool-tavily
+type: tool
+kind: tool
+name: Tavily
+description_zh: 为AI应用提供网页搜索API，支持实时网络数据访问，连接AI代理到互联网。
+host_tools:
+- any
+scenarios:
+- agent
+- scraping
+- research
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://tavily.com

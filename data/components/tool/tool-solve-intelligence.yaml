@@ -1,0 +1,18 @@
+id: tool-solve-intelligence
+type: tool
+kind: tool
+name: Solve Intelligence
+description_zh: （文档截断）法律 AI 工具，具体功能未完整显示，但属于法律科技产品。
+host_tools:
+- any
+scenarios:
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.sol

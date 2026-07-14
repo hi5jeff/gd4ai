@@ -1,0 +1,19 @@
+id: tool-read-ai
+type: tool
+kind: tool
+name: Read AI
+description_zh: 将会议转录和摘要带入Claude，支持多平台录制、情感分析和行动项提取。
+host_tools:
+- any
+scenarios:
+- efficiency
+- office
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.read.ai

@@ -1,0 +1,19 @@
+id: tool-profound
+type: tool
+kind: tool
+name: Profound
+description_zh: AI搜索可见性和引用分析工具，追踪品牌在AI回答中的出现情况，提供引用和AI机器人访问数据。
+host_tools:
+- any
+scenarios:
+- research
+- agent
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.tryprofound.com

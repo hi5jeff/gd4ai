@@ -1,0 +1,18 @@
+id: mcp-inductive-bio
+type: mcp
+kind: tool
+name: Inductive Bio
+description_zh: 提供最先进的ADMET预测能力的MCP服务器，帮助药物研发中评估化合物的吸收、分布、代谢、排泄和毒性。
+host_tools:
+- any
+scenarios:
+- research
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: ''

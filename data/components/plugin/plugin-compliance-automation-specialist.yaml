@@ -1,0 +1,19 @@
+id: plugin-compliance-automation-specialist
+type: plugin
+kind: tool
+name: compliance-automation-specialist
+description_zh: 合规自动化专家插件，自动化处理合规流程和监管要求。
+host_tools:
+- any
+scenarios:
+- automation
+- security
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: ''

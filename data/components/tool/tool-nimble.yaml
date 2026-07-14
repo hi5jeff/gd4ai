@@ -1,0 +1,20 @@
+id: tool-nimble
+type: tool
+kind: tool
+name: Nimble
+description_zh: 实时网页搜索和数据提取工具，专为AI代理设计，可从任意网站获取结构化数据。
+host_tools:
+- any
+scenarios:
+- scraping
+- agent
+- automation
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.nimbleway.com

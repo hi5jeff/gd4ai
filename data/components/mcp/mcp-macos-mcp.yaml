@@ -1,0 +1,20 @@
+id: mcp-macos-mcp
+type: mcp
+kind: tool
+name: MacOS-MCP
+description_zh: 通过MCP协议实现macOS桌面轻量级交互，支持应用窗口控制和系统级自动化任务。
+host_tools:
+- any
+scenarios:
+- automation
+- efficiency
+- devtools
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  repo: https://github.com/CursorTouch/MacOS-MCP

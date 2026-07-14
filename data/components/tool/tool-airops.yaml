@@ -1,0 +1,19 @@
+id: tool-airops
+type: tool
+kind: tool
+name: AirOps
+description_zh: AI搜索时代的内容优化工具，帮助生成在AI搜索中胜出的内容，支持SEO策略和程序化内容。
+host_tools:
+- any
+scenarios:
+- research
+- web-dev
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.airops.com

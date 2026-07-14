@@ -1,0 +1,19 @@
+id: tool-grain
+type: tool
+kind: tool
+name: Grain
+description_zh: 将会议转化为洞察和下一步行动，提供AI高亮、交易辅导和CRM更新。
+host_tools:
+- any
+scenarios:
+- efficiency
+- office
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://grain.com

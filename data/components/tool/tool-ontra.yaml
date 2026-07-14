@@ -1,0 +1,18 @@
+id: tool-ontra
+type: tool
+kind: tool
+name: Ontra
+description_zh: 为私募市场提供合同自动化，包括常规法律合同自动化、NDA 工作流和投资公司义务管理。
+host_tools:
+- any
+scenarios:
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.ontra.ai

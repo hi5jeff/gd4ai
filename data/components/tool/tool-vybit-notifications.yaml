@@ -1,0 +1,20 @@
+id: tool-vybit-notifications
+type: tool
+kind: tool
+name: Vybit Notifications
+description_zh: 自定义推送通知路由和警报投递服务，用于构建自定义警报系统、通知路由和事件驱动提醒。
+host_tools:
+- any
+scenarios:
+- automation
+- efficiency
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://vybit.net

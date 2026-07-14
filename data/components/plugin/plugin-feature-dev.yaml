@@ -1,0 +1,19 @@
+id: plugin-feature-dev
+type: plugin
+kind: tool
+name: feature-dev
+description_zh: 功能开发插件，通过子代理和MCP服务器加速新功能的设计、实现与测试。
+host_tools:
+- any
+scenarios:
+- coding
+- devtools
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: ./plugins/feature-dev

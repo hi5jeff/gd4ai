@@ -1,0 +1,20 @@
+id: tool-wolfram
+type: tool
+kind: tool
+name: Wolfram
+description_zh: 注入精确计算和 curated 知识，支持符号数学、单位转换、实时数据查询和科学计算。
+host_tools:
+- any
+scenarios:
+- research
+- data-analysis
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.wolframalpha.com

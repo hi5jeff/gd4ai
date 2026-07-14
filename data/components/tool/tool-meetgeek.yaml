@@ -1,0 +1,19 @@
+id: tool-meetgeek
+type: tool
+kind: tool
+name: MeetGeek
+description_zh: 自动录制会议、搜索转录并分析会议数据，提升会议管理效率。
+host_tools:
+- any
+scenarios:
+- efficiency
+- office
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://meetgeek.ai

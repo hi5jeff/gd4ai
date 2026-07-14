@@ -1,0 +1,18 @@
+id: plugin-enterprise-security-reviewer
+type: plugin
+kind: tool
+name: enterprise-security-reviewer
+description_zh: 企业安全审查插件，审查企业级AI系统的安全性和风险。
+host_tools:
+- any
+scenarios:
+- security
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: ''

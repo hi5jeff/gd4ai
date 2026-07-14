@@ -1,0 +1,20 @@
+id: tool-exa
+type: tool
+kind: tool
+name: Exa
+description_zh: 神经搜索引擎，支持自然语言描述意图进行搜索，返回适合LLM使用的干净内容。
+host_tools:
+- any
+scenarios:
+- research
+- agent
+- rag
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://exa.ai

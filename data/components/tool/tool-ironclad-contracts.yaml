@@ -1,0 +1,18 @@
+id: tool-ironclad-contracts
+type: tool
+kind: tool
+name: Ironclad Contracts
+description_zh: 用自然语言搜索已执行合同，支持义务跟踪、条款和对手方查询。
+host_tools:
+- any
+scenarios:
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://ironcladapp.com

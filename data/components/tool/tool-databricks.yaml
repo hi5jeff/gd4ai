@@ -1,0 +1,19 @@
+id: tool-databricks
+type: tool
+kind: tool
+name: Databricks
+description_zh: 统一数据分析和AI平台，提供Unity Catalog和Mosaic AI，支持数据工程、ML模型管理和湖仓分析。
+host_tools:
+- any
+scenarios:
+- data-analysis
+- llm-training
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.databricks.com

@@ -1,0 +1,19 @@
+id: tool-remote-com
+type: tool
+kind: tool
+name: Remote.com
+description_zh: 连接AI与远程雇佣基础设施的平台，支持全球薪资与HR数据访问、员工记录及入职流程。
+host_tools:
+- any
+scenarios:
+- efficiency
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://remote.com

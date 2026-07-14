@@ -1,0 +1,18 @@
+id: mcp-grafana-mcp-server
+type: mcp
+kind: tool
+name: Grafana MCP Server
+description_zh: 提供仪表盘和告警功能的MCP服务器，用于监控基础设施、查询Prometheus/Loki以及可视化指标。
+host_tools:
+- any
+scenarios:
+- devtools
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://grafana.com

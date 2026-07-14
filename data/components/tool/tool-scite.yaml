@@ -1,0 +1,18 @@
+id: tool-scite
+type: tool
+kind: tool
+name: Scite
+description_zh: 基于证据的答案引擎，通过智能引文显示论文支持或反驳某个主张，辅助AI文献综述。
+host_tools:
+- any
+scenarios:
+- research
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://scite.ai

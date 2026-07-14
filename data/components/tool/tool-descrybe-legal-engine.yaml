@@ -1,0 +1,19 @@
+id: tool-descrybe-legal-engine
+type: tool
+kind: tool
+name: Descrybe Legal Engine
+description_zh: 基于清洁、结构化的美国主要法律数据，提供法规和案例研究，支持引文级溯源。
+host_tools:
+- any
+scenarios:
+- research
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://descrybe.ai

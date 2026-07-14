@@ -1,0 +1,18 @@
+id: mcp-biomni-lab
+type: mcp
+kind: tool
+name: Biomni Lab
+description_zh: AI原生生物学实验环境的MCP服务器，提供自动化实验设计、数据分析和模拟能力。
+host_tools:
+- any
+scenarios:
+- research
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: ''

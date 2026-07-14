@@ -1,0 +1,18 @@
+id: mcp-helix-genosphere
+type: mcp
+kind: tool
+name: Helix GenoSphere
+description_zh: 整合人口基因组学与纵向临床数据的MCP服务器，支持大规模基因数据分析和临床关联研究。
+host_tools:
+- any
+scenarios:
+- research
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: ''

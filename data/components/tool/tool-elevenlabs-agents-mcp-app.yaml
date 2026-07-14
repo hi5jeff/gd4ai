@@ -1,0 +1,20 @@
+id: tool-elevenlabs-agents-mcp-app
+type: tool
+kind: tool
+name: ElevenLabs Agents MCP App
+description_zh: 构建支持语音的对话式AI代理，适用于语音助手、电话代理等场景。
+host_tools:
+- any
+scenarios:
+- agent
+- nlp
+- automation
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://elevenlabs.io/conversational-ai

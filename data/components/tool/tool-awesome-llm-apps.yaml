@@ -1,0 +1,20 @@
+id: tool-awesome-llm-apps
+type: tool
+kind: resource
+name: awesome-llm-apps
+description_zh: 跨多个提供商的LLM驱动应用精选清单，汇集了各类基于大语言模型构建的实用应用程序。
+host_tools:
+- any
+scenarios:
+- agent
+- llm-serving
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  repo: https://github.com/Shubhamsaboo/awesome-llm-apps

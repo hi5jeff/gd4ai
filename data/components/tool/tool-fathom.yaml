@@ -1,0 +1,19 @@
+id: tool-fathom
+type: tool
+kind: tool
+name: Fathom
+description_zh: 自动录制Zoom/Meet/Teams会议，生成AI摘要、行动项并同步CRM。
+host_tools:
+- any
+scenarios:
+- efficiency
+- office
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://fathom.ai

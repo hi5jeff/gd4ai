@@ -1,0 +1,20 @@
+id: plugin-security-guidance
+type: plugin
+kind: tool
+name: security-guidance
+description_zh: 安全指导插件，集成安全审查钩子和命令，帮助开发者在编码过程中遵循安全最佳实践。
+host_tools:
+- any
+scenarios:
+- security
+- coding
+- devtools
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: ./plugins/security-guidance

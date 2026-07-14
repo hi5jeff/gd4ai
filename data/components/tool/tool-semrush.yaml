@@ -1,0 +1,19 @@
+id: tool-semrush
+type: tool
+kind: tool
+name: Semrush
+description_zh: 综合SEO和市场数据平台，支持关键词研究、竞争分析、内容审计、付费搜索规划及AI搜索品牌监测。
+host_tools:
+- any
+scenarios:
+- research
+- web-dev
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.semrush.com

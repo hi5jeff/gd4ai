@@ -1,0 +1,19 @@
+id: tool-tldv
+type: tool
+kind: tool
+name: tldv
+description_zh: AI会议记录工具，支持Zoom/Meet/Teams，提取行动项并同步CRM。
+host_tools:
+- any
+scenarios:
+- efficiency
+- office
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://tldv.io

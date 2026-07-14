@@ -1,0 +1,19 @@
+id: tool-clarivate-ipone-compumark-trademarks
+type: tool
+kind: tool
+name: Clarivate IPOne CompuMark Trademarks
+description_zh: 商标智能工具，支持商标清关搜索、品牌保护、知识产权风险评估。
+host_tools:
+- any
+scenarios:
+- research
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://clarivate.com/intellectual-property/compumark/

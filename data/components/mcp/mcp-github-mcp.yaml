@@ -1,0 +1,19 @@
+id: mcp-github-mcp
+type: mcp
+kind: tool
+name: GitHub MCP
+description_zh: 官方GitHub MCP服务器，允许Claude直接与GitHub仓库交互，执行代码管理、Issue操作、PR审查等开发任务。
+host_tools:
+- any
+scenarios:
+- devtools
+- coding
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: ''

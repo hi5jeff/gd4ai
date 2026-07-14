@@ -1,0 +1,19 @@
+id: tool-upwork
+type: tool
+kind: tool
+name: Upwork
+description_zh: 自由职业人才市场平台，用于寻找和雇佣自由职业者、管理合同及为项目寻找人才。
+host_tools:
+- any
+scenarios:
+- efficiency
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.upwork.com

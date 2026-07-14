@@ -1,0 +1,19 @@
+id: tool-lindo-ai
+type: tool
+kind: tool
+name: Lindo AI
+description_zh: AI驱动的网站、落地页和博客文章生成工具，支持客户管理和信用管理，快速创建在线内容。
+host_tools:
+- any
+scenarios:
+- web-dev
+- automation
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://lindo.ai

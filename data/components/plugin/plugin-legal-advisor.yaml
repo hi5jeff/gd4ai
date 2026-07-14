@@ -1,0 +1,19 @@
+id: plugin-legal-advisor
+type: plugin
+kind: tool
+name: legal-advisor
+description_zh: 法律顾问插件，提供AI相关法律建议和合规指导。
+host_tools:
+- any
+scenarios:
+- security
+- finance
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: ''

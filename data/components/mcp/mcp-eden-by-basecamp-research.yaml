@@ -1,0 +1,18 @@
+id: mcp-eden-by-basecamp-research
+type: mcp
+kind: tool
+name: EDEN by Basecamp Research
+description_zh: 基于Basecamp Research生物基础模型的MCP服务器，可在Claude对话中快速从病原体筛选候选抗生素或疫苗靶点，支持基因组学、蛋白质组学等60+专业技能。
+host_tools:
+- any
+scenarios:
+- research
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: ''

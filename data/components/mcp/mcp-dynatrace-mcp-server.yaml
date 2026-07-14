@@ -1,0 +1,18 @@
+id: mcp-dynatrace-mcp-server
+type: mcp
+kind: tool
+name: Dynatrace MCP Server
+description_zh: 通过DQL查询实现可观测性的MCP服务器，用于应用性能监控、基础设施可观测性和根因分析。
+host_tools:
+- any
+scenarios:
+- devtools
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.dynatrace.com

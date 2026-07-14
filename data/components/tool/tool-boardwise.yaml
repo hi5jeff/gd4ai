@@ -1,0 +1,18 @@
+id: tool-boardwise
+type: tool
+kind: tool
+name: BoardWise
+description_zh: 为持证专业人士提供董事会辩护指导，帮助医生等应对董事会投诉或纪律处分，提供冷静、结构化的指导。
+host_tools:
+- any
+scenarios:
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://boardwise.com

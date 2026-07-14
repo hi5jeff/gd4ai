@@ -1,0 +1,20 @@
+id: tool-elevenlabs-player
+type: tool
+kind: tool
+name: ElevenLabs Player
+description_zh: 音频生成与播放工具，支持文本转语音、音频内容创作和配音生成。
+host_tools:
+- any
+scenarios:
+- nlp
+- efficiency
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://elevenlabs.io/text-to-speech

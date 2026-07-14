@@ -1,0 +1,18 @@
+id: tool-kindora-funder-discovery
+type: tool
+kind: tool
+name: Kindora Funder Discovery
+description_zh: AI驱动的资助者发现工具，为非营利组织匹配使命一致的资助方并优化外联。
+host_tools:
+- any
+scenarios:
+- research
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.kindora.co

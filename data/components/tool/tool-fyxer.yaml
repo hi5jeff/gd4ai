@@ -1,0 +1,19 @@
+id: tool-fyxer
+type: tool
+kind: tool
+name: Fyxer
+description_zh: AI邮件助手，自动分类收件箱、起草上下文回复并自动化跟进。
+host_tools:
+- any
+scenarios:
+- efficiency
+- office
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://fyxer.com

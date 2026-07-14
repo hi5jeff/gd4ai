@@ -1,0 +1,19 @@
+id: tool-legal-data-hunter
+type: tool
+kind: tool
+name: Legal Data Hunter
+description_zh: 搜索 160 多个司法管辖区的 2300 万+法律文档，支持跨司法管辖区案例和法规搜索、比较法研究。
+host_tools:
+- any
+scenarios:
+- research
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://legaldatahunter.com

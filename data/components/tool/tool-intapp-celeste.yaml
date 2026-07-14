@@ -1,0 +1,18 @@
+id: tool-intapp-celeste
+type: tool
+kind: tool
+name: Intapp Celeste
+description_zh: 为受监管的专业公司提供代理 AI，支持冲突排查、道德墙和合规工作流。
+host_tools:
+- any
+scenarios:
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.intapp.com/celeste/

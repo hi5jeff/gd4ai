@@ -1,0 +1,19 @@
+id: tool-harvey
+type: tool
+kind: tool
+name: Harvey
+description_zh: 法律 AI 平台，支持法律查询、保险库搜索和研究，包括案例法分析、合同审查和文档搜索。
+host_tools:
+- any
+scenarios:
+- research
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.harvey.ai

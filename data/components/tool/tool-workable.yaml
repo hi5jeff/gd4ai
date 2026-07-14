@@ -1,0 +1,19 @@
+id: tool-workable
+type: tool
+kind: tool
+name: Workable
+description_zh: 招聘与HR一体化平台，包含申请人追踪和AI人才搜索，可发布至200+招聘网站、智能候选人匹配、面试安排等。
+host_tools:
+- any
+scenarios:
+- efficiency
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.workable.com

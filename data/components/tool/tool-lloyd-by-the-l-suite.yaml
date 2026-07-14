@@ -1,0 +1,18 @@
+id: tool-lloyd-by-the-l-suite
+type: tool
+kind: tool
+name: Lloyd by The L Suite
+description_zh: 为 L Suite 成员提供内部法律顾问洞察，包括同行策划的内部法律指导、手册和基准测试。
+host_tools:
+- any
+scenarios:
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.lsuite.co/lloyd

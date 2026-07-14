@@ -1,0 +1,19 @@
+id: tool-brighthire
+type: tool
+kind: tool
+name: BrightHire
+description_zh: 面试智能与招聘数据分析工具，可记录和分析面试过程，辅助结构化招聘决策与候选人评估。
+host_tools:
+- any
+scenarios:
+- efficiency
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://brighthire.com

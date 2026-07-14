@@ -1,0 +1,19 @@
+id: tool-quo
+type: tool
+kind: tool
+name: Quo
+description_zh: 商务电话应用，提供通话转录、错失机会分析和语音邮件查询。
+host_tools:
+- any
+scenarios:
+- efficiency
+- office
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.quo.com

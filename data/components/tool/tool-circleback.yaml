@@ -1,0 +1,19 @@
+id: tool-circleback
+type: tool
+kind: tool
+name: Circleback
+description_zh: 提供会议上下文和笔记，帮助从过往会议中提取信息用于当前对话。
+host_tools:
+- any
+scenarios:
+- efficiency
+- office
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://circleback.ai

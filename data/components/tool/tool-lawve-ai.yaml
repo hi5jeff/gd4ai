@@ -1,0 +1,19 @@
+id: tool-lawve-ai
+type: tool
+kind: tool
+name: Lawve AI
+description_zh: 提供由律师编写的法律工作技能库，包括起草、审查、研究等任务，可在 Claude 中调用。
+host_tools:
+- any
+scenarios:
+- research
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://lawve.ai

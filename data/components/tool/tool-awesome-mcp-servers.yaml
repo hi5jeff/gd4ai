@@ -1,0 +1,19 @@
+id: tool-awesome-mcp-servers
+type: tool
+kind: resource
+name: awesome-mcp-servers
+description_zh: MCP（Model Context Protocol）服务器的精选清单，提供多种连接器背后的协议实现，方便开发者查找和使用MCP服务。
+host_tools:
+- any
+scenarios:
+- mcp-dev
+- devtools
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  repo: https://github.com/punkpeye/awesome-mcp-servers

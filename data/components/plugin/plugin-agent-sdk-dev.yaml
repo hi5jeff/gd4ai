@@ -1,0 +1,20 @@
+id: plugin-agent-sdk-dev
+type: plugin
+kind: tool
+name: agent-sdk-dev
+description_zh: 用于开发AI Agent SDK的Claude Code插件，提供定制化命令和子代理以简化SDK开发流程。
+host_tools:
+- any
+scenarios:
+- agent
+- devtools
+- coding
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: ./plugins/agent-sdk-dev

@@ -1,0 +1,20 @@
+id: mcp-windows-mcp
+type: mcp
+kind: tool
+name: Windows-MCP
+description_zh: 通过MCP协议实现Windows操作系统自动化和系统控制，适用于应用自动化、文件管理和系统管理。
+host_tools:
+- any
+scenarios:
+- automation
+- devtools
+- efficiency
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  repo: https://github.com/CursorTouch/Windows-MCP

@@ -1,0 +1,18 @@
+id: plugin-audit
+type: plugin
+kind: tool
+name: audit
+description_zh: 审计插件，用于对AI系统进行审计和合规性检查。
+host_tools:
+- any
+scenarios:
+- security
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: ''

@@ -1,0 +1,18 @@
+id: mcp-openreplay-mcp
+type: mcp
+kind: tool
+name: OpenReplay MCP
+description_zh: 会话回放和产品分析MCP工具，用于查看用户会话回放、调试前端问题以及分析产品使用图表。
+host_tools:
+- any
+scenarios:
+- devtools
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://openreplay.com

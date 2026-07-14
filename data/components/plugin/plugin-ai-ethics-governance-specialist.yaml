@@ -1,0 +1,19 @@
+id: plugin-ai-ethics-governance-specialist
+type: plugin
+kind: tool
+name: ai-ethics-governance-specialist
+description_zh: AI伦理治理专家插件，帮助确保AI系统符合伦理规范和治理要求。
+host_tools:
+- any
+scenarios:
+- security
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: ''

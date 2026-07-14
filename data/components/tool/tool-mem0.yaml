@@ -1,0 +1,20 @@
+id: tool-mem0
+type: tool
+kind: tool
+name: Mem0
+description_zh: 为AI代理和助手提供持久化记忆，支持跨会话的长期记忆和语义回忆。
+host_tools:
+- any
+scenarios:
+- agent
+- rag
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://mem0.ai

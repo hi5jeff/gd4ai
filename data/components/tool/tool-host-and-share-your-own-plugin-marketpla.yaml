@@ -1,0 +1,19 @@
+id: tool-host-and-share-your-own-plugin-marketpla
+type: tool
+kind: knowledge
+name: Host and share your own plugin marketplace
+description_zh: 教程：通过Git仓库创建并分享自己的Claude Code插件市场，用户可安装使用。
+host_tools:
+- any
+scenarios:
+- devtools
+- automation
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: ''

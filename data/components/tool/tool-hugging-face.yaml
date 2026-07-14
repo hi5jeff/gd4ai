@@ -1,0 +1,20 @@
+id: tool-hugging-face
+type: tool
+kind: tool
+name: Hugging Face
+description_zh: 访问Hugging Face Hub模型和Gradio应用，用于模型探索、推理和发现预训练模型。
+host_tools:
+- any
+scenarios:
+- llm-serving
+- research
+- llm-training
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://huggingface.co

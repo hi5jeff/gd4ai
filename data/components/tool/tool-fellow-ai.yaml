@@ -1,0 +1,19 @@
+id: tool-fellow-ai
+type: tool
+kind: tool
+name: Fellow.ai
+description_zh: 与会议数据对话，查询会议记录、查找行动项和回顾讨论。
+host_tools:
+- any
+scenarios:
+- efficiency
+- office
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://fellow.app

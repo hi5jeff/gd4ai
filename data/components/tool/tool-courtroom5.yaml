@@ -1,0 +1,18 @@
+id: tool-courtroom5
+type: tool
+kind: tool
+name: Courtroom5
+description_zh: 为自诉人提供民事法律指导，包括程序支持、动议起草模板和案件策略指导。
+host_tools:
+- any
+scenarios:
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://courtroom5.com

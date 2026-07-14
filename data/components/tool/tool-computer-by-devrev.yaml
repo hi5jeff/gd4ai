@@ -1,0 +1,19 @@
+id: tool-computer-by-devrev
+type: tool
+kind: tool
+name: Computer by DevRev
+description_zh: 具有共享记忆的对话式AI队友，用于工单解决、服务台自动化和CRM更新。
+host_tools:
+- any
+scenarios:
+- automation
+- efficiency
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://devrev.ai/meet-computer

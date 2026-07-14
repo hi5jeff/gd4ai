@@ -1,0 +1,19 @@
+id: tool-agentmail
+type: tool
+kind: tool
+name: AgentMail
+description_zh: 为AI代理提供专用邮箱，支持程序化收发邮件和自动化邮件工作流。
+host_tools:
+- any
+scenarios:
+- automation
+- efficiency
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://agentmail.to

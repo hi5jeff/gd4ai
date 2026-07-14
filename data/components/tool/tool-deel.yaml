@@ -1,0 +1,19 @@
+id: tool-deel
+type: tool
+kind: tool
+name: Deel
+description_zh: 全球劳动力管理平台，支持国际招聘、薪资查询、合同管理及跨境合规，可集成到Claude中使用。
+host_tools:
+- any
+scenarios:
+- efficiency
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.deel.com

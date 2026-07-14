@@ -1,0 +1,20 @@
+id: tool-saga
+type: tool
+kind: tool
+name: Saga
+description_zh: 专为AI代理设计的类Jira项目跟踪器，支持按项目任务层级和活动日志管理多步骤工作。
+host_tools:
+- any
+scenarios:
+- agent
+- devtools
+- efficiency
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  repo: https://github.com/spranab/saga-mcp

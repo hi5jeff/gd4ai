@@ -1,0 +1,19 @@
+id: tool-granola
+type: tool
+kind: tool
+name: Granola
+description_zh: AI会议记事本，实时记录并增强笔记，生成结构化会议摘要。
+host_tools:
+- any
+scenarios:
+- efficiency
+- office
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://granola.ai

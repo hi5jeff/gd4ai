@@ -1,0 +1,19 @@
+id: tool-owkin
+type: tool
+kind: tool
+name: Owkin
+description_zh: 面向生物学的AI代理，用于生物研究、计算生物学和药物发现。
+host_tools:
+- any
+scenarios:
+- research
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://owkin.com

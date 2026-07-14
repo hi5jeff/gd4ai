@@ -1,0 +1,20 @@
+id: mcp-desktop-commander
+type: mcp
+kind: tool
+name: Desktop Commander
+description_zh: 通过MCP实现本地机器自动化，支持文件系统操作、进程管理和系统级任务。
+host_tools:
+- any
+scenarios:
+- automation
+- devtools
+- efficiency
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  repo: https://github.com/wonderwhy-er/DesktopCommanderMCP

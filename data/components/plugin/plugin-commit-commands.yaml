@@ -1,0 +1,19 @@
+id: plugin-commit-commands
+type: plugin
+kind: tool
+name: commit-commands
+description_zh: 提供Git提交相关的斜杠命令和自动化钩子，简化提交信息生成和提交流程管理。
+host_tools:
+- any
+scenarios:
+- coding
+- devtools
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: ./plugins/commit-commands

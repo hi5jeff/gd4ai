@@ -1,0 +1,19 @@
+id: tool-krisp
+type: tool
+kind: tool
+name: Krisp
+description_zh: 提供降噪会议转录和说话人识别，提升会议记录质量。
+host_tools:
+- any
+scenarios:
+- efficiency
+- office
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://krisp.ai

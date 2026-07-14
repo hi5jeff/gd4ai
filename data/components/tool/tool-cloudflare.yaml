@@ -1,0 +1,20 @@
+id: tool-cloudflare
+type: tool
+kind: tool
+name: Cloudflare
+description_zh: 提供计算、存储和AI推理的边缘部署服务，支持Workers管理、CDN配置和边缘AI推理。
+host_tools:
+- any
+scenarios:
+- web-dev
+- automation
+- llm-serving
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://www.cloudflare.com

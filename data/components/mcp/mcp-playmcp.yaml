@@ -1,0 +1,19 @@
+id: mcp-playmcp
+type: mcp
+kind: tool
+name: PlayMCP
+description_zh: Kakao MCP网关和工具箱，浏览注册的MCP服务器，捆绑最多10个并通过OAuth2路由。
+host_tools:
+- any
+scenarios:
+- agent
+- mcp-dev
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://playmcp.kakao.com

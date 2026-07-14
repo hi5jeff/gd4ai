@@ -1,0 +1,19 @@
+id: tool-otter-ai
+type: tool
+kind: tool
+name: Otter.ai
+description_zh: 实时会议笔记、可搜索转录、自动摘要和行动项，支持Zoom/Meet/Teams。
+host_tools:
+- any
+scenarios:
+- efficiency
+- office
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+source:
+  url: https://otter.ai
