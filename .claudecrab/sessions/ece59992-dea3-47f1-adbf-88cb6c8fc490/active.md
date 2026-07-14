@@ -62,10 +62,17 @@ _This file is automatically injected into Claude's context at the start of every
 
 - ✅ origin = git@github.com:hi5jeff/gd4ai.git，分支已改 main 并推送（推前扫描 git 全历史确认无密码/OSS密钥/证书泄漏）
 
+## 第九轮：gd4.ai 前端上线
+
+- ✅ 226 装 nginx 1.30，Cloudflare Origin 证书部署（验证过证书私钥匹配、SAN、2041 到期）
+- ✅ https://gd4.ai 公网 200（Cloudflare→226），80→301；占位落地页在仓库 web/index.html
+- ✅ /api/ 已预配反代到 227:9000（后端 API 端口约定 9000；上线前 502 正常）
+- 用户要求：服务一律部署服务器，不在本地起（已记入 MEMORY）
+
 ## Next
 
 1. 定稿组件 YAML schema + 种子数据 30~50 条（覆盖六类验收用例）
-2. 后端 API（检索+编排+校验）→ 226 前端
+2. 后端 API（检索+编排+校验，部署 227:9000）→ 前端页面迭代（部署 226）
 
 ## Open questions
 
