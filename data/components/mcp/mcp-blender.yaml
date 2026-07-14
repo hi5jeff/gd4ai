@@ -1,0 +1,37 @@
+id: mcp-blender
+type: mcp
+name: Blender MCP
+description_zh: 让 AI 控制 Blender 做 3D 建模：用自然语言建模型、调材质、摆场景。游戏资产制作、3D 设计的入门捷径。
+host_tools:
+- claude-code
+- desktop
+- any-mcp-client
+categories:
+- 3d-modeling
+scenarios:
+- game-dev
+- 3d-design
+tags:
+- Blender
+- 3D
+- 建模
+- 游戏资产
+difficulty: intermediate
+install:
+  method: uvx
+  command: claude mcp add blender -- uvx blender-mcp
+  notes_zh: 需要先装 Blender 本体和仓库提供的 Blender 插件（两端配合）
+config_required:
+- Blender 本体
+- Blender 端插件
+usage:
+  first_prompt_zh: 在 Blender 里建一个低多边形风格的小房子，加个卡通材质
+quality:
+  verified: false
+  stars: 23963
+  last_commit: '2026-06-11'
+relations:
+  works_with:
+  - tool-godot
+source:
+  repo: https://github.com/ahujasid/blender-mcp

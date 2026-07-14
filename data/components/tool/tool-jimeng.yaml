@@ -1,0 +1,14 @@
+id: tool-jimeng
+type: tool
+name: 即梦 AI
+description_zh: 字节跳动的中文 AI 生图/生视频工具，中文提示词直接可用、人像效果好、有免费额度。国内用户生成美女图/海报的首选之一。
+host_tools: [web]
+categories: [image-generation]
+scenarios: [image-gen, portrait, video-gen]
+tags: [生图, 中文, 免费额度, 国产]
+difficulty: beginner
+install: {method: web, notes_zh: jimeng.jianying.com 手机号注册即用}
+usage: {first_prompt_zh: 中文直接描述即可，也可用人像提示词模板的中文关键词}
+quality: {verified: false}
+relations: {works_with: [prompt-portrait-photography], alternatives: [tool-midjourney]}
+source: {url: https://jimeng.jianying.com}

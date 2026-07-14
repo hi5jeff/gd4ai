@@ -1,0 +1,19 @@
+id: prompt-portrait-photography
+type: prompt
+name: 人像美女摄影提示词模板
+description_zh: 生成高质量人像/美女图的提示词模板（gd4.ai 整理），含 Midjourney 和 Stable Diffusion 两个版本，可按场景、光线、镜头替换关键词。
+host_tools: [web, any]
+categories: [prompt-template]
+scenarios: [image-gen, portrait]
+tags: [人像, 美女, 提示词, Midjourney, SD]
+difficulty: beginner
+install: {method: none, notes_zh: 复制提示词直接在生图工具里用}
+usage:
+  first_prompt_zh: |
+    【Midjourney 版】portrait of a beautiful young woman, elegant dress, soft natural lighting, shallow depth of field, 85mm lens, photorealistic, high detail --ar 3:4 --v 6
+    【SD 版】(masterpiece, best quality), 1girl, beautiful detailed face, elegant dress, soft lighting, bokeh background, professional photography
+    【替换要点】场景(street/beach/studio)、光线(golden hour/neon/window light)、风格(photorealistic/cinematic/fashion)
+  verify_zh: 在 Midjourney 或即梦里粘贴模板，出图质量应明显高于直接写"一个美女"
+quality: {verified: false}
+relations: {works_with: [tool-midjourney, tool-jimeng, tool-comfyui]}
+source: {url: https://gd4.ai}

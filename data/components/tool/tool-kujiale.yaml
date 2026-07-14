@@ -1,0 +1,14 @@
+id: tool-kujiale
+type: tool
+name: 酷家乐 (AI 设计)
+description_zh: 国内最大的在线室内设计平台，输入户型图 AI 自动生成装修方案和 3D 效果图，海量真实家具模型。装修业主和设计师都在用，免费起步。
+host_tools: [web]
+categories: [interior-design-tool]
+scenarios: [interior-design]
+tags: [室内设计, 装修, 户型, 国产, 免费]
+difficulty: beginner
+install: {method: web, notes_zh: kujiale.com 注册即用，搜自己小区户型图直接开始}
+usage: {first_prompt_zh: 导入户型 → AI 自动布局 → 选风格生成效果图 → 手动微调家具}
+quality: {verified: false}
+relations: {works_with: [prompt-interior-render], alternatives: [tool-roomgpt]}
+source: {url: https://www.kujiale.com}

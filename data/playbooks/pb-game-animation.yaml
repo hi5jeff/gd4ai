@@ -1,0 +1,20 @@
+id: pb-game-animation
+title_zh: 游戏开发的动画制作工具链
+scenario: game-animation
+audience: intermediate
+summary_zh: 按游戏类型选链路：2D 像素游戏用 Aseprite+Godot（全免费可行），3D 用 Blender MCP 让 AI 辅助建模，Unity 项目直接接 Unity MCP。
+tags: [游戏开发, 动画, 像素, 3D]
+components:
+  - {ref: tool-godot, role_zh: 免费游戏引擎——内置完整动画编辑器}
+  - {ref: tool-aseprite, role_zh: 2D 像素角色/特效逐帧动画}
+  - {ref: mcp-blender, role_zh: 3D 路线——AI 辅助 Blender 建模, optional: true}
+  - {ref: mcp-unity, role_zh: Unity 项目——AI 直接操作编辑器, optional: true}
+steps:
+  - {title_zh: 定路线, detail_zh: 2D 像素风→Aseprite 画帧动画+Godot 组装；3D→Blender 建模+引擎动画系统；已有 Unity 项目→装 Unity MCP}
+  - {title_zh: 2D 链路, detail_zh: Aseprite 画角色 walk/attack/idle 帧序列导出 spritesheet → Godot 的 AnimatedSprite2D 导入 → AI 写状态机脚本切换动画}
+  - {title_zh: 让 AI 深度参与, detail_zh: Claude Code + Godot：AI 直接写 GDScript 动画状态机；配 Blender MCP 可以用自然语言建 3D 模型}
+first_prompt_zh: 我在做一个 2D 像素平台跳跃游戏（Godot），帮我写角色的动画状态机脚本：idle/run/jump/fall 四个状态，用 AnimatedSprite2D，说明每个动画需要几帧、什么切换条件。
+pitfalls_zh:
+  - Aseprite 官方版付费，预算为零用 LibreSprite 或自编译
+  - Unity MCP 配置较繁琐（插件端+服务端两步），新手建议先走 Godot 路线
+quality: {verified: false}

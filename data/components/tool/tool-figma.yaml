@@ -1,0 +1,13 @@
+id: tool-figma
+type: tool
+name: Figma (AI 功能)
+description_zh: 专业 UI/产品设计工具（网页版免费），配合 Figma MCP 可以让 AI 直接读设计稿写代码。做正经产品界面设计的行业标准。
+host_tools: [web]
+categories: [design-tool]
+scenarios: [graphic-design, web-dev, ui-design]
+tags: [UI设计, 专业, 免费]
+difficulty: intermediate
+install: {method: web, notes_zh: figma.com 注册即用}
+quality: {verified: false}
+relations: {works_with: [mcp-figma, role-ui-ux-designer]}
+source: {url: https://www.figma.com}

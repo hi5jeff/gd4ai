@@ -1,0 +1,35 @@
+id: mcp-figma
+type: mcp
+name: Figma Context MCP
+description_zh: 把 Figma 设计稿的结构化数据喂给 AI，让 AI 照着设计稿写前端代码，还原度远高于截图。设计转代码的关键一环。
+host_tools:
+- claude-code
+- cursor
+- any-mcp-client
+categories:
+- design-to-code
+scenarios:
+- web-dev
+- graphic-design
+tags:
+- Figma
+- 设计稿
+- 前端
+difficulty: intermediate
+install:
+  method: claude-mcp-add
+  command: claude mcp add figma -- npx -y figma-developer-mcp --figma-api-key=你的FIGMA密钥 --stdio
+config_required:
+- Figma API Key（Figma 设置页免费生成）
+usage:
+  first_prompt_zh: 读取这个 Figma 链接的设计稿，用 React + Tailwind 还原它
+quality:
+  verified: false
+  stars: 15387
+  last_commit: '2026-07-03'
+relations:
+  works_with:
+  - role-frontend-developer
+  - tool-figma
+source:
+  repo: https://github.com/GLips/Figma-Context-MCP

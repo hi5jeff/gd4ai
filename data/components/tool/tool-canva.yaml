@@ -1,0 +1,14 @@
+id: tool-canva
+type: tool
+name: Canva (AI 功能)
+description_zh: 在线平面设计工具，内置 AI 生图、魔法排版、一键抠图。不会设计软件的人做海报/PPT/社媒图的最低门槛方案，免费版够用。
+host_tools: [web]
+categories: [design-tool]
+scenarios: [graphic-design, marketing, office]
+tags: [平面设计, 海报, 在线, 免费]
+difficulty: beginner
+install: {method: web, notes_zh: canva.com（国内版 canva.cn）注册即用}
+usage: {first_prompt_zh: 用"魔力设计"输入活动主题，AI 直接出整套海报模板再手动微调}
+quality: {verified: false}
+relations: {works_with: [prompt-poster-design, skill-canvas-design]}
+source: {url: https://www.canva.com}

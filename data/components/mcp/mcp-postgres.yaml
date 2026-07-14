@@ -1,0 +1,35 @@
+id: mcp-postgres
+type: mcp
+name: PostgreSQL MCP
+description_zh: 让 AI 直接查询 PostgreSQL 数据库：看表结构、跑 SQL、分析数据。做网站后端或数据分析时配合使用。
+host_tools:
+- claude-code
+- any-mcp-client
+categories:
+- database
+scenarios:
+- web-dev
+- data-analysis
+tags:
+- 数据库
+- SQL
+difficulty: intermediate
+install:
+  method: claude-mcp-add
+  command: claude mcp add postgres -- npx -y @modelcontextprotocol/server-postgres "postgresql://用户:密码@localhost/库名"
+  notes_zh: 官方参考实现已归档但仍可用；生产库建议用只读账号
+config_required:
+- 数据库连接串
+usage:
+  first_prompt_zh: 看看数据库里有哪些表，每张表大概存了什么
+quality:
+  verified: false
+  maintenance_note_zh: 官方已归档、社区有替代品
+  security_notes_zh: 连接串含密码，建议只读账号+内网
+  stars: 287
+  last_commit: '2025-05-28'
+relations:
+  alternatives:
+  - mcp-supabase
+source:
+  repo: https://github.com/modelcontextprotocol/servers-archived

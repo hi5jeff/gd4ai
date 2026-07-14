@@ -1,0 +1,32 @@
+id: skill-canvas-design
+type: skill
+name: Canvas Design (官方)
+description_zh: Anthropic 官方视觉设计 skill，让 Claude 生成海报、封面、信息图等平面设计稿（输出可编辑的设计文件而非位图）。平面设计需求的核心组件。
+host_tools:
+- claude-code
+categories:
+- design
+scenarios:
+- graphic-design
+- marketing
+tags:
+- 平面设计
+- 海报
+- 官方
+difficulty: beginner
+install:
+  method: marketplace
+  command: /plugin marketplace add anthropics/skills
+  notes_zh: 添加官方 skill 市场后安装 canvas-design
+usage:
+  first_prompt_zh: 帮我设计一张咖啡店开业促销海报，暖色调，突出"买一送一"
+quality:
+  verified: false
+  stars: 160919
+  last_commit: '2026-07-13'
+relations:
+  works_with:
+  - prompt-poster-design
+  - tool-canva
+source:
+  repo: https://github.com/anthropics/skills

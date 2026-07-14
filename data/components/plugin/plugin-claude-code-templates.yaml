@@ -1,0 +1,26 @@
+id: plugin-claude-code-templates
+type: plugin
+name: Claude Code Templates (aitmpl)
+description_zh: 社区最大的 Claude Code 配置模板集之一：数百个现成的 agent、命令、hook、MCP 配置，一条命令交互式安装，适合快速武装你的 Claude Code。
+host_tools:
+- claude-code
+categories:
+- template-collection
+scenarios:
+- coding
+- efficiency
+tags:
+- 模板
+- 合集
+- 社区
+difficulty: beginner
+install:
+  method: npx
+  command: npx claude-code-templates@latest
+  notes_zh: 交互式选择要装的 agent/命令/配置
+quality:
+  verified: false
+  stars: 29428
+  last_commit: '2026-07-14'
+source:
+  repo: https://github.com/davila7/claude-code-templates

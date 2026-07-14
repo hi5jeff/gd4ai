@@ -1,0 +1,30 @@
+id: skill-docx
+type: skill
+name: Word 文档处理 (官方)
+description_zh: Anthropic 官方 skill，让 Claude 创建和编辑带格式的 Word 文档（标题、表格、样式齐全）。写报告、方案、合同模板用。
+host_tools:
+- claude-code
+categories:
+- office
+scenarios:
+- office
+- writing
+tags:
+- Word
+- 办公
+- 官方
+difficulty: beginner
+install:
+  method: marketplace
+  command: /plugin marketplace add anthropics/skills
+usage:
+  first_prompt_zh: 生成一份项目周报 Word 模板，包含进度表格和风险清单
+quality:
+  verified: false
+  stars: 160919
+  last_commit: '2026-07-13'
+relations:
+  works_with:
+  - skill-pdf
+source:
+  repo: https://github.com/anthropics/skills

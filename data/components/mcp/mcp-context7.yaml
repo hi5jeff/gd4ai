@@ -1,0 +1,31 @@
+id: mcp-context7
+type: mcp
+name: Context7 MCP
+description_zh: 把最新的框架/库官方文档实时喂给 AI，解决"AI 知识过时、API 写错"的问题。写代码时让 AI 查 Context7 拿准确用法。
+host_tools:
+- claude-code
+- cursor
+- any-mcp-client
+categories:
+- docs
+scenarios:
+- web-dev
+- coding
+tags:
+- 文档
+- 防幻觉
+difficulty: beginner
+install:
+  method: claude-mcp-add
+  command: claude mcp add context7 -- npx -y @upstash/context7-mcp
+usage:
+  first_prompt_zh: 用 Context7 查一下 Next.js 15 的 App Router 最新写法，然后帮我建个项目
+quality:
+  verified: false
+  stars: 59068
+  last_commit: '2026-07-13'
+relations:
+  works_with:
+  - role-frontend-developer
+source:
+  repo: https://github.com/upstash/context7

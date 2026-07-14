@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "gd4.ai 方案包",
+  "type": "object",
+  "required": ["id", "title_zh", "scenario", "summary_zh", "components", "steps"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^pb-[a-z0-9-]+$" },
+    "title_zh": { "type": "string" },
+    "scenario": { "type": "string" },
+    "audience": { "enum": ["beginner", "intermediate", "advanced"], "default": "beginner" },
+    "host_tool": { "type": "string" },
+    "summary_zh": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "components": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["ref", "role_zh"],
+        "additionalProperties": false,
+        "properties": {
+          "ref": { "type": "string" },
+          "role_zh": { "type": "string" },
+          "optional": { "type": "boolean", "default": false }
+        }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["title_zh", "detail_zh"],
+        "additionalProperties": false,
+        "properties": {
+          "title_zh": { "type": "string" },
+          "detail_zh": { "type": "string" },
+          "command": { "type": "string" }
+        }
+      }
+    },
+    "first_prompt_zh": { "type": "string" },
+    "pitfalls_zh": { "type": "array", "items": { "type": "string" } },
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "verified": { "type": "boolean", "default": false },
+        "verified_at": { "type": "string" }
+      }
+    }
+  }
+}

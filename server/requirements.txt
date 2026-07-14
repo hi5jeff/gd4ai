@@ -1,0 +1,9 @@
+fastapi==0.116.*
+uvicorn[standard]==0.35.*
+psycopg[binary]==3.2.*
+psycopg-pool==3.2.*
+pyyaml==6.*
+jsonschema==4.*
+httpx==0.28.*
+redis==6.*
+meilisearch==0.36.*

@@ -1,0 +1,20 @@
+id: pb-beauty-portrait
+title_zh: 生成高质量美女人像图
+scenario: portrait
+audience: beginner
+summary_zh: 提示词模板 + 生图工具的组合：中文用户用即梦零成本起步，追求质感上 Midjourney，要完全控制用本地 SD。
+tags: [人像, 美女, 生图, 提示词]
+components:
+  - {ref: prompt-portrait-photography, role_zh: 核心——直接可用的人像提示词模板}
+  - {ref: tool-jimeng, role_zh: 免费起步——中文提示词直接出图}
+  - {ref: tool-midjourney, role_zh: 质感升级——预算$10/月时的最佳选择, optional: true}
+  - {ref: tool-sd-webui, role_zh: 进阶——有显卡想无限出图/自定义风格, optional: true}
+steps:
+  - {title_zh: 选工具, detail_zh: 零成本→即梦；要质感→Midjourney；有 NVIDIA 显卡想深度玩→SD WebUI}
+  - {title_zh: 套模板出第一批图, detail_zh: 复制人像提示词模板，替换场景/光线/风格关键词，一次生成 4 张选优}
+  - {title_zh: 迭代关键词, detail_zh: 保留好图的种子/关键词，每次只改一个变量（光线→构图→服装），快速收敛到想要的效果}
+first_prompt_zh: "portrait of a beautiful young woman, elegant white dress, golden hour sunlight, shallow depth of field, 85mm lens, photorealistic --ar 3:4"
+pitfalls_zh:
+  - 直接写"一个美女"效果差，光线和镜头关键词才是质感来源
+  - 商用需注意肖像权与平台内容政策，真人脸换脸有法律风险
+quality: {verified: false}

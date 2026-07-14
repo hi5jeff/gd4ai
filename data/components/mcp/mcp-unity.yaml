@@ -1,0 +1,33 @@
+id: mcp-unity
+type: mcp
+name: Unity MCP
+description_zh: 让 AI 直接操作 Unity 编辑器：建 GameObject、改组件、跑测试、管理场景。用 AI 辅助 Unity 游戏开发的桥梁。
+host_tools:
+- claude-code
+- cursor
+- any-mcp-client
+categories:
+- game-engine
+scenarios:
+- game-dev
+tags:
+- Unity
+- 游戏开发
+difficulty: advanced
+install:
+  method: manual
+  notes_zh: 分两步：Unity 里通过 Package Manager 装插件端 + 按仓库 README 配置 MCP 服务端，跟着官方文档走
+config_required:
+- Unity 2021.3+
+usage:
+  first_prompt_zh: 在当前场景创建一个带刚体的立方体，写个让它旋转的脚本挂上去
+quality:
+  verified: false
+  stars: 12438
+  last_commit: '2026-07-13'
+relations:
+  works_with:
+  - mcp-blender
+  - tool-aseprite
+source:
+  repo: https://github.com/CoplayDev/unity-mcp

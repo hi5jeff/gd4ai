@@ -1,0 +1,30 @@
+id: tool-aseprite
+type: tool
+name: Aseprite
+description_zh: 像素画和逐帧动画的标杆编辑器，游戏角色/特效动画制作利器。约$20 买断，也可以自己编译源码免费用（开源代码）。
+host_tools:
+- desktop
+categories:
+- animation-tool
+scenarios:
+- game-dev
+- game-animation
+- pixel-art
+tags:
+- 像素
+- 动画
+- 游戏美术
+difficulty: intermediate
+install:
+  method: web
+  notes_zh: aseprite.org 购买下载；或 clone 源码自行编译免费使用；免费替代品 LibreSprite
+quality:
+  verified: false
+  stars: 37991
+  last_commit: '2026-07-02'
+relations:
+  works_with:
+  - tool-godot
+  alternatives: []
+source:
+  repo: https://github.com/aseprite/aseprite

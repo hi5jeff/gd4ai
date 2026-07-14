@@ -1,0 +1,34 @@
+id: tool-sd-webui
+type: tool
+name: Stable Diffusion WebUI
+description_zh: 最流行的开源生图界面（AUTOMATIC1111），插件生态庞大，教程最多。本地免费出图的经典选择，新手比 ComfyUI 好上手。
+host_tools:
+- desktop
+categories:
+- image-generation
+scenarios:
+- image-gen
+- portrait
+tags:
+- 开源
+- 本地
+- SD
+difficulty: intermediate
+install:
+  method: git-clone
+  command: git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui && cd stable-diffusion-webui && ./webui.sh
+  notes_zh: 需要 NVIDIA 显卡；国内可找整合包（如秋叶整合包）
+config_required:
+- NVIDIA 显卡
+- SD 模型文件
+quality:
+  verified: false
+  stars: 164231
+  last_commit: '2026-03-02'
+relations:
+  works_with:
+  - prompt-portrait-photography
+  alternatives:
+  - tool-comfyui
+source:
+  repo: https://github.com/AUTOMATIC1111/stable-diffusion-webui

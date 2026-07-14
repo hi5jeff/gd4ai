@@ -24,3 +24,12 @@
 
 ## 数据集三层
 组件库（YAML in git → PG）、方案库 playbook、用法语料。命令/配置从字段拼装，LLM 不现写。
+
+## MVP 已上线（2026-07-14）
+- **https://gd4.ai 全链路可用**：前端(web/index.html→226 /var/www/gd4ai) → nginx /api 反代 → 227:9000 howai-api 容器
+- **代码结构**：`data/`（36 组件+6 方案包 YAML+2 个 JSON Schema）、`server/`（FastAPI：config/db/llm/retrieval/ingest/orchestrate/main）、`scripts/`（validate_data.py + enrich_github.py）
+- **部署流程**：改代码/数据 → tar 同步到 227:/opt/howai/api/（服务器无 rsync）→ `docker compose build api && up -d api` → 数据变更再跑 `docker exec howai-api python -m app.ingest`；前端 scp index.html 到 226
+- **推荐链路**：hybrid(Meili+pgvector RRF) Top14组件+Top3方案包 → v4-pro 闭世界选择(max_tokens 3000) → id 校验剔除库外 → 字段拼装卡片；Redis 缓存24h；查空/不相关→gap_log 表；LLM 挂→降级纯检索
+- **验收**：六类用例全过（电商/美女图/省token/游戏动画/平面设计/室内装修），库外问题（修发动机）正确走 no_result 兜底
+- **运营表**：gap_log（缺口=下一步采集方向）、query_log（全部提问）在 227 的 PG 里
+- ⚠️ SERVERS.md 含明文密码，已 gitignore（连同 .env），永不入库

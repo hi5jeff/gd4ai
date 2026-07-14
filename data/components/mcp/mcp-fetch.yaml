@@ -1,0 +1,30 @@
+id: mcp-fetch
+type: mcp
+name: Fetch MCP
+description_zh: 官方网页抓取 MCP，把任意 URL 的内容抓下来转成 Markdown 给 AI 读。轻量级，不需要完整浏览器。
+host_tools:
+- any-mcp-client
+categories:
+- web-fetch
+scenarios:
+- scraping
+- research
+tags:
+- 抓取
+- 官方
+difficulty: beginner
+install:
+  method: claude-mcp-add
+  command: claude mcp add fetch -- uvx mcp-server-fetch
+  notes_zh: 需要 Python 环境的 uv 工具（pip install uv）
+usage:
+  first_prompt_zh: 抓取 https://example.com 的内容并总结
+quality:
+  verified: false
+  stars: 88433
+  last_commit: '2026-07-10'
+relations:
+  alternatives:
+  - mcp-playwright
+source:
+  repo: https://github.com/modelcontextprotocol/servers

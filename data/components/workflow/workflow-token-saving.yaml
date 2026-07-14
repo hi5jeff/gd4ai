@@ -1,0 +1,20 @@
+id: workflow-token-saving
+type: workflow
+name: Claude Code 省 Token 实践清单
+description_zh: 降低 Claude Code token 消耗的实操方法合集（gd4.ai 整理）：上下文管理、子代理分流、批量操作等，长会话可省 30-60% 消耗。
+host_tools: [claude-code]
+categories: [efficiency]
+scenarios: [token-saving, efficiency]
+tags: [省token, 成本, 效率]
+difficulty: beginner
+install: {method: builtin, notes_zh: 无需安装，都是 Claude Code 内置能力的正确用法}
+usage:
+  first_prompt_zh: |
+    1. 长会话勤用 /compact 压缩历史（或 /clear 开新会话），上下文越长每轮越贵
+    2. 大搜索/大批量读文件交给子代理（"用 subagent 去搜"），主会话只收结论
+    3. CLAUDE.md 写清项目结构和约定，避免 AI 每次重新探索
+    4. 一次说清需求批量做，比挤牙膏式追问省很多轮
+    5. 让 AI"只改必要文件，不要整文件重写"，减少输出 token
+  verify_zh: 对比使用前后 /cost 显示的消耗
+quality: {verified: false}
+source: {url: https://gd4.ai}

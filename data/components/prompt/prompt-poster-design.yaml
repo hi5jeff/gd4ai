@@ -1,0 +1,18 @@
+id: prompt-poster-design
+type: prompt
+name: 海报/平面设计提示词模板
+description_zh: 商业海报、Banner、社交媒体配图的提示词模板（gd4.ai 整理），强调排版留白和文字区域预留，出图可直接进 Canva/PS 加字。
+host_tools: [web, any]
+categories: [prompt-template]
+scenarios: [graphic-design, marketing, image-gen]
+tags: [海报, 平面设计, 提示词]
+difficulty: beginner
+install: {method: none}
+usage:
+  first_prompt_zh: |
+    【模板】minimalist promotional poster design, [主题物品] as hero element, bold color blocking, large negative space at top for headline text, professional graphic design, flat illustration style --ar 3:4
+    【要点】留白给文字(negative space for text)、指定风格(flat/3D/photo)、指定配色(brand color: #FF6B35)
+  verify_zh: 出图上方应有干净留白可放标题文字
+quality: {verified: false}
+relations: {works_with: [skill-canvas-design, tool-canva, tool-midjourney]}
+source: {url: https://gd4.ai}

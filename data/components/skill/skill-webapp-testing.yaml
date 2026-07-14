@@ -1,0 +1,31 @@
+id: skill-webapp-testing
+type: skill
+name: Webapp Testing (官方)
+description_zh: Anthropic 官方 skill，教会 Claude Code 系统化测试网页应用：起服务、开浏览器、逐项验证功能。网站做完让 AI 自己测一遍。
+host_tools:
+- claude-code
+categories:
+- testing
+scenarios:
+- web-dev
+- web-testing
+tags:
+- 测试
+- 官方
+- 网页
+difficulty: beginner
+install:
+  method: marketplace
+  command: /plugin marketplace add anthropics/skills
+  notes_zh: 在 Claude Code 对话里执行，添加官方 skill 市场后按提示安装 webapp-testing
+usage:
+  first_prompt_zh: 用 webapp-testing 完整测试一下我刚做的网站，把问题列出来
+quality:
+  verified: false
+  stars: 160919
+  last_commit: '2026-07-13'
+relations:
+  works_with:
+  - mcp-playwright
+source:
+  repo: https://github.com/anthropics/skills

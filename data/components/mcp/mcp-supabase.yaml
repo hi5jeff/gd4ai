@@ -1,0 +1,41 @@
+id: mcp-supabase
+type: mcp
+name: Supabase MCP
+description_zh: Supabase 官方 MCP，让 AI 管理你的 Supabase 项目：建表、写查询、管权限。Supabase 是免费起步的云数据库+登录+存储全家桶，小白做网站后端的最快路径。
+host_tools:
+- claude-code
+- cursor
+- any-mcp-client
+categories:
+- database
+- backend
+scenarios:
+- web-dev
+- ecommerce
+tags:
+- Supabase
+- 数据库
+- 后端
+- BaaS
+difficulty: beginner
+install:
+  method: claude-mcp-add
+  command: claude mcp add supabase -- npx -y @supabase/mcp-server-supabase --access-token=你的SUPABASE令牌
+  notes_zh: 先在 supabase.com 免费注册建项目，个人设置里生成 access token
+config_required:
+- Supabase Access Token
+usage:
+  first_prompt_zh: 帮我建一张商品表（名称、价格、库存、图片URL），再插入 3 条测试数据
+quality:
+  verified: false
+  security_notes_zh: token 可访问项目全部数据，开发期建议用开发项目
+  stars: 2802
+  last_commit: '2026-07-10'
+relations:
+  works_with:
+  - mcp-stripe
+  - role-frontend-developer
+  alternatives:
+  - mcp-postgres
+source:
+  repo: https://github.com/supabase-community/supabase-mcp

@@ -1,0 +1,36 @@
+id: tool-comfyui
+type: tool
+name: ComfyUI
+description_zh: 开源本地生图工作流工具（Stable Diffusion 生态），节点式编排，支持 ControlNet 控制构图——室内设计图生图、精确控制姿势构图必备。免费但需要显卡。
+host_tools:
+- desktop
+categories:
+- image-generation
+scenarios:
+- image-gen
+- interior-design
+- advanced-imagegen
+tags:
+- 开源
+- 本地
+- SD
+- ControlNet
+difficulty: advanced
+install:
+  method: git-clone
+  command: git clone https://github.com/comfyanonymous/ComfyUI && cd ComfyUI && pip install -r requirements.txt
+  notes_zh: 需要 NVIDIA 显卡 8G+ 显存；也有整合包和云端托管版可选
+config_required:
+- NVIDIA 显卡
+- SD 模型文件
+quality:
+  verified: false
+  stars: 120647
+  last_commit: '2026-07-14'
+relations:
+  works_with:
+  - prompt-interior-render
+  alternatives:
+  - tool-sd-webui
+source:
+  repo: https://github.com/comfyanonymous/ComfyUI

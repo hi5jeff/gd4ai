@@ -1,0 +1,32 @@
+id: tool-roomgpt
+type: tool
+name: RoomGPT
+description_zh: 开源的房间改造 AI：上传现有房间照片，选风格，几秒生成改造后效果图。看"我家换个风格什么样"的最快方式，可自部署。
+host_tools:
+- web
+- desktop
+categories:
+- interior-design-tool
+scenarios:
+- interior-design
+- image-gen
+tags:
+- 室内
+- 改造
+- 开源
+difficulty: beginner
+install:
+  method: web
+  command: git clone https://github.com/Nutlope/roomGPT
+  notes_zh: 在线版 roomgpt.io 直接用；开发者可 clone 自部署
+quality:
+  verified: false
+  stars: 10654
+  last_commit: '2024-04-20'
+relations:
+  works_with:
+  - prompt-interior-render
+  alternatives:
+  - tool-kujiale
+source:
+  repo: https://github.com/Nutlope/roomGPT

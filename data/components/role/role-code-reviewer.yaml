@@ -1,0 +1,30 @@
+id: role-code-reviewer
+type: role
+name: 代码审查员 (subagent)
+description_zh: wshobson/agents 合集中的代码审查专家：检查安全漏洞、性能问题、代码规范。每次 AI 写完代码让它过一遍，质量明显提升。
+host_tools:
+- claude-code
+categories:
+- subagent
+scenarios:
+- coding
+- web-dev
+tags:
+- 代码审查
+- 质量
+- 子代理
+difficulty: beginner
+install:
+  method: git-clone
+  command: git clone https://github.com/wshobson/agents.git ~/.claude/agents/wshobson
+usage:
+  first_prompt_zh: 让 code-reviewer 审查刚才写的支付模块代码
+quality:
+  verified: false
+  stars: 37882
+  last_commit: '2026-07-14'
+relations:
+  works_with:
+  - mcp-github
+source:
+  repo: https://github.com/wshobson/agents

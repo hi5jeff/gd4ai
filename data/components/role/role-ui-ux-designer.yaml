@@ -1,0 +1,31 @@
+id: role-ui-ux-designer
+type: role
+name: UI/UX 设计师 (subagent)
+description_zh: wshobson/agents 合集中的界面设计专家：设计系统、交互流程、视觉规范。写代码前先让它出设计方案，页面档次立刻不一样。
+host_tools:
+- claude-code
+categories:
+- subagent
+scenarios:
+- web-dev
+- graphic-design
+tags:
+- UI
+- UX
+- 设计
+- 子代理
+difficulty: beginner
+install:
+  method: git-clone
+  command: git clone https://github.com/wshobson/agents.git ~/.claude/agents/wshobson
+usage:
+  first_prompt_zh: 让 ui-ux-designer 给我的电商网站定一套配色和组件规范
+quality:
+  verified: false
+  stars: 37882
+  last_commit: '2026-07-14'
+relations:
+  works_with:
+  - role-frontend-developer
+source:
+  repo: https://github.com/wshobson/agents

@@ -1,0 +1,32 @@
+id: tool-godot
+type: tool
+name: Godot 引擎
+description_zh: 完全免费开源的游戏引擎，内置动画编辑器（AnimationPlayer/骨骼动画/帧动画都支持），2D 游戏尤其强。独立开发者和新手学游戏开发的首选。
+host_tools:
+- desktop
+categories:
+- game-engine
+scenarios:
+- game-dev
+- game-animation
+tags:
+- 游戏引擎
+- 动画
+- 开源
+- 免费
+difficulty: intermediate
+install:
+  method: web
+  notes_zh: godotengine.org 下载即用（60MB，无需安装）
+usage:
+  first_prompt_zh: 配合 Claude Code 写 GDScript 脚本，动画在内置 AnimationPlayer 里编辑
+quality:
+  verified: false
+  stars: 114050
+  last_commit: '2026-07-13'
+relations:
+  works_with:
+  - tool-aseprite
+  - mcp-blender
+source:
+  repo: https://github.com/godotengine/godot

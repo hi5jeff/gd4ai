@@ -77,3 +77,15 @@ _This file is automatically injected into Claude's context at the start of every
 ## Open questions
 
 - MVP 形态（搜索引擎 vs 对话推荐 vs 两者结合）待用户确认后再进入工程实现。
+
+## 第十轮：MVP 开发（进行中）
+- ✅ LLM 复测通过（flash 7s抽取JSON合法 / pro 13.7s，pro需max_tokens≥2000）
+- ✅ data/schema 两个 JSON Schema 定稿
+- ✅ 种子数据 36 组件+6 方案包，全部校验通过，GitHub stars 已补全（26个真实仓库）
+- ✅ server/ 后端完成：FastAPI + 混合检索(Meili+pgvector RRF) + 闭世界编排(orchestrate.py) + 查空兜底/缺口日志/Redis缓存/LLM降级
+- ⏳ 待办：compose加api服务→部署227→ingest→测试→前端→E2E→提交
+- ✅ 部署完成: api容器构建成功, ingest 36+6, /api/health 全绿
+- ✅ 六类验收+库外兜底全部通过(gap_log/query_log正常记录)
+- ✅ 前端正式版上226, https://gd4.ai 公网E2E通过(缓存命中秒回, 新问题20s)
+- ✅ SERVERS.md(含明文密码)已gitignore
+- 第十轮完成, 待提交

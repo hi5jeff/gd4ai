@@ -1,0 +1,14 @@
+id: tool-midjourney
+type: tool
+name: Midjourney
+description_zh: 目前出图美感最强的 AI 生图工具，人像、海报、概念设计都出色。网页版即用，付费订阅（约$10/月起）。
+host_tools: [web]
+categories: [image-generation]
+scenarios: [image-gen, portrait, graphic-design]
+tags: [生图, 付费, 美感]
+difficulty: beginner
+install: {method: web, notes_zh: midjourney.com 注册订阅即用}
+usage: {first_prompt_zh: 配合"人像美女摄影提示词模板"使用效果最佳}
+quality: {verified: false}
+relations: {works_with: [prompt-portrait-photography, prompt-poster-design], alternatives: [tool-jimeng, tool-comfyui]}
+source: {url: https://www.midjourney.com}

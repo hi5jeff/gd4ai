@@ -53,6 +53,26 @@ services:
     volumes:
       - tei_cache:/data
 
+  # 推荐 API（代码在 /opt/howai/api/，由仓库 server/ 同步而来）
+  api:
+    build: ./api
+    container_name: howai-api
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "10.0.0.227:9000:9000"   # 只绑内网 IP，公网经 226 nginx 的 /api/ 反代进来
+    volumes:
+      - ./api/data:/app/data:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+      meilisearch:
+        condition: service_started
+      redis:
+        condition: service_started
+      embedding:
+        condition: service_started
+
 volumes:
   pg_data:
   meili_data:

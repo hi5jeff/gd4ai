@@ -1,0 +1,20 @@
+id: pb-interior-design
+title_zh: 室内装修 AI 设计方案
+scenario: interior-design
+audience: beginner
+summary_zh: 装修业主两条路：酷家乐（户型级完整方案，能落地）+ RoomGPT/生图（单房间风格预览，快速找感觉），提示词模板打配合。
+tags: [室内, 装修, 效果图]
+components:
+  - {ref: tool-kujiale, role_zh: 主力——导户型出完整装修方案和效果图，可对接施工}
+  - {ref: tool-roomgpt, role_zh: 快速预览——拍照上传 10 秒看改造效果}
+  - {ref: prompt-interior-render, role_zh: 生图路线的风格提示词（配合即梦/MJ/ComfyUI）}
+  - {ref: tool-comfyui, role_zh: 进阶——ControlNet 锁户型结构精确出图, optional: true}
+steps:
+  - {title_zh: 找感觉, detail_zh: 手机拍现状照片传 RoomGPT，把 8 种风格都跑一遍，确定喜欢的方向}
+  - {title_zh: 出正式方案, detail_zh: 酷家乐搜你的小区户型（大概率已有）→ AI 自动布局 → 套确定的风格 → 生成 3D 效果图和全景图}
+  - {title_zh: 细化单空间, detail_zh: 对重点空间（客厅/主卧）用室内提示词模板+生图工具出多个软装变体，确定家具配色}
+first_prompt_zh: （RoomGPT/图生图）renovate this living room into japandi style, keep the original layout, light oak wood, cream white walls, warm ambient lighting
+pitfalls_zh:
+  - 生图效果图仅供风格参考，尺寸不精确；落地施工以酷家乐带尺寸的方案为准
+  - 酷家乐免费版渲染有次数限制，集中确定方案后再批量渲染
+quality: {verified: false}

@@ -1,0 +1,17 @@
+id: prompt-logo-design
+type: prompt
+name: Logo 设计提示词模板
+description_zh: AI 生成 Logo 的提示词模板（gd4.ai 整理）：矢量风格、单色测试、多方案对比的完整流程提示词。
+host_tools: [web, any]
+categories: [prompt-template]
+scenarios: [graphic-design, branding]
+tags: [logo, 品牌, 提示词]
+difficulty: beginner
+install: {method: none}
+usage:
+  first_prompt_zh: |
+    【模板】minimal vector logo for a [行业] brand called "[名字]", geometric, flat design, single color on white background, professional, scalable --v 6
+    【流程】先出 4 个方向 → 选中后要单色版(monochrome version)验证可用性 → 最后要不同尺寸场景样机(mockup)
+quality: {verified: false}
+relations: {works_with: [tool-midjourney, skill-canvas-design]}
+source: {url: https://gd4.ai}

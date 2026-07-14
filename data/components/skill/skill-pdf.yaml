@@ -1,0 +1,30 @@
+id: skill-pdf
+type: skill
+name: PDF 处理 (官方)
+description_zh: Anthropic 官方 skill，让 Claude 读取、生成、填表、合并 PDF 文件。处理合同、报告、表单的办公利器。
+host_tools:
+- claude-code
+categories:
+- office
+scenarios:
+- office
+- automation
+tags:
+- PDF
+- 办公
+- 官方
+difficulty: beginner
+install:
+  method: marketplace
+  command: /plugin marketplace add anthropics/skills
+usage:
+  first_prompt_zh: 把这 3 个 PDF 合并成一个，并生成目录页
+quality:
+  verified: false
+  stars: 160919
+  last_commit: '2026-07-13'
+relations:
+  works_with:
+  - skill-docx
+source:
+  repo: https://github.com/anthropics/skills

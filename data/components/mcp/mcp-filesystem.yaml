@@ -1,0 +1,33 @@
+id: mcp-filesystem
+type: mcp
+name: Filesystem MCP
+description_zh: 官方文件系统 MCP，让 AI 读写指定目录下的文件。给不带文件能力的 MCP 客户端（如 Claude Desktop）补上文件操作。
+host_tools:
+- any-mcp-client
+- desktop
+categories:
+- file-management
+scenarios:
+- automation
+- office
+tags:
+- 文件
+- 官方
+difficulty: beginner
+install:
+  method: claude-mcp-add
+  command: claude mcp add filesystem -- npx -y @modelcontextprotocol/server-filesystem ~/Documents
+  notes_zh: 最后的路径参数是允许访问的目录，可写多个；只授权需要的目录
+config_required:
+- 允许访问的目录路径
+usage:
+  first_prompt_zh: 列出我 Documents 目录下的所有文件
+quality:
+  verified: false
+  security_notes_zh: 只能访问显式授权的目录，建议最小化授权范围
+  stars: 88433
+  last_commit: '2026-07-10'
+relations:
+  alternatives: []
+source:
+  repo: https://github.com/modelcontextprotocol/servers

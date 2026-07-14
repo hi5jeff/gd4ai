@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "gd4.ai 组件",
+  "type": "object",
+  "required": ["id", "type", "name", "description_zh", "scenarios", "difficulty", "install", "source"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$" },
+    "type": { "enum": ["mcp", "skill", "plugin", "role", "prompt", "workflow", "tool"] },
+    "name": { "type": "string" },
+    "description_zh": { "type": "string", "minLength": 10 },
+    "description_en": { "type": "string" },
+    "host_tools": {
+      "type": "array",
+      "items": { "enum": ["claude-code", "codex", "cursor", "windsurf", "any-mcp-client", "web", "desktop", "any"] },
+      "default": ["any"]
+    },
+    "categories": { "type": "array", "items": { "type": "string" } },
+    "scenarios": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "difficulty": { "enum": ["beginner", "intermediate", "advanced"] },
+    "install": {
+      "type": "object",
+      "required": ["method"],
+      "additionalProperties": false,
+      "properties": {
+        "method": { "enum": ["claude-mcp-add", "npx", "npm", "pip", "uvx", "git-clone", "marketplace", "builtin", "web", "manual", "none"] },
+        "command": { "type": "string" },
+        "notes_zh": { "type": "string" }
+      }
+    },
+    "config_required": { "type": "array", "items": { "type": "string" } },
+    "usage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "first_prompt_zh": { "type": "string" },
+        "verify_zh": { "type": "string" }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "stars": { "type": "integer" },
+        "last_commit": { "type": "string" },
+        "verified": { "type": "boolean", "default": false },
+        "maintenance_note_zh": { "type": "string" },
+        "security_notes_zh": { "type": "string" }
+      }
+    },
+    "relations": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "works_with": { "type": "array", "items": { "type": "string" } },
+        "alternatives": { "type": "array", "items": { "type": "string" } },
+        "requires": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "repo": { "type": "string" },
+        "url": { "type": "string" },
+        "docs": { "type": "string" }
+      }
+    }
+  }
+}

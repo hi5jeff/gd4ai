@@ -1,0 +1,25 @@
+id: pb-ecommerce-website
+title_zh: 用 Claude Code 从零做一个电商网站
+scenario: ecommerce
+audience: beginner
+host_tool: claude-code
+summary_zh: 前端生成 + Supabase 数据库 + Stripe 支付的完整组合，不用自己搭服务器，从空目录到能收款的网站。
+tags: [电商, 网站, 支付]
+components:
+  - {ref: role-frontend-developer, role_zh: 负责页面开发（商品列表/详情/购物车）}
+  - {ref: mcp-supabase, role_zh: 云数据库——存商品、订单、用户}
+  - {ref: mcp-stripe, role_zh: 收款——创建商品价格和支付链接}
+  - {ref: mcp-context7, role_zh: 保证 AI 用最新的框架写法（可选但强烈建议）}
+  - {ref: skill-webapp-testing, role_zh: 做完自动测试整站, optional: true}
+steps:
+  - {title_zh: 装 Claude Code 并进入空项目目录, detail_zh: npm install -g @anthropic-ai/claude-code 后在新目录运行 claude, command: "npm install -g @anthropic-ai/claude-code"}
+  - {title_zh: 接入 Supabase, detail_zh: supabase.com 免费注册建项目 → 生成 access token → 执行安装命令, command: "claude mcp add supabase -- npx -y @supabase/mcp-server-supabase --access-token=你的令牌"}
+  - {title_zh: 接入 Stripe（测试模式）, detail_zh: stripe.com 注册拿 sk_test_ 测试密钥, command: "claude mcp add stripe -- npx -y @stripe/mcp --tools=all --api-key=sk_test_你的密钥"}
+  - {title_zh: 装前端子代理, detail_zh: 克隆 agents 合集让 AI 有前端专家人格, command: "git clone https://github.com/wshobson/agents.git ~/.claude/agents/wshobson"}
+  - {title_zh: 一句话启动开发, detail_zh: 用下面的首条提示词让 AI 全程搭建，之后逐步加购物车、订单页}
+first_prompt_zh: 用 Next.js 做一个卖手工饰品的电商网站：先让 frontend-developer 设计页面结构，用 Supabase 建商品表和订单表并插入 5 条测试商品，商品详情页接 Stripe 支付链接。做完在本地跑起来给我看。
+pitfalls_zh:
+  - Stripe 测试期务必用 sk_test_ 密钥，正式收款需完成 Stripe 实名审核
+  - Supabase 免费版数据库一周不活跃会休眠，重新访问唤醒即可
+  - 国内收款场景 Stripe 不适用，需换微信/支付宝（后续方案库会补充）
+quality: {verified: false}

@@ -1,0 +1,27 @@
+id: mcp-sequential-thinking
+type: mcp
+name: Sequential Thinking MCP
+description_zh: 官方推理增强 MCP，把复杂问题拆成有序思考步骤，适合规划、架构设计这类需要多步推理的任务。
+host_tools:
+- any-mcp-client
+categories:
+- reasoning
+scenarios:
+- planning
+- coding
+tags:
+- 推理
+- 规划
+- 官方
+difficulty: beginner
+install:
+  method: claude-mcp-add
+  command: claude mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking
+usage:
+  first_prompt_zh: 用分步思考帮我规划一个电商网站的技术方案
+quality:
+  verified: false
+  stars: 88433
+  last_commit: '2026-07-10'
+source:
+  repo: https://github.com/modelcontextprotocol/servers

@@ -1,0 +1,32 @@
+id: role-frontend-developer
+type: role
+name: 前端开发者 (subagent)
+description_zh: 社区最流行的 Claude Code 子代理合集 wshobson/agents 中的前端专家：精通 React/Next.js/Tailwind，负责页面开发和 UI 实现。做网站时把前端活交给它。
+host_tools:
+- claude-code
+categories:
+- subagent
+scenarios:
+- web-dev
+- ecommerce
+tags:
+- 前端
+- React
+- 子代理
+difficulty: beginner
+install:
+  method: git-clone
+  command: git clone https://github.com/wshobson/agents.git ~/.claude/agents/wshobson
+  notes_zh: 克隆后 Claude Code 自动识别，对话中说"让 frontend-developer 来做"即可调用
+usage:
+  first_prompt_zh: 让 frontend-developer 用 Next.js 搭一个商品列表页，响应式布局
+quality:
+  verified: false
+  stars: 37882
+  last_commit: '2026-07-14'
+relations:
+  works_with:
+  - mcp-context7
+  - mcp-figma
+source:
+  repo: https://github.com/wshobson/agents

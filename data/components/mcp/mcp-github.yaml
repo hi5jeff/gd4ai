@@ -1,0 +1,36 @@
+id: mcp-github
+type: mcp
+name: GitHub MCP (官方)
+description_zh: GitHub 官方 MCP，让 AI 操作你的 GitHub：看仓库、开 issue、查 PR、读代码。远程托管版无需本地安装。
+host_tools:
+- claude-code
+- any-mcp-client
+categories:
+- devtools
+scenarios:
+- web-dev
+- automation
+- open-source
+tags:
+- GitHub
+- 官方
+- 代码托管
+difficulty: beginner
+install:
+  method: claude-mcp-add
+  command: claude mcp add --transport http github https://api.githubcopilot.com/mcp/
+  notes_zh: 首次使用会走 GitHub OAuth 授权
+config_required:
+- GitHub 账号授权
+usage:
+  first_prompt_zh: 列出我 GitHub 上最近更新的 5 个仓库
+quality:
+  verified: false
+  security_notes_zh: OAuth 授权范围可控，建议只授权需要的仓库
+  stars: 31417
+  last_commit: '2026-07-13'
+relations:
+  works_with:
+  - role-code-reviewer
+source:
+  repo: https://github.com/github/github-mcp-server

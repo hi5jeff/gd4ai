@@ -1,0 +1,38 @@
+id: mcp-stripe
+type: mcp
+name: Stripe MCP
+description_zh: Stripe 官方支付工具集，让 AI 帮你创建商品、价格、支付链接、查询订单。做电商网站接支付时用。
+host_tools:
+- claude-code
+- cursor
+- any-mcp-client
+categories:
+- payment
+scenarios:
+- web-dev
+- ecommerce
+tags:
+- 支付
+- Stripe
+- 电商
+- 官方
+difficulty: intermediate
+install:
+  method: claude-mcp-add
+  command: claude mcp add stripe -- npx -y @stripe/mcp --tools=all --api-key=你的STRIPE密钥
+  notes_zh: 先在 stripe.com 注册拿测试密钥（sk_test_ 开头），跑通后再换正式密钥
+config_required:
+- Stripe API Key
+usage:
+  first_prompt_zh: 创建一个 99 元的商品"会员月卡"，生成支付链接
+quality:
+  verified: false
+  security_notes_zh: API 密钥有资金权限，测试期务必用 sk_test_ 密钥
+  stars: 1666
+  last_commit: '2026-07-13'
+relations:
+  works_with:
+  - mcp-supabase
+  - role-frontend-developer
+source:
+  repo: https://github.com/stripe/agent-toolkit
