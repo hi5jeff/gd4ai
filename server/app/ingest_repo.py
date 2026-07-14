@@ -102,19 +102,24 @@ EXTRACT_PROMPT = """你在从一段 AI 资源导航文档里抽取"可安装/可
 {chunk}
 ---
 
-抽取其中每一个**具体的工具/框架/项目/skill/mcp**（有名字、能用的东西）。
-严格排除：论文、博客文章、新闻、榜单、教程、纯概念介绍、公众号/社交媒体链接。
+抽取其中每一个**具体的、现在能安装/使用的工具或框架**（有名字、有代码仓库、能跑起来的东西）。
 
-对每个合格项输出:
+严格排除（is_tool=false）：
+- 论文、博客文章、新闻、榜单、公众号/社交媒体链接
+- 学习资料：面试笔记、教程、课程、书籍、awesome清单、知识点合集、interview/notes/tutorial/roadmap 类
+- 纯概念介绍、纯数据集
+
+对每一项输出:
 - name: 名称
 - description_zh: 一句话中文说明它能干什么(40-80字)
 - url: 它的官网或GitHub链接(从文档里找,没有就null)
 - type: {types} 之一(拿不准填 tool)
 - scenarios: 1-3个,从 {scenarios} 选
+- is_tool: 是不是"能安装使用的工具/框架"(而非学习资料/文章)
 - ai_related: 是否与AI/大模型/AI开发相关(true/false)
 
 只输出严格 JSON 数组(无markdown),没有合格项输出 []:
-[{{"name":"...","description_zh":"...","url":"...","type":"...","scenarios":[...],"ai_related":true}}]"""
+[{{"name":"...","description_zh":"...","url":"...","type":"...","scenarios":[...],"is_tool":true,"ai_related":true}}]"""
 
 
 def extract_chunk(chunk):
@@ -165,9 +170,25 @@ def existing_repos():
     return repos
 
 
-def make_component(item, used_ids, existing, default_repo=None):
+def enrich_github(url):
+    """给 GitHub url 补 stars/最近提交。返回 (stars, pushed_date) 或 (None, None)。"""
+    m = re.match(r"https?://github\.com/([^/]+/[^/#?]+)", url or "")
+    if not m:
+        return None, None
+    repo = m.group(1).rstrip("/").removesuffix(".git")
+    try:
+        info = gh_json(f"/repos/{repo}")
+        return info.get("stargazers_count"), (info.get("pushed_at") or "")[:10]
+    except Exception:
+        return None, None
+
+
+def make_component(item, used_ids, existing, default_repo=None,
+                   min_stars=0, min_year=0):
     if not item.get("ai_related", True):
         return None, "非AI相关"
+    if not item.get("is_tool", True):
+        return None, "非工具(学习资料/文章)"
     typ = item.get("type") if item.get("type") in TYPES else "tool"
     name = str(item.get("name", "")).strip()
     desc = str(item.get("description_zh", "")).strip()
@@ -178,6 +199,15 @@ def make_component(item, used_ids, existing, default_repo=None):
         return None, "已存在"
     scen = [s for s in item.get("scenarios", []) if s in SCENARIOS][:3] or ["other"]
 
+    # GitHub 项目：补 star/最近提交，过滤太冷门或多年不更新的
+    stars, pushed = (None, None)
+    if (min_stars or min_year) and "github.com" in url:
+        stars, pushed = enrich_github(url)
+        if stars is not None and stars < min_stars:
+            return None, f"star不足({stars})"
+        if min_year and pushed and pushed[:4].isdigit() and int(pushed[:4]) < min_year:
+            return None, f"多年未更新({pushed})"
+
     base = f"{typ}-{slugify(name)}"
     cid, n = base, 2
     while cid in used_ids:
@@ -186,122 +216,140 @@ def make_component(item, used_ids, existing, default_repo=None):
     if url:
         existing.add(url.lower().rstrip("/"))
 
+    quality = {"verified": False}
+    if stars is not None:
+        quality["stars"] = stars
+    if pushed:
+        quality["last_commit"] = pushed
     doc = {
         "id": cid, "type": typ, "name": name[:80], "description_zh": desc[:300],
         "host_tools": ["any"], "scenarios": scen, "tags": [], "difficulty": "intermediate",
         "install": {"method": "manual", "notes_zh": "详见来源链接"},
-        "quality": {"verified": False},
+        "quality": quality,
         "source": {"repo" if "github.com" in url else "url": url} if url else {"url": default_repo or ""},
     }
     return doc, "ok"
 
 
-# ---------------- 主流程 ----------------
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("repo", help="owner/repo")
-    ap.add_argument("--dry-run", action="store_true")
-    ap.add_argument("--max-items", type=int, default=0)
-    args = ap.parse_args()
-
-    meta = gh_json(f"/repos/{args.repo}")
-    tree = gh_json(f"/repos/{args.repo}/contents/")
-    readme = gh_raw(args.repo, "README.md")
-
-    plan = probe(args.repo, meta, tree, readme)
-    print(f"[勘探] 结构={plan.get('structure')} 依据={plan.get('reason')}")
-
+# ---------------- 核心：摄取单个仓库 ----------------
+def load_state():
+    """加载全库已有 repo/url 和 id，供去重。批量模式下多仓库共享同一份并累加。"""
     existing = existing_repos()
     used_ids = set()
     for f in DATA.rglob("*.yaml"):
         used_ids.add(yaml.safe_load(f.read_text())["id"])
+    return existing, used_ids
 
+
+def ingest_one(repo, dry_run=False, max_items=0, min_stars=0, min_year=0,
+               existing=None, used_ids=None, log=print):
+    """摄取一个仓库，返回产出的 doc 列表。existing/used_ids 传入则跨仓库共享去重。"""
+    if existing is None or used_ids is None:
+        existing, used_ids = load_state()
+
+    meta = gh_json(f"/repos/{repo}")
+    tree = gh_json(f"/repos/{repo}/contents/")
+    readme = gh_raw(repo, "README.md")
+    plan = probe(repo, meta, tree, readme)
     structure = plan.get("structure")
+    log(f"[{repo}] 结构={structure} 依据={plan.get('reason')}")
     docs = []
 
     if structure == "nav_list":
-        nav_files = plan.get("nav_files") or []
-        if not nav_files:
-            nav_files = [t["name"] for t in tree if t["name"].endswith(".md")
-                         and t["name"].lower() != "readme.md"][:20]
-        # 收集所有块
+        nav_files = plan.get("nav_files") or [
+            t["name"] for t in tree if t["name"].endswith(".md")
+            and t["name"].lower() != "readme.md"][:20]
         all_chunks = []
         for nf in nav_files:
-            md = gh_raw(args.repo, nf)
-            all_chunks.extend(chunk_markdown(md))
-        print(f"[抽取] {len(nav_files)} 个文件 → {len(all_chunks)} 块，并发抽取…")
+            all_chunks.extend(chunk_markdown(gh_raw(repo, nf)))
+        log(f"[{repo}] {len(nav_files)} 文件 → {len(all_chunks)} 块，并发抽取…")
         raw_items = []
         with cf.ThreadPoolExecutor(4) as ex:
-            for i, items in enumerate(ex.map(extract_chunk, all_chunks), 1):
+            for items in ex.map(extract_chunk, all_chunks):
                 raw_items.extend(items)
-                if i % 10 == 0:
-                    print(f"  {i}/{len(all_chunks)} 块, 累计 {len(raw_items)} 条原始项")
-        print(f"[抽取] 原始 {len(raw_items)} 条 → 严筛+去重…")
-        stats = {}
+        stats, cand = {}, []
         for it in raw_items:
             doc, why = make_component(it, used_ids, existing)
             stats[why] = stats.get(why, 0) + 1
             if doc:
-                docs.append(doc)
-            if args.max_items and len(docs) >= args.max_items:
-                break
-        print(f"[严筛] {dict(sorted(stats.items(), key=lambda x:-x[1]))}")
+                cand.append(doc)
+        log(f"[{repo}] 初筛 {dict(sorted(stats.items(), key=lambda x:-x[1]))} → 候选 {len(cand)}")
+        if min_stars or min_year:
+            def check(doc):
+                url = (doc.get("source") or {}).get("repo", "")
+                if "github.com" not in url:
+                    return doc
+                stars, pushed = enrich_github(url)
+                if stars is not None and stars < min_stars:
+                    return None
+                if min_year and pushed and pushed[:4].isdigit() and int(pushed[:4]) < min_year:
+                    return None
+                if stars is not None:
+                    doc["quality"]["stars"] = stars
+                if pushed:
+                    doc["quality"]["last_commit"] = pushed
+                return doc
+            with cf.ThreadPoolExecutor(8) as ex:
+                cand = [d for d in ex.map(check, cand) if d]
+            log(f"[{repo}] star≥{min_stars}/年≥{min_year} → 存活 {len(cand)}")
+        docs = cand[:max_items] if max_items else cand
 
-    elif structure == "single":
-        # 整仓库当 1 条：让 LLM 用 README 抽字段
+    elif structure in ("single", "json_lib"):
         doc, why = make_component({
-            "name": meta["name"], "description_zh": (meta.get("description") or "")[:200],
+            "name": meta["name"], "description_zh": (meta.get("description") or meta["name"])[:200],
             "url": meta["html_url"], "type": "tool", "scenarios": ["other"], "ai_related": True,
         }, used_ids, existing)
         if doc:
+            doc["quality"]["stars"] = meta.get("stargazers_count")
+            doc["quality"]["last_commit"] = (meta.get("pushed_at") or "")[:10]
             docs.append(doc)
-        print(f"[single] {'收录1条' if doc else why}")
+        log(f"[{repo}] {structure}: {'收录1条' if doc else why}")
 
     elif structure == "collection":
         cdir = plan.get("collection_dir")
-        subs = gh_json(f"/repos/{args.repo}/contents/{urllib.parse.quote(cdir)}") if cdir else []
-        print(f"[collection] {cdir}/ 下 {len(subs)} 个单元")
-        for s in subs:
-            if s["type"] != "dir":
-                continue
-            doc, why = make_component({
-                "name": s["name"], "description_zh": f"来自 {args.repo} 的 {s['name']} 单元",
-                "url": s["html_url"], "type": "skill", "scenarios": ["coding"], "ai_related": True,
-            }, used_ids, existing)
-            if doc:
-                docs.append(doc)
-            if args.max_items and len(docs) >= args.max_items:
-                break
-
-    elif structure == "json_lib":
-        print("[json_lib] 该类型走专用 import_prompts 管线，本脚本仅登记来源。")
-        doc, why = make_component({
-            "name": meta["name"], "description_zh": (meta.get("description") or "")[:200],
-            "url": meta["html_url"], "type": "tool", "scenarios": ["other"], "ai_related": True,
+        subs = gh_json(f"/repos/{repo}/contents/{urllib.parse.quote(cdir)}") if cdir else []
+        log(f"[{repo}] collection {cdir}/ 下 {len(subs)} 单元")
+        # 仓库本体作为 1 条市场/合集入口
+        d0, _ = make_component({
+            "name": meta["name"], "description_zh": (meta.get("description") or meta["name"])[:200],
+            "url": meta["html_url"], "type": "plugin", "scenarios": ["coding"], "ai_related": True,
         }, used_ids, existing)
-        if doc:
-            docs.append(doc)
+        if d0:
+            d0["quality"]["stars"] = meta.get("stargazers_count")
+            d0["quality"]["last_commit"] = (meta.get("pushed_at") or "")[:10]
+            docs.append(d0)
 
-    # nav_list 仓库本体也值得登记
+    # nav_list 仓库本体也登记
     if plan.get("self_worth") and structure == "nav_list":
         d2, _ = make_component({
             "name": meta["name"], "description_zh": (meta.get("description") or meta["name"])[:200],
             "url": meta["html_url"], "type": "tool", "scenarios": ["research"], "ai_related": True,
         }, used_ids, existing)
         if d2:
+            d2["quality"]["stars"] = meta.get("stargazers_count")
             docs.append(d2)
 
+    if not dry_run:
+        for d in docs:
+            out = DATA / d["type"] / f"{d['id']}.yaml"
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(yaml.dump(d, allow_unicode=True, sort_keys=False, width=120))
+    return docs, plan
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("repo", help="owner/repo")
+    ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--max-items", type=int, default=0)
+    ap.add_argument("--min-stars", type=int, default=0)
+    ap.add_argument("--min-year", type=int, default=0)
+    args = ap.parse_args()
+    docs, _ = ingest_one(args.repo, args.dry_run, args.max_items, args.min_stars, args.min_year)
     print(f"\n共产出 {len(docs)} 条新组件")
-    if args.dry_run:
-        for d in docs[:15]:
-            print(f"  [{d['type']}] {d['name']} — {d['description_zh'][:50]}")
-        print("(dry-run，未落盘)")
-        return
-    for d in docs:
-        out = DATA / d["type"] / f"{d['id']}.yaml"
-        out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(yaml.dump(d, allow_unicode=True, sort_keys=False, width=120))
-    print(f"✅ 已落盘 {len(docs)} 条到 data/components/（跑 validate + ingest 生效）")
+    for d in docs[:15]:
+        print(f"  [{d['type']}] {d['name']} — {d['description_zh'][:50]}")
+    print("(dry-run，未落盘)" if args.dry_run else f"✅ 已落盘 {len(docs)} 条")
 
 
 if __name__ == "__main__":
