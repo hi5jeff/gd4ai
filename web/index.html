@@ -152,13 +152,13 @@ function compCard(c){
   const stars = c.stars ? `⭐ ${c.stars>=1000?(c.stars/1000).toFixed(1)+'k':c.stars}` : '';
   const diff = td(c.difficulty || '');
   const opt = c.optional ? t('badgeOptional') : '';
-  const name = (_lang==='en' && c.name_en) ? c.name_en : c.name;
-  const desc = (_lang==='en' && c.description_en) ? c.description_en : c.description;
-  const reason = (_lang==='en' && c.reason_en) ? c.reason_en : c.reason;
-  const notes = (_lang==='en' && c.install && c.install.notes_en) ? c.install.notes_en : (c.install && c.install.notes_zh);
-  const firstPrompt = (_lang==='en' && c.usage && c.usage.first_prompt_en) ? c.usage.first_prompt_en : (c.usage && c.usage.first_prompt_zh);
-  const verify = (_lang==='en' && c.usage && c.usage.verify_en) ? c.usage.verify_en : (c.usage && c.usage.verify_zh);
-  const sec = (_lang==='en' && c.security_notes_en) ? c.security_notes_en : c.security_notes;
+  const name = c.name;
+  const desc = c.description;
+  const reason = c.reason;
+  const notes = c.install && c.install.notes_zh;
+  const firstPrompt = c.usage && c.usage.first_prompt_zh;
+  const verify = c.usage && c.usage.verify_zh;
+  const sec = c.security_notes;
   let h = `<div class="card">
     <div class="head"><span class="badge b-${esc(c.type||'')}">${esc(tt(c.type||''))}</span>
       <span class="name">${esc(name)}${opt}</span>
@@ -179,28 +179,26 @@ function compCard(c){
 }
 
 function render(d){
-  const answer = (_lang==='en' && d.answer_en) ? d.answer_en : d.answer;
+  const answer = d.answer;
   let h = `<div class="answer ${d.intent==='no_result'?'warn':''}">${esc(answer)}</div>`;
   if(d.playbook){
     const p = d.playbook;
-    const pTitle = (_lang==='en' && p.title_en) ? p.title_en : p.title;
-    const pSummary = (_lang==='en' && p.summary_en) ? p.summary_en : p.summary;
-    // translate playbook component roles
-    const pComps = p.components.map(c => ({...c,
-      reason: (_lang==='en' && c.reason_en) ? c.reason_en : c.reason}));
+    const pTitle = p.title;
+    const pSummary = p.summary;
+    const pComps = p.components;
     h += `<h2 class="sect">${t('sectionPlan')}${esc(pTitle)}</h2>
       <div class="card"><div class="desc">${esc(pSummary)}</div></div>
       <h2 class="sect">${t('sectionComponents')}</h2>` + pComps.map(compCard).join('');
     h += `<h2 class="sect">${t('sectionSteps')}</h2><div class="card steps">` +
       p.steps.map(s=>`<div class="step"><div class="n"></div><div style="flex:1">
-        <div class="t">${esc((_lang==='en'&&s.title_en)?s.title_en:s.title_zh)}</div>
-        <div class="d">${esc((_lang==='en'&&s.detail_en)?s.detail_en:s.detail_zh)}</div>
+        <div class="t">${esc(s.title_zh)}</div>
+        <div class="d">${esc(s.detail_zh)}</div>
         ${s.command?cmdBlock(s.command):''}</div></div>`).join('') + `</div>`;
-    const fp = (_lang==='en' && p.first_prompt_en) ? p.first_prompt_en : p.first_prompt;
+    const fp = p.first_prompt;
     if(fp){
       h += `<h2 class="sect">${t('sectionPrompt')}</h2><div class="card">${cmdBlock(fp)}</div>`;
     }
-    const pf = (_lang==='en' && p.pitfalls_en && p.pitfalls_en.length) ? p.pitfalls_en : p.pitfalls;
+    const pf = p.pitfalls;
     if(pf && pf.length){
       h += `<h2 class="sect">${t('sectionPitfalls')}</h2><div class="card">` +
         pf.map(x=>`<div class="pitfall">• ${esc(x)}</div>`).join('') + `</div>`;

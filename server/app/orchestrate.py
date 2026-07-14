@@ -21,10 +21,12 @@ PROMPT = """你是 gd4.ai 的 AI 工具推荐编排器。用户需求："{query}
 3. 如果所有候选都与需求无关，返回 {{"no_match": true}}
 4. intent_type: 用户要单个工具/提示词="single"，要完成一件完整的事="playbook"
 
-**answer 和 reason 字段必须用「用户提问所用的语言」回答**（用户用中文问就用中文答，用英文问就用英文答，用日文问就用日文答，以此类推）。界面语言仅作参考，以用户实际提问语言为准。
+**所有面向用户的文本字段（answer / reason / name / desc）必须用「用户提问所用的语言」输出**（中文问→中文，英文问→英文，日文问→日文，任意语言同理）。库里数据是中文的，你负责翻译成用户语言。界面语言仅供参考，以实际提问语言为准。
+- name: 组件的名称（专有名词/产品名保留原文，其余按用户语言）
+- desc: 用一句话把该组件的作用讲清楚，用用户语言
 
 输出严格 JSON（无 markdown 代码块）：
-{{"intent_type": "single|playbook", "answer": "一句话方案概述", "selected": [{{"id": "...", "reason": "为什么需要它(一句话)"}}], "playbook_id": "匹配的方案包id或null", "no_match": false}}"""
+{{"intent_type": "single|playbook", "answer": "一句话方案概述", "selected": [{{"id": "...", "name": "...", "desc": "...", "reason": "为什么需要它(一句话)"}}], "playbook_id": "匹配的方案包id或null", "no_match": false}}"""
 
 NO_RESULT = {
     "zh": "库里暂时没有和这个需求精确匹配、经过验证的方案。我们已记录你的需求，会优先补充。",
@@ -44,22 +46,20 @@ def _cache_key(query: str, lang: str) -> str:
     return "rec:" + hashlib.sha1(f"{query}|{lang}".strip().lower().encode()).hexdigest()
 
 
-def _component_card(doc: dict, reason: str = "", reason_en: str = "") -> dict:
+def _component_card(doc: dict, reason: str = "", name: str = "", desc: str = "") -> dict:
+    """展示卡片。name/desc 若由 LLM 按用户语言给出则覆盖库里中文原文（数据只存单语）。"""
     q = doc.get("quality", {})
-    i = doc.get("install", {})
-    u = doc.get("usage", {})
     return {
         "id": doc["id"], "type": doc["type"],
-        "name": doc["name"], "name_en": doc.get("name_en"),
-        "description": doc["description_zh"], "description_en": doc.get("description_en"),
-        "reason": reason, "reason_en": reason_en,
+        "name": name or doc["name"],
+        "description": desc or doc["description_zh"],
+        "reason": reason,
         "difficulty": doc["difficulty"], "host_tools": doc.get("host_tools", []),
-        "install": i, "config_required": doc.get("config_required", []),
+        "install": doc.get("install", {}), "config_required": doc.get("config_required", []),
         "usage": doc.get("usage", {}),
         "stars": q.get("stars"), "last_commit": q.get("last_commit"),
         "verified": q.get("verified", False),
         "security_notes": q.get("security_notes_zh"),
-        "security_notes_en": q.get("security_notes_en"),
         "source": doc.get("source", {}),
     }
 
@@ -84,7 +84,6 @@ def _prompts_answer(query: str, prompts: list[dict], lang: str, t0: float) -> di
     out = {
         "intent": "prompts",
         "answer": PROMPTS_ANSWER.get(lang, PROMPTS_ANSWER["zh"]),
-        "answer_en": PROMPTS_ANSWER["en"],
         "components": [], "playbook": None,
         "prompts": [_prompt_card(p) for p in prompts],
         "latency_ms": int((time.time() - t0) * 1000),
@@ -98,8 +97,7 @@ def _no_result(query: str, reason: str, nearest: list[dict], lang: str) -> dict:
     msg = NO_RESULT.get(lang, NO_RESULT["zh"])
     if nearest:
         msg += NEAR_MATCH.get(lang, NEAR_MATCH["zh"])
-    return {"intent": "no_result", "answer": msg, "answer_en": NO_RESULT["en"] + (NEAR_MATCH["en"] if nearest else ""),
-            "components": nearest, "playbook": None}
+    return {"intent": "no_result", "answer": msg, "components": nearest, "playbook": None}
 
 
 def recommend(query: str, lang: str = "zh") -> dict:
@@ -145,7 +143,7 @@ def recommend(query: str, lang: str = "zh") -> dict:
     except RuntimeError:
         nearest = [_component_card(comp_docs[h["id"]]) for h in comp_hits[:5] if h["id"] in comp_docs]
         return {"intent": "search_only", "answer": FALLBACK.get(lang, FALLBACK["zh"]),
-                "answer_en": FALLBACK["en"], "components": nearest, "playbook": None}
+                "components": nearest, "playbook": None}
 
     # ---- 闭世界校验：剔除一切库外引用 ----
     valid_ids = set(comp_docs)
@@ -165,15 +163,13 @@ def recommend(query: str, lang: str = "zh") -> dict:
         ref_docs = db.get_docs("components", refs)
         playbook = {
             "id": pb["id"],
-            "title": pb["title_zh"], "title_en": pb.get("title_en"),
-            "summary": pb.get("summary_zh", ""), "summary_en": pb.get("summary_en"),
+            "title": pb["title_zh"],
+            "summary": pb.get("summary_zh", ""),
             "steps": pb["steps"],
             "first_prompt": pb.get("first_prompt_zh"),
-            "first_prompt_en": pb.get("first_prompt_en"),
             "pitfalls": pb.get("pitfalls_zh", []),
-            "pitfalls_en": pb.get("pitfalls_en", []),
             "components": [
-                {**_component_card(ref_docs[c["ref"]], c["role_zh"], c.get("role_en", "")),
+                {**_component_card(ref_docs[c["ref"]], c["role_zh"]),
                  "optional": c.get("optional", False)}
                 for c in pb["components"] if c["ref"] in ref_docs
             ],
@@ -181,9 +177,10 @@ def recommend(query: str, lang: str = "zh") -> dict:
 
     out = {
         "intent": result.get("intent_type", "single"),
-        "answer": result.get("answer", ""),
-        "answer_en": result.get("answer", ""),  # LLM outputs in requested lang
-        "components": [_component_card(comp_docs[s["id"]], s.get("reason", "")) for s in selected],
+        "answer": result.get("answer", ""),  # LLM 已按用户语言输出
+        "components": [_component_card(comp_docs[s["id"]], s.get("reason", ""),
+                                       s.get("name", ""), s.get("desc", ""))
+                       for s in selected],
         "playbook": playbook,
         "prompts": [_prompt_card(p) for p in strong_prompts],
         "latency_ms": int((time.time() - t0) * 1000),
