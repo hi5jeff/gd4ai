@@ -50,7 +50,7 @@ def _component_card(doc: dict, reason: str = "", name: str = "", desc: str = "")
     """展示卡片。name/desc 若由 LLM 按用户语言给出则覆盖库里中文原文（数据只存单语）。"""
     q = doc.get("quality", {})
     return {
-        "id": doc["id"], "type": doc["type"],
+        "id": doc["id"], "type": doc["type"], "kind": doc.get("kind", "tool"),
         "name": name or doc["name"],
         "description": desc or doc["description_zh"],
         "reason": reason,

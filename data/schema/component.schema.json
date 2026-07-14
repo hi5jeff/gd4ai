@@ -7,6 +7,7 @@
   "properties": {
     "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$" },
     "type": { "enum": ["mcp", "skill", "plugin", "role", "prompt", "workflow", "tool"] },
+    "kind": { "enum": ["tool", "knowledge", "resource"], "default": "tool" },
     "name": { "type": "string" },
     "name_en": { "type": "string" },
     "description_zh": { "type": "string", "minLength": 10 },

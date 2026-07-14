@@ -102,24 +102,25 @@ EXTRACT_PROMPT = """你在从一段 AI 资源导航文档里抽取"可安装/可
 {chunk}
 ---
 
-抽取其中每一个**具体的、现在能安装/使用的工具或框架**（有名字、有代码仓库、能跑起来的东西）。
+抽取其中每一个**对用户有价值的条目**，并判断它属于哪一类(kind)：
+- tool: 能安装/使用的工具、框架、mcp、skill、插件（有代码仓库或产品）
+- knowledge: 有价值的技巧/经验/方法论/指南/教程（如"vibe coding指南""prompt技巧"）——不是工具但是干货
+- resource: 导航站/合集/目录/精选清单（本身是一个可查阅的资源入口）
 
-严格排除（is_tool=false）：
-- 论文、博客文章、新闻、榜单、公众号/社交媒体链接
-- 学习资料：面试笔记、教程、课程、书籍、awesome清单、知识点合集、interview/notes/tutorial/roadmap 类
-- 纯概念介绍、纯数据集
+只丢弃（keep=false）：纯新闻、时效性资讯、榜单快讯、公众号/社交媒体关注链接、纯广告、无实质内容的条目。
 
 对每一项输出:
 - name: 名称
-- description_zh: 一句话中文说明它能干什么(40-80字)
-- url: 它的官网或GitHub链接(从文档里找,没有就null)
-- type: {types} 之一(拿不准填 tool)
+- description_zh: 一句话中文说明它是什么/能干什么(40-80字)
+- url: 官网或GitHub链接(从文档里找,没有就null)
+- kind: tool | knowledge | resource
+- type: {types} 之一(knowledge/resource 拿不准填 tool，kind 才是关键)
 - scenarios: 1-3个,从 {scenarios} 选
-- is_tool: 是不是"能安装使用的工具/框架"(而非学习资料/文章)
-- ai_related: 是否与AI/大模型/AI开发相关(true/false)
+- keep: 是否值得收录(true/false)
+- ai_related: 是否与AI/大模型/AI开发/AI应用相关(true/false)
 
 只输出严格 JSON 数组(无markdown),没有合格项输出 []:
-[{{"name":"...","description_zh":"...","url":"...","type":"...","scenarios":[...],"is_tool":true,"ai_related":true}}]"""
+[{{"name":"...","description_zh":"...","url":"...","kind":"tool","type":"...","scenarios":[...],"keep":true,"ai_related":true}}]"""
 
 
 def extract_chunk(chunk):
@@ -187,8 +188,10 @@ def make_component(item, used_ids, existing, default_repo=None,
                    min_stars=0, min_year=0):
     if not item.get("ai_related", True):
         return None, "非AI相关"
-    if not item.get("is_tool", True):
-        return None, "非工具(学习资料/文章)"
+    # keep=false 才丢弃(新闻/榜单/社交链接)。旧字段 is_tool 兼容: is_tool=false 但没给keep则丢
+    if item.get("keep") is False or (item.get("is_tool") is False and "keep" not in item):
+        return None, "无价值(新闻/榜单/社交)"
+    kind = item.get("kind") if item.get("kind") in ("tool", "knowledge", "resource") else "tool"
     typ = item.get("type") if item.get("type") in TYPES else "tool"
     name = str(item.get("name", "")).strip()
     desc = str(item.get("description_zh", "")).strip()
@@ -222,7 +225,7 @@ def make_component(item, used_ids, existing, default_repo=None,
     if pushed:
         quality["last_commit"] = pushed
     doc = {
-        "id": cid, "type": typ, "name": name[:80], "description_zh": desc[:300],
+        "id": cid, "type": typ, "kind": kind, "name": name[:80], "description_zh": desc[:300],
         "host_tools": ["any"], "scenarios": scen, "tags": [], "difficulty": "intermediate",
         "install": {"method": "manual", "notes_zh": "详见来源链接"},
         "quality": quality,
