@@ -21,7 +21,7 @@ PROMPT = """你是 gd4.ai 的 AI 工具推荐编排器。用户需求："{query}
 3. 如果所有候选都与需求无关，返回 {{"no_match": true}}
 4. intent_type: 用户要单个工具/提示词="single"，要完成一件完整的事="playbook"
 
-**用 {lang_name} 回答**（answer 和 reason 字段都用 {lang_name}）。
+**answer 和 reason 字段必须用「用户提问所用的语言」回答**（用户用中文问就用中文答，用英文问就用英文答，用日文问就用日文答，以此类推）。界面语言仅作参考，以用户实际提问语言为准。
 
 输出严格 JSON（无 markdown 代码块）：
 {{"intent_type": "single|playbook", "answer": "一句话方案概述", "selected": [{{"id": "...", "reason": "为什么需要它(一句话)"}}], "playbook_id": "匹配的方案包id或null", "no_match": false}}"""
