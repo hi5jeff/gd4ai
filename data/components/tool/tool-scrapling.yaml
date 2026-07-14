@@ -1,0 +1,39 @@
+id: tool-scrapling
+type: tool
+name: Scrapling
+description_zh: Scrapling 是一个自适应的 Web 抓取框架，支持从单个请求到全规模爬取。它提供智能选择器、自动处理反爬机制、异步并发、多种 fetcher 后端（如 Playwright、HTTPX）以及 AI 辅助解析功能。适合数据采集工程师、自动化测试人员、AI
+  数据准备者等用户，可快速构建稳定高效的爬虫系统。
+host_tools:
+- any
+scenarios:
+- scraping
+- automation
+- data-analysis
+- research
+tags:
+- web-scraping
+- crawler
+- python
+- data-extraction
+- ai
+- automation
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 需要 Python 3.8+，直接使用 pip 安装即可。
+  notes_en: Requires Python 3.8+, install directly using pip.
+config_required: []
+quality:
+  stars: 69430
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/D4Vinci/Scrapling
+usage:
+  first_prompt_zh: 帮我抓取这个网页的内容。
+  first_prompt_en: Help me scrape the content of this webpage.
+name_en: Scrapling
+description_en: Scrapling is an adaptive web scraping framework that supports from single requests to full-scale crawling.
+  It provides intelligent selectors, automatic anti-bot handling, asynchronous concurrency, multiple fetcher backends (such
+  as Playwright, HTTPX), and AI-assisted parsing capabilities. Suitable for data collection engineers, automation testers,
+  AI data preparers, etc., enabling quick construction of stable and efficient crawler systems.

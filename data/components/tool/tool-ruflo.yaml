@@ -1,0 +1,42 @@
+id: tool-ruflo
+type: tool
+name: ruflo
+description_zh: Ruflo 是一个领先的智能体元框架，用于部署多智能体群、协调自主工作流和构建对话式 AI 系统。它具备自适应记忆、自学习智能、RAG 集成，并原生支持 Claude Code、Codex、Hermes 等多种
+  AI 工具。适合开发者快速搭建复杂的 AI 代理协作场景。
+host_tools:
+- any
+scenarios:
+- automation
+- coding
+- research
+- efficiency
+tags:
+- agentic-ai
+- AI代理
+- 工作流自动化
+- RAG集成
+- 多智能体
+difficulty: intermediate
+install:
+  method: npx
+  command: npx ruflo
+  notes_zh: 确保已安装 Node.js，直接运行 npx ruflo 即可启动（首次运行会自动下载依赖）。
+  notes_en: Make sure Node.js is installed. Simply run npx ruflo to start (dependencies will be downloaded automatically on
+    first run).
+config_required:
+- API密钥（如 OpenAI、Anthropic 等）
+quality:
+  stars: 64342
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/ruvnet/ruflo
+usage:
+  first_prompt_zh: 帮我创建一个多智能体工作流，协调三个 AI 代理完成市场调研和报告生成。
+  first_prompt_en: Help me create a multi-agent workflow that coordinates three AI agents to conduct market research and generate
+    a report.
+name_en: ruflo
+description_en: Ruflo is a leading meta-framework for deploying multi-agent swarms, orchestrating autonomous workflows, and
+  building conversational AI systems. It features adaptive memory, self-learning intelligence, RAG integration, and native
+  support for AI tools such as Claude Code, Codex, and Hermes. Ideal for developers quickly building complex AI agent collaboration
+  scenarios.

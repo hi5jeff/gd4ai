@@ -1,0 +1,39 @@
+id: tool-csharp-sdk
+type: tool
+name: MCP C# SDK
+description_zh: 官方 C# SDK，用于在 .NET 应用中实现 MCP 客户端和服务器。提供多个 NuGet 包（Core、主包、AspNetCore、Apps），支持依赖注入、ASP.NET Core 集成和跨应用授权。适合
+  .NET 开发者快速构建与 LLM 交互的 MCP 服务。
+host_tools:
+- any-mcp-client
+- web
+scenarios:
+- coding
+- mcp-dev
+- devtools
+tags:
+- csharp
+- dotnet
+- mcp
+- sdk
+- modelcontextprotocol
+- 微软
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 通过 NuGet 安装对应包（如 dotnet add package ModelContextProtocol），需要 .NET 8+ 环境。
+  notes_en: Install the corresponding package via NuGet (e.g., dotnet add package ModelContextProtocol). Requires .NET 8+
+    environment.
+config_required: []
+quality:
+  stars: 4383
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/modelcontextprotocol/csharp-sdk
+usage:
+  first_prompt_zh: 如何使用 MCP C# SDK 创建一个简单的 MCP 服务器？
+  first_prompt_en: How to create a simple MCP server using the MCP C# SDK?
+name_en: MCP C# SDK
+description_en: Official C# SDK for implementing MCP clients and servers in .NET applications. Provides multiple NuGet packages
+  (Core, Main, AspNetCore, Apps), supports dependency injection, ASP.NET Core integration, and cross-application authorization.
+  Suitable for .NET developers to quickly build MCP services that interact with LLMs.

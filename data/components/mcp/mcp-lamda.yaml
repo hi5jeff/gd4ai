@@ -1,0 +1,41 @@
+id: mcp-lamda
+type: mcp
+name: FIRERPA
+description_zh: FIRERPA 是一个全栈 Android 设备控制平台，集成了远程桌面（WebRTC/H.264）、UI/OCR/图像匹配自动化、一键 MITM、内置 Frida、代理/VPN/FRP/P2P 网络、MCP/Agent
+  及 160+ API。适合需要批量管理 Android 设备、进行自动化测试、逆向工程或 AI 代理开发的团队，支持多设备集群与生产环境部署。
+host_tools:
+- any-mcp-client
+- web
+scenarios:
+- automation
+- security
+- monitoring
+- devtools
+tags:
+- Android自动化
+- 远程控制
+- Frida
+- MCP
+- 设备集群
+- AI代理
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需在 Android 设备上运行服务端（无额外依赖），PC 端通过 Python 客户端库连接；具体安装步骤请参考官方文档。
+  notes_en: The server runs on the Android device (no additional dependencies), and the PC connects via the Python client
+    library; please refer to the official documentation for specific installation steps.
+config_required: []
+quality:
+  stars: 7885
+  last_commit: '2026-07-07'
+  verified: false
+source:
+  repo: https://github.com/firerpa/lamda
+usage:
+  first_prompt_zh: 启动 FIRERPA 服务并连接我的 Android 设备。
+  first_prompt_en: Start the FIRERPA service and connect my Android device.
+name_en: FIRERPA
+description_en: FIRERPA is a full-stack Android device control platform that integrates remote desktop (WebRTC/H.264), UI/OCR/image
+  matching automation, one-click MITM, built-in Frida, proxy/VPN/FRP/P2P networking, MCP/Agent, and 160+ APIs. Suitable for
+  teams that need to manage Android devices in bulk, perform automated testing, reverse engineering, or AI agent development,
+  supporting multi-device clusters and production environment deployment.

@@ -1,0 +1,34 @@
+id: mcp-mcp-server-chart
+type: mcp
+name: mcp-server-chart
+description_zh: 基于 AntV 的 MCP 服务器，提供 26+ 种可视化图表生成工具（如面积图、柱状图、箱线图、漏斗图等），支持数据分析与图表生成。开发者可通过 MCP 协议在 Claude、Dify 等客户端中调用，适合需要快速集成数据可视化能力的大模型应用场景。
+host_tools:
+- any-mcp-client
+scenarios:
+- data-analysis
+tags:
+- antv
+- visualization
+- mcp-server
+- chart-generation
+- data-analysis
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要 Node.js 环境，通过 npx @antv/mcp-server-chart 启动或配置到 MCP 客户端中。
+  notes_en: Requires Node.js environment. Start via npx @antv/mcp-server-chart or configure it in an MCP client.
+config_required: []
+quality:
+  stars: 4234
+  last_commit: '2026-05-06'
+  verified: false
+source:
+  repo: https://github.com/antvis/mcp-server-chart
+usage:
+  first_prompt_zh: 帮我生成一个柱状图展示最近一周的销售数据
+  first_prompt_en: Help me generate a bar chart showing the sales data for the last week.
+name_en: mcp-server-chart
+description_en: An MCP server based on AntV, offering 26+ visualization chart generation tools (such as area charts, bar charts,
+  box plots, funnel charts, etc.), supporting data analysis and chart generation. Developers can invoke it via the MCP protocol
+  in clients like Claude and Dify, suitable for large model application scenarios that require rapid integration of data visualization
+  capabilities.

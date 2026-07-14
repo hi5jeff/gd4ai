@@ -1,0 +1,38 @@
+id: plugin-mcphub-nvim
+type: plugin
+name: mcphub.nvim
+description_zh: MCP Hub 是一个专为 Neovim 设计的 MCP 客户端插件，能够将 MCP 服务器无缝集成到编辑工作流中。它提供直观的界面来管理、测试和使用 MCP 服务器，并支持与 avante、chatgpt、claude-ai
+  等主流聊天插件配合，让开发者直接在编辑器内调用 AI 工具和外部服务。适合 Neovim 用户和 AI 应用开发者。
+host_tools:
+- desktop
+- any-mcp-client
+scenarios:
+- coding
+- devtools
+- efficiency
+tags:
+- mcp
+- neovim
+- client
+- chat
+- llm
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需使用 Neovim 插件管理器（如 lazy.nvim）安装，并确保已安装 Neovim 0.9+。
+  notes_en: Requires installation via a Neovim plugin manager (e.g., lazy.nvim) and Neovim 0.9+.
+config_required: []
+quality:
+  stars: 1782
+  last_commit: '2026-01-18'
+  verified: false
+source:
+  repo: https://github.com/ravitemer/mcphub.nvim
+usage:
+  first_prompt_zh: 帮我连接一个 MCP 服务器并列出可用工具。
+  first_prompt_en: Help me connect to an MCP server and list available tools.
+name_en: mcphub.nvim
+description_en: MCP Hub is an MCP client plugin designed specifically for Neovim, seamlessly integrating MCP servers into
+  the editing workflow. It provides an intuitive interface for managing, testing, and using MCP servers, and supports integration
+  with popular chat plugins such as avante, chatgpt, claude-ai, allowing developers to call AI tools and external services
+  directly within the editor. Suitable for Neovim users and AI application developers.

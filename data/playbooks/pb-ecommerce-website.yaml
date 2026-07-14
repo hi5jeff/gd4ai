@@ -4,22 +4,67 @@ scenario: ecommerce
 audience: beginner
 host_tool: claude-code
 summary_zh: 前端生成 + Supabase 数据库 + Stripe 支付的完整组合，不用自己搭服务器，从空目录到能收款的网站。
-tags: [电商, 网站, 支付]
+tags:
+- 电商
+- 网站
+- 支付
 components:
-  - {ref: role-frontend-developer, role_zh: 负责页面开发（商品列表/详情/购物车）}
-  - {ref: mcp-supabase, role_zh: 云数据库——存商品、订单、用户}
-  - {ref: mcp-stripe, role_zh: 收款——创建商品价格和支付链接}
-  - {ref: mcp-context7, role_zh: 保证 AI 用最新的框架写法（可选但强烈建议）}
-  - {ref: skill-webapp-testing, role_zh: 做完自动测试整站, optional: true}
+- ref: role-frontend-developer
+  role_zh: 负责页面开发（商品列表/详情/购物车）
+  role_en: Responsible for page development (product list/detail/shopping cart)
+- ref: mcp-supabase
+  role_zh: 云数据库——存商品、订单、用户
+  role_en: Cloud database – store products, orders, users
+- ref: mcp-stripe
+  role_zh: 收款——创建商品价格和支付链接
+  role_en: Payment – create product prices and payment links
+- ref: mcp-context7
+  role_zh: 保证 AI 用最新的框架写法（可选但强烈建议）
+  role_en: Ensure AI uses the latest framework syntax (optional but strongly recommended)
+- ref: skill-webapp-testing
+  role_zh: 做完自动测试整站
+  optional: true
+  role_en: Automatically test the entire site after completion
 steps:
-  - {title_zh: 装 Claude Code 并进入空项目目录, detail_zh: npm install -g @anthropic-ai/claude-code 后在新目录运行 claude, command: "npm install -g @anthropic-ai/claude-code"}
-  - {title_zh: 接入 Supabase, detail_zh: supabase.com 免费注册建项目 → 生成 access token → 执行安装命令, command: "claude mcp add supabase -- npx -y @supabase/mcp-server-supabase --access-token=你的令牌"}
-  - {title_zh: 接入 Stripe（测试模式）, detail_zh: stripe.com 注册拿 sk_test_ 测试密钥, command: "claude mcp add stripe -- npx -y @stripe/mcp --tools=all --api-key=sk_test_你的密钥"}
-  - {title_zh: 装前端子代理, detail_zh: 克隆 agents 合集让 AI 有前端专家人格, command: "git clone https://github.com/wshobson/agents.git ~/.claude/agents/wshobson"}
-  - {title_zh: 一句话启动开发, detail_zh: 用下面的首条提示词让 AI 全程搭建，之后逐步加购物车、订单页}
+- title_zh: 装 Claude Code 并进入空项目目录
+  detail_zh: npm install -g @anthropic-ai/claude-code 后在新目录运行 claude
+  command: npm install -g @anthropic-ai/claude-code
+  title_en: Install Claude Code and enter empty project directory
+  detail_en: After npm install -g @anthropic-ai/claude-code, run claude in a new directory
+- title_zh: 接入 Supabase
+  detail_zh: supabase.com 免费注册建项目 → 生成 access token → 执行安装命令
+  command: claude mcp add supabase -- npx -y @supabase/mcp-server-supabase --access-token=你的令牌
+  title_en: Integrate Supabase
+  detail_en: Register for free on supabase.com, create a project → generate access token → run installation command
+- title_zh: 接入 Stripe（测试模式）
+  detail_zh: stripe.com 注册拿 sk_test_ 测试密钥
+  command: claude mcp add stripe -- npx -y @stripe/mcp --tools=all --api-key=sk_test_你的密钥
+  title_en: Integrate Stripe (test mode)
+  detail_en: Register on stripe.com to get sk_test_ test key
+- title_zh: 装前端子代理
+  detail_zh: 克隆 agents 合集让 AI 有前端专家人格
+  command: git clone https://github.com/wshobson/agents.git ~/.claude/agents/wshobson
+  title_en: Install frontend sub-agent
+  detail_en: Clone the agents collection to give AI a frontend expert persona
+- title_zh: 一句话启动开发
+  detail_zh: 用下面的首条提示词让 AI 全程搭建，之后逐步加购物车、订单页
+  title_en: Start development with one sentence
+  detail_en: Use the first prompt below to let AI build the whole thing, then gradually add shopping cart and order page
 first_prompt_zh: 用 Next.js 做一个卖手工饰品的电商网站：先让 frontend-developer 设计页面结构，用 Supabase 建商品表和订单表并插入 5 条测试商品，商品详情页接 Stripe 支付链接。做完在本地跑起来给我看。
 pitfalls_zh:
-  - Stripe 测试期务必用 sk_test_ 密钥，正式收款需完成 Stripe 实名审核
-  - Supabase 免费版数据库一周不活跃会休眠，重新访问唤醒即可
-  - 国内收款场景 Stripe 不适用，需换微信/支付宝（后续方案库会补充）
-quality: {verified: false}
+- Stripe 测试期务必用 sk_test_ 密钥，正式收款需完成 Stripe 实名审核
+- Supabase 免费版数据库一周不活跃会休眠，重新访问唤醒即可
+- 国内收款场景 Stripe 不适用，需换微信/支付宝（后续方案库会补充）
+quality:
+  verified: false
+title_en: Build an e-commerce website from scratch with Claude Code
+summary_en: Complete combination of frontend generation + Supabase database + Stripe payment, no need to set up your own server,
+  from an empty directory to a website that can accept payments.
+first_prompt_en: 'Use Next.js to build an e-commerce website selling handmade jewelry: first let frontend-developer design
+  the page structure, use Supabase to create product table and order table and insert 5 test products, product detail page
+  connects to Stripe payment link. After finishing, run it locally and show me.'
+pitfalls_en:
+- During Stripe testing, be sure to use sk_test_ key; for live payments, complete Stripe identity verification
+- Supabase free tier database will hibernate after one week of inactivity; just access it again to wake it up
+- Stripe is not suitable for domestic payment scenarios in China; need to switch to WeChat/Alipay (will be supplemented in
+  the solution library later)

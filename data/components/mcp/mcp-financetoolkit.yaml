@@ -1,0 +1,36 @@
+id: mcp-financetoolkit
+type: mcp
+name: FinanceToolkit
+description_zh: FinanceToolkit 是一个透明高效的金融分析工具包，提供股票数据、财务报表、因子分析等功能。它通过 MCP 服务器接口，让用户能够以自然语言进行金融数据分析，适合金融分析师、投资者和量化交易者快速获取和处理金融信息。
+host_tools:
+- any-mcp-client
+scenarios:
+- finance
+- data-analysis
+- research
+tags:
+- finance
+- financial-analysis
+- algorithmic-trading
+- equities
+- factor-analysis
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 可通过下载 MCP Bundle 或使用 Smithery 安装，需要 Python 环境。
+  notes_en: Can be installed by downloading the MCP Bundle or using Smithery, requires Python environment.
+config_required: []
+quality:
+  stars: 5105
+  last_commit: '2026-07-10'
+  verified: false
+source:
+  repo: https://github.com/JerBouma/FinanceToolkit
+usage:
+  first_prompt_zh: 分析苹果公司的最新财务报表。
+  first_prompt_en: Analyze Apple's latest financial statements.
+name_en: FinanceToolkit
+description_en: FinanceToolkit is a transparent and efficient financial analysis toolkit that provides stock data, financial
+  statements, factor analysis, and other features. It allows users to perform financial data analysis in natural language
+  through the MCP server interface, making it suitable for financial analysts, investors, and quantitative traders to quickly
+  obtain and process financial information.

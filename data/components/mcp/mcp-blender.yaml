@@ -21,11 +21,13 @@ install:
   method: uvx
   command: claude mcp add blender -- uvx blender-mcp
   notes_zh: 需要先装 Blender 本体和仓库提供的 Blender 插件（两端配合）
+  notes_en: Requires installing Blender and the Blender plugin from the repository (the two must work together).
 config_required:
 - Blender 本体
 - Blender 端插件
 usage:
   first_prompt_zh: 在 Blender 里建一个低多边形风格的小房子，加个卡通材质
+  first_prompt_en: Create a low-poly style small house in Blender and add a cartoon material.
 quality:
   verified: false
   stars: 23963
@@ -35,3 +37,6 @@ relations:
   - tool-godot
 source:
   repo: https://github.com/ahujasid/blender-mcp
+name_en: Blender MCP
+description_en: 'Let AI control Blender for 3D modeling: build models, adjust materials, and arrange scenes using natural
+  language. A quick start for game asset creation and 3D design.'

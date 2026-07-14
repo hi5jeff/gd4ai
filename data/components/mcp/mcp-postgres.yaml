@@ -18,18 +18,26 @@ install:
   method: claude-mcp-add
   command: claude mcp add postgres -- npx -y @modelcontextprotocol/server-postgres "postgresql://用户:密码@localhost/库名"
   notes_zh: 官方参考实现已归档但仍可用；生产库建议用只读账号
+  notes_en: Official reference implementation is archived but still usable; for production databases, it is recommended to
+    use a read-only account.
 config_required:
 - 数据库连接串
 usage:
   first_prompt_zh: 看看数据库里有哪些表，每张表大概存了什么
+  first_prompt_en: Check what tables are in the database and what each table roughly stores.
 quality:
   verified: false
   maintenance_note_zh: 官方已归档、社区有替代品
   security_notes_zh: 连接串含密码，建议只读账号+内网
   stars: 287
   last_commit: '2025-05-28'
+  security_notes_en: Connection string contains password; it is recommended to use a read-only account and internal network.
+  maintenance_note_en: Official has been archived; there are community alternatives.
 relations:
   alternatives:
   - mcp-supabase
 source:
   repo: https://github.com/modelcontextprotocol/servers-archived
+name_en: PostgreSQL MCP
+description_en: 'Let AI directly query PostgreSQL databases: view table structures, run SQL, analyze data. Use it when building
+  website backends or doing data analysis.'

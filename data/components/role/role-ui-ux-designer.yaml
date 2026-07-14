@@ -20,6 +20,7 @@ install:
   command: git clone https://github.com/wshobson/agents.git ~/.claude/agents/wshobson
 usage:
   first_prompt_zh: 让 ui-ux-designer 给我的电商网站定一套配色和组件规范
+  first_prompt_en: Have ui-ux-designer create a color scheme and component specification for my e-commerce website.
 quality:
   verified: false
   stars: 37882
@@ -29,3 +30,6 @@ relations:
   - role-frontend-developer
 source:
   repo: https://github.com/wshobson/agents
+name_en: UI/UX Designer (subagent)
+description_en: 'Interface design expert in the wshobson/agents collection: design systems, interaction flows, visual specifications.
+  Before writing code, have it produce a design plan, and the page quality will instantly improve.'

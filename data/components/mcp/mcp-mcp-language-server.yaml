@@ -1,0 +1,40 @@
+id: mcp-mcp-language-server
+type: mcp
+name: mcp-language-server
+description_zh: 这是一个MCP服务器，它将语言服务器协议（LSP）的能力暴露给MCP客户端。通过它，AI助手可以直接获取代码定义、引用、重命名和诊断等语义信息，帮助开发者更高效地导航和理解代码库。适合使用MCP客户端（如Claude
+  Desktop）的开发者。
+host_tools:
+- any-mcp-client
+scenarios:
+- devtools
+- coding
+- mcp-dev
+tags:
+- MCP
+- language-server
+- semantic-tools
+- Go
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要先安装Go，然后安装对应的语言服务器（如gopls、rust-analyzer或pyright），最后在MCP客户端中配置workspace和lsp参数。
+  notes_en: You need to install Go first, then install the corresponding language server (e.g., gopls, rust-analyzer, or pyright),
+    and finally configure the workspace and lsp parameters in the MCP client.
+config_required:
+- Go环境
+- 对应语言服务器（如gopls）
+- MCP客户端配置（workspace路径、lsp名称）
+quality:
+  stars: 1569
+  last_commit: '2026-03-01'
+  verified: false
+source:
+  repo: https://github.com/isaacphi/mcp-language-server
+usage:
+  first_prompt_zh: 请帮我找到当前文件中main函数的定义。
+  first_prompt_en: Please help me find the definition of the main function in the current file.
+name_en: mcp-language-server
+description_en: This is an MCP server that exposes the capabilities of the Language Server Protocol (LSP) to MCP clients.
+  Through it, AI assistants can directly obtain semantic information such as code definitions, references, renames, and diagnostics,
+  helping developers navigate and understand codebases more efficiently. Suitable for developers using MCP clients (e.g.,
+  Claude Desktop).

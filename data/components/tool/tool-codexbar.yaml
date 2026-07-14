@@ -1,0 +1,38 @@
+id: tool-codexbar
+type: tool
+name: CodexBar
+description_zh: CodexBar是一款macOS菜单栏应用，无需登录即可实时显示OpenAI Codex、Claude Code等59+AI编码服务的用量限制、信用余额和重置倒计时。它通过复用现有会话（OAuth、API密钥、浏览器Cookie等）获取数据，隐私优先，无后台进程。适合频繁使用AI编码工具、需要规划任务时机的开发者，帮助避免因额度耗尽而中断工作。
+host_tools:
+- desktop
+scenarios:
+- monitoring
+- efficiency
+- coding
+tags:
+- ai
+- codex
+- claude-code
+- macos
+- menu-bar
+- usage-monitor
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要macOS 14+，也可从GitHub Releases下载或通过Homebrew tap安装。
+  notes_en: Requires macOS 14+. Can also be downloaded from GitHub Releases or installed via Homebrew tap.
+config_required:
+- 各AI服务商的API key或登录凭证（如OAuth、浏览器Cookie）
+quality:
+  stars: 18153
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/steipete/CodexBar
+usage:
+  first_prompt_zh: 显示我的AI编码服务用量状态
+  first_prompt_en: Show my AI coding service usage status
+name_en: CodexBar
+description_en: CodexBar is a macOS menu bar app that displays real-time usage limits, credit balances, and reset countdowns
+  for 59+ AI coding services like OpenAI Codex and Claude Code without requiring login. It retrieves data by reusing existing
+  sessions (OAuth, API keys, browser cookies, etc.), prioritizing privacy with no background processes. Ideal for developers
+  who frequently use AI coding tools and need to plan task timing, helping avoid interruptions due to quota exhaustion.

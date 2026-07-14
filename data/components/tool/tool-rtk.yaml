@@ -1,0 +1,40 @@
+id: tool-rtk
+type: tool
+name: rtk
+description_zh: rtk（Rust Token Killer）是一个高性能CLI代理工具，能在命令输出到达LLM上下文之前进行过滤和压缩，平均减少60-90%的token消耗。支持100+常用命令（如ls、cat、git、cargo
+  test等），单Rust二进制文件零依赖，延迟低于10ms。适合使用Claude Code等AI编码工具的开发者，可显著降低API成本。
+host_tools:
+- claude-code
+- any
+scenarios:
+- token-saving
+- efficiency
+- devtools
+- coding
+tags:
+- 令牌节省
+- CLI代理
+- Rust
+- 开发者工具
+- 成本优化
+- token-saving
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 推荐使用Homebrew安装，也可通过curl一键脚本或Cargo安装，详见README。
+  notes_en: It is recommended to install via Homebrew, or through a one-liner curl script or Cargo. See the README for details.
+config_required: []
+quality:
+  stars: 70852
+  last_commit: '2026-07-09'
+  verified: false
+source:
+  repo: https://github.com/rtk-ai/rtk
+usage:
+  first_prompt_zh: 运行 rtk --help 查看使用说明
+  first_prompt_en: Run rtk --help to see usage instructions
+name_en: rtk
+description_en: rtk (Rust Token Killer) is a high-performance CLI proxy tool that filters and compresses command output before
+  it reaches the LLM context, reducing token consumption by an average of 60-90%. It supports over 100 common commands (such
+  as ls, cat, git, cargo test, etc.), is a single Rust binary with zero dependencies, and has sub-10ms latency. Ideal for
+  developers using AI coding tools like Claude Code, it can significantly reduce API costs.

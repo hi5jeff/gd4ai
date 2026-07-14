@@ -1,0 +1,41 @@
+id: plugin-claude-hud
+type: plugin
+name: Claude HUD
+description_zh: Claude HUD 是一款 Claude Code 插件，在输入框下方实时显示会话状态：上下文使用率（绿色→黄色→红色进度条）、工具活动（读/写/搜索文件）、子代理运行状态及待办任务进度。支持自定义显示行数，帮助开发者直观掌握上下文窗口健康度、速率限制和项目路径，避免因上下文溢出或超限导致工作中断。适合所有使用
+  Claude Code 进行编码、调试和多代理协作的开发者。
+host_tools:
+- claude-code
+scenarios:
+- devtools
+- monitoring
+- efficiency
+tags:
+- claude-code
+- plugin
+- statusline
+- context-monitoring
+- 效率
+- 实时显示
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 在 Claude Code 会话中先运行 /plugin marketplace add jarrodwatts/claude-hud 添加市场，再运行本命令安装；Linux 用户需设置 TMPDIR=~/.cache/tmp
+    避免跨设备链接错误。
+  notes_en: In a Claude Code session, first run /plugin marketplace add jarrodwatts/claude-hud to add the marketplace, then
+    run this command to install; Linux users need to set TMPDIR=~/.cache/tmp to avoid cross-device link errors.
+config_required: []
+quality:
+  stars: 26385
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/jarrodwatts/claude-hud
+usage:
+  first_prompt_zh: 运行 /claude-hud:setup 配置状态栏显示内容
+  first_prompt_en: Run /claude-hud:setup to configure the status bar display content
+name_en: Claude HUD
+description_en: 'Claude HUD is a Claude Code plugin that displays session status in real-time below the input box: context
+  usage (green→yellow→red progress bar), tool activity (read/write/search files), sub-agent running status, and pending task
+  progress. Supports custom display lines, helping developers intuitively grasp context window health, rate limits, and project
+  paths, avoiding work interruptions due to context overflow or limit exceedance. Suitable for all developers using Claude
+  Code for coding, debugging, and multi-agent collaboration.'

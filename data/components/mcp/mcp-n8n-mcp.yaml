@@ -1,0 +1,40 @@
+id: mcp-n8n-mcp
+type: mcp
+name: n8n-mcp
+description_zh: n8n-MCP是一个模型上下文协议服务器，为AI助手提供n8n工作流自动化平台的全面节点文档、属性和操作访问。它覆盖2150+节点（826核心+1324社区），支持Claude、Cursor等AI工具理解并构建n8n工作流。适合需要利用AI快速搭建自动化工作流的开发者，可大幅提升效率。
+host_tools:
+- claude-code
+- cursor
+- windsurf
+scenarios:
+- automation
+- devtools
+- efficiency
+tags:
+- n8n
+- MCP
+- workflow automation
+- AI助手
+- 节点文档
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 推荐使用云端dashboard（dashboard.n8n-mcp.com）免费试用，无需本地部署；也可通过npm全局安装自托管。
+  notes_en: It is recommended to try the cloud dashboard (dashboard.n8n-mcp.com) for free, no local deployment required; you
+    can also self-host by installing globally via npm.
+config_required:
+- n8n-mcp API key
+quality:
+  stars: 22276
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/czlonkowski/n8n-mcp
+usage:
+  first_prompt_zh: 帮我创建一个自动发送邮件的n8n工作流
+  first_prompt_en: Help me create an n8n workflow that automatically sends emails.
+name_en: n8n-mcp
+description_en: n8n-MCP is a Model Context Protocol server that provides AI assistants with comprehensive access to node documentation,
+  properties, and operations of the n8n workflow automation platform. It covers over 2,150 nodes (826 core + 1,324 community),
+  enabling AI tools like Claude and Cursor to understand and build n8n workflows. Suitable for developers who need to quickly
+  set up automated workflows using AI, greatly improving efficiency.

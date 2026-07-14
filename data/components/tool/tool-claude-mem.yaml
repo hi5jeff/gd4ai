@@ -1,0 +1,38 @@
+id: tool-claude-mem
+type: tool
+name: claude-mem
+description_zh: claude-mem 是一个为 AI 代理（如 Claude Code）设计的持久化记忆压缩系统。它能自动捕获代理在会话中的所有操作，利用 AI 进行压缩，并在未来会话中注入相关上下文，实现跨会话的连续记忆。适合需要长期记忆支持的
+  AI 代理用户，可显著提升开发效率和上下文连贯性。
+host_tools:
+- claude-code
+- codex
+scenarios:
+- memory
+- efficiency
+- coding
+tags:
+- AI记忆
+- 持久化上下文
+- Claude Code
+- 跨会话记忆
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 请参考 GitHub 仓库 README 中的安装说明，通常需要 Node.js >=20.0.0 环境。
+  notes_en: Please refer to the installation instructions in the GitHub repository README, which typically require a Node.js
+    >=20.0.0 environment.
+config_required: []
+quality:
+  stars: 87129
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/thedotmack/claude-mem
+usage:
+  first_prompt_zh: 开始记录我的会话记忆
+  first_prompt_en: Start recording my session memory
+name_en: claude-mem
+description_en: claude-mem is a persistent memory compression system designed for AI agents like Claude Code. It automatically
+  captures all operations of the agent during a session, compresses them using AI, and injects relevant context into future
+  sessions, enabling cross-session continuous memory. Suitable for AI agent users who need long-term memory support, it can
+  significantly improve development efficiency and contextual coherence.

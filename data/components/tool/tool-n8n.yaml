@@ -1,0 +1,38 @@
+id: tool-n8n
+type: tool
+name: n8n
+description_zh: n8n 是一个公平代码的工作流自动化平台，具备原生 AI 能力。它允许用户通过可视化画布结合自定义代码（JavaScript、Python）构建和部署 AI 代理与工作流，支持自托管或云部署，并连接 1500+
+  集成。适合需要自动化复杂业务流程、构建 AI 应用的开发者和企业。
+host_tools:
+- web
+scenarios:
+- automation
+- devtools
+- efficiency
+- research
+tags:
+- workflow-automation
+- AI
+- integrations
+- self-hosted
+difficulty: intermediate
+install:
+  method: npx
+  command: npx n8n
+  notes_zh: 需要 Node.js 环境（推荐 v18+），或使用 Docker 运行（见 README 中 docker 命令）。
+  notes_en: Requires Node.js environment (v18+ recommended), or run using Docker (see docker command in README).
+config_required: []
+quality:
+  stars: 196353
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/n8n-io/n8n
+usage:
+  first_prompt_zh: 开始创建我的第一个工作流吧！
+  first_prompt_en: Start creating my first workflow!
+name_en: n8n
+description_en: n8n is a fair-code workflow automation platform with native AI capabilities. It allows users to build and
+  deploy AI agents and workflows through a visual canvas combined with custom code (JavaScript, Python), supports self-hosted
+  or cloud deployment, and connects 1500+ integrations. Suitable for developers and enterprises that need to automate complex
+  business processes and build AI applications.

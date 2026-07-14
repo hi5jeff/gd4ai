@@ -1,0 +1,41 @@
+id: mcp-zenfeed
+type: mcp
+name: zenfeed
+description_zh: zenfeed 是一个基于 AI 的智能 RSS 信息中枢，兼具 RSS 阅读器与实时新闻知识库功能。它利用 AI 自动筛选、总结和监控关注的信息，支持自定义可信数据源，并可作为 RSSHub 的 MCP Server
+  集成到各类 AI 客户端中。适合希望从信息洪流中高效获取高质量内容、对抗信息过载的 RSS 老司机和 AI 爱好者。
+host_tools:
+- any-mcp-client
+- web
+scenarios:
+- research
+- monitoring
+- efficiency
+tags:
+- AI
+- RSS
+- MCP
+- 信息聚合
+- 智能摘要
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 请参考 GitHub 仓库 README 获取安装指南（如 Docker 或 Go 编译部署）。
+  notes_en: Please refer to the GitHub repository README for installation instructions (e.g., Docker or Go compilation deployment).
+config_required:
+- AI API Key (如 OpenAI/DeepSeek)
+- RSS 订阅源
+quality:
+  stars: 1696
+  last_commit: '2026-07-10'
+  verified: false
+source:
+  repo: https://github.com/glidea/zenfeed
+usage:
+  first_prompt_zh: 帮我总结最新的 AI 相关 RSS 文章。
+  first_prompt_en: Help me summarize the latest AI-related RSS articles.
+name_en: zenfeed
+description_en: zenfeed is an AI-powered intelligent RSS information hub that combines the functions of an RSS reader and
+  a real-time news knowledge base. It uses AI to automatically filter, summarize, and monitor information of interest, supports
+  custom trusted data sources, and can be integrated into various AI clients as an MCP Server for RSSHub. It is suitable for
+  RSS veterans and AI enthusiasts who want to efficiently obtain high-quality content from the information deluge and combat
+  information overload.

@@ -1,0 +1,39 @@
+id: tool-openmetadata
+type: tool
+name: OpenMetadata
+description_zh: OpenMetadata 是一个开源的元数据管理平台，提供数据目录、数据血缘、数据治理和AI上下文层。它连接130+数据源，构建统一的知识图谱，帮助数据团队和AI助手发现、理解、信任和使用数据。适合数据工程师、数据科学家、AI开发者及治理团队。
+host_tools:
+- web
+scenarios:
+- data-analysis
+- database
+- devtools
+- open-source
+tags:
+- 数据目录
+- 元数据管理
+- 数据治理
+- 数据血缘
+- AI上下文
+- 开源
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 推荐使用Docker Compose或Kubernetes部署，需配置数据库（如MySQL/PostgreSQL）和搜索引擎（如Elasticsearch）。
+  notes_en: It is recommended to deploy using Docker Compose or Kubernetes, with configuration of a database (e.g., MySQL/PostgreSQL)
+    and a search engine (e.g., Elasticsearch).
+config_required: []
+quality:
+  stars: 14468
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/open-metadata/OpenMetadata
+usage:
+  first_prompt_zh: 帮我查找最近更新的数据资产
+  first_prompt_en: Help me find recently updated data assets
+name_en: OpenMetadata
+description_en: OpenMetadata is an open-source metadata management platform that provides data catalog, data lineage, data
+  governance, and an AI context layer. It connects to 130+ data sources, builds a unified knowledge graph, and helps data
+  teams and AI assistants discover, understand, trust, and use data. Suitable for data engineers, data scientists, AI developers,
+  and governance teams.

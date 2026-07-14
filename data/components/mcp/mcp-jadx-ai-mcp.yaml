@@ -1,0 +1,40 @@
+id: mcp-jadx-ai-mcp
+type: mcp
+name: jadx-ai-mcp
+description_zh: jadx-ai-mcp 是 JADX 的 MCP 服务器插件，允许通过 MCP 协议与 LLM（如 Claude）通信，实现 Android APK 的自动化逆向分析、漏洞检测和代码理解。适合安全研究人员、逆向工程师和移动应用开发者，无需手动分析即可快速获取
+  APK 结构、权限、代码逻辑等洞察。
+host_tools:
+- any-mcp-client
+scenarios:
+- security
+- devtools
+- automation
+tags:
+- ai
+- java
+- llm
+- mcp
+- android
+- reverse-engineering
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需先安装 JADX，然后通过 JADX 插件机制加载本 MCP 服务器，并配置 LLM API 密钥。
+  notes_en: You need to install JADX first, then load this MCP server through the JADX plugin mechanism, and configure the
+    LLM API key.
+config_required:
+- LLM API key (如 OpenAI 或 Anthropic)
+quality:
+  stars: 2476
+  last_commit: '2026-05-28'
+  verified: false
+source:
+  repo: https://github.com/zinja-coder/jadx-ai-mcp
+usage:
+  first_prompt_zh: 请分析这个 APK 文件，找出潜在的安全漏洞。
+  first_prompt_en: Please analyze this APK file and identify potential security vulnerabilities.
+name_en: jadx-ai-mcp
+description_en: jadx-ai-mcp is an MCP server plugin for JADX that enables communication with LLMs (such as Claude) via the
+  MCP protocol, enabling automated reverse engineering, vulnerability detection, and code understanding of Android APKs. It
+  is suitable for security researchers, reverse engineers, and mobile app developers, allowing them to quickly gain insights
+  into APK structure, permissions, code logic, etc., without manual analysis.

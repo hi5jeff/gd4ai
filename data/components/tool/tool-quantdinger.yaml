@@ -1,0 +1,42 @@
+id: tool-quantdinger
+type: tool
+name: QuantDinger
+description_zh: QuantDinger 是一个开源 AI 量化交易操作系统，支持加密货币、股票、外汇等多市场。它提供从交易想法到 Python 策略生成、回测、纸交易、实盘执行和监控的全流程工具，内置多智能体研究框架，兼容 Binance、Coinbase
+  等主流交易所。适合量化交易开发者、AI 研究者和个人投资者快速构建和部署自动化交易策略。
+host_tools:
+- web
+- desktop
+scenarios:
+- finance
+- automation
+- data-analysis
+- research
+tags:
+- 量化交易
+- AI
+- 回测
+- 加密货币
+- 多智能体
+- 开源
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要 Docker 和 Docker Compose 环境，配置交易所 API 密钥后启动。
+  notes_en: Requires Docker and Docker Compose environment; start after configuring exchange API keys.
+config_required:
+- 交易所API密钥（如Binance, Coinbase）
+quality:
+  stars: 9583
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/brokermr810/QuantDinger
+usage:
+  first_prompt_zh: 开始创建一个新的量化策略进行回测。
+  first_prompt_en: Start creating a new quantitative strategy for backtesting.
+name_en: QuantDinger
+description_en: QuantDinger is an open-source AI quantitative trading operating system that supports multiple markets including
+  cryptocurrencies, stocks, and forex. It provides a full workflow from trading ideas to Python strategy generation, backtesting,
+  paper trading, live execution, and monitoring, with a built-in multi-agent research framework and compatibility with major
+  exchanges such as Binance and Coinbase. It is suitable for quantitative trading developers, AI researchers, and individual
+  investors to quickly build and deploy automated trading strategies.

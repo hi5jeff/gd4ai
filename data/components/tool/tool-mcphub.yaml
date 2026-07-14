@@ -1,0 +1,42 @@
+id: tool-mcphub
+type: tool
+name: MCPHub
+description_zh: MCPHub 是一个集中管理和动态编排多个 MCP 服务器的统一枢纽。它通过灵活的 HTTP/SSE 端点，让用户能够访问所有服务器、单个服务器或逻辑分组，并支持智能路由、OAuth 认证、热更新配置、工具结果压缩等功能。适合需要高效管理多个
+  MCP 服务的开发者或团队。
+host_tools:
+- web
+- any-mcp-client
+scenarios:
+- devtools
+- automation
+- efficiency
+- monitoring
+tags:
+- mcp
+- mcp-gateway
+- mcp-hub
+- mcp-router
+- 统一管理
+- 动态编排
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要先创建 mcp_settings.json 配置文件，并挂载数据卷以持久化状态。
+  notes_en: You need to first create the mcp_settings.json configuration file and mount a data volume to persist state.
+config_required:
+- mcp_settings.json 配置文件
+- 可选：ADMIN_PASSWORD 环境变量
+quality:
+  stars: 2224
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/samanhappy/mcphub
+usage:
+  first_prompt_zh: 打开 MCPHub 仪表盘，开始管理我的 MCP 服务器。
+  first_prompt_en: Open the MCPHub dashboard to start managing my MCP servers.
+name_en: MCPHub
+description_en: MCPHub is a unified hub for centrally managing and dynamically orchestrating multiple MCP servers. It provides
+  flexible HTTP/SSE endpoints, allowing users to access all servers, individual servers, or logical groups, and supports intelligent
+  routing, OAuth authentication, hot-reload configuration, tool result compression, and more. Suitable for developers or teams
+  that need to efficiently manage multiple MCP services.

@@ -1,0 +1,38 @@
+id: plugin-understand-anything
+type: plugin
+name: Understand Anything
+description_zh: 将任何代码库、知识库或文档转化为交互式知识图谱，支持探索、搜索和提问。通过多智能体管道分析项目结构，构建包含文件、函数、类和依赖关系的知识图谱，并提供可视化仪表盘。适合需要快速理解大型代码库的开发者、技术负责人和AI代理用户。
+host_tools:
+- claude-code
+- codex
+- cursor
+scenarios:
+- devtools
+- coding
+- research
+tags:
+- 知识图谱
+- 代码分析
+- 开发者工具
+- Claude Code插件
+- 交互式可视化
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需先安装Claude Code，然后通过Claude Code插件市场或手动添加该插件。
+  notes_en: You need to install Claude Code first, then add this plugin through the Claude Code plugin marketplace or manually.
+config_required: []
+quality:
+  stars: 73857
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/Egonex-AI/Understand-Anything
+usage:
+  first_prompt_zh: 帮我分析当前代码库，生成知识图谱并展示关键模块和依赖关系。
+  first_prompt_en: Help me analyze the current codebase, generate a knowledge graph, and display key modules and dependencies.
+name_en: Understand Anything
+description_en: Transform any codebase, knowledge base, or documentation into an interactive knowledge graph, supporting exploration,
+  search, and questioning. Analyze project structure through a multi-agent pipeline, build a knowledge graph containing files,
+  functions, classes, and dependencies, and provide a visual dashboard. Suitable for developers, tech leads, and AI agent
+  users who need to quickly understand large codebases.

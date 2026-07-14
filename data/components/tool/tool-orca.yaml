@@ -1,0 +1,40 @@
+id: tool-orca
+type: tool
+name: Orca
+description_zh: Orca 是一款桌面和移动端并行的 AI 代理编排工具，允许用户同时运行多个编码代理（如 Codex、Claude Code、OpenCode 等），每个代理在独立的 Git 工作树中执行，方便对比结果并合并最优方案。支持从手机监控和指挥代理，适合需要高效并行开发、多方案对比的开发者。
+host_tools:
+- desktop
+scenarios:
+- coding
+- devtools
+- automation
+- efficiency
+tags:
+- AI代理编排
+- 并行工作树
+- 移动伴侣
+- 开发者工具
+- 多代理协作
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 从官网 https://onorca.dev/download 下载对应操作系统的安装包（支持 macOS、Windows、Linux），直接安装即可。
+  notes_en: Download the installation package for your operating system from the official website https://onorca.dev/download
+    (supports macOS, Windows, Linux) and install it directly.
+config_required:
+- AI代理订阅（如 OpenAI API Key、Anthropic API Key 等）
+quality:
+  stars: 18480
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/stablyai/orca
+usage:
+  first_prompt_zh: 帮我同时运行三个编码代理，分别用不同的模型解决这个 Python 性能问题。
+  first_prompt_en: Help me run three coding agents simultaneously, each using a different model to solve this Python performance
+    issue.
+name_en: Orca
+description_en: Orca is a desktop and mobile AI agent orchestration tool that allows users to run multiple coding agents simultaneously
+  (such as Codex, Claude Code, OpenCode, etc.), each executing in an independent Git working tree, making it easy to compare
+  results and merge the best solutions. It supports monitoring and directing agents from a phone, ideal for developers who
+  need efficient parallel development and multi-solution comparison.

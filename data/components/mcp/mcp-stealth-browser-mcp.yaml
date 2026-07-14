@@ -1,0 +1,40 @@
+id: mcp-stealth-browser-mcp
+type: mcp
+name: stealth-browser-mcp
+description_zh: 基于nodriver和Chrome DevTools Protocol的MCP兼容浏览器自动化工具，能绕过Cloudflare、Queue-It等反机器人系统。提供97个工具，支持网络拦截、像素级元素克隆、动态钩子系统、人类化输入等。适合AI代理、自动化测试、数据抓取等需要无检测浏览器操作的场景。
+host_tools:
+- claude-code
+- cursor
+- any-mcp-client
+scenarios:
+- scraping
+- automation
+- web-testing
+tags:
+- browser-automation
+- anti-bot-bypass
+- MCP
+- stealth
+- web-scraping
+- AI-agent
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 克隆仓库后创建Python虚拟环境并安装依赖，然后在MCP客户端（如Claude Code）中添加stdio配置指向server.py。
+  notes_en: After cloning the repository, create a Python virtual environment and install dependencies, then add a stdio configuration
+    in the MCP client (e.g., Claude Code) pointing to server.py.
+config_required: []
+quality:
+  stars: 1513
+  last_commit: '2026-05-24'
+  verified: false
+source:
+  repo: https://github.com/vibheksoni/stealth-browser-mcp
+usage:
+  first_prompt_zh: 帮我打开一个隐身浏览器窗口，访问https://example.com并截图
+  first_prompt_en: Help me open an incognito browser window, visit https://example.com and take a screenshot.
+name_en: stealth-browser-mcp
+description_en: An MCP-compatible browser automation tool based on nodriver and Chrome DevTools Protocol, capable of bypassing
+  anti-bot systems such as Cloudflare and Queue-It. It provides 97 tools, supporting network interception, pixel-level element
+  cloning, dynamic hook system, human-like input, etc. Suitable for scenarios requiring undetected browser operations such
+  as AI agents, automated testing, data scraping, etc.

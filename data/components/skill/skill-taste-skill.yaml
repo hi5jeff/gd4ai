@@ -1,0 +1,41 @@
+id: skill-taste-skill
+type: skill
+name: taste-skill
+description_zh: Taste Skill 是一套可移植的 AI Agent 技能集，旨在提升 AI 生成前端界面的设计质量——包括更强的布局、排版、动效和间距，避免千篇一律的模板化 UI。同时提供图像生成技能，用于创建参考板（Web、移动端、品牌套件）。适合使用
+  Claude Code、Codex、Cursor 等 AI 编码工具的开发者，通过简单安装即可让 AI 输出更具品味的前端代码。
+host_tools:
+- claude-code
+- codex
+- cursor
+scenarios:
+- ui-design
+- web-dev
+- coding
+- image-gen
+tags:
+- taste-skill
+- anti-slop
+- frontend
+- agent-skills
+- ui-design
+difficulty: beginner
+install:
+  method: npx
+  command: npx skills add https://github.com/Leonxlnx/taste-skill
+  notes_zh: 需要 Node.js 环境，运行 npx 命令即可自动添加所有技能到当前项目。
+  notes_en: Requires Node.js environment. Run the npx command to automatically add all skills to the current project.
+config_required: []
+quality:
+  stars: 63046
+  last_commit: '2026-07-04'
+  verified: false
+source:
+  repo: https://github.com/Leonxlnx/taste-skill
+usage:
+  first_prompt_zh: 请使用 Taste Skill 来优化我的前端界面设计，让它更有品味。
+  first_prompt_en: Please use Taste Skill to optimize my frontend interface design and make it more tasteful.
+name_en: taste-skill
+description_en: Taste Skill is a portable set of AI Agent skills aimed at enhancing the design quality of AI-generated frontend
+  interfaces—featuring improved layout, typography, motion, and spacing to avoid generic templated UI. It also includes image
+  generation skills for creating reference boards (web, mobile, brand kits). Ideal for developers using AI coding tools like
+  Claude Code, Codex, and Cursor, a simple installation enables AI to produce frontend code with greater taste.

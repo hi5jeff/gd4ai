@@ -1,0 +1,37 @@
+id: mcp-anysearch-mcp-server
+type: mcp
+name: AnySearch MCP Server
+description_zh: AnySearch MCP Server 是一个统一的实时搜索 MCP 服务器，支持通用网页搜索、垂直领域搜索（金融、学术、安全、法律、代码等）、并行批量搜索以及完整 URL 内容提取为 Markdown。无需
+  API 密钥即可匿名使用（有限速），适合 AI 代理快速集成搜索能力，也适合开发者构建智能搜索应用。
+host_tools:
+- any
+scenarios:
+- search
+- scraping
+- research
+tags:
+- search
+- mcp
+- real-time
+- ai-agent
+- anysearch
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 可通过 npx 或 claude mcp add 安装，无需 API 密钥即可匿名使用（有限速）。
+  notes_en: Can be installed via npx or claude mcp add, used anonymously without an API key (rate-limited).
+config_required: []
+quality:
+  stars: 1531
+  last_commit: '2026-07-10'
+  verified: false
+source:
+  repo: https://github.com/anysearch-ai/anysearch-mcp-server
+usage:
+  first_prompt_zh: 搜索最新的 AI 新闻
+  first_prompt_en: Search for the latest AI news
+name_en: AnySearch MCP Server
+description_en: AnySearch MCP Server is a unified real-time search MCP server that supports general web search, vertical domain
+  search (finance, academic, security, legal, code, etc.), parallel batch search, and full URL content extraction to Markdown.
+  It can be used anonymously without an API key (rate-limited), suitable for AI agents to quickly integrate search capabilities,
+  and also for developers to build intelligent search applications.

@@ -1,0 +1,39 @@
+id: tool-agent-teams-ai
+type: tool
+name: Agent Teams AI
+description_zh: Agent Teams AI 是一款桌面应用，让你作为管理者，AI 代理作为团队成员自动处理任务、相互通信和审查工作。支持 200+ 模型和 75+ LLM 提供商（包括 Claude、Codex、Grok、Cursor
+  等），提供看板视图进行高级指令下达。适合开发者和项目管理者高效协调多代理协作，无需编程即可启动。
+host_tools:
+- desktop
+scenarios:
+- coding
+- automation
+- efficiency
+- planning
+tags:
+- agent-teams
+- multi-agent
+- AI协作
+- kanban
+- desktop-app
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 从 GitHub Releases 或官网 agentteams.live 下载对应系统的安装包，直接安装即可使用。
+  notes_en: Download the installation package for your system from GitHub Releases or the official website agentteams.live,
+    then install and use directly.
+config_required: []
+quality:
+  stars: 1587
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/777genius/agent-teams-ai
+usage:
+  first_prompt_zh: 创建一个新的AI团队，分配角色和模型。
+  first_prompt_en: Create a new AI team, assign roles and models.
+name_en: Agent Teams AI
+description_en: Agent Teams AI is a desktop application that lets you act as a manager, with AI agents as team members automatically
+  handling tasks, communicating with each other, and reviewing work. Supports 200+ models and 75+ LLM providers (including
+  Claude, Codex, Grok, Cursor, etc.), and provides a kanban view for issuing advanced instructions. Suitable for developers
+  and project managers to efficiently coordinate multi-agent collaboration, ready to use without programming.

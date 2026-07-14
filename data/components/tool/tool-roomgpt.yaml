@@ -19,6 +19,7 @@ install:
   method: web
   command: git clone https://github.com/Nutlope/roomGPT
   notes_zh: 在线版 roomgpt.io 直接用；开发者可 clone 自部署
+  notes_en: Online version at roomgpt.io can be used directly; developers can clone and self-host.
 quality:
   verified: false
   stars: 10654
@@ -30,3 +31,7 @@ relations:
   - tool-kujiale
 source:
   repo: https://github.com/Nutlope/roomGPT
+name_en: RoomGPT
+description_en: 'Open-source room renovation AI: upload a photo of your current room, choose a style, and generate a rendered
+  image of the renovated room in seconds. The fastest way to see ''what my home would look like with a different style''.
+  Can be self-hosted.'

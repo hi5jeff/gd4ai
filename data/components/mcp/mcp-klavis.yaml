@@ -1,0 +1,39 @@
+id: mcp-klavis
+type: mcp
+name: Klavis
+description_zh: Klavis 是一个 MCP 集成平台，让 AI 代理能够可靠地调用数千个工具。它提供 Strata 智能连接器优化上下文窗口，并内置 100+ 预构建集成（支持 OAuth），适合需要将 AI 代理与各种外部服务（如
+  Discord、API 等）无缝对接的开发者。
+host_tools:
+- any-mcp-client
+scenarios:
+- automation
+- devtools
+tags:
+- agents
+- ai
+- mcp
+- integration
+- developer-tools
+- function-calling
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 请参考官方文档获取安装指南，通常需要配置 MCP 客户端以连接 Klavis 服务器。
+  notes_en: Please refer to the official documentation for installation instructions. Typically, you need to configure the
+    MCP client to connect to the Klavis server.
+config_required:
+- API key (可选，部分集成需要)
+quality:
+  stars: 5769
+  last_commit: '2026-06-01'
+  verified: false
+source:
+  repo: https://github.com/Klavis-AI/klavis
+usage:
+  first_prompt_zh: 帮我连接我的 Discord 和 GitHub 工具，让 AI 代理能自动处理任务。
+  first_prompt_en: Help me connect my Discord and GitHub tools so that the AI agent can automatically handle tasks.
+name_en: Klavis
+description_en: Klavis is an MCP integration platform that enables AI agents to reliably invoke thousands of tools. It provides
+  Strata smart connectors to optimize context windows and comes with 100+ pre-built integrations (with OAuth support), making
+  it suitable for developers who need to seamlessly connect AI agents with various external services such as Discord, APIs,
+  and more.

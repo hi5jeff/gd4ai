@@ -1,0 +1,37 @@
+id: skill-academic-research-skills
+type: skill
+name: academic-research-skills
+description_zh: 为Claude Code设计的学术研究技能套件，覆盖从文献调研、论文写作、同行评审到最终定稿的全流程。提供Socratic对话式论文结构规划、风格校准、引用验证、逻辑一致性检查等功能，帮助研究人员高效完成学术产出，同时保持人类主导的批判性思考。适合需要AI辅助但拒绝全自动化的科研人员。
+host_tools:
+- claude-code
+scenarios:
+- research
+- writing
+- efficiency
+tags:
+- academic-pipeline
+- academic-writing
+- ai-research
+- claude
+- literature-review
+- peer-review
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 需要Claude Code v3.7.0+，通过插件市场安装后执行/plugin install academic-research-skills即可。
+  notes_en: Requires Claude Code v3.7.0+, install via the plugin marketplace and then execute /plugin install academic-research-skills.
+config_required: []
+quality:
+  stars: 37706
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/Imbad0202/academic-research-skills
+usage:
+  first_prompt_zh: 使用 /ars-plan 开始论文结构对话
+  first_prompt_en: Use /ars-plan to start a paper structure dialogue
+name_en: academic-research-skills
+description_en: An academic research skills suite designed for Claude Code, covering the entire workflow from literature review,
+  paper writing, peer review to final submission. It provides Socratic dialogue-based paper structure planning, style calibration,
+  citation verification, logical consistency checking, and other features to help researchers efficiently complete academic
+  output while maintaining human-led critical thinking. Suitable for researchers who need AI assistance but reject full automation.

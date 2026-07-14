@@ -1,0 +1,43 @@
+id: plugin-claudian
+type: plugin
+name: Claudian
+description_zh: Claudian 是一款 Obsidian 插件，将 Claude Code、Codex 等 AI 编码代理嵌入你的笔记库，使 vault 成为代理的工作目录。支持文件读写、搜索、bash 命令和多步骤工作流，提供侧边栏聊天、内联编辑（带词级差异预览）、斜杠命令、@提及、计划模式等功能。适合
+  Obsidian 用户和开发者，在笔记环境中直接调用 AI 代理进行编码、文档处理等任务。
+host_tools:
+- desktop
+scenarios:
+- coding
+- devtools
+- efficiency
+tags:
+- obsidian-plugin
+- claude-code
+- AI助手
+- 编码代理
+- 笔记库
+- 效率工具
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 从 Obsidian 社区插件市场搜索“Claudian”安装，或从 GitHub Release 下载 main.js、manifest.json、styles.css 放入 vault 的 .obsidian/plugins/claudian
+    目录。
+  notes_en: Install from the Obsidian community plugin marketplace by searching for 'Claudian', or download main.js, manifest.json,
+    styles.css from GitHub Releases and place them in the vault's .obsidian/plugins/claudian directory.
+config_required:
+- Claude Code CLI (推荐)
+- Claude API 密钥或订阅
+quality:
+  stars: 14004
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/YishenTu/claudian
+usage:
+  first_prompt_zh: 你好，请帮我分析当前笔记中的代码并给出优化建议。
+  first_prompt_en: Hello, please help me analyze the code in the current note and give optimization suggestions.
+name_en: Claudian
+description_en: Claudian is an Obsidian plugin that embeds AI coding agents like Claude Code and Codex into your note vault,
+  making the vault the agent's working directory. It supports file reading/writing, search, bash commands, and multi-step
+  workflows, providing sidebar chat, inline editing (with word-level diff preview), slash commands, @mentions, plan mode,
+  etc. Suitable for Obsidian users and developers, directly invoking AI agents for coding, document processing, and other
+  tasks within the note environment.

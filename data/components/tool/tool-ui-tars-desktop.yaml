@@ -1,0 +1,43 @@
+id: tool-ui-tars-desktop
+type: tool
+name: UI-TARS-desktop
+description_zh: UI-TARS-desktop 是一个开源的多模态 AI Agent 桌面应用，基于 UI-TARS 模型提供原生 GUI 代理功能。它支持本地和远程计算机操作以及浏览器自动化，能够连接前沿 AI 模型与 Agent
+  基础设施，帮助开发者实现类似人类的 GUI 交互、任务自动化执行。适合需要桌面自动化、浏览器控制或构建智能代理的开发者与 AI 爱好者。
+host_tools:
+- desktop
+- web
+scenarios:
+- automation
+- web-testing
+- devtools
+- coding
+tags:
+- agent
+- multimodal
+- GUI
+- browser-use
+- computer-use
+- open-source
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 从 GitHub Releases 下载对应平台安装包，或参考文档从源码构建。
+  notes_en: Download the installation package for your platform from GitHub Releases, or refer to the documentation to build
+    from source.
+config_required:
+- 模型 API key（如 OpenAI）或本地模型
+quality:
+  stars: 37965
+  last_commit: '2026-07-01'
+  verified: false
+source:
+  repo: https://github.com/bytedance/UI-TARS-desktop
+usage:
+  first_prompt_zh: 帮我打开浏览器并搜索今天的天气。
+  first_prompt_en: Help me open the browser and search for today's weather.
+name_en: UI-TARS-desktop
+description_en: UI-TARS-desktop is an open-source multimodal AI Agent desktop application that provides native GUI agent capabilities
+  based on the UI-TARS model. It supports local and remote computer operations as well as browser automation, enabling connection
+  with cutting-edge AI models and Agent infrastructure. It helps developers achieve human-like GUI interaction and automated
+  task execution. Suitable for developers and AI enthusiasts who need desktop automation, browser control, or building intelligent
+  agents.

@@ -1,0 +1,40 @@
+id: skill-ai-berkshire
+type: skill
+name: ai-berkshire
+description_zh: 基于 Claude Code / Codex 的价值投资研究框架，系统化整合巴菲特、芒格、段永平、李录四位大师的投资方法论。通过多 Agent 并行研究、强制结论输出、反偏见机制和精确金融计算，实现专业级个股分析。适合价值投资者、个人研究者使用，一人即可完成投研团队的工作。
+host_tools:
+- claude-code
+- codex
+scenarios:
+- finance
+- research
+- data-analysis
+tags:
+- ai
+- ai-agent
+- value-investing
+- claude-code
+- berkshire-hathaway
+- 投资研究
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需将仓库克隆到本地，按照 README 指引将 Skill 文件配置到 Claude Code 或 Codex 的 skills 目录中。
+  notes_en: Clone the repository to your local machine, and follow the README instructions to configure the Skill files into
+    the skills directory of Claude Code or Codex.
+config_required: []
+quality:
+  stars: 13049
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/xbtlin/ai-berkshire
+usage:
+  first_prompt_zh: 帮我分析腾讯股票，使用四大师视角进行多Agent对抗研究。
+  first_prompt_en: Help me analyze Tencent stock, using the perspectives of the four masters for multi-agent adversarial research.
+name_en: ai-berkshire
+description_en: 'A value investing research framework based on Claude Code / Codex, systematically integrating the investment
+  methodologies of four masters: Buffett, Munger, Duan Yongping, and Li Lu. Through multi-agent parallel research, forced
+  conclusion output, anti-bias mechanisms, and precise financial calculations, it achieves professional-level individual stock
+  analysis. Suitable for value investors and individual researchers, enabling one person to accomplish the work of an investment
+  research team.'

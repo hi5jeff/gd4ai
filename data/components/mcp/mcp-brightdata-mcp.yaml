@@ -1,0 +1,40 @@
+id: mcp-brightdata-mcp
+type: mcp
+name: brightdata-mcp
+description_zh: 基于Model Context Protocol的服务器，为AI助手提供实时网页访问能力，自动绕过反爬、限速和验证码。支持npm/PyPI包数据查询、GEO品牌可见性分析（直接查询ChatGPT/Grok/Perplexity对品牌的评价）。内置免费额度（每月5000积分），适合需要实时网络数据的AI开发者、数据采集工程师和SEO优化人员。
+host_tools:
+- any-mcp-client
+scenarios:
+- scraping
+- automation
+- research
+- marketing
+tags:
+- web-access
+- anti-bot
+- data-collection
+- MCP
+- AI-agents
+- real-time
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需先注册Bright Data账号获取API密钥，然后通过MCP客户端配置添加该服务器。
+  notes_en: You need to first register a Bright Data account to obtain an API key, then add this server through MCP client
+    configuration.
+config_required:
+- Bright Data API key
+quality:
+  stars: 2496
+  last_commit: '2026-06-21'
+  verified: false
+source:
+  repo: https://github.com/brightdata/brightdata-mcp
+usage:
+  first_prompt_zh: 帮我查询npm上最新版本的express包信息
+  first_prompt_en: Help me query the latest version of the express package on npm.
+name_en: brightdata-mcp
+description_en: A server based on the Model Context Protocol that provides AI assistants with real-time web access capabilities,
+  automatically bypassing anti-scraping measures, rate limits, and CAPTCHAs. Supports npm/PyPI package data queries, GEO brand
+  visibility analysis (directly query ChatGPT/Grok/Perplexity for brand evaluations). Built-in free quota (5,000 credits per
+  month), suitable for AI developers, data scraping engineers, and SEO professionals who need real-time web data.

@@ -8,6 +8,7 @@
     "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$" },
     "type": { "enum": ["mcp", "skill", "plugin", "role", "prompt", "workflow", "tool"] },
     "name": { "type": "string" },
+    "name_en": { "type": "string" },
     "description_zh": { "type": "string", "minLength": 10 },
     "description_en": { "type": "string" },
     "host_tools": {
@@ -26,7 +27,8 @@
       "properties": {
         "method": { "enum": ["claude-mcp-add", "npx", "npm", "pip", "uvx", "git-clone", "marketplace", "builtin", "web", "manual", "none"] },
         "command": { "type": "string" },
-        "notes_zh": { "type": "string" }
+        "notes_zh": { "type": "string" },
+        "notes_en": { "type": "string" }
       }
     },
     "config_required": { "type": "array", "items": { "type": "string" } },
@@ -35,7 +37,9 @@
       "additionalProperties": false,
       "properties": {
         "first_prompt_zh": { "type": "string" },
-        "verify_zh": { "type": "string" }
+        "first_prompt_en": { "type": "string" },
+        "verify_zh": { "type": "string" },
+        "verify_en": { "type": "string" }
       }
     },
     "quality": {
@@ -46,7 +50,9 @@
         "last_commit": { "type": "string" },
         "verified": { "type": "boolean", "default": false },
         "maintenance_note_zh": { "type": "string" },
-        "security_notes_zh": { "type": "string" }
+        "maintenance_note_en": { "type": "string" },
+        "security_notes_zh": { "type": "string" },
+        "security_notes_en": { "type": "string" }
       }
     },
     "relations": {

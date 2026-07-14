@@ -1,0 +1,40 @@
+id: tool-unstract
+type: tool
+name: Unstract
+description_zh: Unstract 是一个基于 LLM 的非结构化文档结构化工具，支持通过自然语言定义提取 schema，将 PDF、图片、扫描件等文档转换为 JSON 数据。可部署为 API 或集成到 ETL 管道，适用于金融、保险、医疗、KYC/合规等需要批量文档处理的团队。
+host_tools:
+- web
+- desktop
+scenarios:
+- data-analysis
+- automation
+- finance
+- research
+tags:
+- LLM
+- 文档提取
+- 非结构化数据
+- ETL
+- API部署
+- JSON提取
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 运行 ./run-platform.sh 启动平台，需预先安装 Docker 环境。
+  notes_en: Run ./run-platform.sh to start the platform. Docker environment must be pre-installed.
+config_required:
+- LLM API key（如 OpenAI、Anthropic 等）
+quality:
+  stars: 6704
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/Zipstack/unstract
+usage:
+  first_prompt_zh: 请从这份 PDF 中提取发票信息。
+  first_prompt_en: Please extract invoice information from this PDF.
+name_en: Unstract
+description_en: Unstract is an LLM-based tool for structuring unstructured documents. It supports defining extraction schemas
+  via natural language, converting documents such as PDFs, images, and scanned files into JSON data. It can be deployed as
+  an API or integrated into ETL pipelines, suitable for teams in finance, insurance, healthcare, KYC/compliance, and other
+  fields that require batch document processing.

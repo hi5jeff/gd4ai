@@ -1,0 +1,42 @@
+id: tool-chatbox
+type: tool
+name: Chatbox
+description_zh: Chatbox 是一款功能强大的 AI 桌面客户端，支持 ChatGPT、Claude、DeepSeek、Gemini 等多种大语言模型。它提供本地优先、隐私安全的聊天体验，界面简洁美观，支持 Windows、Mac、Linux
+  全平台。适合需要同时使用多个 AI 模型的开发者、研究人员和日常用户，可高效完成编程辅助、信息查询、文档撰写等任务。
+host_tools:
+- desktop
+scenarios:
+- coding
+- communication
+- research
+- efficiency
+tags:
+- AI客户端
+- ChatGPT
+- Claude
+- 多模型
+- 桌面应用
+- 开源
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 从 GitHub Releases 或官网下载对应系统的安装包（.exe/.dmg/.AppImage）直接安装即可。
+  notes_en: Download the installation package for your system (.exe/.dmg/.AppImage) from GitHub Releases or the official website
+    and install it directly.
+config_required:
+- API key（如 OpenAI、Claude 等）
+quality:
+  stars: 40996
+  last_commit: '2026-06-12'
+  verified: false
+source:
+  repo: https://github.com/chatboxai/chatbox
+usage:
+  first_prompt_zh: 你好，请帮我写一段 Python 代码，实现斐波那契数列。
+  first_prompt_en: Hello, please help me write a Python code to implement the Fibonacci sequence.
+name_en: Chatbox
+description_en: Chatbox is a powerful AI desktop client that supports multiple large language models such as ChatGPT, Claude,
+  DeepSeek, Gemini, etc. It offers a local-first, privacy-secure chat experience with a clean and beautiful interface, supporting
+  Windows, Mac, and Linux across all platforms. Suitable for developers, researchers, and everyday users who need to use multiple
+  AI models simultaneously, it efficiently handles tasks like programming assistance, information retrieval, document writing,
+  and more.

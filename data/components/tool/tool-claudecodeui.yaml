@@ -1,0 +1,40 @@
+id: tool-claudecodeui
+type: tool
+name: CloudCLI (Claude Code UI)
+description_zh: CloudCLI（又名Claude Code UI）是一个免费开源的Web/桌面用户界面，让你在手机、平板或电脑上远程管理Claude Code、Cursor CLI和Codex的会话与项目。它提供响应式设计、交互式聊天、内置终端、文件浏览器、Git管理、浏览器自动化等功能，适合需要随时随地使用AI编码助手的开发者、远程工作者和团队协作场景。
+host_tools:
+- web
+- desktop
+scenarios:
+- coding
+- automation
+- devtools
+- efficiency
+tags:
+- Claude Code UI
+- CloudCLI
+- Web UI
+- 远程管理
+- 移动端
+- 开源
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 可直接访问 cloudcli.ai 在线使用，或通过 Docker 等自行部署（详见文档）。
+  notes_en: You can use it directly online at cloudcli.ai, or deploy it yourself via Docker and other methods (see documentation
+    for details).
+config_required: []
+quality:
+  stars: 12614
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/siteboon/claudecodeui
+usage:
+  first_prompt_zh: 开始使用CloudCLI管理我的Claude Code会话吧！
+  first_prompt_en: Let's start using CloudCLI to manage my Claude Code sessions!
+name_en: CloudCLI (Claude Code UI)
+description_en: CloudCLI (also known as Claude Code UI) is a free and open-source web/desktop user interface that lets you
+  remotely manage sessions and projects for Claude Code, Cursor CLI, and Codex from your phone, tablet, or computer. It offers
+  responsive design, interactive chat, built-in terminal, file browser, Git management, browser automation, and more, making
+  it ideal for developers, remote workers, and team collaboration who need to use AI coding assistants anytime, anywhere.

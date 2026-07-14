@@ -1,0 +1,37 @@
+id: mcp-arxiv-mcp-server
+type: mcp
+name: arxiv-mcp-server
+description_zh: 基于Model Context Protocol的服务器，为AI助手提供搜索和访问arXiv论文的能力。支持按日期范围、类别过滤搜索论文，下载并阅读论文全文，本地缓存加速访问，并提供研究提示词模板。适合研究人员、学生和AI开发者快速集成学术论文检索功能。
+host_tools:
+- any-mcp-client
+scenarios:
+- research
+- search
+- data-analysis
+tags:
+- ai
+- arxiv
+- mcp-server
+- papers
+- research
+- llm
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 需要先安装uv（Python包管理器），或使用pip install arxiv-mcp-server后直接运行。
+  notes_en: Requires installing uv (Python package manager) first, or run directly after installing arxiv-mcp-server via pip.
+config_required: []
+quality:
+  stars: 2956
+  last_commit: '2026-05-18'
+  verified: false
+source:
+  repo: https://github.com/blazickjp/arxiv-mcp-server
+usage:
+  first_prompt_zh: 帮我搜索最近一个月关于大语言模型微调的论文
+  first_prompt_en: Help me search for papers on fine-tuning large language models from the past month.
+name_en: arxiv-mcp-server
+description_en: A server based on the Model Context Protocol that provides AI assistants with the ability to search and access
+  arXiv papers. Supports filtering papers by date range and category, downloading and reading full papers, local caching for
+  faster access, and research prompt templates. Suitable for researchers, students, and AI developers to quickly integrate
+  academic paper retrieval functionality.

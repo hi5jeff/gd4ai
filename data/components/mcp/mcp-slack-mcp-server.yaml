@@ -1,0 +1,40 @@
+id: mcp-slack-mcp-server
+type: mcp
+name: Slack MCP Server
+description_zh: Slack MCP Server 是一个强大的模型上下文协议（MCP）服务器，专为 Slack 工作区设计。它支持隐身模式（无需权限和机器人安装）和 OAuth 模式，提供频道/线程消息获取、智能历史分页（按日期或数量）、未读消息管理、消息搜索等功能。支持
+  Stdio、SSE 和 HTTP 传输，可配置代理，适合需要将 Slack 集成到 AI 助手或自动化工作流中的开发者。
+host_tools:
+- claude-code
+- any-mcp-client
+scenarios:
+- communication
+- automation
+- devtools
+tags:
+- slack
+- mcp-server
+- communication
+- AI assistant
+- stealth mode
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要 Node.js 环境，通过 npx 或 uvx 运行，需配置 Slack token（OAuth 模式）或使用隐身模式（无需 token）。
+  notes_en: Requires Node.js environment, run via npx or uvx. You need to configure a Slack token (OAuth mode) or use stealth
+    mode (no token required).
+config_required: []
+quality:
+  stars: 1726
+  last_commit: '2026-06-18'
+  verified: false
+source:
+  repo: https://github.com/korotovsky/slack-mcp-server
+usage:
+  first_prompt_zh: '帮我获取 Slack 工作区中 #general 频道的最新消息。'
+  first_prompt_en: 'Help me get the latest messages from the #general channel in the Slack workspace.'
+name_en: Slack MCP Server
+description_en: Slack MCP Server is a powerful Model Context Protocol (MCP) server designed for Slack workspaces. It supports
+  stealth mode (no permissions or bot installation required) and OAuth mode, providing features such as channel/thread message
+  retrieval, intelligent history pagination (by date or count), unread message management, and message search. It supports
+  Stdio, SSE, and HTTP transports, with configurable proxy, making it suitable for developers who need to integrate Slack
+  into AI assistants or automated workflows.

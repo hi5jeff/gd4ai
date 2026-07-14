@@ -1,0 +1,38 @@
+id: tool-cmux
+type: tool
+name: cmux
+description_zh: cmux 是一款基于 Ghostty 的开源 macOS 终端，专为 AI 编码代理设计。它提供垂直标签页、通知环和通知面板，让用户轻松管理多个编码代理会话。内置浏览器支持与终端分屏，SSH 功能可创建远程工作区。适合需要高效多任务处理、组织性和可编程性的
+  AI 代理用户和开发者。
+host_tools:
+- desktop
+scenarios:
+- coding
+- devtools
+- efficiency
+tags:
+- terminal
+- AI coding agents
+- macOS
+- vertical tabs
+- notifications
+- open source
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 从 GitHub Releases 下载 cmux-macos.dmg 并拖入 Applications 文件夹即可安装。
+  notes_en: Download cmux-macos.dmg from GitHub Releases and drag it into the Applications folder to install.
+config_required: []
+quality:
+  stars: 24422
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/manaflow-ai/cmux
+usage:
+  first_prompt_zh: 启动 cmux，开始使用 AI 编码代理终端。
+  first_prompt_en: Launch cmux to start using the AI coding agent terminal.
+name_en: cmux
+description_en: cmux is an open-source macOS terminal based on Ghostty, designed specifically for AI coding agents. It offers
+  vertical tabs, notification rings, and a notification panel, allowing users to easily manage multiple coding agent sessions.
+  Built-in browser support and terminal split-screen, along with SSH functionality, enable the creation of remote workspaces.
+  Suitable for AI agent users and developers who need efficient multitasking, organization, and programmability.

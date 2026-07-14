@@ -24,18 +24,26 @@ install:
   method: claude-mcp-add
   command: claude mcp add playwright -- npx @playwright/mcp@latest
   notes_zh: 需要 Node.js 18+；首次运行自动下载浏览器
+  notes_en: Requires Node.js 18+; automatically downloads browser on first run.
 config_required: []
 usage:
   first_prompt_zh: 打开 example.com，截图给我看看页面长什么样
   verify_zh: 让 AI 打开任意网页并截图，能返回截图即安装成功
+  first_prompt_en: Open example.com and take a screenshot so I can see what the page looks like.
+  verify_en: Have the AI open any webpage and take a screenshot; if it returns a screenshot, the installation is successful.
 quality:
   verified: false
   security_notes_zh: 本地运行浏览器，无数据外发；操作真实网页时注意登录态安全
   stars: 35040
   last_commit: '2026-07-09'
+  security_notes_en: Browser runs locally, no data is sent out; be mindful of login session security when operating on real
+    web pages.
 relations:
   works_with:
   - skill-webapp-testing
   alternatives: []
 source:
   repo: https://github.com/microsoft/playwright-mcp
+name_en: Playwright MCP
+description_en: 'Microsoft''s official browser automation MCP, allowing AI to directly operate the browser: open web pages,
+  click, fill forms, take screenshots, scrape content. The top choice for web testing, crawling, and automation.'

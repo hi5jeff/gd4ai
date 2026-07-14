@@ -1,0 +1,38 @@
+id: tool-herdr
+type: tool
+name: herdr
+description_zh: herdr 是一个运行在终端中的代理多路复用器，让你在一个视图中同时查看、管理和切换多个 AI 代理（如 Claude Code、Codex 等）。支持分离会话、持久运行、键盘鼠标双操作、插件扩展，适合需要并行使用多个编码代理的开发者。
+host_tools:
+- any
+scenarios:
+- coding
+- automation
+- efficiency
+- devtools
+tags:
+- agent-orchestration
+- terminal
+- multiplexer
+- rust
+- cli
+- ai-agents
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 需要 curl 或 brew，也可从 GitHub Releases 下载二进制文件。
+  notes_en: Requires curl or brew, or you can download the binary from GitHub Releases.
+config_required: []
+quality:
+  stars: 16190
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/ogulcancelik/herdr
+usage:
+  first_prompt_zh: 运行 herdr 启动终端代理管理器。
+  first_prompt_en: Run herdr to start the terminal agent manager.
+name_en: herdr
+description_en: herdr is an agent multiplexer running in the terminal, allowing you to view, manage, and switch between multiple
+  AI agents (such as Claude Code, Codex, etc.) in a single view. It supports detachable sessions, persistent operation, both
+  keyboard and mouse interaction, and plugin extensions, making it suitable for developers who need to use multiple coding
+  agents in parallel.

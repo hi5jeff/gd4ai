@@ -1,0 +1,39 @@
+id: mcp-ghidra-mcp
+type: mcp
+name: ghidra-mcp
+description_zh: Ghidra MCP Server是一个基于模型上下文协议（MCP）的服务器，将Ghidra逆向工程能力与AI工具深度集成。提供256个MCP工具，支持读写操作、P-code模拟、实时调试、数据流分析、批量处理等。适合安全研究人员、逆向工程师和AI开发者，可大幅提升二进制分析效率。
+host_tools:
+- any-mcp-client
+- claude-code
+scenarios:
+- security
+- research
+- automation
+- devtools
+tags:
+- ghidra
+- mcp
+- reverse-engineering
+- binary-analysis
+- ai
+- security
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要Java 21、Ghidra 12.1.2和Python 3.10+，推荐使用Docker部署以简化环境配置。
+  notes_en: Requires Java 21, Ghidra 12.1.2, and Python 3.10+. Docker deployment is recommended to simplify environment setup.
+config_required: []
+quality:
+  stars: 2803
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/bethington/ghidra-mcp
+usage:
+  first_prompt_zh: 列出所有可用的MCP工具
+  first_prompt_en: List all available MCP tools
+name_en: ghidra-mcp
+description_en: Ghidra MCP Server is a server based on the Model Context Protocol (MCP) that deeply integrates Ghidra's reverse
+  engineering capabilities with AI tools. It provides 256 MCP tools supporting read/write operations, P-code simulation, real-time
+  debugging, data flow analysis, batch processing, and more. Suitable for security researchers, reverse engineers, and AI
+  developers, it can significantly improve binary analysis efficiency.

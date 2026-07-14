@@ -1,0 +1,41 @@
+id: tool-trigger-dev
+type: tool
+name: Trigger.dev
+description_zh: Trigger.dev 是一个开源平台，用于在 TypeScript 中构建和部署完全托管的 AI 代理与工作流。它提供长时间运行的任务（无超时）、重试机制、队列、可观测性及弹性伸缩，支持人类参与审批、实时流式传输和自定义运行时环境。适合需要构建可靠
+  AI 应用、自动化后台任务或复杂工作流的开发者。
+host_tools:
+- any
+scenarios:
+- automation
+- devtools
+- coding
+- monitoring
+tags:
+- AI
+- AI代理
+- 自动化
+- 后台任务
+- TypeScript
+- 开源
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 通过 npm 安装 SDK（如 npm install @trigger.dev/sdk），或直接使用云平台服务，需注册账号并获取 API Key。
+  notes_en: Install the SDK via npm (e.g., npm install @trigger.dev/sdk), or directly use the cloud platform service, requiring
+    registration and obtaining an API Key.
+config_required:
+- Trigger.dev API key
+quality:
+  stars: 15643
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/triggerdotdev/trigger.dev
+usage:
+  first_prompt_zh: 创建一个新的 AI 代理任务，让它自动处理用户请求。
+  first_prompt_en: Create a new AI agent task to automatically handle user requests.
+name_en: Trigger.dev
+description_en: Trigger.dev is an open-source platform for building and deploying fully managed AI agents and workflows in
+  TypeScript. It provides long-running tasks (no timeout), retry mechanisms, queues, observability, and elastic scaling, supporting
+  human-in-the-loop approval, real-time streaming, and custom runtime environments. Suitable for developers who need to build
+  reliable AI applications, automate background tasks, or complex workflows.

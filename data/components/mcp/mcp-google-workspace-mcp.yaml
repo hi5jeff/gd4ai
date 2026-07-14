@@ -1,0 +1,44 @@
+id: mcp-google-workspace-mcp
+type: mcp
+name: Google Workspace MCP
+description_zh: 这是一个功能全面的Google Workspace MCP服务器，支持通过自然语言控制Gmail、Google日历、文档、表格、幻灯片、表单、任务、通讯录和Chat等。它提供远程OAuth 2.1多用户支持、细粒度编辑工具，并兼容所有MCP客户端和AI助手。适合需要将Google
+  Workspace与AI工具深度集成的个人或团队，尤其适合企业集中部署。
+host_tools:
+- any-mcp-client
+- claude-code
+- desktop
+scenarios:
+- office
+- automation
+- communication
+- search
+tags:
+- Google Workspace
+- Gmail
+- Calendar
+- AI
+- MCP
+- 自动化
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要Python 3.10+，并通过pip或uvx安装；首次使用需在Google Cloud Console创建项目并启用相关API，配置OAuth凭据。
+  notes_en: Requires Python 3.10+ and installation via pip or uvx; for first use, you need to create a project in Google Cloud
+    Console, enable the relevant APIs, and configure OAuth credentials.
+config_required:
+- Google Cloud OAuth 2.0 客户端ID和密钥
+- 已启用Google Workspace API的项目
+quality:
+  stars: 2846
+  last_commit: '2026-07-07'
+  verified: false
+source:
+  repo: https://github.com/taylorwilsdon/google_workspace_mcp
+usage:
+  first_prompt_zh: 帮我查看今天Google日历上的所有事件。
+  first_prompt_en: Help me view all events on my Google Calendar today.
+name_en: Google Workspace MCP
+description_en: This is a full-featured Google Workspace MCP server that supports controlling Gmail, Google Calendar, Docs,
+  Sheets, Slides, Forms, Tasks, Contacts, and Chat via natural language. It provides remote OAuth 2.1 multi-user support,
+  fine-grained editing tools, and is compatible with all MCP clients and AI assistants. Suitable for individuals or teams
+  who need deep integration of Google Workspace with AI tools, especially for centralized enterprise deployment.

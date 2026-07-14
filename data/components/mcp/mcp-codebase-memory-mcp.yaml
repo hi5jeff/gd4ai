@@ -1,0 +1,41 @@
+id: mcp-codebase-memory-mcp
+type: mcp
+name: codebase-memory-mcp
+description_zh: 高性能代码智能MCP服务器，基于tree-sitter AST分析158种语言，结合混合LSP语义类型解析，将代码库索引为持久知识图谱。支持毫秒级查询，减少99%令牌消耗，单静态二进制零依赖。适用于AI编码代理（如Claude
+  Code、Cursor），可快速理解代码结构、调用链和跨服务链接。
+host_tools:
+- claude-code
+- cursor
+- any-mcp-client
+scenarios:
+- coding
+- devtools
+- efficiency
+- memory
+tags:
+- code-intelligence
+- knowledge-graph
+- tree-sitter
+- MCP
+- code-analysis
+- zero-dependency
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 下载对应平台二进制文件并运行install命令即可，无需任何依赖。
+  notes_en: Download the binary for your platform and run the install command, no dependencies required.
+config_required: []
+quality:
+  stars: 31207
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/DeusData/codebase-memory-mcp
+usage:
+  first_prompt_zh: 分析当前代码库的结构和依赖关系。
+  first_prompt_en: Analyze the structure and dependencies of the current codebase.
+name_en: codebase-memory-mcp
+description_en: High-performance code intelligence MCP server, based on tree-sitter AST analysis for 158 languages, combined
+  with hybrid LSP semantic type resolution, indexes codebases into persistent knowledge graphs. Supports millisecond-level
+  queries, reduces token consumption by 99%, single static binary with zero dependencies. Suitable for AI coding agents (e.g.,
+  Claude Code, Cursor), enabling rapid understanding of code structure, call chains, and cross-service links.

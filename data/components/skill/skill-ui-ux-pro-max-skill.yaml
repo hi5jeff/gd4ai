@@ -1,0 +1,41 @@
+id: skill-ui-ux-pro-max-skill
+type: skill
+name: UI UX Pro Max
+description_zh: 这是一个为 Claude Code、Codex、Cursor 等 AI 编程工具提供专业 UI/UX 设计智能的 AI 技能。它内置 161 条推理规则和 67 种 UI 风格，能根据项目需求自动生成完整的设计系统、组件样式和布局建议。适合前端开发者、设计师以及使用
+  AI 辅助编程的用户，帮助快速构建跨平台的专业界面。
+host_tools:
+- claude-code
+- codex
+- cursor
+scenarios:
+- ui-design
+- web-dev
+- branding
+tags:
+- UI设计
+- UX设计
+- AI技能
+- 设计系统
+- Claude Code
+- 前端开发
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要 Node.js 环境，通过 npm 全局安装 CLI 工具：npm install -g ui-ux-pro-max-cli，然后在支持的 AI 工具中启用该 skill。
+  notes_en: 'Requires Node.js environment. Install the CLI tool globally via npm: npm install -g ui-ux-pro-max-cli, then enable
+    this skill in supported AI tools.'
+config_required: []
+quality:
+  stars: 105250
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+usage:
+  first_prompt_zh: 帮我设计一个现代风格的登录页面，包含品牌色和响应式布局。
+  first_prompt_en: Help me design a modern login page with brand colors and responsive layout.
+name_en: UI UX Pro Max
+description_en: This is an AI skill that provides professional UI/UX design intelligence for AI coding tools such as Claude
+  Code, Codex, and Cursor. It has 161 built-in reasoning rules and 67 UI styles, and can automatically generate complete design
+  systems, component styles, and layout suggestions based on project requirements. Suitable for front-end developers, designers,
+  and users of AI-assisted programming, helping to quickly build professional cross-platform interfaces.

@@ -1,0 +1,38 @@
+id: mcp-hexstrike-ai
+type: mcp
+name: hexstrike-ai
+description_zh: HexStrike AI MCP Agents 是一个高级 MCP 服务器，让 Claude、GPT、Copilot 等 AI 代理自主运行 150+ 网络安全工具，实现自动化渗透测试、漏洞发现、漏洞赏金猎取和安全研究。它无缝桥接大语言模型与真实进攻性安全能力，适合安全研究人员、渗透测试工程师和漏洞赏金猎人使用。
+host_tools:
+- claude-code
+- any-mcp-client
+scenarios:
+- security
+- automation
+- research
+tags:
+- AI
+- 网络安全
+- 渗透测试
+- 漏洞发现
+- 漏洞赏金
+- MCP服务器
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要 Python 3.8+ 环境，克隆仓库后安装依赖并配置 MCP 服务器。
+  notes_en: Requires Python 3.8+ environment. After cloning the repository, install dependencies and configure the MCP server.
+config_required: []
+quality:
+  stars: 10299
+  last_commit: '2026-04-27'
+  verified: false
+source:
+  repo: https://github.com/0x4m4/hexstrike-ai
+usage:
+  first_prompt_zh: 帮我扫描目标网站的安全漏洞并生成报告。
+  first_prompt_en: Help me scan the target website for security vulnerabilities and generate a report.
+name_en: hexstrike-ai
+description_en: HexStrike AI MCP Agents is an advanced MCP server that enables AI agents like Claude, GPT, and Copilot to
+  autonomously run 150+ cybersecurity tools, enabling automated penetration testing, vulnerability discovery, bug bounty hunting,
+  and security research. It seamlessly bridges large language models with real offensive security capabilities, suitable for
+  security researchers, penetration test engineers, and bug bounty hunters.

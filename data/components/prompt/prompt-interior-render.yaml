@@ -2,18 +2,50 @@ id: prompt-interior-render
 type: prompt
 name: 室内装修效果图提示词模板
 description_zh: 用 AI 生成室内装修效果图的提示词模板（gd4.ai 整理）：按户型、风格、材质组合关键词，配合毛坯房照片可做"旧房改造预览"。
-host_tools: [web, any]
-categories: [prompt-template]
-scenarios: [interior-design, image-gen]
-tags: [室内, 装修, 效果图, 提示词]
+host_tools:
+- web
+- any
+categories:
+- prompt-template
+scenarios:
+- interior-design
+- image-gen
+tags:
+- 室内
+- 装修
+- 效果图
+- 提示词
 difficulty: beginner
-install: {method: none}
+install:
+  method: none
 usage:
-  first_prompt_zh: |
-    【文生图】interior design of a modern living room, warm wood tones, floor-to-ceiling windows, minimalist furniture, soft ambient lighting, photorealistic rendering, 8k
+  first_prompt_zh: '【文生图】interior design of a modern living room, warm wood tones, floor-to-ceiling windows, minimalist furniture,
+    soft ambient lighting, photorealistic rendering, 8k
+
     【图生图（传毛坯/旧房照片）】renovate this room into modern minimalist style, keep the layout, light oak flooring, white walls
+
     【风格词库】现代简约 modern minimalist / 奶油风 cream style / 原木风 japandi / 轻奢 light luxury / 新中式 new chinese style
+
+    '
   verify_zh: 上传一张房间照片做图生图，输出应保持原户型结构只换装修风格
-quality: {verified: false}
-relations: {works_with: [tool-kujiale, tool-roomgpt, tool-comfyui]}
-source: {url: https://gd4.ai}
+  first_prompt_en: '【Text-to-Image】interior design of a modern living room, warm wood tones, floor-to-ceiling windows, minimalist
+    furniture, soft ambient lighting, photorealistic rendering, 8k
+
+    【Image-to-Image (upload bare/old room photo)】renovate this room into modern minimalist style, keep the layout, light oak
+    flooring, white walls
+
+    【Style Vocabulary】现代简约 modern minimalist / 奶油风 cream style / 原木风 japandi / 轻奢 light luxury / 新中式 new chinese style'
+  verify_en: Upload a photo of a room for image-to-image generation; the output should maintain the original room layout and
+    only change the decoration style.
+quality:
+  verified: false
+relations:
+  works_with:
+  - tool-kujiale
+  - tool-roomgpt
+  - tool-comfyui
+source:
+  url: https://gd4.ai
+name_en: Interior Design Rendering Prompt Template
+description_en: 'A prompt template for generating interior design renderings with AI (compiled by gd4.ai): combine keywords
+  by room type, style, and material; use with photos of bare rooms to create ''old house renovation previews''.'

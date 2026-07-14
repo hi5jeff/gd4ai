@@ -1,0 +1,40 @@
+id: tool-cliproxyapi
+type: tool
+name: CLIProxyAPI
+description_zh: CLIProxyAPI 是一个代理服务器，提供兼容 OpenAI、Gemini、Claude、Codex 和 Grok 的 API 接口。用户可通过任何兼容客户端（如 OpenAI SDK、Claude Code
+  等）本地访问多个 AI 模型（包括 Kimi、GPT、Claude、Gemini、Grok 等），支持多账户管理和免费模型调用。适合需要统一 API 入口、多模型切换或本地部署的开发者。
+host_tools:
+- any
+scenarios:
+- coding
+- automation
+- efficiency
+- research
+tags:
+- 代理
+- API
+- 多模型
+- CLI
+- OpenAI兼容
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要 Python 环境，通过 pip 安装或直接运行源码，并配置至少一个 AI 提供商的 API 密钥。
+  notes_en: Requires Python environment, install via pip or run the source code directly, and configure at least one AI provider's
+    API key.
+config_required:
+- AI服务商API密钥
+quality:
+  stars: 41604
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/router-for-me/CLIProxyAPI
+usage:
+  first_prompt_zh: 使用CLIProxyAPI调用Gemini 3.1 Pro模型生成一段代码。
+  first_prompt_en: Use CLIProxyAPI to call the Gemini 3.1 Pro model to generate a piece of code.
+name_en: CLIProxyAPI
+description_en: CLIProxyAPI is a proxy server that provides API interfaces compatible with OpenAI, Gemini, Claude, Codex,
+  and Grok. Users can locally access multiple AI models (including Kimi, GPT, Claude, Gemini, Grok, etc.) through any compatible
+  client (such as OpenAI SDK, Claude Code, etc.), supporting multi-account management and free model calls. Suitable for developers
+  who need a unified API entry, multi-model switching, or local deployment.

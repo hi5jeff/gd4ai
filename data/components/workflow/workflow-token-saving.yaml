@@ -2,19 +2,51 @@ id: workflow-token-saving
 type: workflow
 name: Claude Code 省 Token 实践清单
 description_zh: 降低 Claude Code token 消耗的实操方法合集（gd4.ai 整理）：上下文管理、子代理分流、批量操作等，长会话可省 30-60% 消耗。
-host_tools: [claude-code]
-categories: [efficiency]
-scenarios: [token-saving, efficiency]
-tags: [省token, 成本, 效率]
+host_tools:
+- claude-code
+categories:
+- efficiency
+scenarios:
+- token-saving
+- efficiency
+tags:
+- 省token
+- 成本
+- 效率
 difficulty: beginner
-install: {method: builtin, notes_zh: 无需安装，都是 Claude Code 内置能力的正确用法}
+install:
+  method: builtin
+  notes_zh: 无需安装，都是 Claude Code 内置能力的正确用法
+  notes_en: No installation required; these are proper uses of Claude Code's built-in capabilities.
 usage:
-  first_prompt_zh: |
-    1. 长会话勤用 /compact 压缩历史（或 /clear 开新会话），上下文越长每轮越贵
+  first_prompt_zh: '1. 长会话勤用 /compact 压缩历史（或 /clear 开新会话），上下文越长每轮越贵
+
     2. 大搜索/大批量读文件交给子代理（"用 subagent 去搜"），主会话只收结论
+
     3. CLAUDE.md 写清项目结构和约定，避免 AI 每次重新探索
+
     4. 一次说清需求批量做，比挤牙膏式追问省很多轮
+
     5. 让 AI"只改必要文件，不要整文件重写"，减少输出 token
+
+    '
   verify_zh: 对比使用前后 /cost 显示的消耗
-quality: {verified: false}
-source: {url: https://gd4.ai}
+  first_prompt_en: '1. In long sessions, frequently use /compact to compress history (or /clear to start a new session); the
+    longer the context, the more expensive each turn.
+
+    2. Delegate large searches or batch file reads to sub-agents ("use subagent to search"), and only receive conclusions
+    in the main session.
+
+    3. Write clear project structure and conventions in CLAUDE.md to prevent the AI from re-exploring each time.
+
+    4. Clearly state requirements and do them in batches, which saves many rounds compared to piecemeal questioning.
+
+    5. Ask the AI to "only modify necessary files, not rewrite entire files" to reduce output tokens.'
+  verify_en: Compare the consumption shown by /cost before and after use.
+quality:
+  verified: false
+source:
+  url: https://gd4.ai
+name_en: Claude Code Token-Saving Practices Checklist
+description_en: 'A collection of practical methods to reduce Claude Code token consumption (compiled by gd4.ai): context management,
+  sub-agent offloading, batch operations, etc. Can save 30-60% consumption in long sessions.'

@@ -1,0 +1,40 @@
+id: tool-trendradar
+type: tool
+name: TrendRadar
+description_zh: AI驱动的舆情监控与热点筛选工具，聚合多平台热点和RSS订阅，支持关键词精准筛选、AI智能翻译、分析简报推送，集成微信/飞书/钉钉/Telegram/邮件等渠道，支持Docker部署，数据本地或云端自持，可接入MCP架构进行自然语言分析、情感洞察与趋势预测。适合需要高效获取资讯的个人或团队。
+host_tools:
+- web
+- any-mcp-client
+scenarios:
+- monitoring
+- data-analysis
+- automation
+- communication
+tags:
+- AI
+- 舆情监控
+- RSS
+- 热点
+- Docker
+- MCP
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 使用Docker一键部署，或参考官方文档快速启动。
+  notes_en: One-click deployment with Docker, or refer to the official documentation for quick start.
+config_required: []
+quality:
+  stars: 60533
+  last_commit: '2026-07-08'
+  verified: false
+source:
+  repo: https://github.com/sansan0/TrendRadar
+usage:
+  first_prompt_zh: 帮我监控AI领域的最新热点新闻。
+  first_prompt_en: Help me monitor the latest trending news in the AI field.
+name_en: TrendRadar
+description_en: AI-powered public opinion monitoring and trending topic filtering tool that aggregates hot topics from multiple
+  platforms and RSS feeds. It supports precise keyword filtering, AI translation, and analysis brief push. Integrated with
+  WeChat, Feishu, DingTalk, Telegram, email, and other channels. Supports Docker deployment with data stored locally or in
+  the cloud. Can be connected to MCP architecture for natural language analysis, sentiment insights, and trend prediction.
+  Ideal for individuals or teams seeking efficient information gathering.

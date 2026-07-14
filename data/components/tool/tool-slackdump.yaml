@@ -1,0 +1,42 @@
+id: tool-slackdump
+type: tool
+name: slackdump
+description_zh: Slackdump 是一款开源的 Slack 数据导出工具，无需管理员权限即可备份私有和公共频道的消息、线程、文件、用户和表情。支持 Slack Export、SQLite、JSON 等多种导出格式，可增量归档，并内置
+  MCP Server 功能，允许 AI 代理（如 Claude）直接访问 Slack 数据。适合需要本地备份 Slack 数据、迁移到 Mattermost 或使用 AI 分析聊天记录的用户。
+host_tools:
+- any-mcp-client
+- desktop
+scenarios:
+- automation
+- data-analysis
+- communication
+- search
+tags:
+- slack备份
+- 数据导出
+- MCP Server
+- 消息归档
+- 开源工具
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: macOS 用户可直接用 Homebrew 安装，其他系统需从 GitHub Releases 下载对应平台的可执行文件。
+  notes_en: macOS users can install it directly via Homebrew; users on other systems need to download the executable for their
+    platform from GitHub Releases.
+config_required:
+- Slack 用户 Token 或 Cookie
+quality:
+  stars: 2681
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/rusq/slackdump
+usage:
+  first_prompt_zh: 列出我的 Slack 工作区中的所有频道。
+  first_prompt_en: List all channels in my Slack workspace.
+name_en: slackdump
+description_en: Slackdump is an open-source Slack data export tool that allows you to back up messages, threads, files, users,
+  and emojis from private and public channels without requiring admin permissions. It supports multiple export formats such
+  as Slack Export, SQLite, and JSON, enables incremental archiving, and includes a built-in MCP Server feature that allows
+  AI agents (like Claude) to directly access Slack data. It is suitable for users who need to locally back up Slack data,
+  migrate to Mattermost, or use AI to analyze chat logs.

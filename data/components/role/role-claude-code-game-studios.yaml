@@ -1,0 +1,39 @@
+id: role-claude-code-game-studios
+type: role
+name: Claude Code Game Studios
+description_zh: 将单个 Claude Code 会话转变为完整的游戏开发工作室，包含 49 个专业化 AI 代理（覆盖策划、编程、美术、音频、叙事、QA 和生产）、73 个工作流技能、12 个自动化钩子和 11 条编码规则。通过模拟真实工作室层级结构，为
+  AI 辅助游戏开发提供设计评审、质量门禁和项目组织能力。适合希望用 AI 高效构建游戏并保持项目规范的独立开发者和小团队。
+host_tools:
+- claude-code
+scenarios:
+- game-dev
+- planning
+tags:
+- ai-agents
+- game-development
+- claude-code
+- workflow
+- game-design
+- gamedev
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 克隆仓库后，将 .claude 目录复制到你的 Claude Code 项目根目录，或按照 README 中的 Getting Started 步骤配置。
+  notes_en: After cloning the repository, copy the .claude directory to your Claude Code project root, or follow the Getting
+    Started steps in the README.
+config_required: []
+quality:
+  stars: 22951
+  last_commit: '2026-05-21'
+  verified: false
+source:
+  repo: https://github.com/Donchitos/Claude-Code-Game-Studios
+usage:
+  first_prompt_zh: 启动游戏开发工作室，开始一个新项目。
+  first_prompt_en: Launch the game development studio and start a new project.
+name_en: Claude Code Game Studios
+description_en: Transforms a single Claude Code session into a complete game development studio, featuring 49 specialized
+  AI agents (covering design, programming, art, audio, narrative, QA, and production), 73 workflow skills, 12 automation hooks,
+  and 11 coding rules. By simulating a real studio hierarchy, it provides design review, quality gates, and project organization
+  capabilities for AI-assisted game development. Suitable for indie developers and small teams who want to build games efficiently
+  with AI while maintaining project standards.

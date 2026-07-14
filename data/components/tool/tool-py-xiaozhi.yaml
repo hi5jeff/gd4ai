@@ -1,0 +1,43 @@
+id: tool-py-xiaozhi
+type: tool
+name: py-xiaozhi
+description_zh: py-xiaozhi 是一个基于 Python 异步架构的轻量级跨平台多模态 AI 交互框架。它支持实时语音流、视觉语言任务和 IoT 设备控制，并集成了 MCP 协议，可部署于 Windows、macOS、Linux
+  桌面及 ARM 嵌入式平台（如树莓派、Jetson Nano）。适合开发者快速构建具备语音交互、视觉理解和硬件控制能力的 AI 助手应用。
+host_tools:
+- desktop
+- any
+scenarios:
+- automation
+- communication
+- efficiency
+tags:
+- cross-platform
+- edge-computing
+- embodied-ai
+- IoT
+- MCP
+- voice-interaction
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要 Python 3.8+ 环境，建议使用虚拟环境安装依赖，具体安装命令请参考官方文档。
+  notes_en: Requires Python 3.8+ environment. It is recommended to use a virtual environment to install dependencies. Please
+    refer to the official documentation for specific installation commands.
+config_required:
+- LLM API key（如 OpenAI、Claude 等）
+- 可选：IoT 设备配置
+quality:
+  stars: 3401
+  last_commit: '2026-07-04'
+  verified: false
+source:
+  repo: https://github.com/huangjunsen0406/py-xiaozhi
+usage:
+  first_prompt_zh: 你好，请介绍一下你的功能。
+  first_prompt_en: Hello, please introduce your functions.
+name_en: py-xiaozhi
+description_en: py-xiaozhi is a lightweight cross-platform multimodal AI interaction framework based on Python asynchronous
+  architecture. It supports real-time voice streaming, visual-language tasks, and IoT device control, and integrates the MCP
+  protocol. It can be deployed on Windows, macOS, Linux desktops, and ARM embedded platforms (such as Raspberry Pi, Jetson
+  Nano). Suitable for developers to quickly build AI assistant applications with voice interaction, visual understanding,
+  and hardware control capabilities.

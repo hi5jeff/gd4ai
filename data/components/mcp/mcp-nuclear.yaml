@@ -1,0 +1,42 @@
+id: mcp-nuclear
+type: mcp
+name: nuclear
+description_zh: Nuclear 是一款免费开源、无广告无追踪的跨平台音乐播放器，支持搜索和流式播放来自多个源的音乐。内置 MCP 服务器，允许 AI 代理（如 Claude Code、Codex）通过 HTTP 协议控制播放器，实现语音或文本驱动的音乐播放、队列管理、播放列表操作等。适合音乐爱好者和希望用
+  AI 自动化音乐体验的开发者。
+host_tools:
+- claude-code
+- codex
+- any-mcp-client
+scenarios:
+- media
+- automation
+- efficiency
+tags:
+- 音乐播放器
+- MCP
+- 开源
+- 免费
+- 跨平台
+- AI
+difficulty: intermediate
+install:
+  method: claude-mcp-add
+  command: claude mcp add nuclear --transport http http://127.0.0.1:8800/mcp
+  notes_zh: 需先在 Nuclear 设置中启用 MCP 服务器（Settings → Integrations），然后运行上述命令添加。
+  notes_en: You need to first enable the MCP server in Nuclear settings (Settings → Integrations), then run the above command
+    to add it.
+config_required: []
+quality:
+  stars: 18037
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/nukeop/nuclear
+usage:
+  first_prompt_zh: 帮我播放一首周杰伦的《晴天》
+  first_prompt_en: Play 'Sunny Day' by Jay Chou.
+name_en: nuclear
+description_en: Nuclear is a free, open-source, cross-platform music player with no ads or tracking. It supports searching
+  and streaming music from multiple sources. It has a built-in MCP server that allows AI agents (such as Claude Code, Codex)
+  to control the player via HTTP, enabling voice or text-driven music playback, queue management, playlist operations, and
+  more. Suitable for music enthusiasts and developers who want to automate their music experience with AI.

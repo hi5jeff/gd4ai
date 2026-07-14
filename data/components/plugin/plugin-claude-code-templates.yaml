@@ -18,9 +18,14 @@ install:
   method: npx
   command: npx claude-code-templates@latest
   notes_zh: 交互式选择要装的 agent/命令/配置
+  notes_en: Interactively select which agents/commands/configurations to install
 quality:
   verified: false
   stars: 29428
   last_commit: '2026-07-14'
 source:
   repo: https://github.com/davila7/claude-code-templates
+name_en: Claude Code Templates (aitmpl)
+description_en: 'One of the largest community collections of Claude Code configuration templates: hundreds of ready-to-use
+  agents, commands, hooks, and MCP configurations. Install interactively with a single command, perfect for quickly equipping
+  your Claude Code.'

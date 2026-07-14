@@ -1,0 +1,40 @@
+id: tool-osaurus
+type: tool
+name: Osaurus
+description_zh: Osaurus 是一款专为 macOS（Apple Silicon）设计的原生 AI 代理框架，完全使用 Swift 构建，支持离线运行。它充当用户与任意模型（本地或云端）之间的中间层，提供持久记忆、自主执行、代码运行和加密身份等核心能力。适合希望在本地掌控
+  AI 上下文、记忆和工具的开发者与高级用户，实现真正个人化的 AI 体验。
+host_tools:
+- desktop
+scenarios:
+- automation
+- devtools
+- memory
+- efficiency
+tags:
+- AI代理
+- macOS
+- Swift
+- 离线
+- 开源
+- MCP
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 从 GitHub Releases 下载 Osaurus.dmg 并安装到 macOS（Apple Silicon）即可使用。
+  notes_en: Download Osaurus.dmg from GitHub Releases and install it on macOS (Apple Silicon) to use.
+config_required: []
+quality:
+  stars: 7054
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/osaurus-ai/osaurus
+usage:
+  first_prompt_zh: 开始使用 Osaurus，创建你的第一个 AI 代理。
+  first_prompt_en: Get started with Osaurus and create your first AI agent.
+name_en: Osaurus
+description_en: Osaurus is a native AI agent framework designed specifically for macOS (Apple Silicon), built entirely in
+  Swift, and supports offline operation. It acts as an intermediary layer between the user and any model (local or cloud),
+  providing core capabilities such as persistent memory, autonomous execution, code running, and encrypted identity. Suitable
+  for developers and advanced users who want to control AI context, memory, and tools locally, enabling a truly personalized
+  AI experience.

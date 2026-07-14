@@ -1,0 +1,40 @@
+id: tool-mcp-use
+type: tool
+name: mcp-use
+description_zh: mcp-use 是一个全栈 MCP 框架，提供 TypeScript 和 Python SDK，用于快速构建 MCP Apps（支持 ChatGPT/Claude）和 MCP Servers（面向 AI 代理）。内置在线
+  Inspector 调试工具，支持一键创建项目、预览和部署到云端。适合希望开发 MCP 生态应用的开发者，降低 MCP 协议接入门槛。
+host_tools:
+- any-mcp-client
+scenarios:
+- mcp-dev
+- coding
+- devtools
+tags:
+- mcp
+- framework
+- fullstack
+- typescript
+- python
+- sdk
+difficulty: intermediate
+install:
+  method: npx
+  command: npx create-mcp-use-app@latest
+  notes_zh: 需要 Node.js 环境，运行 npx 命令即可创建新项目；也可通过 npm install mcp-use 或 pip install mcp_use 安装 SDK。
+  notes_en: Requires Node.js environment; run the npx command to create a new project. You can also install the SDK via npm
+    install mcp-use or pip install mcp_use.
+config_required: []
+quality:
+  stars: 10286
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/mcp-use/mcp-use
+usage:
+  first_prompt_zh: 开始构建我的第一个 MCP 应用
+  first_prompt_en: Start building my first MCP app
+name_en: mcp-use
+description_en: mcp-use is a full-stack MCP framework that provides TypeScript and Python SDKs for quickly building MCP Apps
+  (supporting ChatGPT/Claude) and MCP Servers (for AI agents). It includes a built-in online Inspector debugging tool, and
+  supports one-click project creation, preview, and deployment to the cloud. Suitable for developers who want to build MCP
+  ecosystem applications, lowering the barrier to entry for the MCP protocol.

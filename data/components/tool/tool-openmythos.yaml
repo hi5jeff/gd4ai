@@ -1,0 +1,39 @@
+id: tool-openmythos
+type: tool
+name: OpenMythos
+description_zh: 基于公开研究文献从第一性原理重建的Claude Mythos架构理论实现。采用循环深度Transformer（RDT），包含前奏、循环块和尾声三个阶段，支持MLA和GQA注意力切换以及稀疏MoE前馈。适合AI研究人员和开发者探索计算自适应、深度可变推理机制。
+host_tools:
+- any
+scenarios:
+- research
+- open-source
+- coding
+tags:
+- open-mythos
+- claude-mythos
+- transformer
+- pytorch
+- ai-research
+- recurrent-depth-tran
+difficulty: intermediate
+install:
+  method: pip
+  command: pip install open-mythos
+  notes_zh: 需要Python环境，建议使用虚拟环境；如需Flash Attention支持，需安装CUDA和构建工具后执行 pip install open-mythos[flash]
+  notes_en: Requires a Python environment; it is recommended to use a virtual environment. For Flash Attention support, install
+    CUDA and build tools, then run pip install open-mythos[flash]
+config_required: []
+quality:
+  stars: 14677
+  last_commit: '2026-05-23'
+  verified: false
+source:
+  repo: https://github.com/kyegomez/OpenMythos
+usage:
+  first_prompt_zh: 导入OpenMythos并创建一个模型实例，运行示例代码验证安装。
+  first_prompt_en: Import OpenMythos, create a model instance, and run the example code to verify the installation.
+name_en: OpenMythos
+description_en: 'A theoretical implementation of the Claude Mythos architecture reconstructed from first principles based
+  on publicly available research literature. It employs a Recurrent Deep Transformer (RDT), consisting of three stages: prelude,
+  recurrent block, and coda. It supports switching between MLA and GQA attention mechanisms as well as sparse MoE feedforward.
+  Suitable for AI researchers and developers to explore computation-adaptive and depth-variable inference mechanisms.'

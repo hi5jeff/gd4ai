@@ -1,0 +1,40 @@
+id: tool-kubefwd
+type: tool
+name: kubefwd
+description_zh: kubefwd 是一个 Kubernetes 批量端口转发工具，允许开发者在本地机器上通过服务名称直接访问集群中的服务，无需修改代码或配置。它自动为每个服务分配唯一回环 IP、更新 /etc/hosts 并建立端口转发，支持交互式
+  TUI 和自动重连。适合需要频繁与 Kubernetes 集群交互的微服务开发者，可显著简化本地开发环境配置。
+host_tools:
+- desktop
+scenarios:
+- devtools
+- automation
+- efficiency
+tags:
+- kubefwd
+- kubernetes
+- port-forwarding
+- devtools
+- local-development
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要 Homebrew 包管理器，支持 macOS 和 Linux；安装后需确保 kubectl 已配置且可访问目标集群。
+  notes_en: Requires Homebrew package manager, supports macOS and Linux; after installation, ensure kubectl is configured
+    and can access the target cluster.
+config_required:
+- Kubernetes 集群访问权限（kubeconfig）
+quality:
+  stars: 4139
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/txn2/kubefwd
+usage:
+  first_prompt_zh: 帮我转发 default 命名空间中的所有服务
+  first_prompt_en: Help me forward all services in the default namespace
+name_en: kubefwd
+description_en: kubefwd is a Kubernetes batch port forwarding tool that allows developers to directly access services in the
+  cluster from their local machine using service names, without modifying code or configuration. It automatically assigns
+  a unique loopback IP to each service, updates /etc/hosts, and establishes port forwarding. It supports an interactive TUI
+  and automatic reconnection. Suitable for microservice developers who frequently interact with Kubernetes clusters, it can
+  significantly simplify local development environment setup.

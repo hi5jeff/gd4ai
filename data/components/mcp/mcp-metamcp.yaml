@@ -1,0 +1,39 @@
+id: mcp-metamcp
+type: mcp
+name: MetaMCP
+description_zh: MetaMCP 是一个集 MCP 聚合器、编排器、中间件和网关于一体的 Docker 化工具。它能够将多个 MCP 服务器动态聚合为一个统一的 MCP 服务器，并支持在请求链中插入中间件（如日志、鉴权、限流等）。本身作为
+  MCP 服务器运行，可无缝接入任何 MCP 客户端（如 Claude Desktop、Cursor 等），适合需要集中管理多个 MCP 工具、统一接口和增强安全性的开发团队。
+host_tools:
+- any-mcp-client
+scenarios:
+- devtools
+- automation
+- mcp-dev
+tags:
+- MCP
+- MCP聚合器
+- MCP网关
+- 中间件
+- Docker
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要 Docker 环境，拉取 ghcr.io/metatool-ai/metamcp 镜像后运行容器，并配置上游 MCP 服务器地址。
+  notes_en: Requires Docker environment. Pull the ghcr.io/metatool-ai/metamcp image, run the container, and configure the
+    upstream MCP server address.
+config_required: []
+quality:
+  stars: 2519
+  last_commit: '2026-06-22'
+  verified: false
+source:
+  repo: https://github.com/metatool-ai/metamcp
+usage:
+  first_prompt_zh: 你好，请列出所有已连接的 MCP 服务器。
+  first_prompt_en: Hello, please list all connected MCP servers.
+name_en: MetaMCP
+description_en: MetaMCP is a Dockerized tool that integrates MCP aggregator, orchestrator, middleware, and gateway. It can
+  dynamically aggregate multiple MCP servers into a unified MCP server, and supports inserting middleware (such as logging,
+  authentication, rate limiting, etc.) into the request chain. It runs as an MCP server itself and can seamlessly connect
+  to any MCP client (such as Claude Desktop, Cursor, etc.), making it suitable for development teams that need to centrally
+  manage multiple MCP tools, unify interfaces, and enhance security.

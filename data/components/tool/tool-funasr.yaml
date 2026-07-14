@@ -1,0 +1,38 @@
+id: tool-funasr
+type: tool
+name: FunASR
+description_zh: FunASR 是一个工业级端到端语音识别工具包，支持 50+ 种语言、说话人分离、情感检测和流式处理，速度可达实时 340 倍。提供 OpenAI 兼容 API，适合开发者快速集成语音识别、情感分析等功能到应用中。
+host_tools:
+- any
+scenarios:
+- automation
+- media
+- efficiency
+- research
+tags:
+- ASR
+- 语音识别
+- 多语言
+- 情感识别
+- 说话人分离
+- 流式处理
+difficulty: intermediate
+install:
+  method: pip
+  command: pip install funasr
+  notes_zh: 需要先安装 PyTorch 和 torchaudio（`pip install torch torchaudio`），然后执行安装命令。
+  notes_en: You need to install PyTorch and torchaudio first (`pip install torch torchaudio`), then run the installation command.
+config_required: []
+quality:
+  stars: 19214
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/modelscope/FunASR
+usage:
+  first_prompt_zh: 帮我用FunASR转录这段音频文件
+  first_prompt_en: Help me transcribe this audio file using FunASR
+name_en: FunASR
+description_en: FunASR is an industrial-grade end-to-end speech recognition toolkit that supports 50+ languages, speaker diarization,
+  emotion detection, and streaming processing, with speeds up to 340 times real-time. It provides an OpenAI-compatible API,
+  making it suitable for developers to quickly integrate speech recognition, emotion analysis, and other features into applications.

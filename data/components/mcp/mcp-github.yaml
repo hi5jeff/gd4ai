@@ -20,17 +20,23 @@ install:
   method: claude-mcp-add
   command: claude mcp add --transport http github https://api.githubcopilot.com/mcp/
   notes_zh: 首次使用会走 GitHub OAuth 授权
+  notes_en: First use will go through GitHub OAuth authorization
 config_required:
 - GitHub 账号授权
 usage:
   first_prompt_zh: 列出我 GitHub 上最近更新的 5 个仓库
+  first_prompt_en: List the 5 most recently updated repositories on my GitHub
 quality:
   verified: false
   security_notes_zh: OAuth 授权范围可控，建议只授权需要的仓库
   stars: 31417
   last_commit: '2026-07-13'
+  security_notes_en: OAuth authorization scope is controllable; it is recommended to only authorize the needed repositories
 relations:
   works_with:
   - role-code-reviewer
 source:
   repo: https://github.com/github/github-mcp-server
+name_en: GitHub MCP (Official)
+description_en: 'GitHub''s official MCP, letting AI operate your GitHub: view repositories, open issues, check PRs, read code.
+  The remote hosted version requires no local installation.'

@@ -1,0 +1,41 @@
+id: tool-nginx-ui
+type: tool
+name: nginx-ui
+description_zh: Nginx UI 是一个开源的 Nginx Web 管理界面，提供图形化配置管理、SSL 证书自动续签、实时日志查看、服务器状态监控等功能。适合运维人员、开发者快速管理 Nginx 服务器，无需手动编辑配置文件。支持
+  Docker 一键部署，兼容 Linux 和 macOS。
+host_tools:
+- web
+- desktop
+scenarios:
+- web-dev
+- monitoring
+- security
+- efficiency
+tags:
+- nginx
+- web-ui
+- 运维
+- 管理工具
+- 开源
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 推荐使用 Docker 运行：`docker run -d --restart=always -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock uozi/nginx-ui:latest`，或从
+    GitHub Releases 下载二进制文件。
+  notes_en: 'It is recommended to run with Docker: `docker run -d --restart=always -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock
+    uozi/nginx-ui:latest`, or download the binary from GitHub Releases.'
+config_required: []
+quality:
+  stars: 11302
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/0xJacky/nginx-ui
+usage:
+  first_prompt_zh: 帮我配置一个 Nginx 反向代理到本地的 3000 端口。
+  first_prompt_en: Help me configure an Nginx reverse proxy to local port 3000.
+name_en: nginx-ui
+description_en: Nginx UI is an open-source Nginx web management interface that provides graphical configuration management,
+  automatic SSL certificate renewal, real-time log viewing, server status monitoring, and more. It is suitable for operations
+  personnel and developers to quickly manage Nginx servers without manually editing configuration files. Supports one-click
+  deployment with Docker, compatible with Linux and macOS.

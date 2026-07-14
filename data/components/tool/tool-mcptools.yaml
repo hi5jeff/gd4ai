@@ -1,0 +1,39 @@
+id: tool-mcptools
+type: tool
+name: mcptools
+description_zh: MCP Tools 是一个功能全面的命令行工具，用于与 MCP（模型上下文协议）服务器交互。它支持发现、调用和管理工具、资源及提示，提供多种传输方式（stdio/HTTP）和输出格式（JSON、表格等），还包含交互式
+  Shell、Mock 服务器、代理模式和项目脚手架等高级功能。适合 MCP 开发者、AI 应用集成者以及需要调试或测试 MCP 服务器的用户。
+host_tools:
+- any
+scenarios:
+- mcp-dev
+- devtools
+- automation
+tags:
+- mcp
+- cli
+- server
+- proxy
+- debugging
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: macOS 用户推荐使用 Homebrew 安装；其他系统需通过 go install 安装，需提前安装 Go 环境。
+  notes_en: macOS users are recommended to install via Homebrew; other systems need to install via go install, requiring a
+    pre-installed Go environment.
+config_required: []
+quality:
+  stars: 1609
+  last_commit: '2025-12-18'
+  verified: false
+source:
+  repo: https://github.com/f/mcptools
+usage:
+  first_prompt_zh: 列出 MCP 服务器上的所有可用工具
+  first_prompt_en: List all available tools on the MCP server
+name_en: mcptools
+description_en: MCP Tools is a comprehensive command-line tool for interacting with MCP (Model Context Protocol) servers.
+  It supports discovering, invoking, and managing tools, resources, and prompts, with multiple transport methods (stdio/HTTP)
+  and output formats (JSON, tables, etc.). It also includes advanced features such as an interactive shell, mock server, proxy
+  mode, and project scaffolding. Suitable for MCP developers, AI application integrators, and users who need to debug or test
+  MCP servers.

@@ -1,0 +1,43 @@
+id: tool-memori
+type: tool
+name: Memori
+description_zh: Memori 是面向 Agent 的原生内存基础设施，提供 LLM 无关的持久化层，将 Agent 的执行和对话转化为结构化状态。支持 Python 和 TypeScript SDK，可无缝集成现有数据基础设施，无需替换。适合需要长期记忆的企业级
+  AI 应用开发者，帮助构建具备上下文感知能力的智能体。
+host_tools:
+- any
+scenarios:
+- memory
+- automation
+- devtools
+- coding
+tags:
+- agent-memory
+- AI
+- enterprise
+- LLM-agnostic
+- memory-infrastructur
+- SDK
+difficulty: intermediate
+install:
+  method: pip
+  command: pip install memori
+  notes_zh: 需要先注册 Memori 云服务获取 API Key，并设置 MEMORI_API_KEY 和 LLM API Key 环境变量。
+  notes_en: You need to first register for the Memori cloud service to obtain an API Key, and set the MEMORI_API_KEY and LLM
+    API Key environment variables.
+config_required:
+- MEMORI_API_KEY
+- LLM API key (如 OPENAI_API_KEY)
+quality:
+  stars: 15581
+  last_commit: '2026-06-15'
+  verified: false
+source:
+  repo: https://github.com/MemoriLabs/Memori
+usage:
+  first_prompt_zh: 记录我的对话并记住我的偏好。
+  first_prompt_en: Record my conversations and remember my preferences.
+name_en: Memori
+description_en: Memori is a native memory infrastructure for agents, providing an LLM-agnostic persistence layer that converts
+  agent execution and conversations into structured state. It supports Python and TypeScript SDKs, seamlessly integrating
+  with existing data infrastructure without replacement. Suitable for enterprise AI application developers who need long-term
+  memory, helping build context-aware agents.

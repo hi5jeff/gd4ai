@@ -3,18 +3,53 @@ title_zh: 室内装修 AI 设计方案
 scenario: interior-design
 audience: beginner
 summary_zh: 装修业主两条路：酷家乐（户型级完整方案，能落地）+ RoomGPT/生图（单房间风格预览，快速找感觉），提示词模板打配合。
-tags: [室内, 装修, 效果图]
+tags:
+- 室内
+- 装修
+- 效果图
 components:
-  - {ref: tool-kujiale, role_zh: 主力——导户型出完整装修方案和效果图，可对接施工}
-  - {ref: tool-roomgpt, role_zh: 快速预览——拍照上传 10 秒看改造效果}
-  - {ref: prompt-interior-render, role_zh: 生图路线的风格提示词（配合即梦/MJ/ComfyUI）}
-  - {ref: tool-comfyui, role_zh: 进阶——ControlNet 锁户型结构精确出图, optional: true}
+- ref: tool-kujiale
+  role_zh: 主力——导户型出完整装修方案和效果图，可对接施工
+  role_en: Main tool – import floor plan to generate complete renovation plan and renderings, can be connected to construction.
+- ref: tool-roomgpt
+  role_zh: 快速预览——拍照上传 10 秒看改造效果
+  role_en: Quick preview – take a photo and upload, see renovation effect in 10 seconds.
+- ref: prompt-interior-render
+  role_zh: 生图路线的风格提示词（配合即梦/MJ/ComfyUI）
+  role_en: Style prompts for image generation route (used with Jimeng/MJ/ComfyUI)
+- ref: tool-comfyui
+  role_zh: 进阶——ControlNet 锁户型结构精确出图
+  optional: true
+  role_en: Advanced – ControlNet locks floor plan structure for precise image generation.
 steps:
-  - {title_zh: 找感觉, detail_zh: 手机拍现状照片传 RoomGPT，把 8 种风格都跑一遍，确定喜欢的方向}
-  - {title_zh: 出正式方案, detail_zh: 酷家乐搜你的小区户型（大概率已有）→ AI 自动布局 → 套确定的风格 → 生成 3D 效果图和全景图}
-  - {title_zh: 细化单空间, detail_zh: 对重点空间（客厅/主卧）用室内提示词模板+生图工具出多个软装变体，确定家具配色}
-first_prompt_zh: （RoomGPT/图生图）renovate this living room into japandi style, keep the original layout, light oak wood, cream white walls, warm ambient lighting
+- title_zh: 找感觉
+  detail_zh: 手机拍现状照片传 RoomGPT，把 8 种风格都跑一遍，确定喜欢的方向
+  title_en: Find the style direction
+  detail_en: Take a photo of the current state with your phone, upload to RoomGPT, run through all 8 styles, determine the
+    preferred direction.
+- title_zh: 出正式方案
+  detail_zh: 酷家乐搜你的小区户型（大概率已有）→ AI 自动布局 → 套确定的风格 → 生成 3D 效果图和全景图
+  title_en: Generate formal plan
+  detail_en: Search for your community floor plan on Kujiale (likely already exists) → AI auto-layout → apply the chosen style
+    → generate 3D renderings and panoramic images.
+- title_zh: 细化单空间
+  detail_zh: 对重点空间（客厅/主卧）用室内提示词模板+生图工具出多个软装变体，确定家具配色
+  title_en: Refine individual spaces
+  detail_en: For key spaces (living room/master bedroom), use interior prompt templates + image generation tools to create
+    multiple soft furnishing variations, finalize furniture color schemes.
+first_prompt_zh: （RoomGPT/图生图）renovate this living room into japandi style, keep the original layout, light oak wood, cream
+  white walls, warm ambient lighting
 pitfalls_zh:
-  - 生图效果图仅供风格参考，尺寸不精确；落地施工以酷家乐带尺寸的方案为准
-  - 酷家乐免费版渲染有次数限制，集中确定方案后再批量渲染
-quality: {verified: false}
+- 生图效果图仅供风格参考，尺寸不精确；落地施工以酷家乐带尺寸的方案为准
+- 酷家乐免费版渲染有次数限制，集中确定方案后再批量渲染
+quality:
+  verified: false
+title_en: Interior Decoration AI Design Plan
+summary_en: 'Two paths for homeowners: Kujiale (full floor plan, construction-ready) + RoomGPT/image generation (single room
+  style preview, quick feel), with prompt templates to support.'
+first_prompt_en: (RoomGPT/image-to-image) renovate this living room into japandi style, keep the original layout, light oak
+  wood, cream white walls, warm ambient lighting
+pitfalls_en:
+- Generated renderings are for style reference only, dimensions are not precise; actual construction should follow Kujiale's
+  dimensioned plans.
+- The free version of Kujiale has rendering limits; finalize the plan before batch rendering.

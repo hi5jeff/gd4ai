@@ -1,0 +1,41 @@
+id: mcp-excel-mcp-server
+type: mcp
+name: excel-mcp-server
+description_zh: 一个基于Model Context Protocol的Excel文件操作服务器，允许AI代理无需安装Microsoft Excel即可创建、读取、修改Excel工作簿。支持公式、格式化、图表、数据透视表、表格操作等丰富功能，提供stdio、SSE和Streamable
+  HTTP三种传输方式。适合需要自动化处理Excel数据的开发者和AI应用场景。
+host_tools:
+- cursor
+- claude-code
+- any-mcp-client
+scenarios:
+- automation
+- data-analysis
+- office
+tags:
+- excel
+- mcp-server
+- 自动化
+- 数据操作
+- AI工具
+difficulty: beginner
+install:
+  method: uvx
+  command: uvx excel-mcp-server stdio
+  notes_zh: 需要安装Python和uv包管理器，然后直接运行上述命令即可启动本地服务。
+  notes_en: You need to install Python and the uv package manager, then simply run the above command to start the local service.
+config_required: []
+quality:
+  stars: 4024
+  last_commit: '2026-04-12'
+  verified: false
+source:
+  repo: https://github.com/haris-musa/excel-mcp-server
+usage:
+  first_prompt_zh: 帮我创建一个新的Excel工作簿，添加一个名为'销售数据'的工作表，并在A1单元格填入'产品名称'。
+  first_prompt_en: Help me create a new Excel workbook, add a worksheet named 'Sales Data', and fill cell A1 with 'Product
+    Name'.
+name_en: excel-mcp-server
+description_en: 'An Excel file operation server based on the Model Context Protocol, allowing AI agents to create, read, and
+  modify Excel workbooks without installing Microsoft Excel. Supports rich features such as formulas, formatting, charts,
+  pivot tables, and table operations. Provides three transport methods: stdio, SSE, and Streamable HTTP. Suitable for developers
+  and AI application scenarios that need to automate Excel data processing.'

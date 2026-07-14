@@ -1,0 +1,38 @@
+id: mcp-unreal-mcp
+type: mcp
+name: unreal-mcp
+description_zh: unreal-mcp 是一个基于 Model Context Protocol (MCP) 的服务器，允许 AI 助手（如 Cursor、Windsurf、Claude Desktop）通过自然语言直接控制 Unreal
+  Engine 5。它提供 Actor 管理、蓝图开发、节点图编辑、视口控制等能力，适合游戏开发者、关卡设计师和 AI 自动化爱好者使用。
+host_tools:
+- cursor
+- windsurf
+- any-mcp-client
+scenarios:
+- game-dev
+tags:
+- unreal-engine
+- mcp-server
+- game-development
+- natural-language
+- blueprint
+- ai-assistant
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需将 UnrealMCP 插件添加到 Unreal 项目，并运行 Python MCP 服务器（端口 55557）。
+  notes_en: You need to add the UnrealMCP plugin to your Unreal project and run the Python MCP server (port 55557).
+config_required: []
+quality:
+  stars: 2033
+  last_commit: '2025-04-22'
+  verified: false
+source:
+  repo: https://github.com/chongdashu/unreal-mcp
+usage:
+  first_prompt_zh: 在场景中创建一个红色立方体。
+  first_prompt_en: Create a red cube in the scene.
+name_en: unreal-mcp
+description_en: unreal-mcp is a server based on the Model Context Protocol (MCP) that allows AI assistants (such as Cursor,
+  Windsurf, Claude Desktop) to directly control Unreal Engine 5 via natural language. It provides capabilities such as Actor
+  management, Blueprint development, node graph editing, viewport control, etc., suitable for game developers, level designers,
+  and AI automation enthusiasts.

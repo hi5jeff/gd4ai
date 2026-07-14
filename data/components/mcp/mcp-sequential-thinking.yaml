@@ -19,9 +19,13 @@ install:
   command: claude mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking
 usage:
   first_prompt_zh: 用分步思考帮我规划一个电商网站的技术方案
+  first_prompt_en: Help me plan a technical solution for an e-commerce website using step-by-step thinking.
 quality:
   verified: false
   stars: 88433
   last_commit: '2026-07-10'
 source:
   repo: https://github.com/modelcontextprotocol/servers
+name_en: Sequential Thinking MCP
+description_en: Official reasoning-enhanced MCP that breaks down complex problems into ordered thinking steps, suitable for
+  tasks requiring multi-step reasoning such as planning and architecture design.

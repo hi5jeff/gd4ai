@@ -1,0 +1,41 @@
+id: tool-9router
+type: tool
+name: 9router
+description_zh: 9Router 是一个免费的 AI 路由与 Token 节省工具，可连接 Claude Code、Codex、Cursor、Cline 等主流 AI 编码工具到 40+ 提供商和 100+ 模型。它通过 RTK
+  技术自动压缩工具输出内容，节省 20-40% 的 Token 消耗，并支持订阅→廉价→免费三级自动回退，确保编码永不中断。适合希望降低 AI 编码成本、避免速率限制的开发者。
+host_tools:
+- claude-code
+- codex
+- cursor
+scenarios:
+- coding
+- token-saving
+- efficiency
+- devtools
+tags:
+- AI路由
+- Token节省
+- 免费AI
+- 自动回退
+- 多提供商
+difficulty: beginner
+install:
+  method: npm
+  command: npm install -g 9router
+  notes_zh: 全局安装后直接运行 9router 命令即可打开仪表盘，无需额外配置。
+  notes_en: After global installation, simply run the 9router command to open the dashboard, no additional configuration needed.
+config_required: []
+quality:
+  stars: 22090
+  last_commit: '2026-07-10'
+  verified: false
+source:
+  repo: https://github.com/decolua/9router
+usage:
+  first_prompt_zh: 帮我连接一个免费的 AI 模型，比如 Kiro AI。
+  first_prompt_en: Help me connect to a free AI model, such as Kiro AI.
+name_en: 9router
+description_en: 9Router is a free AI routing and token saving tool that connects mainstream AI coding tools like Claude Code,
+  Codex, Cursor, Cline to 40+ providers and 100+ models. It uses RTK technology to automatically compress tool output, saving
+  20-40% token consumption, and supports a three-level automatic fallback (subscription → cheap → free) to ensure coding never
+  stops. Suitable for developers who want to reduce AI coding costs and avoid rate limits.

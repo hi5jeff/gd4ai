@@ -18,8 +18,11 @@ install:
   method: git-clone
   command: git clone https://github.com/wshobson/agents.git ~/.claude/agents/wshobson
   notes_zh: 克隆后 Claude Code 自动识别，对话中说"让 frontend-developer 来做"即可调用
+  notes_en: After cloning, Claude Code automatically recognizes it. To invoke, simply say 'let frontend-developer do it' in
+    the conversation.
 usage:
   first_prompt_zh: 让 frontend-developer 用 Next.js 搭一个商品列表页，响应式布局
+  first_prompt_en: Ask frontend-developer to build a product list page with Next.js, responsive layout.
 quality:
   verified: false
   stars: 37882
@@ -30,3 +33,7 @@ relations:
   - mcp-figma
 source:
   repo: https://github.com/wshobson/agents
+name_en: Frontend Developer (subagent)
+description_en: Frontend expert from wshobson/agents, the most popular community collection of Claude Code sub-agents. Proficient
+  in React/Next.js/Tailwind, responsible for page development and UI implementation. When building a website, let it handle
+  the frontend work.

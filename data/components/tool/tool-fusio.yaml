@@ -1,0 +1,41 @@
+id: tool-fusio
+type: tool
+name: Fusio
+description_zh: Fusio是一个自托管的开源API管理平台，用PHP编写。它能将你的业务逻辑转化为可扩展的API产品，支持数据库API网关、微服务编排、自定义后端逻辑、AI代理开发、MCP集成、开发者门户、SDK自动生成、API货币化等功能。适合需要快速构建和发布专业API的开发者、团队和企业。
+host_tools:
+- web
+scenarios:
+- web-dev
+- database
+- devtools
+- mcp-dev
+tags:
+- API管理
+- API网关
+- 自托管
+- PHP
+- MCP
+- 开源
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 推荐使用Docker Compose快速部署，需配置数据库连接和项目密钥。
+  notes_en: It is recommended to use Docker Compose for quick deployment; you need to configure the database connection and
+    project key.
+config_required:
+- 数据库连接信息
+- 项目密钥
+quality:
+  stars: 2104
+  last_commit: '2026-06-04'
+  verified: false
+source:
+  repo: https://github.com/apioo/fusio
+usage:
+  first_prompt_zh: 启动Fusio后台并创建第一个API端点
+  first_prompt_en: Start the Fusio backend and create the first API endpoint
+name_en: Fusio
+description_en: Fusio is a self-hosted, open-source API management platform written in PHP. It transforms your business logic
+  into scalable API products, supporting database API gateway, microservice orchestration, custom backend logic, AI agent
+  development, MCP integration, developer portal, SDK auto-generation, API monetization, and more. Suitable for developers,
+  teams, and enterprises that need to quickly build and publish professional APIs.

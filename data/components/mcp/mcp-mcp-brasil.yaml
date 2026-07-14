@@ -1,0 +1,41 @@
+id: mcp-mcp-brasil
+type: mcp
+name: mcp-brasil
+description_zh: 一个MCP服务器，集成70个巴西公共API，提供533个工具、131个资源和102个提示，覆盖经济、立法、司法、选举、环境、健康、教育、公共安全等15个领域。66个API无需密钥即可使用，4个需免费注册。支持跨API查询、批量执行和智能工具过滤，适合AI代理（如Claude、GPT）快速获取巴西政府数据。
+host_tools:
+- any-mcp-client
+scenarios:
+- data-analysis
+- research
+- finance
+- automation
+tags:
+- 巴西
+- 公共API
+- MCP
+- 政府数据
+- 数据集成
+- AI代理
+difficulty: intermediate
+install:
+  method: pip
+  command: pip install mcp-brasil
+  notes_zh: 需要Python环境，安装后配置MCP客户端（如Claude Desktop）的JSON文件以启用服务器。
+  notes_en: Requires a Python environment. After installation, configure the MCP client (e.g., Claude Desktop) JSON file to
+    enable the server.
+config_required: []
+quality:
+  stars: 1675
+  last_commit: '2026-04-26'
+  verified: false
+source:
+  repo: https://github.com/Mcp-Brasil/mcp-brasil
+usage:
+  first_prompt_zh: 帮我查询巴西最近的通货膨胀率数据。
+  first_prompt_en: Help me query Brazil's latest inflation rate data.
+name_en: mcp-brasil
+description_en: An MCP server that integrates 70 Brazilian public APIs, providing 533 tools, 131 resources, and 102 prompts,
+  covering 15 domains including economy, legislation, judiciary, elections, environment, health, education, public safety,
+  and more. 66 APIs are available without an API key, while 4 require free registration. It supports cross-API queries, batch
+  execution, and smart tool filtering, making it suitable for AI agents (such as Claude, GPT) to quickly obtain Brazilian
+  government data.

@@ -1,0 +1,43 @@
+id: skill-agent-skills
+type: skill
+name: agent-skills
+description_zh: Agent Skills 是一套面向 AI 编码代理的生产级工程技能集合，将资深工程师的工作流、质量门和最佳实践封装为可复用的技能模块。它覆盖从需求定义、计划、构建、测试、审查到发布的完整开发生命周期，提供 8
+  个斜杠命令（如 /spec、/plan、/build）自动激活对应技能。适合使用 Claude Code、Cursor、Codex 等 AI 编码工具的开发者，帮助代理一致地遵循工程规范，提升代码质量和开发效率。
+host_tools:
+- claude-code
+- cursor
+- codex
+scenarios:
+- coding
+- planning
+- web-dev
+- web-testing
+tags:
+- AI编码代理
+- 工程技能
+- 工作流
+- 最佳实践
+- 开发生命周期
+- skills
+difficulty: beginner
+install:
+  method: npx
+  command: npx skills add addyosmani/agent-skills
+  notes_zh: 需要 Node.js 环境，通过 npx 运行，无需额外配置。
+  notes_en: Requires Node.js environment, run via npx, no additional configuration needed.
+config_required: []
+quality:
+  stars: 78026
+  last_commit: '2026-07-12'
+  verified: false
+source:
+  repo: https://github.com/addyosmani/agent-skills
+usage:
+  first_prompt_zh: 使用 /spec 命令开始定义需求
+  first_prompt_en: Use the /spec command to start defining requirements
+name_en: agent-skills
+description_en: Agent Skills is a production-grade engineering skill set for AI coding agents, encapsulating senior engineers'
+  workflows, quality gates, and best practices into reusable skill modules. It covers the complete development lifecycle from
+  requirements definition, planning, building, testing, reviewing to release, providing 8 slash commands (e.g., /spec, /plan,
+  /build) to automatically activate corresponding skills. Suitable for developers using AI coding tools such as Claude Code,
+  Cursor, Codex, it helps agents consistently follow engineering standards, improving code quality and development efficiency.

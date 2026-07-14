@@ -1,0 +1,39 @@
+id: plugin-oh-my-claudecode
+type: plugin
+name: oh-my-claudecode
+description_zh: oh-my-claudecode 是一个面向 Claude Code 的团队优先多智能体编排工具，让多个 AI 代理协同完成复杂开发任务。它零学习曲线，通过简单的插件安装即可在 Claude Code 中启用团队协作模式，适合需要多角色分工、自动化工作流的开发者。支持自定义工作流和智能体角色，提升编码效率。
+host_tools:
+- claude-code
+scenarios:
+- coding
+- automation
+- devtools
+- efficiency
+tags:
+- 多智能体
+- Claude Code
+- 自动化
+- 团队协作
+- 开发工具
+difficulty: beginner
+install:
+  method: npm
+  command: npm i -g oh-my-claude-sisyphus@latest
+  notes_zh: 推荐 Claude Code 用户通过插件市场安装（/plugin marketplace add 和 /plugin install），npm 命令用于 CLI 方式全局安装。
+  notes_en: It is recommended that Claude Code users install via the plugin marketplace (/plugin marketplace add and /plugin
+    install). The npm command is used for CLI global installation.
+config_required: []
+quality:
+  stars: 37733
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/Yeachan-Heo/oh-my-claudecode
+usage:
+  first_prompt_zh: 启动团队协作模式
+  first_prompt_en: Start team collaboration mode
+name_en: oh-my-claudecode
+description_en: oh-my-claudecode is a team-first multi-agent orchestration tool for Claude Code, enabling multiple AI agents
+  to collaborate on complex development tasks. It has zero learning curve and enables team collaboration mode in Claude Code
+  through simple plugin installation, suitable for developers who need multi-role division and automated workflows. Supports
+  custom workflows and agent roles to improve coding efficiency.

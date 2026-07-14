@@ -1,0 +1,40 @@
+id: tool-agent-reach
+type: tool
+name: Agent Reach
+description_zh: Agent Reach 是一个开源 CLI 工具，为 AI Agent 赋予一键访问互联网的能力。它支持读取 Twitter、Reddit、YouTube、GitHub、B站、小红书等主流平台的内容，无需任何 API
+  费用。用户只需一条命令即可安装，Agent 便能搜索网页、提取字幕、阅读帖子等。适合需要让 AI Agent 实时获取网络信息的开发者，零配置即可上手。
+host_tools:
+- claude-code
+- cursor
+- windsurf
+scenarios:
+- search
+- automation
+- media
+tags:
+- AI Agent
+- CLI
+- 自动化
+- 网络搜索
+- 开源
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 将安装链接复制给 AI Agent，它会自动执行安装流程。
+  notes_en: Copy the installation link to the AI Agent, and it will automatically execute the installation process.
+config_required: []
+quality:
+  stars: 55879
+  last_commit: '2026-07-10'
+  verified: false
+source:
+  repo: https://github.com/Panniantong/Agent-Reach
+usage:
+  first_prompt_zh: 帮我搜索一下推特上关于AI的最新讨论
+  first_prompt_en: Help me search for the latest discussions about AI on Twitter.
+name_en: Agent Reach
+description_en: Agent Reach is an open-source CLI tool that gives AI Agents one-click access to the internet. It supports
+  reading content from mainstream platforms such as Twitter, Reddit, YouTube, GitHub, Bilibili, Xiaohongshu, etc., without
+  any API fees. Users can install it with a single command, and the Agent can search the web, extract subtitles, read posts,
+  and more. It is suitable for developers who need their AI Agents to obtain real-time network information, with zero configuration
+  required to get started.

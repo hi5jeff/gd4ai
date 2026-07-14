@@ -1,0 +1,41 @@
+id: mcp-semble
+type: mcp
+name: semble
+description_zh: Semble 是一个为 AI 编码代理设计的快速准确代码搜索库，支持自然语言查询代码片段，比 grep+read 节省约 98% 的 token。它完全在 CPU 上运行，无需 API 密钥或 GPU，提供 MCP
+  服务器、CLI 工具和子代理集成，可无缝接入 Claude Code、Codex、Cursor 等代理，帮助开发者高效定位和理解代码。
+host_tools:
+- claude-code
+- codex
+- any-mcp-client
+scenarios:
+- coding
+- devtools
+- search
+- token-saving
+tags:
+- 代码搜索
+- MCP
+- 代理
+- 嵌入
+- 检索
+- token节省
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 需要先安装 uv（Python 包管理器），然后执行该命令安装 semble。
+  notes_en: First install uv (Python package manager), then run this command to install semble.
+config_required: []
+quality:
+  stars: 5606
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/MinishLab/semble
+usage:
+  first_prompt_zh: 搜索代码中关于身份验证的实现
+  first_prompt_en: Search the code for authentication implementation
+name_en: semble
+description_en: Semble is a fast and accurate code search library designed for AI coding agents. It supports natural language
+  queries for code snippets, saving approximately 98% of tokens compared to grep+read. It runs entirely on CPU, requires no
+  API key or GPU, and provides MCP server, CLI tool, and sub-agent integration for seamless use with agents like Claude Code,
+  Codex, and Cursor, helping developers efficiently locate and understand code.

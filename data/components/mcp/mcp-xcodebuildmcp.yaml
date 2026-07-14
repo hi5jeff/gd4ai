@@ -1,0 +1,40 @@
+id: mcp-xcodebuildmcp
+type: mcp
+name: XcodeBuildMCP
+description_zh: 一个基于Model Context Protocol的服务器和命令行工具，为AI代理提供操作iOS和macOS项目的能力。支持Xcode构建、设备管理、代码签名、宏验证跳过等功能，可集成到Claude Code、Cursor、Codex等AI编码助手，帮助开发者自动化Xcode构建流程。适合iOS/macOS开发者使用AI辅助开发时提升效率。
+host_tools:
+- claude-code
+- cursor
+- codex
+scenarios:
+- coding
+- devtools
+- automation
+tags:
+- mcp
+- xcode
+- ios
+- macos
+- xcodebuild
+- mcp-server
+difficulty: intermediate
+install:
+  method: npm
+  command: npm install -g xcodebuildmcp@latest
+  notes_zh: 需要macOS 14.5+、Xcode 16+和Node.js 18+（Homebrew安装无需Node.js）
+  notes_en: Requires macOS 14.5+, Xcode 16+, and Node.js 18+ (Homebrew installation does not require Node.js)
+config_required: []
+quality:
+  stars: 6072
+  last_commit: '2026-07-12'
+  verified: false
+source:
+  repo: https://github.com/getsentry/XcodeBuildMCP
+usage:
+  first_prompt_zh: 帮我构建当前Xcode项目并运行测试
+  first_prompt_en: Help me build the current Xcode project and run tests
+name_en: XcodeBuildMCP
+description_en: A server and command-line tool based on the Model Context Protocol, providing AI agents with the ability to
+  operate iOS and macOS projects. Supports Xcode builds, device management, code signing, macro verification skipping, and
+  more. Can be integrated into AI coding assistants such as Claude Code, Cursor, Codex, helping developers automate Xcode
+  build workflows. Suitable for iOS/macOS developers to improve efficiency when using AI-assisted development.

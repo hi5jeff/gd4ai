@@ -1,0 +1,42 @@
+id: mcp-skill-seekers
+type: mcp
+name: Skill Seekers
+description_zh: Skill Seekers 是一个将文档网站、GitHub 仓库、PDF、视频、笔记本等 10 多种来源转换为结构化知识资产的工具，支持自动冲突检测。它能为 Claude、Gemini、OpenAI 等 AI 系统生成技能，也可用于
+  RAG 管道和 AI 编码助手。适合需要快速从文档中提取知识并集成到 AI 工作流的开发者。
+host_tools:
+- claude-code
+- cursor
+- any-mcp-client
+scenarios:
+- automation
+- devtools
+- research
+- efficiency
+tags:
+- 文档转换
+- AI技能
+- 知识提取
+- MCP
+- 自动化
+- Claude
+difficulty: intermediate
+install:
+  method: pip
+  command: pip install skill-seekers
+  notes_zh: 需要 Python 3.10+，建议使用虚拟环境安装。
+  notes_en: Requires Python 3.10+, recommended to install in a virtual environment.
+config_required: []
+quality:
+  stars: 14452
+  last_commit: '2026-07-02'
+  verified: false
+source:
+  repo: https://github.com/yusufkaraaslan/Skill_Seekers
+usage:
+  first_prompt_zh: 将我的项目文档转换为 Claude 技能。
+  first_prompt_en: Convert my project documentation into a Claude skill.
+name_en: Skill Seekers
+description_en: Skill Seekers is a tool that converts over 10 sources such as documentation websites, GitHub repositories,
+  PDFs, videos, notebooks, etc. into structured knowledge assets, with automatic conflict detection. It can generate skills
+  for AI systems like Claude, Gemini, OpenAI, and can also be used in RAG pipelines and AI coding assistants. Suitable for
+  developers who need to quickly extract knowledge from documents and integrate it into AI workflows.

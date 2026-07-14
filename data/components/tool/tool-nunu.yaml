@@ -1,0 +1,37 @@
+id: tool-nunu
+type: tool
+name: nunu
+description_zh: Nunu 是一个基于 Go 生态流行库（Gin、Gorm、Wire 等）构建的脚手架 CLI 工具，帮助开发者快速搭建高效、可扩展的 Go 应用程序。它采用经典分层架构，内置依赖注入、单元测试支持，适合 Go 后端开发者用于快速启动项目。
+host_tools:
+- any
+scenarios:
+- web-dev
+- coding
+- devtools
+tags:
+- go
+- golang
+- cli
+- scaffolding
+- ddd
+- gin
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要先安装 Go 环境（1.18+），然后通过 go install 或下载预编译二进制安装。
+  notes_en: You need to install the Go environment (1.18+) first, then install via go install or by downloading a precompiled
+    binary.
+config_required: []
+quality:
+  stars: 2585
+  last_commit: '2026-04-26'
+  verified: false
+source:
+  repo: https://github.com/go-nunu/nunu
+usage:
+  first_prompt_zh: 创建一个新的 Go 项目
+  first_prompt_en: Create a new Go project
+name_en: nunu
+description_en: Nunu is a scaffolding CLI tool built on popular Go ecosystem libraries (Gin, Gorm, Wire, etc.), helping developers
+  quickly build efficient and scalable Go applications. It adopts a classic layered architecture with built-in dependency
+  injection and unit test support, suitable for Go backend developers to quickly start projects.

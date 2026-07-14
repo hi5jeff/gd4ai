@@ -1,0 +1,42 @@
+id: mcp-meigen-ai-design-mcp
+type: mcp
+name: MeiGen AI Design MCP
+description_zh: 一个开源的MCP服务器，将AI编码工具转变为专业设计助手。支持GPT Image 2、Seedance、ComfyUI等11种主流模型，内置1446个精选提示词库，提供8个工具实现Logo设计、产品渲染、视频生成等。支持并行批量生成和独立CLI模式。适合需要在Claude
+  Code、Cursor等AI编码工具中快速生成图像和视频的设计师和开发者。
+host_tools:
+- claude-code
+- cursor
+- any-mcp-client
+scenarios:
+- image-gen
+- video-gen
+- graphic-design
+- branding
+tags:
+- AI图像生成
+- 视频生成
+- MCP服务器
+- ComfyUI
+- 提示词库
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 通过npm全局安装，需要Node.js环境。
+  notes_en: Install globally via npm; requires Node.js environment.
+config_required:
+- MeiGen API key (或OpenAI API key或本地ComfyUI)
+quality:
+  stars: 1572
+  last_commit: '2026-06-23'
+  verified: false
+source:
+  repo: https://github.com/jau123/MeiGen-AI-Design-MCP
+usage:
+  first_prompt_zh: 帮我设计一个产品展示图，使用GPT Image 2模型。
+  first_prompt_en: Help me design a product showcase image using the GPT Image 2 model.
+name_en: MeiGen AI Design MCP
+description_en: An open-source MCP server that transforms AI coding tools into professional design assistants. Supports 11
+  mainstream models including GPT Image 2, Seedance, ComfyUI, etc. Built-in library of 1,446 curated prompts, providing 8
+  tools for logo design, product rendering, video generation, and more. Supports parallel batch generation and standalone
+  CLI mode. Suitable for designers and developers who need to quickly generate images and videos in AI coding tools like Claude
+  Code and Cursor.

@@ -4,16 +4,48 @@ scenario: token-saving
 audience: beginner
 host_tool: claude-code
 summary_zh: 不装任何东西，用对内置能力就能省 30-60%：上下文管理 + 子代理分流 + 批量指令。
-tags: [省token, 成本, 效率]
+tags:
+- 省token
+- 成本
+- 效率
 components:
-  - {ref: workflow-token-saving, role_zh: 核心——5 条实操清单直接照做}
-  - {ref: plugin-claude-code-templates, role_zh: 可选——社区还有现成的效率命令合集, optional: true}
+- ref: workflow-token-saving
+  role_zh: 核心——5 条实操清单直接照做
+  role_en: Core — 5 actionable checklist items to follow directly
+- ref: plugin-claude-code-templates
+  role_zh: 可选——社区还有现成的效率命令合集
+  optional: true
+  role_en: Optional — the community also has ready-made efficiency command collections
 steps:
-  - {title_zh: 管住上下文, detail_zh: 长会话每告一段落就 /compact；换任务直接 /clear 开新会话，别拖着几万 token 的历史聊天}
-  - {title_zh: 大活交给子代理, detail_zh: 全库搜索、批量读文件这类高消耗操作说"用 subagent 去做"，主会话只收结论}
-  - {title_zh: 写好 CLAUDE.md, detail_zh: 项目结构、技术栈、常用命令写进去，AI 不用每次花 token 重新探索}
-  - {title_zh: 需求一次说清, detail_zh: 一条消息列清单批量做，比多轮追问省得多；并要求"只改必要文件"}
+- title_zh: 管住上下文
+  detail_zh: 长会话每告一段落就 /compact；换任务直接 /clear 开新会话，别拖着几万 token 的历史聊天
+  title_en: Manage Context
+  detail_en: Run /compact after each segment of a long conversation; when switching tasks, directly /clear to start a new
+    session, don't drag along tens of thousands of tokens of chat history
+- title_zh: 大活交给子代理
+  detail_zh: 全库搜索、批量读文件这类高消耗操作说"用 subagent 去做"，主会话只收结论
+  title_en: Offload Heavy Tasks to Sub-agents
+  detail_en: For high-consumption operations like full-repo search or batch file reading, say 'use subagent to do it', the
+    main session only receives conclusions
+- title_zh: 写好 CLAUDE.md
+  detail_zh: 项目结构、技术栈、常用命令写进去，AI 不用每次花 token 重新探索
+  title_en: Write a Good CLAUDE.md
+  detail_en: Write project structure, tech stack, and common commands into it, so AI doesn't have to spend tokens re-exploring
+    each time
+- title_zh: 需求一次说清
+  detail_zh: 一条消息列清单批量做，比多轮追问省得多；并要求"只改必要文件"
+  title_en: State Requirements Clearly at Once
+  detail_en: List tasks in one message to do batch processing, which saves much more than multiple rounds of follow-ups; and
+    require 'only modify necessary files'
 first_prompt_zh: 先运行 /cost 看当前消耗，然后按清单逐条调整使用习惯，一周后对比
 pitfalls_zh:
-  - /compact 会丢失部分细节，重要结论先让 AI 写进文件再压缩
-quality: {verified: false}
+- /compact 会丢失部分细节，重要结论先让 AI 写进文件再压缩
+quality:
+  verified: false
+title_en: Save Tokens for Claude Code (Reduce Costs)
+summary_en: 'Without installing anything, using built-in capabilities can save 30-60%: context management + sub-agent offloading
+  + batch instructions.'
+first_prompt_en: First run /cost to see current consumption, then adjust usage habits item by item according to the checklist,
+  compare after a week
+pitfalls_en:
+- /compact may lose some details, have AI write important conclusions into a file before compressing

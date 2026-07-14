@@ -1,0 +1,40 @@
+id: tool-rowboat
+type: tool
+name: Rowboat
+description_zh: Rowboat 是一款开源的桌面 AI 同事，具备持久记忆能力。它能自动索引你的邮件、会议、聊天记录等工作内容，构建动态知识图谱，并内置邮件客户端、浏览器、笔记、代码模式、会议记录等协作界面，帮助知识工作者高效管理信息、自动起草回复、执行后台任务。适合需要
+  AI 辅助日常办公与项目协作的个人或团队。
+host_tools:
+- desktop
+scenarios:
+- automation
+- communication
+- memory
+- efficiency
+tags:
+- AI coworker
+- knowledge graph
+- desktop app
+- memory
+- agents
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 从官网 https://www.rowboatlabs.com/downloads 下载对应操作系统的安装包即可，无需额外配置。
+  notes_en: Download the installation package for your operating system from the official website https://www.rowboatlabs.com/downloads
+    — no additional configuration is required.
+config_required: []
+quality:
+  stars: 16409
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/rowboatlabs/rowboat
+usage:
+  first_prompt_zh: 帮我整理今天的邮件和会议记录，并生成待办事项。
+  first_prompt_en: Help me organize today's emails and meeting notes, and generate a to-do list.
+name_en: Rowboat
+description_en: Rowboat is an open-source desktop AI colleague with persistent memory. It automatically indexes your emails,
+  meetings, chat logs, and other work content to build a dynamic knowledge graph. It also comes with built-in collaboration
+  interfaces such as an email client, browser, notes, code mode, and meeting records, helping knowledge workers efficiently
+  manage information, auto-draft replies, and execute background tasks. Suitable for individuals or teams that need AI assistance
+  for daily office work and project collaboration.

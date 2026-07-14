@@ -18,8 +18,11 @@ install:
   method: marketplace
   command: /plugin marketplace add anthropics/skills
   notes_zh: 在 Claude Code 对话里执行，添加官方 skill 市场后按提示安装 webapp-testing
+  notes_en: Run in a Claude Code conversation. After adding the official skill marketplace, follow the prompts to install
+    webapp-testing.
 usage:
   first_prompt_zh: 用 webapp-testing 完整测试一下我刚做的网站，把问题列出来
+  first_prompt_en: Use webapp-testing to thoroughly test the website I just built and list the issues.
 quality:
   verified: false
   stars: 160919
@@ -29,3 +32,6 @@ relations:
   - mcp-playwright
 source:
   repo: https://github.com/anthropics/skills
+name_en: Webapp Testing (Official)
+description_en: 'Anthropic official skill that teaches Claude Code to systematically test web applications: start the server,
+  open the browser, and verify each feature. After the website is built, let the AI test it.'

@@ -1,0 +1,39 @@
+id: mcp-contextplus
+type: mcp
+name: Context+
+description_zh: Context+ 是一个专为大型工程团队设计的 MCP 服务器，通过结合 RAG、Tree-sitter AST、谱聚类和 Obsidian 风格链接，将海量代码库转化为可搜索的分层特征图。它提供语义代码搜索、结构分析、变更提议、记忆图等工具，帮助开发者以
+  99% 的准确率理解、导航和修改代码。适合需要高精度代码理解与协作的开发者。
+host_tools:
+- any-mcp-client
+scenarios:
+- coding
+- devtools
+- efficiency
+- memory
+tags:
+- MCP Server
+- 语义搜索
+- 代码分析
+- RAG
+- AST
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 作为 MCP 服务器，需在支持 MCP 的客户端（如 Claude Code）中配置使用，具体安装命令请参考仓库 README。
+  notes_en: As an MCP server, it needs to be configured and used in MCP-compatible clients (such as Claude Code). For specific
+    installation commands, please refer to the repository README.
+config_required: []
+quality:
+  stars: 1951
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/forloopcodes/contextplus
+usage:
+  first_prompt_zh: 使用语义搜索查找与'用户登录'相关的代码。
+  first_prompt_en: Use semantic search to find code related to 'user login'.
+name_en: Context+
+description_en: Context+ is an MCP server designed for large engineering teams. It transforms massive codebases into searchable
+  hierarchical feature maps by combining RAG, Tree-sitter AST, spectral clustering, and Obsidian-style links. It provides
+  tools such as semantic code search, structural analysis, change proposals, and memory graphs, helping developers understand,
+  navigate, and modify code with 99% accuracy. Suitable for developers who need high-precision code understanding and collaboration.

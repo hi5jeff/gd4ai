@@ -1,0 +1,38 @@
+id: tool-rulego
+type: tool
+name: RuleGo
+description_zh: RuleGo 是一个基于 Go 的轻量级、高性能、可嵌入的组件化规则引擎框架。它支持通过规则链动态编排业务逻辑，实现数据过滤、转换、分发、聚合及与多种协议系统集成。适用于低代码、IoT、边缘计算、自动化、工作流等场景，帮助开发者快速构建松耦合、可实时调整的系统。
+host_tools:
+- any
+scenarios:
+- automation
+- data-analysis
+- devtools
+- monitoring
+tags:
+- 规则引擎
+- Go
+- IoT
+- 边缘计算
+- 工作流
+- 自动化
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要 Go 1.18+ 环境，执行 go get github.com/rulego/rulego 引入依赖。
+  notes_en: Requires Go 1.18+ environment. Run 'go get github.com/rulego/rulego' to import the dependency.
+config_required: []
+quality:
+  stars: 1563
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/rulego/rulego
+usage:
+  first_prompt_zh: 如何使用 RuleGo 创建一个简单的规则链？
+  first_prompt_en: How to create a simple rule chain using RuleGo?
+name_en: RuleGo
+description_en: RuleGo is a lightweight, high-performance, embeddable component-based rule engine framework built on Go. It
+  supports dynamic orchestration of business logic through rule chains, enabling data filtering, transformation, distribution,
+  aggregation, and integration with multiple protocol systems. Suitable for low-code, IoT, edge computing, automation, workflow
+  and other scenarios, helping developers quickly build loosely coupled, real-time adjustable systems.

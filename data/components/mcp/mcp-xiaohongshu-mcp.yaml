@@ -1,0 +1,37 @@
+id: mcp-xiaohongshu-mcp
+type: mcp
+name: xiaohongshu-mcp
+description_zh: 一个MCP服务器，让AI助手直接访问小红书数据。支持登录、发布图文/视频、搜索内容、获取推荐列表、获取帖子详情（含互动数据和评论）等功能。适合需要在小红书平台进行自动化操作或数据获取的开发者、AI应用集成者。
+host_tools:
+- any-mcp-client
+scenarios:
+- scraping
+- automation
+- search
+tags:
+- 小红书
+- MCP服务器
+- 数据获取
+- 自动化
+- 内容发布
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 可通过Docker部署或使用Openclaw集成，也可选择x-mcp浏览器插件版（零配置）。
+  notes_en: Can be deployed via Docker or integrated using Openclaw, or choose the x-mcp browser plugin version (zero configuration).
+config_required:
+- 小红书登录凭证
+quality:
+  stars: 14657
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/xpzouying/xiaohongshu-mcp
+usage:
+  first_prompt_zh: 帮我搜索小红书上的热门旅游攻略
+  first_prompt_en: Help me search for popular travel guides on Xiaohongshu.
+name_en: xiaohongshu-mcp
+description_en: An MCP server enabling AI assistants to directly access Xiaohongshu data. Features include login, posting
+  image-text posts or videos, searching content, retrieving recommendation lists, and fetching post details (including interaction
+  data and comments). Ideal for developers and AI application integrators who need automation or data retrieval on the Xiaohongshu
+  platform.

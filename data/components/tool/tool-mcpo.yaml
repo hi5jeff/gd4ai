@@ -1,0 +1,41 @@
+id: tool-mcpo
+type: tool
+name: mcpo
+description_zh: mcpo 是一个轻量级代理服务器，能将任何 MCP 服务器命令即时转换为 OpenAPI 兼容的 HTTP 接口。它让 MCP 工具无需自定义协议或胶水代码即可与标准 RESTful API 工具、SDK 和 LLM
+  代理无缝集成，自动生成交互式文档，并基于 Web 标准提供安全、稳定和可扩展的能力。适合需要将 MCP 工具融入现有 OpenAPI 生态的开发者。
+host_tools:
+- any
+scenarios:
+- devtools
+- automation
+- efficiency
+- security
+tags:
+- mcp
+- openapi
+- proxy
+- http
+- server
+- integration
+difficulty: beginner
+install:
+  method: pip
+  command: pip install mcpo
+  notes_zh: 推荐使用 uvx 直接运行（无需安装），或通过 pip install mcpo 安装后使用 mcpo 命令启动。
+  notes_en: It is recommended to run directly with uvx (no installation required), or install via pip install mcpo and start
+    with the mcpo command.
+config_required: []
+quality:
+  stars: 4300
+  last_commit: '2026-05-17'
+  verified: false
+source:
+  repo: https://github.com/open-webui/mcpo
+usage:
+  first_prompt_zh: 将我的 MCP 服务器转换为 OpenAPI 接口
+  first_prompt_en: Convert my MCP server to an OpenAPI interface
+name_en: mcpo
+description_en: mcpo is a lightweight proxy server that instantly converts any MCP server command into an OpenAPI-compatible
+  HTTP interface. It allows MCP tools to seamlessly integrate with standard RESTful API tools, SDKs, and LLM agents without
+  custom protocols or glue code, automatically generates interactive documentation, and provides secure, stable, and scalable
+  capabilities based on web standards. Suitable for developers who need to integrate MCP tools into the existing OpenAPI ecosystem.

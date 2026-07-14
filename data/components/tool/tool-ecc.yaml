@@ -1,0 +1,39 @@
+id: tool-ecc
+type: tool
+name: ECC
+description_zh: ECC是一个AI代理性能优化系统，为Claude Code、Codex、Cursor等开发工具提供统一的技能、本能、记忆和安全框架。它通过跨语言生态支持，帮助开发者提升编码效率、自动化工作流并增强安全性，适合AI开发者、高级用户及团队使用。
+host_tools:
+- claude-code
+- codex
+- cursor
+scenarios:
+- devtools
+- coding
+- efficiency
+- security
+tags:
+- ai-agents
+- developer-tools
+- performance
+- Claude Code
+- 安全
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 通过npm安装ecc-universal或ecc-agentshield包，或安装GitHub App。
+  notes_en: Install the ecc-universal or ecc-agentshield package via npm, or install the GitHub App.
+config_required: []
+quality:
+  stars: 229333
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/affaan-m/ECC
+usage:
+  first_prompt_zh: 开始使用ECC优化我的AI代理工作流。
+  first_prompt_en: Start using ECC to optimize my AI agent workflow.
+name_en: ECC
+description_en: ECC is an AI agent performance optimization system that provides a unified framework for skills, instincts,
+  memory, and security for development tools such as Claude Code, Codex, and Cursor. Through cross-language ecosystem support,
+  it helps developers improve coding efficiency, automate workflows, and enhance security, making it suitable for AI developers,
+  advanced users, and teams.

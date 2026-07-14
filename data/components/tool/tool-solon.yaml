@@ -1,0 +1,40 @@
+id: tool-solon
+type: tool
+name: Solon
+description_zh: Solon 是一款 Java 企业级应用开发框架，以高性能、低资源消耗著称，并发能力提升 700%，内存节省 50%，启动速度快 10 倍，打包体积小 90%。支持 Java 8 到 Java 25，兼容 GraalVM
+  原生镜像。内置 AOP、IOC 等核心能力，可替代 Spring 框架，适合构建微服务、Web 应用等场景。适合 Java 开发者快速搭建高效、轻量的企业应用。
+host_tools:
+- any
+scenarios:
+- web-dev
+- devtools
+- coding
+- open-source
+tags:
+- Java
+- 微服务
+- 高性能
+- AOP
+- IOC
+- 企业框架
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 通过 Maven 或 Gradle 添加 solon-parent 依赖，或下载发行版手动集成。
+  notes_en: Add the solon-parent dependency via Maven or Gradle, or download the distribution for manual integration.
+config_required: []
+quality:
+  stars: 2752
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/opensolon/solon
+usage:
+  first_prompt_zh: 创建一个 Solon 项目并运行 Hello World
+  first_prompt_en: Create a Solon project and run Hello World
+name_en: Solon
+description_en: Solon is a Java enterprise application development framework known for high performance and low resource consumption,
+  with a 700% increase in concurrency, 50% memory savings, 10x faster startup, and 90% smaller package size. It supports Java
+  8 through Java 25 and is compatible with GraalVM native images. Built-in core capabilities such as AOP and IOC can replace
+  the Spring framework, making it suitable for building microservices, web applications, and more. Ideal for Java developers
+  to quickly build efficient, lightweight enterprise applications.

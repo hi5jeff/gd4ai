@@ -1,0 +1,37 @@
+id: tool-paperdebugger
+type: tool
+name: PaperDebugger
+description_zh: PaperDebugger 是一款基于插件的多智能体学术写作助手，集成于 Overleaf 编辑器内，提供 AI 驱动的论文调试、审阅和修订建议。它模拟完整的学术工作流（研究→批评→修订），支持多步推理、审稿人风格批评和结构化修改，帮助研究人员和学者在不离开编辑器的情况下提升论文质量。
+host_tools:
+- web
+scenarios:
+- writing
+- research
+- efficiency
+tags:
+- academic-writing
+- latex
+- ai-assistant
+- overleaf
+- chrome-extension
+- multi-agent
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 从 Chrome Web Store 安装扩展，无需命令行操作。
+  notes_en: Install the extension from the Chrome Web Store, no command line operations required.
+config_required: []
+quality:
+  stars: 1511
+  last_commit: '2026-07-03'
+  verified: false
+source:
+  repo: https://github.com/PaperDebugger/paperdebugger
+usage:
+  first_prompt_zh: 帮我审阅这篇论文，指出逻辑漏洞和改进建议。
+  first_prompt_en: Please review this paper and point out logical flaws and suggestions for improvement.
+name_en: PaperDebugger
+description_en: PaperDebugger is a plugin-based multi-agent academic writing assistant integrated into the Overleaf editor,
+  providing AI-driven paper debugging, review, and revision suggestions. It simulates the complete academic workflow (research
+  → critique → revision), supports multi-step reasoning, reviewer-style criticism, and structured modifications, helping researchers
+  and scholars improve paper quality without leaving the editor.

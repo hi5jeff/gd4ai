@@ -1,0 +1,39 @@
+id: tool-neo
+type: tool
+name: Neo.mjs
+description_zh: Neo.mjs是一个自进化的AI工程平台，集成了多模型AI代理群（Claude、Gemini、GPT等），通过Neural Link实时操控应用，具备Active Hybrid GraphRAG记忆、DreamService自我优化和自愈循环。适合需要AI驱动全栈开发、自动化代码维护和智能应用管理的开发者。
+host_tools:
+- web
+scenarios:
+- web-dev
+- coding
+- automation
+- research
+tags:
+- AI代理
+- GraphRAG
+- 自进化
+- 前端框架
+- 多模型
+- 自动化
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 通过npm安装neo.mjs包，但需自行配置AI模型API密钥
+  notes_en: Install the neo.mjs package via npm, but you need to configure your own AI model API keys.
+config_required:
+- AI模型API密钥（如OpenAI、Anthropic等）
+quality:
+  stars: 3231
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/neomjs/neo
+usage:
+  first_prompt_zh: 启动Neo.mjs，连接AI代理群并开始自进化开发。
+  first_prompt_en: Launch Neo.mjs, connect the AI agent swarm, and start self-evolving development.
+name_en: Neo.mjs
+description_en: Neo.mjs is a self-evolving AI engineering platform that integrates a multi-model AI agent swarm (Claude, Gemini,
+  GPT, etc.), controls applications in real time via Neural Link, and features Active Hybrid GraphRAG memory, DreamService
+  self-optimization, and a self-healing loop. It is suitable for developers who need AI-driven full-stack development, automated
+  code maintenance, and intelligent application management.

@@ -1,0 +1,41 @@
+id: mcp-exa-mcp-server
+type: mcp
+name: Exa MCP Server
+description_zh: Exa MCP Server 是一个基于 Model Context Protocol 的远程搜索服务器，将 AI 助手连接到 Exa 强大的搜索能力，支持网络搜索、代码搜索和企业研究。用户无需本地安装，只需通过
+  HTTP 远程连接即可让 AI 实时获取最新网页内容、代码库和公司信息。适合需要集成实时搜索与爬取功能的 AI 应用开发者、研究人员及 Claude/Cursor 等 MCP 客户端用户。
+host_tools:
+- any-mcp-client
+scenarios:
+- search
+- scraping
+- research
+- coding
+tags:
+- MCP
+- 搜索
+- 爬虫
+- AI
+- 代码搜索
+difficulty: intermediate
+install:
+  method: claude-mcp-add
+  command: claude mcp add --transport http exa https://mcp.exa.ai/mcp
+  notes_zh: 需要安装 Claude Code 或使用其他支持 MCP 的客户端，并提前获取 Exa API Key。
+  notes_en: Requires installing Claude Code or using another MCP-compatible client, and obtaining an Exa API Key in advance.
+config_required:
+- Exa API Key
+quality:
+  stars: 4707
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/exa-labs/exa-mcp-server
+usage:
+  first_prompt_zh: 搜索最新的科技新闻
+  first_prompt_en: Search for the latest tech news
+name_en: Exa MCP Server
+description_en: Exa MCP Server is a remote search server based on the Model Context Protocol, connecting AI assistants to
+  Exa's powerful search capabilities, supporting web search, code search, and enterprise research. Users do not need to install
+  locally; they can simply connect remotely via HTTP to allow AI to retrieve the latest web content, code repositories, and
+  company information in real time. Suitable for AI application developers, researchers, and MCP client users such as Claude/Cursor
+  who need to integrate real-time search and crawling functionality.

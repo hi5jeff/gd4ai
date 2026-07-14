@@ -1,0 +1,39 @@
+id: workflow-ai-job-search
+type: workflow
+name: AI Job Search
+description_zh: 基于Claude Code的AI求职应用框架，运行在本地机器上。它能自动抓取招聘信息、评估岗位匹配度、定制简历（LaTeX）、撰写求职信并模拟面试准备。适合正在求职的开发者，尤其是使用Claude Code的用户，通过结构化工作流提升求职效率。
+host_tools:
+- claude-code
+scenarios:
+- automation
+- writing
+- efficiency
+tags:
+- AI求职
+- Claude Code
+- 简历定制
+- 求职信
+- 面试准备
+- 自动化
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需先安装Claude Code CLI、Python 3.10+和Bun，然后fork仓库并填写个人资料（profile.json）
+  notes_en: You need to install Claude Code CLI, Python 3.10+, and Bun first, then fork the repository and fill in your personal
+    information (profile.json)
+config_required:
+- Anthropic API key
+quality:
+  stars: 21988
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/MadsLorentzen/ai-job-search
+usage:
+  first_prompt_zh: 开始我的求职之旅，帮我评估最新的招聘信息。
+  first_prompt_en: Start my job search journey and help me evaluate the latest job postings.
+name_en: AI Job Search
+description_en: An AI job search application framework based on Claude Code, running on a local machine. It automatically
+  scrapes job postings, evaluates job match, customizes resumes (LaTeX), writes cover letters, and simulates interview preparation.
+  Suitable for developers who are job hunting, especially those using Claude Code, to improve job search efficiency through
+  structured workflows.

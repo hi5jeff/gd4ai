@@ -1,0 +1,41 @@
+id: skill-planning-with-files
+type: skill
+name: planning-with-files
+description_zh: 基于文件的持久化规划技能，专为AI编码代理设计。通过维护 task_plan.md、findings.md 和 progress.md 文件，使代理在上下文丢失、/clear 或崩溃后仍能恢复任务。支持长期运行任务、完成门控机制和多代理共享状态，兼容
+  Claude Code、Codex CLI、Cursor 等60+代理。适合需要稳定、可恢复规划流程的开发者。
+host_tools:
+- claude-code
+- codex
+- cursor
+scenarios:
+- planning
+- coding
+- automation
+- efficiency
+tags:
+- agent-skills
+- agentic-ai
+- ai-agents
+- planning
+- persistent
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 将 SKILL.md 文件放入项目根目录，或使用支持 SKILL.md 标准的代理自动识别安装。
+  notes_en: Place the SKILL.md file in the project root directory, or use an agent that supports the SKILL.md standard for
+    automatic recognition and installation.
+config_required: []
+quality:
+  stars: 25299
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/OthmanAdi/planning-with-files
+usage:
+  first_prompt_zh: 请创建一个新的任务计划，开始长期编码任务。
+  first_prompt_en: Please create a new task plan to start a long-term coding task.
+name_en: planning-with-files
+description_en: File-based persistent planning skill, designed specifically for AI coding agents. By maintaining task_plan.md,
+  findings.md, and progress.md files, it enables agents to resume tasks after context loss, /clear, or crashes. Supports long-running
+  tasks, completion gating mechanisms, and multi-agent shared state. Compatible with 60+ agents including Claude Code, Codex
+  CLI, Cursor, etc. Suitable for developers who need stable, recoverable planning workflows.

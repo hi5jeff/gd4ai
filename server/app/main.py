@@ -21,8 +21,8 @@ class RecommendReq(BaseModel):
 
 
 @app.post("/api/recommend")
-async def recommend(req: RecommendReq):
-    return await run_in_threadpool(orchestrate.recommend, req.query)
+async def recommend(req: RecommendReq, lang: str = "zh"):
+    return await run_in_threadpool(orchestrate.recommend, req.query, lang)
 
 
 @app.get("/api/search")

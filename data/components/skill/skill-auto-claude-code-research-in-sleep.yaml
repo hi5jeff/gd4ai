@@ -1,0 +1,41 @@
+id: skill-auto-claude-code-research-in-sleep
+type: skill
+name: ARIS
+description_zh: ARIS（Auto-Research-In-Sleep）是一套轻量级Markdown技能集，专为自主机器学习研究设计。它支持跨模型评审循环、想法发现和实验自动化，无需框架绑定，可无缝集成到Claude Code、Codex
+  CLI、Cursor等AI编码代理中。适合希望提升研究效率的AI开发者和研究人员。
+host_tools:
+- claude-code
+- codex
+- cursor
+scenarios:
+- research
+- automation
+- efficiency
+tags:
+- ai-research
+- autonomous-agent
+- claude-code
+- skill
+- markdown
+- 实验自动化
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 将skills目录中的Markdown文件复制到对应AI代理的技能目录（如Claude Code的~/.claude/skills/），或参考README中的适配指南。
+  notes_en: Copy the Markdown files in the skills directory to the skill directory of the corresponding AI agent (e.g., ~/.claude/skills/
+    for Claude Code), or refer to the adaptation guide in the README.
+config_required: []
+quality:
+  stars: 13369
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep
+usage:
+  first_prompt_zh: 开始自动研究，帮我设计一个实验方案。
+  first_prompt_en: Start automatic research and help me design an experiment plan.
+name_en: ARIS
+description_en: ARIS (Auto-Research-In-Sleep) is a lightweight Markdown skill set designed for autonomous machine learning
+  research. It supports cross-model review loops, idea discovery, and experiment automation without framework binding, and
+  can be seamlessly integrated into AI coding agents such as Claude Code, Codex CLI, and Cursor. Suitable for AI developers
+  and researchers looking to improve research efficiency.

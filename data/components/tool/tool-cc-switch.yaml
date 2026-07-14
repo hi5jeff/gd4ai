@@ -1,0 +1,36 @@
+id: tool-cc-switch
+type: tool
+name: CC Switch
+description_zh: CC Switch 是一款跨平台桌面应用，作为 Claude Code、Codex、Gemini CLI 等 AI 编码助手的统一管理入口。它提供一键切换、配置管理和多工具协同功能，适合需要同时使用多个 AI 编码工具的开发者，提升工作效率。
+host_tools:
+- desktop
+scenarios:
+- coding
+- devtools
+- efficiency
+tags:
+- AI助手
+- Claude Code
+- Codex
+- 跨平台
+- 桌面应用
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 从 GitHub Releases 页面下载对应操作系统的安装包（Windows/macOS/Linux）并安装即可。
+  notes_en: Download the installer for your operating system (Windows/macOS/Linux) from the GitHub Releases page and install
+    it.
+config_required: []
+quality:
+  stars: 116909
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/farion1231/cc-switch
+usage:
+  first_prompt_zh: 启动CC Switch，开始管理我的AI助手。
+  first_prompt_en: Launch CC Switch to start managing my AI assistants.
+name_en: CC Switch
+description_en: CC Switch is a cross-platform desktop app that serves as a unified management hub for AI coding assistants
+  like Claude Code, Codex, and Gemini CLI. It offers one-click switching, configuration management, and multi-tool coordination,
+  making it ideal for developers who need to work with multiple AI coding tools to boost productivity.

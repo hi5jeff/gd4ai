@@ -1,0 +1,39 @@
+id: skill-last30days-skill
+type: skill
+name: last30days-skill
+description_zh: 一个AI代理技能，可同时搜索Reddit、X、YouTube、Hacker News、Polymarket等多个平台，根据点赞、投票和真实金钱投注等信号对结果排序，并由AI法官合成一份简洁摘要。适合需要快速了解某个话题在社区中最新动态的研究者、开发者和投资者。零配置即可使用Reddit、HN等平台，运行一次后可通过向导解锁更多平台。
+host_tools:
+- claude-code
+- codex
+- cursor
+scenarios:
+- research
+- search
+- efficiency
+tags:
+- AI搜索
+- 多平台聚合
+- 实时信息
+- 社区洞察
+difficulty: beginner
+install:
+  method: npx
+  command: npx skills add mvanhorn/last30days-skill -g
+  notes_zh: 需要Node.js环境；也可在Claude Code中直接使用 /plugin marketplace add mvanhorn/last30days-skill 安装。
+  notes_en: Requires Node.js environment; can also be installed directly in Claude Code using /plugin marketplace add mvanhorn/last30days-skill.
+config_required: []
+quality:
+  stars: 52017
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/mvanhorn/last30days-skill
+usage:
+  first_prompt_zh: /last30days 人工智能
+  first_prompt_en: /last30days artificial intelligence
+name_en: last30days-skill
+description_en: An AI agent skill that simultaneously searches multiple platforms including Reddit, X, YouTube, Hacker News,
+  Polymarket, etc., ranks results based on signals such as likes, votes, and real-money bets, and synthesizes a concise summary
+  via an AI judge. Suitable for researchers, developers, and investors who need to quickly understand the latest community
+  trends on a topic. Zero-configuration for platforms like Reddit and HN; after running once, more platforms can be unlocked
+  via a wizard.

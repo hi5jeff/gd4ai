@@ -1,0 +1,37 @@
+id: tool-mcp-router
+type: tool
+name: MCP Router
+description_zh: MCP Router 是一款跨平台桌面应用，用于统一管理多个 MCP 服务器。它支持本地和远程服务器连接，提供项目分组、工作区管理、工具开关等组织功能，所有数据本地存储，保障隐私安全。适合需要集中管理多个 MCP
+  服务的开发者或团队。
+host_tools:
+- desktop
+scenarios:
+- devtools
+- efficiency
+- automation
+tags:
+- MCP管理
+- 跨平台
+- 隐私安全
+- 桌面应用
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 从 GitHub Releases 页面下载对应操作系统的安装包（Windows/macOS）并运行安装。
+  notes_en: Download the installation package for your operating system (Windows/macOS) from the GitHub Releases page and
+    run the installer.
+config_required: []
+quality:
+  stars: 2088
+  last_commit: '2026-06-27'
+  verified: false
+source:
+  repo: https://github.com/mcp-router/mcp-router
+usage:
+  first_prompt_zh: 如何添加一个 MCP 服务器？
+  first_prompt_en: How to add an MCP server?
+name_en: MCP Router
+description_en: MCP Router is a cross-platform desktop application for unified management of multiple MCP servers. It supports
+  local and remote server connections, and provides organizational features such as project grouping, workspace management,
+  and tool toggling. All data is stored locally to ensure privacy and security. It is suitable for developers or teams who
+  need to centrally manage multiple MCP services.

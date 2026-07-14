@@ -1,0 +1,40 @@
+id: tool-beads
+type: tool
+name: beads
+description_zh: Beads 是一个为 AI 编码代理提供持久化结构化记忆的命令行工具。它用依赖感知的图结构替代混乱的 Markdown 计划，支持多代理协作、版本控制（基于 Dolt）、任务追踪、上下文压缩和消息传递。适合使用
+  Claude Code、Codex 等编码代理的开发者，帮助代理处理长周期任务而不丢失上下文。
+host_tools:
+- claude-code
+- codex
+- cursor
+scenarios:
+- coding
+- devtools
+- planning
+- memory
+tags:
+- agents
+- memory
+- issue-tracker
+- graph
+- dolt
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 需要 curl 和 bash 环境，安装后可在任意项目目录运行 bd init 初始化。
+  notes_en: Requires curl and bash environment. After installation, you can run 'bd init' in any project directory to initialize.
+config_required: []
+quality:
+  stars: 25281
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/gastownhall/beads
+usage:
+  first_prompt_zh: 帮我初始化 beads 并创建一个新任务。
+  first_prompt_en: Help me initialize beads and create a new task.
+name_en: beads
+description_en: Beads is a command-line tool that provides persistent structured memory for AI coding agents. It replaces
+  messy Markdown plans with a dependency-aware graph structure, supporting multi-agent collaboration, version control (based
+  on Dolt), task tracking, context compression, and messaging. Suitable for developers using coding agents like Claude Code,
+  Codex, etc., it helps agents handle long-cycle tasks without losing context.

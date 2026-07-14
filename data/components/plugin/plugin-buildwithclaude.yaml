@@ -1,0 +1,39 @@
+id: plugin-buildwithclaude
+type: plugin
+name: Build with Claude
+description_zh: Build with Claude 是一个为 Claude Code 打造的插件市场和发现平台，汇集了数千个社区贡献的插件、代理、命令、钩子、技能和 MCP 服务器。用户可以通过添加市场来浏览、搜索和安装各类扩展，从而快速增强
+  Claude Code 的功能，提升开发效率。适合所有希望扩展 Claude Code 工作流的开发者。
+host_tools:
+- claude-code
+scenarios:
+- devtools
+- coding
+- automation
+- efficiency
+tags:
+- Claude Code
+- 插件市场
+- 技能
+- 代理
+- MCP
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 在 Claude Code 中执行该命令即可添加市场，之后可通过 /plugin search @buildwithclaude 浏览和安装插件。
+  notes_en: Run this command in Claude Code to add the marketplace, then use /plugin search @buildwithclaude to browse and
+    install plugins.
+config_required: []
+quality:
+  stars: 3176
+  last_commit: '2026-07-11'
+  verified: false
+source:
+  repo: https://github.com/davepoon/buildwithclaude
+usage:
+  first_prompt_zh: 帮我浏览 Build with Claude 市场中的插件。
+  first_prompt_en: Help me browse plugins in the Build with Claude marketplace.
+name_en: Build with Claude
+description_en: Build with Claude is a plugin marketplace and discovery platform built for Claude Code, bringing together
+  thousands of community-contributed plugins, agents, commands, hooks, skills, and MCP servers. Users can add the marketplace
+  to browse, search, and install various extensions, quickly enhancing Claude Code's capabilities and boosting development
+  efficiency. It's ideal for any developer looking to extend their Claude Code workflow.

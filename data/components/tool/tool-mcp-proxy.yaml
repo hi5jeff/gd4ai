@@ -1,0 +1,40 @@
+id: tool-mcp-proxy
+type: tool
+name: mcp-proxy
+description_zh: mcp-proxy 是一个 MCP 传输协议桥接工具，支持将 stdio 传输转换为 SSE/Streamable HTTP，或将 SSE 转换为 stdio。它允许仅支持 stdio 的 MCP 客户端（如 Claude
+  Desktop）连接远程 SSE MCP 服务器，同时支持 OAuth2 认证和自定义请求头。适合需要远程调用 MCP 服务的开发者和自动化场景。
+host_tools:
+- any-mcp-client
+scenarios:
+- automation
+- devtools
+- mcp-dev
+tags:
+- mcp
+- proxy
+- sse
+- streamable-http
+- bridge
+- 传输桥接
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要 Python 3.10+ 环境，通过 pip 安装即可。
+  notes_en: Requires Python 3.10+ environment, install via pip.
+config_required:
+- MCP服务器SSE端点URL
+- 可选：API访问令牌或OAuth2凭据
+quality:
+  stars: 2666
+  last_commit: '2026-06-08'
+  verified: false
+source:
+  repo: https://github.com/sparfenyuk/mcp-proxy
+usage:
+  first_prompt_zh: 启动代理连接远程MCP服务器
+  first_prompt_en: Start proxy to connect to remote MCP server
+name_en: mcp-proxy
+description_en: mcp-proxy is an MCP transport protocol bridging tool that supports converting stdio transport to SSE/Streamable
+  HTTP, or converting SSE to stdio. It allows MCP clients that only support stdio (such as Claude Desktop) to connect to remote
+  SSE MCP servers, while also supporting OAuth2 authentication and custom request headers. Suitable for developers and automation
+  scenarios that need to remotely call MCP services.

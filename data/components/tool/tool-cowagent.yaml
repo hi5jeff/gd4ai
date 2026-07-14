@@ -1,0 +1,43 @@
+id: tool-cowagent
+type: tool
+name: CowAgent
+description_zh: CowAgent 是一个开源的超级 AI 助手与 Agent 框架，能够主动规划任务、控制电脑和外部服务、创建并运行技能、构建个人知识库与长期记忆，并通过自我进化不断成长。它支持多种大模型和通信渠道（网页、微信、飞书等），轻量易部署，一行命令即可安装。适合希望拥有个性化
+  AI 助手、自动化工作流和持续学习能力的开发者和高级用户。
+host_tools:
+- web
+- desktop
+scenarios:
+- automation
+- efficiency
+- memory
+- search
+tags:
+- ai-agent
+- open-source
+- multi-model
+- self-evolution
+- lightweight
+- agent-harness
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要 Python 3.10+ 环境，推荐使用 pip 安装或 Docker 部署，具体命令请参考官方文档。
+  notes_en: Requires Python 3.10+ environment. It is recommended to install via pip or deploy with Docker. For specific commands,
+    please refer to the official documentation.
+config_required:
+- LLM API key（如 OpenAI、Claude 等）
+quality:
+  stars: 45965
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/zhayujie/CowAgent
+usage:
+  first_prompt_zh: 帮我规划今天的任务，并设置一个定时提醒。
+  first_prompt_en: Help me plan today's tasks and set a timed reminder.
+name_en: CowAgent
+description_en: CowAgent is an open-source super AI assistant and Agent framework that can proactively plan tasks, control
+  computers and external services, create and run skills, build personal knowledge bases and long-term memory, and continuously
+  grow through self-evolution. It supports multiple large models and communication channels (web, WeChat, Feishu, etc.), is
+  lightweight and easy to deploy, and can be installed with a single command. Suitable for developers and advanced users who
+  want a personalized AI assistant, automated workflows, and continuous learning capabilities.

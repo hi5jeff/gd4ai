@@ -1,0 +1,39 @@
+id: mcp-tradingview-mcp
+type: mcp
+name: tradingview-mcp
+description_zh: 基于Model Context Protocol的TradingView数据服务器，为Claude、ChatGPT、Cursor等AI助手提供实时市场数据、技术指标、筛选器和回测功能。支持股票、加密货币、外汇和期货等全球交易所，内置30+技术分析工具。可自托管或使用托管版本，适合需要金融市场数据和分析的AI用户。
+host_tools:
+- any-mcp-client
+- cursor
+scenarios:
+- finance
+- data-analysis
+- automation
+tags:
+- TradingView
+- 市场数据
+- 技术分析
+- MCP
+- 加密货币
+- 回测
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要Python 3.10+环境，推荐使用uvx或pip安装，也可直接使用托管版本无需配置。
+  notes_en: Requires Python 3.10+ environment. It is recommended to install using uvx or pip, or you can directly use the
+    hosted version without configuration.
+config_required: []
+quality:
+  stars: 3516
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/atilaahmettaner/tradingview-mcp
+usage:
+  first_prompt_zh: 请显示比特币的实时价格和技术指标。
+  first_prompt_en: Please show the real-time price and technical indicators of Bitcoin.
+name_en: tradingview-mcp
+description_en: A TradingView data server based on the Model Context Protocol, providing real-time market data, technical
+  indicators, screeners, and backtesting capabilities for AI assistants such as Claude, ChatGPT, and Cursor. Supports global
+  exchanges for stocks, cryptocurrencies, forex, and futures, with 30+ built-in technical analysis tools. Can be self-hosted
+  or use the hosted version, suitable for AI users who need financial market data and analysis.

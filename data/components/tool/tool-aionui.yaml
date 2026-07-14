@@ -1,0 +1,43 @@
+id: tool-aionui
+type: tool
+name: AionUi
+description_zh: AionUi 是一款免费、开源、本地运行的 AI 协作平台，支持 Claude Code、Codex、Hermes Agent 等 20 多种 CLI 工具。它让 AI 代理在你的电脑上直接读写文件、编写代码、浏览网页并自动执行多步骤任务，同时提供远程访问（WebUI/Telegram/微信等）和定时调度功能。适合开发者、团队和自动化爱好者，只需提供
+  API Key 即可零配置启动。
+host_tools:
+- desktop
+- web
+scenarios:
+- automation
+- coding
+- devtools
+- efficiency
+tags:
+- AI代理
+- 协作
+- 自动化
+- 开源
+- 跨平台
+- 远程访问
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 从 GitHub Releases 页面下载对应操作系统（macOS/Windows/Linux）的安装包并安装。
+  notes_en: Download the installation package for your operating system (macOS/Windows/Linux) from the GitHub Releases page
+    and install it.
+config_required:
+- AI API Key（如 OpenAI、Anthropic 等）
+quality:
+  stars: 29994
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/iOfficeAI/AionUi
+usage:
+  first_prompt_zh: 帮我创建一个自动化任务，每天定时检查我的项目文件夹并生成报告。
+  first_prompt_en: Help me create an automated task that checks my project folder daily and generates a report.
+name_en: AionUi
+description_en: AionUi is a free, open-source, locally running AI collaboration platform that supports over 20 CLI tools including
+  Claude Code, Codex, Hermes Agent, etc. It allows AI agents to directly read and write files, write code, browse the web,
+  and automatically execute multi-step tasks on your computer, while also providing remote access (WebUI/Telegram/WeChat,
+  etc.) and scheduled task capabilities. Suitable for developers, teams, and automation enthusiasts, it can be started with
+  zero configuration by simply providing an API Key.

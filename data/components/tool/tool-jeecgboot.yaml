@@ -1,0 +1,41 @@
+id: tool-jeecgboot
+type: tool
+name: JeecgBoot
+description_zh: JeecgBoot是一款企业级AI低代码开发平台，支持低代码与零代码双模式。内置AI应用平台（聊天、知识库、流程编排、MCP插件），兼容主流大模型。具备Skills能力，可通过自然语言一句话生成完整系统、代码、流程、表单、报表和大屏，覆盖JeecgBoot全场景。适合Java开发者快速构建企业级Web应用，解决80%重复工作。
+host_tools:
+- web
+- claude-code
+scenarios:
+- web-dev
+- coding
+- efficiency
+- automation
+tags:
+- 低代码
+- AI
+- Java
+- SpringBoot
+- Vue3
+- 代码生成
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要Java 8+、Maven、Node.js、MySQL、Redis等环境，参考官方文档部署。
+  notes_en: Requires Java 8+, Maven, Node.js, MySQL, Redis, and other environments. Refer to the official documentation for
+    deployment.
+config_required: []
+quality:
+  stars: 47057
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/jeecgboot/JeecgBoot
+usage:
+  first_prompt_zh: 帮我生成一个用户管理模块的完整前后端代码
+  first_prompt_en: Help me generate the complete front-end and back-end code for a user management module.
+name_en: JeecgBoot
+description_en: JeecgBoot is an enterprise-level AI low-code development platform that supports both low-code and no-code
+  modes. It comes with an integrated AI application platform (chat, knowledge base, workflow orchestration, MCP plugins) and
+  is compatible with mainstream large models. It features Skills capabilities, allowing users to generate complete systems,
+  code, workflows, forms, reports, and dashboards with a single sentence of natural language, covering all scenarios of JeecgBoot.
+  It is suitable for Java developers to quickly build enterprise-level web applications, solving 80% of repetitive work.

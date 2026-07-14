@@ -1,0 +1,41 @@
+id: tool-dive
+type: tool
+name: Dive
+description_zh: Dive 是一款开源的 MCP Host 桌面应用，支持与任何具备函数调用能力的 LLM（如 ChatGPT、Anthropic、Ollama 等）无缝集成。它提供跨平台支持（Windows/macOS/Linux），内置
+  MCP 客户端与服务器管理、聊天界面、工具控制、自定义指令、多语言界面（24+ 种语言）以及自动更新等功能。适合 AI 开发者、MCP 生态用户以及需要本地化 AI 助手的人群，可大幅简化 MCP 服务器的部署与交互流程。
+host_tools:
+- desktop
+scenarios:
+- devtools
+- automation
+- efficiency
+tags:
+- MCP
+- AI Agent
+- 桌面应用
+- LLM
+- 开源
+- 跨平台
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 从 GitHub Releases 下载对应平台的安装包，或使用包管理器安装（如 Homebrew）。
+  notes_en: Download the installation package for your platform from GitHub Releases, or install using a package manager (e.g.,
+    Homebrew).
+config_required:
+- LLM API key
+quality:
+  stars: 1799
+  last_commit: '2026-04-01'
+  verified: false
+source:
+  repo: https://github.com/OpenAgentPlatform/Dive
+usage:
+  first_prompt_zh: 你好，帮我连接一个 MCP 服务器并执行一次网页抓取。
+  first_prompt_en: Hello, help me connect to an MCP server and perform a web scrape.
+name_en: Dive
+description_en: Dive is an open-source MCP Host desktop application that seamlessly integrates with any LLM with function
+  calling capabilities (such as ChatGPT, Anthropic, Ollama, etc.). It offers cross-platform support (Windows/macOS/Linux),
+  built-in MCP client and server management, chat interface, tool control, custom instructions, multilingual interface (24+
+  languages), and automatic updates. Suitable for AI developers, MCP ecosystem users, and those who need a localized AI assistant,
+  it greatly simplifies the deployment and interaction process of MCP servers.

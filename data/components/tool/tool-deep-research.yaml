@@ -1,0 +1,40 @@
+id: tool-deep-research
+type: tool
+name: deep-research
+description_zh: Deep Research 是一个基于多种大语言模型（LLM）的深度研究工具，可在约2分钟内生成详尽的研究报告。它支持 Gemini、OpenAI、Anthropic、Deepseek 等主流模型，并集成网络搜索、本地知识库、思维链与任务模型，提供所见即所得的编辑和
+  Markdown 编辑模式。用户可一键部署到 Vercel 或 Cloudflare，所有数据本地存储，注重隐私。适合研究人员、学生及需要快速获取深度分析的专业人士。
+host_tools:
+- web
+scenarios:
+- research
+- search
+- efficiency
+tags:
+- deep-research
+- LLM
+- AI研究报告
+- 多模型支持
+- 隐私保护
+- 快速生成
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 可通过 Vercel 一键部署或使用 Docker 运行，需准备 LLM 的 API Key。
+  notes_en: Can be deployed with one click via Vercel or run using Docker. An LLM API key is required.
+config_required:
+- LLM API Key (如 Gemini、OpenAI、Anthropic 等)
+quality:
+  stars: 4632
+  last_commit: '2026-06-18'
+  verified: false
+source:
+  repo: https://github.com/u14app/deep-research
+usage:
+  first_prompt_zh: 帮我研究一下量子计算的最新进展
+  first_prompt_en: Help me research the latest advances in quantum computing.
+name_en: deep-research
+description_en: Deep Research is a deep research tool based on multiple large language models (LLMs) that can generate detailed
+  research reports in about 2 minutes. It supports mainstream models such as Gemini, OpenAI, Anthropic, Deepseek, and integrates
+  web search, local knowledge base, chain-of-thought, and task models. It offers WYSIWYG editing and Markdown editing modes.
+  Users can deploy it with one click to Vercel or Cloudflare, with all data stored locally, emphasizing privacy. Suitable
+  for researchers, students, and professionals who need quick access to in-depth analysis.

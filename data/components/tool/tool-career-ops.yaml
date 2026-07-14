@@ -1,0 +1,40 @@
+id: tool-career-ops
+type: tool
+name: Career-Ops
+description_zh: Career-Ops 是一个开源 AI 求职系统，可自动扫描多个职位门户，对职位列表进行 A-F 评分，根据职位要求定制简历，并跟踪申请进度。它运行在本地 AI 编码 CLI（如 Claude Code、Gemini、Codex）中，适合求职者高效筛选和申请工作，尤其适合技术岗位求职者。
+host_tools:
+- claude-code
+- codex
+scenarios:
+- automation
+- search
+- efficiency
+tags:
+- AI
+- 求职
+- 自动化
+- 简历优化
+- 开源
+- CLI
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要 Node.js 环境，通过 npm 全局安装（具体命令请参考仓库 README 中的安装说明）。
+  notes_en: Requires Node.js environment, install globally via npm (see the installation instructions in the repo's README
+    for specific commands).
+config_required:
+- Anthropic API key
+quality:
+  stars: 59930
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/santifer/career-ops
+usage:
+  first_prompt_zh: 开始帮我搜索最新的 AI 相关职位。
+  first_prompt_en: Start helping me search for the latest AI-related jobs.
+name_en: Career-Ops
+description_en: Career-Ops is an open-source AI job search system that automatically scans multiple job portals, rates job
+  listings on an A-F scale, tailors resumes based on job requirements, and tracks application progress. It runs in local AI
+  coding CLIs (such as Claude Code, Gemini, Codex) and is suitable for job seekers to efficiently filter and apply for jobs,
+  especially for technical positions.

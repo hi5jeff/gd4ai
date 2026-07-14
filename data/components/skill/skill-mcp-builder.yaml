@@ -18,9 +18,13 @@ install:
   command: /plugin marketplace add anthropics/skills
 usage:
   first_prompt_zh: 用 mcp-builder 帮我写一个查询公司内部 ERP 的 MCP server
+  first_prompt_en: Use mcp-builder to help me write an MCP server for querying the company's internal ERP.
 quality:
   verified: false
   stars: 160919
   last_commit: '2026-07-13'
 source:
   repo: https://github.com/anthropics/skills
+name_en: MCP Builder (Official)
+description_en: Anthropic's official skill that guides Claude to write a high-quality MCP server from scratch. Use it to customize
+  one when the library doesn't have the MCP you need.

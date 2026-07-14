@@ -7,10 +7,12 @@
   "properties": {
     "id": { "type": "string", "pattern": "^pb-[a-z0-9-]+$" },
     "title_zh": { "type": "string" },
+    "title_en": { "type": "string" },
     "scenario": { "type": "string" },
     "audience": { "enum": ["beginner", "intermediate", "advanced"], "default": "beginner" },
     "host_tool": { "type": "string" },
     "summary_zh": { "type": "string" },
+    "summary_en": { "type": "string" },
     "tags": { "type": "array", "items": { "type": "string" } },
     "components": {
       "type": "array",
@@ -22,6 +24,7 @@
         "properties": {
           "ref": { "type": "string" },
           "role_zh": { "type": "string" },
+          "role_en": { "type": "string" },
           "optional": { "type": "boolean", "default": false }
         }
       }
@@ -35,13 +38,17 @@
         "additionalProperties": false,
         "properties": {
           "title_zh": { "type": "string" },
+          "title_en": { "type": "string" },
           "detail_zh": { "type": "string" },
+          "detail_en": { "type": "string" },
           "command": { "type": "string" }
         }
       }
     },
     "first_prompt_zh": { "type": "string" },
+    "first_prompt_en": { "type": "string" },
     "pitfalls_zh": { "type": "array", "items": { "type": "string" } },
+    "pitfalls_en": { "type": "array", "items": { "type": "string" } },
     "quality": {
       "type": "object",
       "additionalProperties": false,

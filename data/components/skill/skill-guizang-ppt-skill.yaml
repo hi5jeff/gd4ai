@@ -1,0 +1,43 @@
+id: skill-guizang-ppt-skill
+type: skill
+name: guizang-ppt-skill
+description_zh: 一个适配 Claude Code / Codex 等 AI Agent 环境的网页 PPT 技能，用于生成单文件 HTML 横向翻页 PPT、PPT 配图和多平台封面。内置电子杂志风（Style A）和瑞士国际主义（Style
+  B）两套视觉系统，支持多种布局、主题色预设、低性能静态模式，无需构建工具，浏览器直接打开。适合需要快速制作演讲幻灯片、配图、公众号封面等场景的用户。
+host_tools:
+- claude-code
+- codex
+scenarios:
+- office
+- graphic-design
+- image-gen
+- marketing
+tags:
+- PPT
+- HTML Deck
+- AI Agent
+- Slide
+- Presentation
+- Image Generation
+difficulty: beginner
+install:
+  method: npx
+  command: npx skills add https://github.com/op7418/guizang-ppt-skill --skill guizang-ppt-skill
+  notes_zh: 需要 Node.js 环境，确保 npx 可用；安装后检查 SKILL.md、assets/、references/ 是否存在。
+  notes_en: Requires Node.js environment, ensure npx is available; after installation, check that SKILL.md, assets/, references/
+    exist.
+config_required: []
+quality:
+  stars: 21223
+  last_commit: '2026-06-02'
+  verified: false
+source:
+  repo: https://github.com/op7418/guizang-ppt-skill
+usage:
+  first_prompt_zh: 帮我基于这篇文章做一份瑞士风PPT，控制在7页左右，需要2-3张配图。
+  first_prompt_en: Help me create a Swiss-style PPT based on this article, around 7 pages, with 2-3 illustrations.
+name_en: guizang-ppt-skill
+description_en: 'A web-based PPT skill adapted for AI Agent environments like Claude Code / Codex, used to generate single-file
+  HTML horizontal-flip PPT, PPT illustrations, and multi-platform covers. Built-in two visual systems: electronic magazine
+  style (Style A) and Swiss International style (Style B). Supports multiple layouts, theme color presets, low-performance
+  static mode. No build tools required, open directly in browser. Suitable for users who need to quickly create presentation
+  slides, illustrations, WeChat public account covers, etc.'

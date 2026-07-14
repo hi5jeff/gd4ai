@@ -1,0 +1,39 @@
+id: mcp-datagouv-mcp
+type: mcp
+name: datagouv-mcp
+description_zh: datagouv-mcp 是法国国家开放数据平台 data.gouv.fr 的官方 MCP 服务器，允许 AI 聊天机器人（如 Claude、ChatGPT、Gemini）通过对话直接搜索、浏览和分析平台上的数据集。用户无需手动浏览网站，只需用自然语言提问即可获取法国开放数据，适合需要快速查询法国公共数据的研究者、开发者或数据分析师。
+host_tools:
+- any-mcp-client
+- claude-code
+- cursor
+scenarios:
+- data-analysis
+- search
+- research
+tags:
+- mcp-server
+- open-data
+- 法国开放数据
+- data.gouv.fr
+difficulty: beginner
+install:
+  method: claude-mcp-add
+  command: claude mcp add --transport http datagouv https://mcp.data.gouv.fr/mcp
+  notes_zh: 使用 Claude Code 时运行此命令即可添加；其他客户端（如 ChatGPT、Cursor）请参考 README 配置对应 URL。
+  notes_en: When using Claude Code, run this command to add it; for other clients (such as ChatGPT, Cursor), please refer
+    to the README to configure the corresponding URL.
+config_required: []
+quality:
+  stars: 1561
+  last_commit: '2026-06-29'
+  verified: false
+source:
+  repo: https://github.com/datagouv/datagouv-mcp
+usage:
+  first_prompt_zh: 搜索法国开放数据中关于巴黎人口的最新数据集。
+  first_prompt_en: Search for the latest dataset on the population of Paris in French open data.
+name_en: datagouv-mcp
+description_en: datagouv-mcp is the official MCP server for the French national open data platform data.gouv.fr. It allows
+  AI chatbots (such as Claude, ChatGPT, Gemini) to search, browse, and analyze datasets on the platform directly through conversation.
+  Users do not need to manually browse the website; they can simply ask questions in natural language to access French open
+  data. It is suitable for researchers, developers, or data analysts who need to quickly query French public data.

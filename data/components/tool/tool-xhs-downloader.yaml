@@ -1,0 +1,39 @@
+id: tool-xhs-downloader
+type: tool
+name: XHS-Downloader
+description_zh: 小红书（XiaoHongShu/RedNote）链接提取与作品采集工具。支持提取账号发布、收藏、点赞、专辑作品链接，采集作品信息，下载作品文件（含livePhoto），提供API和MCP调用、命令行、剪贴板监听、Docker部署等功能。适合需要批量下载小红书内容的用户、数据分析师和内容创作者。
+host_tools:
+- any
+scenarios:
+- scraping
+- automation
+- media
+tags:
+- 小红书
+- downloader
+- scraper
+- API
+- Docker
+- open-source
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 可通过pip安装或使用Docker运行，需要Python 3.12环境；也可直接下载预编译可执行文件。
+  notes_en: Can be installed via pip or run using Docker, requires Python 3.12 environment; precompiled executables can also
+    be downloaded directly.
+config_required:
+- 小红书Cookie（可选，可从浏览器自动读取）
+quality:
+  stars: 11943
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/JoeanAmier/XHS-Downloader
+usage:
+  first_prompt_zh: 帮我下载这个小红书作品链接：https://www.xiaohongshu.com/explore/作品ID?xsec_token=XXX
+  first_prompt_en: 'Help me download this Xiaohongshu post link: https://www.xiaohongshu.com/explore/作品ID?xsec_token=XXX'
+name_en: XHS-Downloader
+description_en: A tool for extracting links and collecting posts from Xiaohongshu (RedNote). Supports extracting links from
+  account posts, collections, likes, and albums; collecting post information; downloading post files (including Live Photos);
+  and provides API and MCP calls, command-line interface, clipboard monitoring, Docker deployment, etc. Suitable for users
+  who need to batch download Xiaohongshu content, data analysts, and content creators.

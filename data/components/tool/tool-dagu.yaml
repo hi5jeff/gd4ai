@@ -1,0 +1,39 @@
+id: tool-dagu
+type: tool
+name: Dagu
+description_zh: Dagu 是一个轻量级、自包含的工作流引擎，提供 Web UI，适合小团队使用。它通过声明式 YAML 定义有向无环图（DAG），支持 Shell 命令、Docker、Kubernetes、SSH 远程命令等多种执行方式。无需数据库，单二进制文件即可运行。内置
+  MCP 支持，允许 AI 代理管理工作流。可替代 Cron 或 Airflow 进行任务调度、数据管道编排和自动化运维。
+host_tools:
+- web
+- any-mcp-client
+scenarios:
+- automation
+- devtools
+- monitoring
+tags:
+- workflow-engine
+- DAG
+- cron
+- self-contained
+- MCP
+- web-ui
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 下载对应操作系统的单二进制文件，直接运行即可启动 Web UI 和调度器。
+  notes_en: Download the single binary for your operating system and run it directly to start the Web UI and scheduler.
+config_required: []
+quality:
+  stars: 3628
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/dagucloud/dagu
+usage:
+  first_prompt_zh: 启动 Dagu 并打开 Web UI 创建第一个工作流。
+  first_prompt_en: Start Dagu and open the Web UI to create your first workflow.
+name_en: Dagu
+description_en: Dagu is a lightweight, self-contained workflow engine with a Web UI, suitable for small teams. It defines
+  directed acyclic graphs (DAGs) using declarative YAML and supports multiple execution methods such as Shell commands, Docker,
+  Kubernetes, and SSH remote commands. No database required; runs as a single binary. Built-in MCP support allows AI agents
+  to manage workflows. It can replace Cron or Airflow for task scheduling, data pipeline orchestration, and automated operations.

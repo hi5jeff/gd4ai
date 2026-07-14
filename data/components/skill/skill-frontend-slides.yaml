@@ -1,0 +1,38 @@
+id: skill-frontend-slides
+type: skill
+name: frontend-slides
+description_zh: Frontend Slides 是一个 Claude Code 技能，让非设计师也能通过自然语言快速创建精美的 HTML 演示文稿。它支持从零生成或转换 PowerPoint 文件，提供视觉风格预览和精选模板，无需
+  CSS/JavaScript 知识即可产出生产级质量的单文件幻灯片。适合需要快速制作演示文稿的开发者和内容创作者。
+host_tools:
+- claude-code
+scenarios:
+- web-dev
+- ui-design
+- office
+tags:
+- presentation
+- slides
+- claude-code
+- html
+- generative-ui
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 先运行此命令添加市场源，再运行 `/plugin install frontend-slides@frontend-slides` 完成安装。
+  notes_en: First run this command to add the marketplace source, then run `/plugin install frontend-slides@frontend-slides`
+    to complete the installation.
+config_required: []
+quality:
+  stars: 25521
+  last_commit: '2026-06-23'
+  verified: false
+source:
+  repo: https://github.com/zarazhangrui/frontend-slides
+usage:
+  first_prompt_zh: 帮我创建一个关于人工智能的HTML演示文稿
+  first_prompt_en: Create an HTML presentation about artificial intelligence for me
+name_en: frontend-slides
+description_en: Frontend Slides is a Claude Code skill that enables non-designers to quickly create beautiful HTML presentations
+  using natural language. It supports generating from scratch or converting PowerPoint files, offers visual style previews
+  and curated templates, and produces production-quality single-file slides without requiring CSS/JavaScript knowledge. Ideal
+  for developers and content creators who need to create presentations quickly.

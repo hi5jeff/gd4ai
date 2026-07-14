@@ -1,0 +1,42 @@
+id: tool-archestra
+type: tool
+name: archestra
+description_zh: Archestra是一个开源企业级AI平台，集成了安全护栏、MCP注册表、网关和编排器。它提供聊天界面供非技术用户使用，同时为开发者提供LLM代理门户（支持Claude Code、Codex、Cursor等），具备LLM网关（支持多种提供商）、MCP网关（OAuth认证）、A2A网关、私有MCP注册表、Kubernetes编排器、代理运行时（支持定时/邮件/webhook触发）、RAG知识库和迷你应用构建器。适合需要统一管理AI代理和工具的企业团队。
+host_tools:
+- web
+- any-mcp-client
+scenarios:
+- devtools
+- automation
+- security
+- efficiency
+tags:
+- enterprise-ai
+- mcp
+- llm-gateway
+- guardrails
+- orchestrator
+- open-source
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要Docker或Kubernetes环境，参考官方文档进行部署。
+  notes_en: Requires Docker or Kubernetes environment; refer to the official documentation for deployment.
+config_required:
+- LLM provider API keys
+quality:
+  stars: 3966
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/archestra-ai/archestra
+usage:
+  first_prompt_zh: 开始使用Archestra平台，配置我的AI代理和网关。
+  first_prompt_en: Start using the Archestra platform to configure my AI agents and gateways.
+name_en: archestra
+description_en: Archestra is an open-source enterprise-grade AI platform that integrates safety guardrails, MCP registry,
+  gateway, and orchestrator. It provides a chat interface for non-technical users, while offering developers an LLM agent
+  portal (supporting Claude Code, Codex, Cursor, etc.), with an LLM gateway (supporting multiple providers), MCP gateway (OAuth
+  authentication), A2A gateway, private MCP registry, Kubernetes orchestrator, agent runtime (supporting scheduled/email/webhook
+  triggers), RAG knowledge base, and mini app builder. Suitable for enterprise teams that need unified management of AI agents
+  and tools.

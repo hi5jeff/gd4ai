@@ -1,0 +1,36 @@
+id: tool-viper
+type: tool
+name: Viper
+description_zh: Viper 是一个功能强大的红队模拟与对抗平台，集成 AI 驱动的 LLM Agent 和 100+ 后渗透模块，覆盖 MITRE ATT&CK 全阶段。提供直观的 Web 界面，支持 Windows、Linux、macOS
+  多平台，具备自动化工作流、反追踪、防火墙、防御绕过等高级功能，适合红队成员和渗透测试人员高效完成安全评估任务。
+host_tools:
+- web
+scenarios:
+- security
+tags:
+- red-team
+- adversary-simulation
+- AI
+- LLM
+- post-exploitation
+- security
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 推荐使用 Docker 部署，参考官方文档获取详细步骤。
+  notes_en: It is recommended to deploy using Docker; refer to the official documentation for detailed steps.
+config_required: []
+quality:
+  stars: 5133
+  last_commit: '2026-05-31'
+  verified: false
+source:
+  repo: https://github.com/FunnyWolf/Viper
+usage:
+  first_prompt_zh: 开始红队模拟，创建新的攻击任务。
+  first_prompt_en: Start red team simulation, create a new attack task.
+name_en: Viper
+description_en: Viper is a powerful red team simulation and adversarial platform, integrating AI-driven LLM Agent and 100+
+  post-exploitation modules, covering the full MITRE ATT&CK framework. It provides an intuitive web interface, supports Windows,
+  Linux, macOS multi-platform, and features advanced capabilities such as automated workflows, anti-tracking, firewall, defense
+  evasion, etc., suitable for red team members and penetration testers to efficiently complete security assessment tasks.

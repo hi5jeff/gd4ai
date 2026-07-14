@@ -1,0 +1,41 @@
+id: tool-radar
+type: tool
+name: Radar
+description_zh: Radar 是一款开源的 Kubernetes 可视化仪表盘，以单二进制文件运行，无需安装代理或注册账户。它提供集群拓扑、资源浏览、Helm 管理、GitOps 状态、服务流量、审计日志、RBAC 分析等功能，并内置
+  MCP 服务器供 AI 代理查询集群。适合需要快速、轻量、实时监控 Kubernetes 集群的开发者和运维人员。
+host_tools:
+- web
+- any-mcp-client
+scenarios:
+- devtools
+- monitoring
+- efficiency
+- security
+tags:
+- kubernetes
+- dashboard
+- gitops
+- helm
+- monitoring
+- devops
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 确保已安装 kubectl 并配置好 Kubernetes 集群上下文，运行后通过浏览器访问本地端口。
+  notes_en: Ensure kubectl is installed and the Kubernetes cluster context is configured. After running, access the local
+    port via a browser.
+config_required: []
+quality:
+  stars: 2568
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/skyhook-io/radar
+usage:
+  first_prompt_zh: 显示我的 Kubernetes 集群拓扑
+  first_prompt_en: Show my Kubernetes cluster topology
+name_en: Radar
+description_en: Radar is an open-source Kubernetes visualization dashboard that runs as a single binary file, requiring no
+  agent installation or account registration. It provides cluster topology, resource browsing, Helm management, GitOps status,
+  service traffic, audit logs, RBAC analysis, and more, with a built-in MCP server for AI agents to query the cluster. Suitable
+  for developers and operators who need fast, lightweight, real-time monitoring of Kubernetes clusters.

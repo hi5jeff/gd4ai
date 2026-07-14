@@ -18,6 +18,7 @@ install:
   method: git-clone
   command: git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui && cd stable-diffusion-webui && ./webui.sh
   notes_zh: 需要 NVIDIA 显卡；国内可找整合包（如秋叶整合包）
+  notes_en: Requires NVIDIA GPU; in China, you can find integrated packages (e.g., Qiuye's package).
 config_required:
 - NVIDIA 显卡
 - SD 模型文件
@@ -32,3 +33,6 @@ relations:
   - tool-comfyui
 source:
   repo: https://github.com/AUTOMATIC1111/stable-diffusion-webui
+name_en: Stable Diffusion WebUI
+description_en: The most popular open-source image generation interface (AUTOMATIC1111), with a vast plugin ecosystem and
+  the most tutorials. A classic choice for local free image generation, easier for beginners than ComfyUI.

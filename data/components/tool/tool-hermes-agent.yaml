@@ -1,0 +1,42 @@
+id: tool-hermes-agent
+type: tool
+name: hermes-agent
+description_zh: Hermes Agent 是一个由 Nous Research 构建的自我改进 AI 代理，具备内置学习循环，能从经验中自动创建技能、跨会话记忆用户偏好，并支持 Telegram、Discord、Slack 等多平台接入。它可运行在低配
+  VPS 或 GPU 集群上，兼容多种模型提供商（如 OpenAI、OpenRouter），适合需要个性化、持续进化的 AI 助手和自动化任务的用户。
+host_tools:
+- desktop
+scenarios:
+- automation
+- efficiency
+- memory
+- communication
+tags:
+- AI代理
+- self-improving
+- learning-loop
+- memory
+- automation
+- open-source
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 请参考官方文档（https://hermes-agent.nousresearch.com/docs/）获取安装指南，通常需要克隆仓库并配置模型 API 密钥。
+  notes_en: Please refer to the official documentation (https://hermes-agent.nousresearch.com/docs/) for installation instructions.
+    Typically, you need to clone the repository and configure the model API key.
+config_required:
+- API key for model provider (e.g., OpenAI, OpenRouter)
+quality:
+  stars: 214374
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/NousResearch/hermes-agent
+usage:
+  first_prompt_zh: 你好，请开始学习我的习惯和偏好。
+  first_prompt_en: Hello, please start learning my habits and preferences.
+name_en: hermes-agent
+description_en: Hermes Agent is a self-improving AI agent built by Nous Research, featuring a built-in learning loop that
+  automatically creates skills from experience, remembers user preferences across sessions, and supports multi-platform integration
+  such as Telegram, Discord, and Slack. It can run on low-end VPS or GPU clusters, is compatible with multiple model providers
+  (e.g., OpenAI, OpenRouter), and is suitable for users who need personalized, continuously evolving AI assistants and automation
+  tasks.

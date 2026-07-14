@@ -20,6 +20,7 @@ install:
   command: claude mcp add context7 -- npx -y @upstash/context7-mcp
 usage:
   first_prompt_zh: 用 Context7 查一下 Next.js 15 的 App Router 最新写法，然后帮我建个项目
+  first_prompt_en: Use Context7 to look up the latest App Router syntax in Next.js 15, then help me create a project.
 quality:
   verified: false
   stars: 59068
@@ -29,3 +30,6 @@ relations:
   - role-frontend-developer
 source:
   repo: https://github.com/upstash/context7
+name_en: Context7 MCP
+description_en: Feed the latest official documentation of frameworks/libraries to AI in real time, solving the problem of
+  'outdated AI knowledge and incorrect API usage'. When writing code, have AI query Context7 for accurate usage.

@@ -1,0 +1,46 @@
+id: tool-md2wechat-skill
+type: tool
+name: md2wechat
+description_zh: md2wechat 是一个面向 AI Agent 的微信公众号创作与发布 CLI 工具。它可以将 Markdown 一键转换为微信排版 HTML，支持 40+ 专业主题、AI 配图、批量发布和多账号管理。通过 JSON
+  discovery 接口，Claude Code、Codex 等 Agent 可稳定调用，实现从写作到草稿推送的全自动化流程。适合需要高效发布公众号内容的个人创作者、团队和矩阵号运营者。
+host_tools:
+- claude-code
+- codex
+- any
+scenarios:
+- writing
+- automation
+- efficiency
+tags:
+- markdown
+- wechat
+- cli
+- ai-agent
+- publishing
+- 排版
+difficulty: intermediate
+install:
+  method: npm
+  command: npm install -g @geekjourneyx/md2wechat
+  notes_zh: 需要 Node.js 环境（推荐 v18+），全局安装后运行 md2wechat config init 进行初始化配置。
+  notes_en: Requires Node.js environment (v18+ recommended). After global installation, run `md2wechat config init` for initial
+    configuration.
+config_required:
+- 微信公众平台 AppID
+- 微信公众平台 AppSecret
+- IP 白名单配置
+quality:
+  stars: 3239
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/geekjourneyx/md2wechat-skill
+usage:
+  first_prompt_zh: 将这篇 Markdown 文章转换为微信公众号草稿并预览
+  first_prompt_en: Convert this Markdown article to a WeChat Official Account draft and preview it.
+name_en: md2wechat
+description_en: md2wechat is a CLI tool for creating and publishing WeChat Official Account content, designed for AI Agents.
+  It can convert Markdown to WeChat-formatted HTML with one click, supporting 40+ professional themes, AI image generation,
+  batch publishing, and multi-account management. Through the JSON discovery interface, agents like Claude Code and Codex
+  can reliably call it, enabling a fully automated workflow from writing to draft push. Suitable for individual creators,
+  teams, and matrix account operators who need to efficiently publish Official Account content.

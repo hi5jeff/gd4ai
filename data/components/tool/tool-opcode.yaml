@@ -1,0 +1,41 @@
+id: tool-opcode
+type: tool
+name: opcode
+description_zh: opcode 是一款基于 Tauri 2 构建的桌面 GUI 应用和工具包，专为 Claude Code 设计。它提供可视化项目管理、会话历史浏览、自定义 AI 代理创建、后台代理运行、使用分析仪表盘、MCP 服务器管理、时间线与检查点等功能。适合需要更直观、高效地管理
+  Claude Code 工作流的开发者，将命令行体验升级为图形化操作中心。
+host_tools:
+- claude-code
+- desktop
+scenarios:
+- coding
+- devtools
+- automation
+- efficiency
+tags:
+- opcode
+- Claude Code
+- GUI
+- 代理管理
+- 会话管理
+- 开发者工具
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 从 GitHub Releases 下载对应操作系统的安装包，或从源码构建（需要 Rust 和 Node.js 环境）。使用前需确保已安装并配置好 Claude Code。
+  notes_en: Download the installation package for your operating system from GitHub Releases, or build from source (requires
+    Rust and Node.js environment). Ensure Claude Code is installed and configured before use.
+config_required: []
+quality:
+  stars: 22173
+  last_commit: '2025-10-16'
+  verified: false
+source:
+  repo: https://github.com/winfunc/opcode
+usage:
+  first_prompt_zh: 开始管理我的 Claude Code 项目与会话吧！
+  first_prompt_en: Start managing my Claude Code projects and sessions!
+name_en: opcode
+description_en: opcode is a desktop GUI application and toolkit built on Tauri 2, designed specifically for Claude Code. It
+  offers visual project management, session history browsing, custom AI agent creation, background agent execution, usage
+  analytics dashboard, MCP server management, timeline and checkpoint features. Suitable for developers who need a more intuitive
+  and efficient way to manage Claude Code workflows, upgrading the command-line experience to a graphical operations center.

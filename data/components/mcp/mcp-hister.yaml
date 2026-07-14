@@ -1,0 +1,38 @@
+id: mcp-hister
+type: mcp
+name: hister
+description_zh: Hister 是一个自托管的个人搜索引擎，能够自动对访问过的网页进行全文索引，支持本地浏览历史、本地文件索引以及可选的语义搜索。它提供强大的查询语言和 MCP 接口，适合注重隐私的用户、开发者或小团队搭建自己的搜索服务，无需依赖外部搜索引擎。
+host_tools:
+- any-mcp-client
+scenarios:
+- search
+- efficiency
+- open-source
+tags:
+- 搜索引擎
+- 自托管
+- 隐私
+- 全文索引
+- MCP
+- golang
+difficulty: advanced
+install:
+  method: manual
+  notes_zh: 需要 Go 和 NPM 环境，克隆仓库后运行 ./manage.sh build 或 go generate ./...; go build 编译。
+  notes_en: Requires Go and NPM environment. After cloning the repo, run ./manage.sh build or go generate ./...; go build
+    to compile.
+config_required: []
+quality:
+  stars: 1619
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/asciimoo/hister
+usage:
+  first_prompt_zh: 帮我搜索我昨天访问过的关于机器学习的网页内容。
+  first_prompt_en: Help me search for web pages about machine learning that I visited yesterday.
+name_en: hister
+description_en: Hister is a self-hosted personal search engine that automatically full-text indexes visited web pages, supports
+  local browsing history, local file indexing, and optional semantic search. It provides a powerful query language and MCP
+  interface, suitable for privacy-conscious users, developers, or small teams to build their own search service without relying
+  on external search engines.

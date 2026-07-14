@@ -1,0 +1,38 @@
+id: mcp-context-mode
+type: mcp
+name: context-mode
+description_zh: Context Mode 是一个通过 MCP 协议优化 AI 编码代理上下文窗口的工具。它能将工具输出减少 98%，持久化会话记忆，并强制在 17 个平台间路由。适合使用 Claude Code、Codex 等
+  AI 编码工具的开发者，可显著提升上下文利用效率。
+host_tools:
+- claude-code
+- codex
+- any-mcp-client
+scenarios:
+- coding
+- efficiency
+- memory
+tags:
+- context-optimization
+- MCP
+- AI-coding
+- session-memory
+- sandbox
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 通过 npm 全局安装，或使用 npx 运行。
+  notes_en: Install globally via npm, or run using npx.
+config_required: []
+quality:
+  stars: 18908
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/mksglu/context-mode
+usage:
+  first_prompt_zh: 帮我优化当前 AI 编码代理的上下文窗口。
+  first_prompt_en: Help me optimize the context window of the current AI coding agent.
+name_en: context-mode
+description_en: Context Mode is a tool that optimizes the context window of AI coding agents through the MCP protocol. It
+  reduces tool output by 98%, persists session memory, and enforces routing across 17 platforms. Ideal for developers using
+  AI coding tools such as Claude Code and Codex, it significantly enhances context utilization efficiency.

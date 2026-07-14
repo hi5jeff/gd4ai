@@ -1,0 +1,41 @@
+id: mcp-code-review-graph
+type: mcp
+name: code-review-graph
+description_zh: 一个本地优先的代码智能图工具，基于Tree-sitter构建代码库的结构化映射，支持增量更新。通过MCP协议为AI编码工具（如Claude Code、Cursor等）提供精准的上下文，仅读取相关代码片段，大幅减少token消耗（实测可降低38倍至528倍）。适合开发者进行代码审查、大型仓库工作流优化，提升AI辅助编码的效率。
+host_tools:
+- claude-code
+- cursor
+- windsurf
+scenarios:
+- devtools
+- coding
+- token-saving
+- efficiency
+tags:
+- 代码审查
+- 知识图谱
+- MCP
+- token节省
+- 增量更新
+difficulty: beginner
+install:
+  method: pip
+  command: pip install code-review-graph
+  notes_zh: 需要Python 3.10+，建议使用pipx安装以避免依赖冲突。
+  notes_en: Requires Python 3.10+. It is recommended to install via pipx to avoid dependency conflicts.
+config_required: []
+quality:
+  stars: 19493
+  last_commit: '2026-06-14'
+  verified: false
+source:
+  repo: https://github.com/tirth8205/code-review-graph
+usage:
+  first_prompt_zh: 帮我分析当前代码库的结构，找出需要审查的变更。
+  first_prompt_en: Help me analyze the structure of the current codebase and identify changes that need review.
+name_en: code-review-graph
+description_en: A local-first code intelligence graph tool that builds a structured map of your codebase using Tree-sitter
+  and supports incremental updates. It provides precise context for AI coding tools (such as Claude Code, Cursor, etc.) via
+  the MCP protocol, reading only relevant code snippets to drastically reduce token consumption (measured reduction of 38x
+  to 528x). Ideal for developers performing code reviews, optimizing large repository workflows, and improving the efficiency
+  of AI-assisted coding.

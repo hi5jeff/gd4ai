@@ -1,0 +1,41 @@
+id: mcp-activepieces
+type: mcp
+name: Activepieces
+description_zh: Activepieces 是一个开源 AI 工作流自动化平台，提供超过 400 个 MCP 服务器，支持 AI 代理和自动化流程。用户可通过可视化构建器创建复杂工作流，所有组件均可作为 MCP 服务器供 Claude
+  Desktop、Cursor、Windsurf 等 LLM 工具调用。适合开发者和非技术用户快速实现自动化。
+host_tools:
+- desktop
+- cursor
+- windsurf
+scenarios:
+- automation
+- devtools
+- mcp-dev
+- efficiency
+tags:
+- AI代理
+- MCP
+- 工作流自动化
+- 开源
+- Zapier替代
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 可直接使用 Activepieces 云服务（无需安装），或自托管部署（需 Docker 环境）。
+  notes_en: You can directly use the Activepieces cloud service (no installation required), or self-host it (requires Docker
+    environment).
+config_required: []
+quality:
+  stars: 23257
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/activepieces/activepieces
+usage:
+  first_prompt_zh: 帮我创建一个自动化工作流，连接 Slack 和 Google Sheets。
+  first_prompt_en: Help me create an automation workflow that connects Slack and Google Sheets.
+name_en: Activepieces
+description_en: Activepieces is an open-source AI workflow automation platform that provides over 400 MCP servers, supporting
+  AI agents and automation processes. Users can create complex workflows through a visual builder, and all components can
+  be used as MCP servers for LLM tools such as Claude Desktop, Cursor, Windsurf, etc. It is suitable for both developers and
+  non-technical users to quickly implement automation.

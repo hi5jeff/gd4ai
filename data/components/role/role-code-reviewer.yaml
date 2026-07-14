@@ -19,6 +19,7 @@ install:
   command: git clone https://github.com/wshobson/agents.git ~/.claude/agents/wshobson
 usage:
   first_prompt_zh: 让 code-reviewer 审查刚才写的支付模块代码
+  first_prompt_en: Ask code-reviewer to review the payment module code that was just written.
 quality:
   verified: false
   stars: 37882
@@ -28,3 +29,6 @@ relations:
   - mcp-github
 source:
   repo: https://github.com/wshobson/agents
+name_en: Code Reviewer (subagent)
+description_en: 'A code review expert from the wshobson/agents collection: checks for security vulnerabilities, performance
+  issues, and code standards. Run it after AI writes code to significantly improve quality.'

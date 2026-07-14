@@ -1,0 +1,39 @@
+id: tool-officecli
+type: tool
+name: OfficeCLI
+description_zh: OfficeCLI 是专为 AI 代理设计的首个 Office 套件，支持读写编辑 Word、Excel、PowerPoint 文件。单二进制，无需安装 Office，内置 HTML 渲染引擎可将文档转为 HTML
+  或 PNG，实现“渲染-查看-修正”闭环。适合需要自动化处理 Office 文档的 AI 开发者和智能体。
+host_tools:
+- claude-code
+- codex
+- any
+scenarios:
+- office
+- automation
+tags:
+- agent
+- ai
+- cli
+- office
+- open-source
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 在 AI 代理（如 Claude Code）的聊天中粘贴此命令，代理将自动安装 OfficeCLI 并学习使用命令。
+  notes_en: Paste this command in the chat of an AI agent (such as Claude Code), and the agent will automatically install
+    OfficeCLI and learn to use the commands.
+config_required: []
+quality:
+  stars: 16266
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/iOfficeAI/OfficeCLI
+usage:
+  first_prompt_zh: 请用 OfficeCLI 帮我创建一个包含图表的 Excel 报表。
+  first_prompt_en: Please use OfficeCLI to help me create an Excel report with charts.
+name_en: OfficeCLI
+description_en: OfficeCLI is the first Office suite designed specifically for AI agents, supporting reading, writing, and
+  editing Word, Excel, and PowerPoint files. It is a single binary that requires no Office installation, with a built-in HTML
+  rendering engine that can convert documents to HTML or PNG, enabling a 'render-view-correct' loop. Suitable for AI developers
+  and agents who need to automate Office document processing.

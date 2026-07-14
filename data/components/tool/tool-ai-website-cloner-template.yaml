@@ -1,0 +1,42 @@
+id: tool-ai-website-cloner-template
+type: tool
+name: AI Website Cloner Template
+description_zh: 这是一个AI驱动的网站克隆模板，通过一条命令即可将任意网站逆向工程为干净的Next.js代码库。它利用AI编码代理（如Claude Code）自动分析目标网站、提取设计令牌和资源、编写组件规范并并行重建每个部分。适合希望快速复制网站结构和样式的开发者、设计师及AI代理用户。
+host_tools:
+- claude-code
+- codex
+- cursor
+scenarios:
+- web-dev
+- automation
+- devtools
+tags:
+- AI
+- website-cloner
+- template
+- Next.js
+- reverse-engineering
+- claude-code
+difficulty: intermediate
+install:
+  method: npm
+  command: npm install
+  notes_zh: 先通过GitHub的'Use this template'创建自己的仓库，然后克隆到本地，在项目根目录运行npm install安装依赖。
+  notes_en: First, create your own repository via GitHub's 'Use this template' button, then clone it locally, and run npm
+    install in the project root to install dependencies.
+config_required:
+- Claude Code API key (如果使用Claude Code)
+quality:
+  stars: 28154
+  last_commit: '2026-07-04'
+  verified: false
+source:
+  repo: https://github.com/JCodesMore/ai-website-cloner-template
+usage:
+  first_prompt_zh: /clone-website https://example.com
+  first_prompt_en: /clone-website https://example.com
+name_en: AI Website Cloner Template
+description_en: This is an AI-powered website cloning template that reverse-engineers any website into a clean Next.js codebase
+  with a single command. It leverages AI coding agents (such as Claude Code) to automatically analyze the target website,
+  extract design tokens and assets, write component specifications, and rebuild each section in parallel. Ideal for developers,
+  designers, and AI agent users who want to quickly replicate a website's structure and style.

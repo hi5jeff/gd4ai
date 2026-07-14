@@ -1,0 +1,41 @@
+id: mcp-unity-mcp
+type: mcp
+name: Unity-MCP
+description_zh: Unity-MCP 是一个为 Unity 引擎打造的 AI 开发工具集，提供 MCP 服务器、CLI 和 AI 技能。它允许开发者通过一行代码将任意 C# 方法转化为 AI 可调用的工具，实现完整的 AI 开发与测试循环。支持与
+  Claude、Gemini、Copilot、Cursor 等主流 AI 助手免费集成，显著提升 Unity 游戏开发效率。适合 Unity 游戏开发者、AI 集成爱好者及希望加速迭代的团队。
+host_tools:
+- claude-code
+- cursor
+- any-mcp-client
+scenarios:
+- game-dev
+- devtools
+- automation
+tags:
+- Unity
+- AI集成
+- MCP
+- 游戏开发
+- 自动化
+- 开发工具
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要先安装 Unity 引擎，然后通过 OpenUPM 包管理器或 CLI 快速安装。
+  notes_en: You need to install the Unity engine first, then quickly install it via the OpenUPM package manager or CLI.
+config_required: []
+quality:
+  stars: 3535
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/IvanMurzak/Unity-MCP
+usage:
+  first_prompt_zh: 帮我创建一个 Unity 脚本，实现角色移动功能。
+  first_prompt_en: Help me create a Unity script that implements character movement.
+name_en: Unity-MCP
+description_en: Unity-MCP is an AI development toolkit built for the Unity engine, providing MCP server, CLI, and AI skills.
+  It allows developers to convert any C# method into an AI-callable tool with a single line of code, enabling a complete AI
+  development and testing loop. It supports free integration with mainstream AI assistants such as Claude, Gemini, Copilot,
+  and Cursor, significantly improving Unity game development efficiency. Suitable for Unity game developers, AI integration
+  enthusiasts, and teams looking to accelerate iteration.

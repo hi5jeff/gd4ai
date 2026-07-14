@@ -3,19 +3,56 @@ title_zh: 平面设计（海报/Banner/社媒图）AI 工作流
 scenario: graphic-design
 audience: beginner
 summary_zh: 三档方案：零门槛用 Canva AI 套模板；要原创视觉用生图工具+海报提示词；Claude Code 用户直接上官方 canvas-design skill。
-tags: [平面设计, 海报, banner]
+tags:
+- 平面设计
+- 海报
+- banner
 components:
-  - {ref: tool-canva, role_zh: 零门槛——AI 模板改改就能用}
-  - {ref: prompt-poster-design, role_zh: 原创路线——海报提示词模板（留白给文字是关键）}
-  - {ref: tool-midjourney, role_zh: 原创路线的生图引擎, optional: true}
-  - {ref: skill-canvas-design, role_zh: Claude Code 用户——官方设计 skill 直接出可编辑设计稿, optional: true}
-  - {ref: role-ui-ux-designer, role_zh: 需要成套视觉规范时的设计顾问, optional: true}
+- ref: tool-canva
+  role_zh: 零门槛——AI 模板改改就能用
+  role_en: Zero barrier – AI templates, just tweak and use
+- ref: prompt-poster-design
+  role_zh: 原创路线——海报提示词模板（留白给文字是关键）
+  role_en: Original route – Poster prompt template (leaving white space for text is key)
+- ref: tool-midjourney
+  role_zh: 原创路线的生图引擎
+  optional: true
+  role_en: Image generation engine for original route
+- ref: skill-canvas-design
+  role_zh: Claude Code 用户——官方设计 skill 直接出可编辑设计稿
+  optional: true
+  role_en: Claude Code users – Official design skill directly outputs editable design drafts
+- ref: role-ui-ux-designer
+  role_zh: 需要成套视觉规范时的设计顾问
+  optional: true
+  role_en: Design consultant when a complete visual specification is needed
 steps:
-  - {title_zh: 选档位, detail_zh: 赶时间/不挑→Canva；要独特视觉→生图+提示词；技术用户→canvas-design skill}
-  - {title_zh: Canva 路线, detail_zh: 魔力设计输入主题→挑模板→换图改字→导出}
-  - {title_zh: 原创路线, detail_zh: 用海报提示词模板生成主视觉（注意留白）→ Canva/PS 里加标题文案 → 导出多尺寸}
-first_prompt_zh: minimalist promotional poster, coffee cup as hero element, warm orange color blocking, large negative space at top for headline, flat illustration --ar 3:4
+- title_zh: 选档位
+  detail_zh: 赶时间/不挑→Canva；要独特视觉→生图+提示词；技术用户→canvas-design skill
+  title_en: Select Tier
+  detail_en: In a hurry/not picky → Canva; Want unique visuals → image generation + prompts; Technical users → canvas-design
+    skill
+- title_zh: Canva 路线
+  detail_zh: 魔力设计输入主题→挑模板→换图改字→导出
+  title_en: Canva Route
+  detail_en: 'Magic Design: input topic → pick template → replace images and text → export'
+- title_zh: 原创路线
+  detail_zh: 用海报提示词模板生成主视觉（注意留白）→ Canva/PS 里加标题文案 → 导出多尺寸
+  title_en: Original Route
+  detail_en: Use poster prompt template to generate main visual (leave white space) → Add title and copy in Canva/PS → Export
+    multiple sizes
+first_prompt_zh: minimalist promotional poster, coffee cup as hero element, warm orange color blocking, large negative space
+  at top for headline, flat illustration --ar 3:4
 pitfalls_zh:
-  - AI 生图里的文字基本是乱码，文字一律后期用 Canva/PS 加
-  - 商用前确认生图平台的商用授权条款
-quality: {verified: false}
+- AI 生图里的文字基本是乱码，文字一律后期用 Canva/PS 加
+- 商用前确认生图平台的商用授权条款
+quality:
+  verified: false
+title_en: Graphic Design (Poster/Banner/Social Media Image) AI Workflow
+summary_en: 'Three tiers: Zero barrier using Canva AI templates; For original visuals, use image generation tools + poster
+  prompts; Claude Code users directly use the official canvas-design skill.'
+first_prompt_en: minimalist promotional poster, coffee cup as hero element, warm orange color blocking, large negative space
+  at top for headline, flat illustration --ar 3:4
+pitfalls_en:
+- Text in AI-generated images is mostly garbled; always add text later in Canva/PS
+- Confirm the commercial use license terms of the image generation platform before commercial use

@@ -17,10 +17,14 @@ difficulty: advanced
 install:
   method: manual
   notes_zh: 分两步：Unity 里通过 Package Manager 装插件端 + 按仓库 README 配置 MCP 服务端，跟着官方文档走
+  notes_en: 'Two steps: install the plugin side in Unity via Package Manager + configure the MCP server according to the repo
+    README, follow the official documentation.'
 config_required:
 - Unity 2021.3+
 usage:
   first_prompt_zh: 在当前场景创建一个带刚体的立方体，写个让它旋转的脚本挂上去
+  first_prompt_en: Create a cube with a Rigidbody in the current scene, write a script to make it rotate, and attach it to
+    the cube.
 quality:
   verified: false
   stars: 12438
@@ -31,3 +35,6 @@ relations:
   - tool-aseprite
 source:
   repo: https://github.com/CoplayDev/unity-mcp
+name_en: Unity MCP
+description_en: 'Let AI directly operate the Unity Editor: create GameObjects, modify components, run tests, manage scenes.
+  A bridge for AI-assisted Unity game development.'

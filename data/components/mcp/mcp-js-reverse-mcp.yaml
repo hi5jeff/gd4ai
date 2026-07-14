@@ -1,0 +1,40 @@
+id: mcp-js-reverse-mcp
+type: mcp
+name: js-reverse-mcp
+description_zh: AI Agent-first 的 JavaScript 逆向 MCP Server，让 Claude、Cursor 等 AI 编码助手能像分析师一样持续调试、定位、保存和复盘网页中的 JS 行为。提供有头 Chrome
+  调试、断点上下文执行、网络/WebSocket 分析、脚本源码导出、浏览器状态清理与重放，并内置 Patchright 协议层反检测，可选 CloakBrowser 源码层指纹模式。适合需要深度分析网页 JS 逻辑、绕过反爬机制的安全研究人员和自动化工程师。
+host_tools:
+- any-mcp-client
+scenarios:
+- web-dev
+- scraping
+- automation
+- security
+tags:
+- JS逆向
+- MCP Server
+- 反检测
+- 浏览器自动化
+- 调试工具
+difficulty: beginner
+install:
+  method: claude-mcp-add
+  command: claude mcp add js-reverse npx js-reverse-mcp
+  notes_zh: 需要 Node.js v20.19+ 和 Chrome 稳定版，npx 自动拉取无需本地安装
+  notes_en: Requires Node.js v20.19+ and Chrome stable version, npx auto-pull without local installation
+config_required: []
+quality:
+  stars: 2182
+  last_commit: '2026-07-10'
+  verified: false
+source:
+  repo: https://github.com/zhizhuodemao/js-reverse-mcp
+usage:
+  first_prompt_zh: 帮我打开一个网页并分析它的 JavaScript 行为
+  first_prompt_en: Help me open a webpage and analyze its JavaScript behavior
+name_en: js-reverse-mcp
+description_en: AI Agent-first JavaScript reverse engineering MCP Server, enabling AI coding assistants like Claude and Cursor
+  to continuously debug, locate, save, and review JS behavior in web pages like an analyst. Provides headful Chrome debugging,
+  breakpoint context execution, network/WebSocket analysis, script source export, browser state cleanup and replay, and built-in
+  Patchright protocol-level anti-detection, with optional CloakBrowser source-level fingerprint mode. Suitable for security
+  researchers and automation engineers who need in-depth analysis of web page JS logic and bypassing anti-crawling mechanisms.

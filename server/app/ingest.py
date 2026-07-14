@@ -17,6 +17,15 @@ def build_search_text(doc: dict) -> str:
     return " ".join(p for p in parts if p)
 
 
+def build_search_text_en(doc: dict) -> str:
+    parts = [doc.get("name_en", doc.get("name", "")),
+             doc.get("description_en", doc.get("description_zh", "")),
+             doc.get("title_en", doc.get("title_zh", "")),
+             doc.get("summary_en", doc.get("summary_zh", "")),
+             " ".join(doc.get("tags", []))]
+    return " ".join(p for p in parts if p)
+
+
 def load_validated(subdir: str, schema_name: str) -> list[dict]:
     schema = json.loads((DATA / "schema" / schema_name).read_text())
     docs = []
@@ -59,7 +68,9 @@ def meili_index(index: str, docs: list[dict], filterables: list[str]):
             "id": d["id"],
             "type": d.get("type", "playbook"),
             "name": d.get("name") or d.get("title_zh", ""),
+            "name_en": d.get("name_en") or d.get("title_en", ""),
             "description": d.get("description_zh") or d.get("summary_zh", ""),
+            "description_en": d.get("description_en") or d.get("summary_en", ""),
             "tags": d.get("tags", []),
             "scenarios": d.get("scenarios") or [d.get("scenario", "")],
             "host_tools": d.get("host_tools", []),
@@ -68,7 +79,7 @@ def meili_index(index: str, docs: list[dict], filterables: list[str]):
     task = idx.add_documents(flat, primary_key="id")
     retrieval.meili.wait_for_task(task.task_uid)
     idx.update_settings({
-        "searchableAttributes": ["name", "description", "tags", "scenarios"],
+        "searchableAttributes": ["name", "name_en", "description", "description_en", "tags", "scenarios"],
         "filterableAttributes": filterables,
     })
 

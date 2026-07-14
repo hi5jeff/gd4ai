@@ -19,6 +19,7 @@ install:
   command: /plugin marketplace add anthropics/skills
 usage:
   first_prompt_zh: 把这 3 个 PDF 合并成一个，并生成目录页
+  first_prompt_en: Merge these 3 PDFs into one and generate a table of contents page
 quality:
   verified: false
   stars: 160919
@@ -28,3 +29,6 @@ relations:
   - skill-docx
 source:
   repo: https://github.com/anthropics/skills
+name_en: PDF Processing (Official)
+description_en: Anthropic official skill that lets Claude read, generate, fill forms, and merge PDF files. A powerful office
+  tool for handling contracts, reports, and forms.

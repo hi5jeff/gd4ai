@@ -18,8 +18,10 @@ difficulty: intermediate
 install:
   method: web
   notes_zh: godotengine.org 下载即用（60MB，无需安装）
+  notes_en: Download from godotengine.org and use immediately (60MB, no installation required).
 usage:
   first_prompt_zh: 配合 Claude Code 写 GDScript 脚本，动画在内置 AnimationPlayer 里编辑
+  first_prompt_en: Use with Claude Code to write GDScript scripts; edit animations in the built-in AnimationPlayer.
 quality:
   verified: false
   stars: 114050
@@ -30,3 +32,7 @@ relations:
   - mcp-blender
 source:
   repo: https://github.com/godotengine/godot
+name_en: Godot Engine
+description_en: Completely free and open-source game engine with built-in animation editor (supports AnimationPlayer, skeletal
+  animation, and frame animation). Particularly strong for 2D games. The top choice for indie developers and beginners learning
+  game development.

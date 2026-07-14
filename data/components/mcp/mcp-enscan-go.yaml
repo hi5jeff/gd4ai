@@ -1,0 +1,42 @@
+id: mcp-enscan-go
+type: mcp
+name: ENScan_GO
+description_zh: 基于各大企业信息API的国内企业信息收集工具，可一键查询并聚合导出控股公司ICP备案、APP、小程序、微信公众号、微博、公开招聘等公开数据。支持深度查询多层孙公司、正则过滤、多数据源合并导出，并提供MCP服务器模式，方便与AI客户端联动。适合红队、安全研究人员进行企业资产梳理和信息收集。
+host_tools:
+- any-mcp-client
+scenarios:
+- security
+- research
+- automation
+- open-source
+tags:
+- 企业信息收集
+- ICP备案
+- 红队
+- 安全工具
+- MCP
+- Go
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 从GitHub Releases下载对应平台的可执行文件，首次运行使用 -v 参数生成配置文件并配置Cookie。
+  notes_en: Download the executable for your platform from GitHub Releases. On first run, use the -v parameter to generate
+    a configuration file and configure the Cookie.
+config_required:
+- 爱企查Cookie
+- 天眼查Cookie
+quality:
+  stars: 4559
+  last_commit: '2026-03-30'
+  verified: false
+source:
+  repo: https://github.com/wgpsec/ENScan_GO
+usage:
+  first_prompt_zh: 查询小米公司的ICP备案和APP信息
+  first_prompt_en: Query Xiaomi's ICP filing and app information
+name_en: ENScan_GO
+description_en: A domestic enterprise information collection tool based on various enterprise information APIs. It can query
+  and aggregate public data such as ICP filings, apps, mini-programs, WeChat official accounts, Weibo, and public recruitment
+  of holding companies with one click. Supports deep query of multi-level subsidiaries, regex filtering, multi-source merge
+  export, and provides MCP server mode for easy integration with AI clients. Suitable for red teams and security researchers
+  for enterprise asset mapping and information gathering.

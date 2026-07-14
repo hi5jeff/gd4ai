@@ -1,0 +1,38 @@
+id: tool-esp32-nat-router
+type: tool
+name: esp32_nat_router
+description_zh: 基于ESP32的AI增强型NAT路由器/防火墙固件，支持WiFi NAT路由、WireGuard VPN隧道、DHCP服务、端口转发、防火墙ACL、PCAP抓包和WPA2-Enterprise认证。适合需要低成本WiFi扩展、IoT网络隔离、家庭自动化监控或VPN路由的用户，可通过Web界面或串口CLI配置。
+host_tools:
+- web
+scenarios:
+- security
+- monitoring
+- automation
+tags:
+- ESP32
+- NAT路由器
+- 防火墙
+- VPN
+- WiFi扩展
+- 嵌入式
+difficulty: advanced
+install:
+  method: manual
+  notes_zh: 需要ESP-IDF开发环境，克隆仓库后使用idf.py编译并烧录到ESP32开发板（如ESP32-C5、W32-ET01等）。
+  notes_en: Requires ESP-IDF development environment. After cloning the repository, use idf.py to compile and flash to an
+    ESP32 development board (e.g., ESP32-C5, W32-ET01, etc.).
+config_required: []
+quality:
+  stars: 2043
+  last_commit: '2026-06-27'
+  verified: false
+source:
+  repo: https://github.com/martin-ger/esp32_nat_router
+usage:
+  first_prompt_zh: 配置WiFi网络并启动NAT路由功能。
+  first_prompt_en: Configure WiFi network and start NAT routing function.
+name_en: esp32_nat_router
+description_en: AI-enhanced NAT router/firewall firmware based on ESP32, supporting WiFi NAT routing, WireGuard VPN tunnel,
+  DHCP service, port forwarding, firewall ACL, PCAP packet capture, and WPA2-Enterprise authentication. Suitable for users
+  needing low-cost WiFi extension, IoT network isolation, home automation monitoring, or VPN routing. Configurable via web
+  interface or serial CLI.

@@ -1,0 +1,41 @@
+id: plugin-claude-skills
+type: plugin
+name: claude-skills
+description_zh: 一个包含355个生产级Claude Code技能、插件和代理技能的开源库，支持Claude Code、Codex、Gemini CLI、Cursor等13种AI编码工具。涵盖工程、DevOps、营销、安全、合规、C级咨询、学术研究、企业研究运营等领域，提供结构化指令、Python脚本和参考文档，帮助开发者快速获得领域专业知识。
+host_tools:
+- claude-code
+- codex
+- cursor
+scenarios:
+- coding
+- devtools
+- research
+- marketing
+tags:
+- Claude Code
+- agent skills
+- plugins
+- AI编码
+- 技能库
+- 开源
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 克隆仓库后，根据使用的AI编码工具将skills目录复制到对应位置，或运行同步脚本（如scripts/sync-hermes-skills.py）。
+  notes_en: After cloning the repository, copy the skills directory to the appropriate location based on the AI coding tool
+    being used, or run a sync script (e.g., scripts/sync-hermes-skills.py).
+config_required: []
+quality:
+  stars: 22528
+  last_commit: '2026-07-11'
+  verified: false
+source:
+  repo: https://github.com/alirezarezvani/claude-skills
+usage:
+  first_prompt_zh: 请加载一个工程技能，帮我优化代码。
+  first_prompt_en: Please load an engineering skill to help me optimize code.
+name_en: claude-skills
+description_en: An open-source library containing 355 production-grade Claude Code skills, plugins, and agent skills, supporting
+  13 AI coding tools including Claude Code, Codex, Gemini CLI, Cursor, and more. Covers engineering, DevOps, marketing, security,
+  compliance, C-level consulting, academic research, enterprise research operations, and other fields, providing structured
+  instructions, Python scripts, and reference documentation to help developers quickly acquire domain expertise.

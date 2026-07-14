@@ -1,0 +1,39 @@
+id: tool-bifrost
+type: tool
+name: Bifrost
+description_zh: Bifrost 是一款高性能企业级 AI 网关，统一接入 23+ 大模型提供商（OpenAI、Anthropic、AWS Bedrock 等），提供自适应负载均衡、故障转移、语义缓存、护栏等企业级功能。延迟低于
+  100 微秒，支持每秒 5000 请求，零配置即可在 1 分钟内部署。适合需要高可用、低延迟 AI 服务的开发者和企业团队。
+host_tools:
+- any
+scenarios:
+- devtools
+- efficiency
+- monitoring
+tags:
+- AI网关
+- 负载均衡
+- 大模型
+- 高性能
+- 企业级
+difficulty: beginner
+install:
+  method: npx
+  command: npx -y @maximhq/bifrost
+  notes_zh: 需要 Node.js 环境（或使用 Docker 运行：docker run -p 8080:8080 maximhq/bifrost）
+  notes_en: 'Requires Node.js environment (or run with Docker: docker run -p 8080:8080 maximhq/bifrost)'
+config_required: []
+quality:
+  stars: 6501
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/maximhq/bifrost
+usage:
+  first_prompt_zh: 帮我调用 GPT-4o 模型生成一段产品介绍文案。
+  first_prompt_en: Help me call the GPT-4o model to generate a product description copy.
+name_en: Bifrost
+description_en: Bifrost is a high-performance enterprise-grade AI gateway that provides unified access to 23+ large model
+  providers (OpenAI, Anthropic, AWS Bedrock, etc.), offering enterprise-level features such as adaptive load balancing, failover,
+  semantic caching, and guardrails. With latency under 100 microseconds and support for 5000 requests per second, it can be
+  deployed in 1 minute with zero configuration. Suitable for developers and enterprise teams requiring high-availability,
+  low-latency AI services.

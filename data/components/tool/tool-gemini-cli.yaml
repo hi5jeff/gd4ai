@@ -1,0 +1,42 @@
+id: tool-gemini-cli
+type: tool
+name: gemini-cli
+description_zh: Gemini CLI 是谷歌推出的开源AI代理，将Gemini模型能力直接带入终端。它提供免费层（60次/分钟，1000次/天），支持强大的Gemini 3模型、1M上下文窗口，内置Google搜索、文件操作、shell命令和网页抓取等工具，并可通过MCP协议扩展。适合开发者和AI爱好者在命令行中快速与Gemini交互，提升开发效率。
+host_tools:
+- desktop
+scenarios:
+- coding
+- automation
+- search
+- devtools
+tags:
+- AI
+- Gemini
+- CLI
+- 开源
+- 终端工具
+- MCP
+difficulty: intermediate
+install:
+  method: npx
+  command: npx @google/gemini-cli
+  notes_zh: 需要Node.js环境，使用npx可直接运行，无需全局安装；也可通过npm install -g @google/gemini-cli全局安装。
+  notes_en: Requires Node.js environment. Can be run directly with npx without global installation; alternatively, install
+    globally via npm install -g @google/gemini-cli.
+config_required:
+- Google账号
+quality:
+  stars: 105976
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/google-gemini/gemini-cli
+usage:
+  first_prompt_zh: 帮我写一个Python脚本，读取当前目录下的所有CSV文件并合并成一个。
+  first_prompt_en: Write a Python script that reads all CSV files in the current directory and merges them into one.
+name_en: gemini-cli
+description_en: Gemini CLI is an open-source AI agent from Google that brings the capabilities of the Gemini model directly
+  to the terminal. It offers a free tier (60 requests/minute, 1000 requests/day), supports the powerful Gemini 3 model, a
+  1M context window, and includes built-in tools such as Google Search, file operations, shell commands, and web scraping.
+  It can also be extended via the MCP protocol. Suitable for developers and AI enthusiasts to quickly interact with Gemini
+  on the command line, improving development efficiency.

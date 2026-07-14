@@ -1,0 +1,41 @@
+id: mcp-serena
+type: mcp
+name: Serena
+description_zh: Serena 是一个基于 MCP 协议的编码工具包，为 AI 代理提供类似 IDE 的语义代码检索、编辑、重构和调试能力。它操作于符号级别，利用代码的关系结构，使代理在大型复杂代码库中运行更快、更可靠。适合使用
+  Claude Code、Codex 等编码代理的开发者，可显著提升跨文件重命名、引用查找等任务的效率。
+host_tools:
+- claude-code
+- codex
+- any-mcp-client
+scenarios:
+- coding
+- devtools
+- efficiency
+tags:
+- agent
+- ai-coding
+- MCP
+- semantic
+- refactoring
+- IDE
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 请遵循官方 Quick Start 指南安装，不要通过 MCP 或插件市场安装，以免使用过时命令。
+  notes_en: Please follow the official Quick Start guide for installation. Do not install via MCP or plugin marketplaces to
+    avoid using outdated commands.
+config_required: []
+quality:
+  stars: 26428
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/oraios/serena
+usage:
+  first_prompt_zh: 请使用 Serena 的语义检索工具查找这个符号的所有引用。
+  first_prompt_en: Please use Serena's semantic retrieval tool to find all references to this symbol.
+name_en: Serena
+description_en: Serena is a coding toolkit based on the MCP protocol, providing AI agents with IDE-like semantic code retrieval,
+  editing, refactoring, and debugging capabilities. It operates at the symbol level, leveraging the relational structure of
+  code, making agents run faster and more reliably in large, complex codebases. Suitable for developers using coding agents
+  like Claude Code and Codex, it significantly improves efficiency in tasks such as cross-file renaming and reference lookup.

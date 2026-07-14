@@ -1,0 +1,39 @@
+id: mcp-ddgs
+type: mcp
+name: ddgs
+description_zh: DDGS 是一个 Python 元搜索库，聚合来自 Google、Bing、DuckDuckGo 等十余个搜索引擎的文本、图片、视频、新闻和书籍结果，并支持 URL 内容提取。提供 CLI、FastAPI 服务器和
+  MCP 服务器，方便开发者快速集成多源搜索能力，适合数据采集、自动化搜索和构建聚合搜索应用。
+host_tools:
+- any-mcp-client
+scenarios:
+- search
+- scraping
+- automation
+- devtools
+tags:
+- metasearch
+- python
+- mcp-server
+- search-aggregator
+- api
+difficulty: beginner
+install:
+  method: pip
+  command: pip install -U ddgs[mcp]
+  notes_zh: 需要 Python 3.10+，建议在虚拟环境中安装。
+  notes_en: Requires Python 3.10+, recommended to install in a virtual environment.
+config_required: []
+quality:
+  stars: 2804
+  last_commit: '2026-05-23'
+  verified: false
+source:
+  repo: https://github.com/deedy5/ddgs
+usage:
+  first_prompt_zh: 帮我搜索关于人工智能的最新新闻。
+  first_prompt_en: Help me search for the latest news about artificial intelligence.
+name_en: ddgs
+description_en: DDGS is a Python meta-search library that aggregates text, image, video, news, and book results from over
+  a dozen search engines including Google, Bing, DuckDuckGo, and supports URL content extraction. It provides CLI, FastAPI
+  server, and MCP server, making it easy for developers to quickly integrate multi-source search capabilities, suitable for
+  data collection, automated search, and building aggregated search applications.

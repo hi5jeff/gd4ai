@@ -1,0 +1,41 @@
+id: tool-fast-agent
+type: tool
+name: fast-agent
+description_zh: fast-agent 是一个灵活的 LLM 交互工具，支持编码代理、开发工具包、评估和工作流。它提供 CLI 和交互式终端，原生支持 Anthropic、OpenAI、Google 等多种模型提供商，内置 MCP
+  客户端功能，可连接 MCP 服务器、管理技能、支持子代理和智能模式。适合开发者快速构建、测试和评估 AI 代理，尤其适用于编码辅助和自动化任务。
+host_tools:
+- any
+scenarios:
+- coding
+- devtools
+- automation
+- research
+tags:
+- agent-framework
+- mcp
+- cli
+- coding
+- llm
+- skills
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要先安装 uv（Python 包管理器），然后执行该命令安装 fast-agent。
+  notes_en: First install uv (Python package manager), then run the command to install fast-agent.
+config_required:
+- LLM provider API key (如 Anthropic, OpenAI, Google 等)
+quality:
+  stars: 3855
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/evalstate/fast-agent
+usage:
+  first_prompt_zh: 开始一个交互式会话，输入 ! 进入 shell，或使用 /skills 管理技能。
+  first_prompt_en: Start an interactive session, type ! to enter the shell, or use /skills to manage skills.
+name_en: fast-agent
+description_en: fast-agent is a flexible LLM interaction tool that supports coding agents, development toolkits, evaluation,
+  and workflows. It provides a CLI and interactive terminal, natively supports multiple model providers such as Anthropic,
+  OpenAI, Google, etc., has built-in MCP client functionality, can connect to MCP servers, manage skills, support sub-agents
+  and smart modes. Suitable for developers to quickly build, test, and evaluate AI agents, especially for coding assistance
+  and automation tasks.

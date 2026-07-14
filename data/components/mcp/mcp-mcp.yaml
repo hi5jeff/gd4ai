@@ -1,0 +1,42 @@
+id: mcp-mcp
+type: mcp
+name: awslabs/mcp
+description_zh: 由AWS Labs维护的开源MCP服务器集合，提供数十个针对AWS服务的专用MCP服务器，涵盖基础设施管理、AI/ML、数据分析、数据库、消息队列、成本优化等领域。开发者可通过MCP协议让AI助手直接调用AWS
+  API，实现资源创建、查询、监控等操作。适合使用Claude Code、Cursor等MCP客户端的AWS开发者，能显著提升云资源管理效率。
+host_tools:
+- any-mcp-client
+scenarios:
+- devtools
+- automation
+- database
+- coding
+tags:
+- aws
+- mcp
+- mcp-server
+- cloud
+- infrastructure
+- devtools
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需配置AWS凭证，并选择所需MCP服务器单独安装（如npx @aws/mcp-ec2等）
+  notes_en: Requires configuring AWS credentials and selecting the desired MCP servers for individual installation (e.g.,
+    npx @aws/mcp-ec2, etc.)
+config_required:
+- AWS credentials (access key ID and secret access key)
+quality:
+  stars: 9439
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/awslabs/mcp
+usage:
+  first_prompt_zh: 帮我列出所有可用的AWS MCP服务器及其功能。
+  first_prompt_en: List all available AWS MCP servers and their functions.
+name_en: awslabs/mcp
+description_en: An open-source collection of MCP servers maintained by AWS Labs, providing dozens of dedicated MCP servers
+  for AWS services, covering infrastructure management, AI/ML, data analytics, databases, message queues, cost optimization,
+  and more. Developers can use the MCP protocol to let AI assistants directly call AWS APIs for resource creation, querying,
+  monitoring, etc. Suitable for AWS developers using MCP clients like Claude Code and Cursor, it can significantly improve
+  cloud resource management efficiency.

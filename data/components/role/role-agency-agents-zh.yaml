@@ -1,0 +1,41 @@
+id: role-agency-agents-zh
+type: role
+name: agency-agents-zh
+description_zh: 266个即插即用的AI专家角色合集，覆盖工程、设计、营销、金融等20个部门，每个角色拥有独立人设、专业流程和可交付成果。支持Claude Code、Cursor、Copilot等18种AI编程工具，并新增50个中国市场原创智能体（小红书、抖音、微信等平台运营及垂直领域）。适合需要快速调用专业AI角色进行协作开发的团队和个人。
+host_tools:
+- claude-code
+- cursor
+- codex
+scenarios:
+- coding
+- marketing
+- finance
+- web-dev
+tags:
+- AI智能体
+- 专家角色
+- 中文社区版
+- 即插即用
+- 多工具支持
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 克隆仓库后，将角色文件导入到支持的AI编程工具（如Claude Code、Cursor）中即可使用。
+  notes_en: After cloning the repository, import the role files into a supported AI coding tool (such as Claude Code, Cursor)
+    to use.
+config_required: []
+quality:
+  stars: 17251
+  last_commit: '2026-07-12'
+  verified: false
+source:
+  repo: https://github.com/jnMetaCode/agency-agents-zh
+usage:
+  first_prompt_zh: 请加载一个AI专家角色，比如市场分析师或前端工程师。
+  first_prompt_en: Please load an AI expert role, such as a market analyst or front-end engineer.
+name_en: agency-agents-zh
+description_en: A collection of 266 plug-and-play AI expert roles, covering 20 departments including engineering, design,
+  marketing, finance, etc. Each role has its own persona, professional workflow, and deliverable outputs. Supports 18 AI coding
+  tools such as Claude Code, Cursor, Copilot, and adds 50 original AI agents for the Chinese market (for platforms like Xiaohongshu,
+  Douyin, WeChat operations and vertical domains). Suitable for teams and individuals who need to quickly invoke professional
+  AI roles for collaborative development.

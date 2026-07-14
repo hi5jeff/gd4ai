@@ -1,0 +1,38 @@
+id: tool-cherry-studio
+type: tool
+name: Cherry Studio
+description_zh: Cherry Studio 是一款 AI 生产力工作室，集成了智能聊天、自主代理和 300 多个助手。它提供对前沿大语言模型的统一访问，支持多语言界面，适合需要高效利用 AI 进行写作、研究、自动化等任务的个人和团队。
+host_tools:
+- desktop
+scenarios:
+- efficiency
+- writing
+- research
+- automation
+tags:
+- AI productivity
+- smart chat
+- autonomous agents
+- LLMs
+- assistants
+- multi-language
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 从 GitHub Releases 或官网下载对应操作系统的安装包，直接安装即可。
+  notes_en: Download the installation package for your operating system from GitHub Releases or the official website, and
+    install it directly.
+config_required: []
+quality:
+  stars: 48533
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/CherryHQ/cherry-studio
+usage:
+  first_prompt_zh: 开始使用 AI 助手吧！
+  first_prompt_en: Start using the AI assistant!
+name_en: Cherry Studio
+description_en: Cherry Studio is an AI productivity studio that integrates smart chat, autonomous agents, and over 300 assistants.
+  It provides unified access to cutting-edge large language models, supports a multilingual interface, and is suitable for
+  individuals and teams who need to efficiently use AI for writing, research, automation, and other tasks.

@@ -1,0 +1,36 @@
+id: mcp-fli
+type: mcp
+name: fli
+description_zh: 基于Google Flights反向工程API的MCP服务器，提供航班搜索和日期比价功能。支持多机场、舱位、转机次数、航空公司等精细过滤，可返回最便宜日期。适合需要快速集成航班查询的开发者、旅行规划工具或自动化工作流。
+host_tools:
+- any-mcp-client
+scenarios:
+- search
+- automation
+- efficiency
+tags:
+- 航班搜索
+- Google Flights
+- MCP服务器
+- Python
+- CLI
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 确保已安装pipx，然后执行该命令安装flights包，安装后通过fli-mcp命令启动MCP服务器。
+  notes_en: Make sure pipx is installed, then run this command to install the flights package. After installation, start the
+    MCP server using the fli-mcp command.
+config_required: []
+quality:
+  stars: 3012
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/punitarani/fli
+usage:
+  first_prompt_zh: 搜索从北京到上海的航班
+  first_prompt_en: Search for flights from Beijing to Shanghai
+name_en: fli
+description_en: MCP server based on Google Flights reverse-engineered API, providing flight search and date comparison features.
+  Supports fine-grained filtering by multiple airports, cabin class, number of stops, airlines, etc., and can return the cheapest
+  dates. Suitable for developers, travel planning tools, or automated workflows that need quick integration of flight queries.

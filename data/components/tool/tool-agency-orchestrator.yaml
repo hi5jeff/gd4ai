@@ -1,0 +1,43 @@
+id: tool-agency-orchestrator
+type: tool
+name: Agency Orchestrator
+description_zh: 一句话调度多个AI专家角色自动协作，几分钟交付完整方案。内置216个专业角色（趋势研究员、财务规划师等），支持YAML零代码配置、Web Studio图形界面和桌面客户端。兼容10种大模型（含7种免key方式），无需编程即可完成规划、写作、分析等复杂任务。适合个人开发者、创业者、内容创作者快速获取多视角方案。
+host_tools:
+- web
+- desktop
+- any
+scenarios:
+- planning
+- research
+- writing
+- automation
+tags:
+- AI代理
+- 角色协作
+- 零代码
+- YAML
+- 自动化
+- 规划
+difficulty: beginner
+install:
+  method: npm
+  command: npm install -g agency-orchestrator
+  notes_zh: 需要Node.js环境，全局安装后即可使用ao命令。
+  notes_en: Requires Node.js environment. After global installation, use the 'ao' command.
+config_required: []
+quality:
+  stars: 1768
+  last_commit: '2026-07-12'
+  verified: false
+source:
+  repo: https://github.com/jnMetaCode/agency-orchestrator
+usage:
+  first_prompt_zh: 我是一个程序员，想用AI做自媒体副业，目标月入2万，帮我做完整规划
+  first_prompt_en: I am a programmer. I want to use AI for a side hustle in self-media, with a goal of earning 20,000 per
+    month. Help me make a complete plan.
+name_en: Agency Orchestrator
+description_en: Orchestrate multiple AI expert roles to collaborate automatically with a single command, delivering complete
+  solutions in minutes. Includes 216 built-in professional roles (trend researcher, financial planner, etc.), supports YAML
+  no-code configuration, Web Studio graphical interface, and desktop client. Compatible with 10 large models (including 7
+  key-free methods), enabling complex tasks like planning, writing, and analysis without programming. Suitable for individual
+  developers, entrepreneurs, and content creators to quickly obtain multi-perspective solutions.

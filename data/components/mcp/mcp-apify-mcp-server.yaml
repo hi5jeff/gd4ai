@@ -1,0 +1,43 @@
+id: mcp-apify-mcp-server
+type: mcp
+name: apify-mcp-server
+description_zh: Apify MCP服务器是一个基于模型上下文协议（MCP）的工具，允许AI代理通过数千个现成的爬虫和自动化工具，从社交媒体、搜索引擎、地图、电商网站等任意网页中提取结构化数据。支持OAuth认证，可无缝集成Claude
+  Code、Claude.ai、Cursor、VS Code等MCP客户端。适合需要大规模网页数据采集的AI开发者、数据科学家和自动化工程师。
+host_tools:
+- claude-code
+- cursor
+- any-mcp-client
+scenarios:
+- scraping
+- automation
+- data-analysis
+- search
+tags:
+- web-scraping
+- data-extraction
+- mcp-server
+- ai-agents
+- automation
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要Node.js环境，可通过npm全局安装或使用npx运行；推荐直接连接托管版本（https://mcp.apify.com）免安装。
+  notes_en: Requires Node.js environment. Can be installed globally via npm or run using npx. It is recommended to directly
+    connect to the hosted version (https://mcp.apify.com) to avoid installation.
+config_required:
+- Apify API token 或 OAuth 认证
+quality:
+  stars: 1876
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/apify/apify-mcp-server
+usage:
+  first_prompt_zh: 帮我从Twitter上抓取最近关于人工智能的热门推文。
+  first_prompt_en: Help me scrape recent popular tweets about artificial intelligence from Twitter.
+name_en: apify-mcp-server
+description_en: Apify MCP Server is a tool based on the Model Context Protocol (MCP) that allows AI agents to extract structured
+  data from any web page, including social media, search engines, maps, e-commerce sites, and more, using thousands of ready-made
+  crawlers and automation tools. It supports OAuth authentication and seamlessly integrates with MCP clients such as Claude
+  Code, Claude.ai, Cursor, and VS Code. Suitable for AI developers, data scientists, and automation engineers who need large-scale
+  web data collection.

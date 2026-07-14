@@ -1,0 +1,41 @@
+id: mcp-paperbanana
+type: mcp
+name: PaperBanana
+description_zh: 基于Google Research PaperBanana的开源实现，通过多智能体流水线自动生成出版级学术图表、统计图和幻灯片。支持OpenAI、Gemini、Azure等多种VLM和图像生成提供商，提供CLI、Python
+  API和MCP Server，适合AI科研人员快速制作论文插图。
+host_tools:
+- any-mcp-client
+scenarios:
+- research
+- image-gen
+- data-analysis
+- automation
+tags:
+- academic-diagrams
+- diagram-generation
+- gemini
+- llm
+- agentic-ai
+- arxiv
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要Python 3.10+，建议在虚拟环境中安装；若使用MCP Server需配合支持MCP的客户端（如Claude Code、Cursor）。
+  notes_en: Requires Python 3.10+, recommended to install in a virtual environment; if using MCP Server, it needs to be paired
+    with a client that supports MCP (e.g., Claude Code, Cursor).
+config_required:
+- Gemini API Key 或 OpenAI API Key 或 Azure API Key
+quality:
+  stars: 2107
+  last_commit: '2026-06-19'
+  verified: false
+source:
+  repo: https://github.com/llmsresearch/paperbanana
+usage:
+  first_prompt_zh: 帮我根据论文摘要生成一张系统架构图
+  first_prompt_en: Help me generate a system architecture diagram based on the paper abstract.
+name_en: PaperBanana
+description_en: An open-source implementation based on Google Research's PaperBanana, automatically generating publication-quality
+  academic figures, statistical charts, and slides through a multi-agent pipeline. Supports various VLM and image generation
+  providers such as OpenAI, Gemini, and Azure, and provides CLI, Python API, and MCP Server. Suitable for AI researchers to
+  quickly create paper illustrations.

@@ -1,0 +1,39 @@
+id: tool-skybridge
+type: tool
+name: Skybridge
+description_zh: Skybridge 是一个全栈 TypeScript 框架，用于构建 MCP Apps 和 ChatGPT Apps。它提供类型安全、React 驱动的开发体验，支持 Claude、ChatGPT、VSCode
+  等 MCP 客户端。内置开发服务器、本地模拟器、热重载和隧道功能，让开发者能快速创建带交互式 UI 的 MCP 应用。适合希望为 AI 助手定制界面的前端或全栈开发者。
+host_tools:
+- claude-code
+- any-mcp-client
+scenarios:
+- devtools
+- mcp-dev
+- coding
+tags:
+- mcp
+- typescript
+- react
+- framework
+- devtools
+- agent
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 通过 npm 安装 skybridge 包，需要 Node.js 环境。
+  notes_en: Install the skybridge package via npm; requires Node.js environment.
+config_required: []
+quality:
+  stars: 1932
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/alpic-ai/skybridge
+usage:
+  first_prompt_zh: 使用 Skybridge 创建一个新的 MCP 应用
+  first_prompt_en: Create a new MCP application using Skybridge
+name_en: Skybridge
+description_en: Skybridge is a full-stack TypeScript framework for building MCP Apps and ChatGPT Apps. It provides a type-safe,
+  React-driven development experience and supports MCP clients such as Claude, ChatGPT, and VSCode. With built-in development
+  server, local simulator, hot reload, and tunneling features, developers can quickly create MCP applications with interactive
+  UIs. It is suitable for frontend or full-stack developers who want to customize interfaces for AI assistants.

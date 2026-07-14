@@ -1,0 +1,42 @@
+id: mcp-davinci-resolve-mcp
+type: mcp
+name: davinci-resolve-mcp
+description_zh: 这是一个MCP服务器，让AI助手通过官方脚本API控制DaVinci Resolve Studio。提供完整的API覆盖，包括编辑、媒体池管理、渲染设置、审阅标记、调色、Fusion、Fairlight、项目生命周期等。适合视频编辑人员、后期制作团队和AI开发者使用，可大幅提升视频制作自动化效率。
+host_tools:
+- claude-code
+- cursor
+- windsurf
+scenarios:
+- media
+- automation
+- efficiency
+tags:
+- davinci-resolve
+- mcp-server
+- video-editing
+- automation
+- blackmagic
+difficulty: intermediate
+install:
+  method: npx
+  command: npx davinci-resolve-mcp setup
+  notes_zh: 需要Node.js和Python 3.10+，并确保DaVinci Resolve Studio已打开且设置Preferences > General > External scripting using为Local。
+  notes_en: Requires Node.js and Python 3.10+, and ensure DaVinci Resolve Studio is open with Preferences > General > External
+    scripting using set to Local.
+config_required:
+- DaVinci Resolve Studio（商业软件）
+- Python 3.10+环境
+quality:
+  stars: 1634
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/samuelgursky/davinci-resolve-mcp
+usage:
+  first_prompt_zh: 帮我创建一个新项目并导入媒体文件
+  first_prompt_en: Help me create a new project and import media files.
+name_en: davinci-resolve-mcp
+description_en: This is an MCP server that enables AI assistants to control DaVinci Resolve Studio via the official scripting
+  API. It provides complete API coverage, including editing, media pool management, render settings, review markers, color
+  grading, Fusion, Fairlight, project lifecycle, and more. Suitable for video editors, post-production teams, and AI developers,
+  it can significantly improve the automation efficiency of video production.

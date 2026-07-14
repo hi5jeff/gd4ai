@@ -1,0 +1,39 @@
+id: tool-lemonade
+type: tool
+name: Lemonade
+description_zh: Lemonade 是一款免费的本地 AI 服务器，支持在 GPU 和 NPU 上运行优化的 LLM，提供与 OpenAI、Anthropic 和 Ollama 兼容的 API。用户可进行聊天、编码、语音和图像生成，所有数据完全本地处理，保障隐私。适合开发者、AI
+  爱好者及需要离线或私有部署的用户。
+host_tools:
+- any
+scenarios:
+- coding
+- image-gen
+- efficiency
+- devtools
+tags:
+- AI
+- LLM
+- 本地推理
+- GPU
+- NPU
+- 开源
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 从官网下载对应系统的安装包，或使用 Docker 运行；支持 Windows、Linux、macOS。
+  notes_en: Download the installation package for your system from the official website, or run using Docker; supports Windows,
+    Linux, and macOS.
+config_required: []
+quality:
+  stars: 4891
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/lemonade-sdk/lemonade
+usage:
+  first_prompt_zh: 你好，请帮我写一个 Python 脚本，计算斐波那契数列。
+  first_prompt_en: Hello, please help me write a Python script to calculate the Fibonacci sequence.
+name_en: Lemonade
+description_en: Lemonade is a free local AI server that supports running optimized LLMs on GPU and NPU, providing APIs compatible
+  with OpenAI, Anthropic, and Ollama. Users can engage in chat, coding, voice, and image generation, with all data processed
+  entirely locally to ensure privacy. Suitable for developers, AI enthusiasts, and users who need offline or private deployment.

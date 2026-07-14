@@ -1,0 +1,41 @@
+id: skill-gpt-researcher
+type: skill
+name: GPT Researcher
+description_zh: GPT Researcher 是一个基于 AI 的自主深度研究代理，能够利用任何 LLM 提供商（如 OpenAI、Anthropic）对任意主题进行自动化研究，生成带有引用来源的详细、准确且客观的研究报告。它通过并行化代理工作提高速度和可靠性，适合需要快速获取全面、深度研究信息的个人、团队或企业。
+host_tools:
+- claude-code
+scenarios:
+- research
+- automation
+- data-analysis
+- search
+tags:
+- AI代理
+- 深度研究
+- 自动化
+- LLM
+- Python
+- 研究工具
+difficulty: intermediate
+install:
+  method: npx
+  command: npx skills add assafelovic/gpt-researcher
+  notes_zh: 需要 Node.js 环境，并确保已安装 Claude Code 或 Claude 桌面应用。
+  notes_en: Requires Node.js environment, and ensure Claude Code or Claude desktop application is installed.
+config_required:
+- LLM API key
+quality:
+  stars: 28292
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/assafelovic/gpt-researcher
+usage:
+  first_prompt_zh: 请帮我深度研究一下人工智能在医疗领域的应用现状。
+  first_prompt_en: Please help me conduct in-depth research on the current application status of artificial intelligence in
+    the medical field.
+name_en: GPT Researcher
+description_en: GPT Researcher is an AI-based autonomous deep research agent that can conduct automated research on any topic
+  using any LLM provider (such as OpenAI, Anthropic), generating detailed, accurate, and objective research reports with cited
+  sources. It improves speed and reliability by parallelizing agent work, suitable for individuals, teams, or enterprises
+  that need to quickly obtain comprehensive, in-depth research information.

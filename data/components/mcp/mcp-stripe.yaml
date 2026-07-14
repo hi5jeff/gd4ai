@@ -21,18 +21,24 @@ install:
   method: claude-mcp-add
   command: claude mcp add stripe -- npx -y @stripe/mcp --tools=all --api-key=你的STRIPE密钥
   notes_zh: 先在 stripe.com 注册拿测试密钥（sk_test_ 开头），跑通后再换正式密钥
+  notes_en: First register on stripe.com to get a test key (starting with sk_test_), then switch to the live key after testing.
 config_required:
 - Stripe API Key
 usage:
   first_prompt_zh: 创建一个 99 元的商品"会员月卡"，生成支付链接
+  first_prompt_en: Create a 99 yuan product 'Monthly Membership Card' and generate a payment link.
 quality:
   verified: false
   security_notes_zh: API 密钥有资金权限，测试期务必用 sk_test_ 密钥
   stars: 1666
   last_commit: '2026-07-13'
+  security_notes_en: API keys have financial permissions; during testing, always use the sk_test_ key.
 relations:
   works_with:
   - mcp-supabase
   - role-frontend-developer
 source:
   repo: https://github.com/stripe/agent-toolkit
+name_en: Stripe MCP
+description_en: Stripe's official payment toolkit that lets AI create products, prices, payment links, and query orders. Use
+  it when building e-commerce sites with payment integration.

@@ -23,6 +23,7 @@ config_required:
 - Figma API Key（Figma 设置页免费生成）
 usage:
   first_prompt_zh: 读取这个 Figma 链接的设计稿，用 React + Tailwind 还原它
+  first_prompt_en: Read the design from this Figma link and implement it with React + Tailwind.
 quality:
   verified: false
   stars: 15387
@@ -33,3 +34,6 @@ relations:
   - tool-figma
 source:
   repo: https://github.com/GLips/Figma-Context-MCP
+name_en: Figma Context MCP
+description_en: Feed Figma design's structured data to AI, enabling AI to write frontend code that closely matches the design,
+  with much higher fidelity than using screenshots. A crucial part of design-to-code conversion.

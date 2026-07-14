@@ -19,6 +19,7 @@ install:
   command: /plugin marketplace add anthropics/skills
 usage:
   first_prompt_zh: 生成一份项目周报 Word 模板，包含进度表格和风险清单
+  first_prompt_en: Generate a project weekly report Word template with a progress table and risk list.
 quality:
   verified: false
   stars: 160919
@@ -28,3 +29,6 @@ relations:
   - skill-pdf
 source:
   repo: https://github.com/anthropics/skills
+name_en: Word Document Processing (Official)
+description_en: Anthropic's official skill that enables Claude to create and edit formatted Word documents (headings, tables,
+  styles included). Ideal for writing reports, proposals, and contract templates.

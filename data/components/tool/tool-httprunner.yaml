@@ -1,0 +1,37 @@
+id: tool-httprunner
+type: tool
+name: HttpRunner
+description_zh: HttpRunner 是一款开源的 API/UI 测试框架，支持 Android、iOS、Harmony 和浏览器多端 UI 自动化，采用纯视觉驱动方案（OCR/CV/VLM），集成大模型技术，提供命令行工具 hrp。它同时支持
+  API 测试、性能测试和 UI 自动化，具有插件化机制和高可扩展性，适合测试工程师和开发者快速构建端到端测试场景。
+host_tools:
+- any
+scenarios:
+- web-testing
+- automation
+- efficiency
+tags:
+- testing
+- ui-automation
+- api-testing
+- golang
+- open-source
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 从 GitHub Releases 下载对应平台的二进制文件，或使用 go install 安装。
+  notes_en: Download the binary for your platform from GitHub Releases, or install using go install.
+config_required: []
+quality:
+  stars: 4284
+  last_commit: '2025-12-11'
+  verified: false
+source:
+  repo: https://github.com/httprunner/httprunner
+usage:
+  first_prompt_zh: 运行 hrp -h 查看帮助，开始你的测试之旅。
+  first_prompt_en: Run hrp -h to view help and start your testing journey.
+name_en: HttpRunner
+description_en: HttpRunner is an open-source API/UI testing framework that supports multi-platform UI automation for Android,
+  iOS, Harmony, and browsers. It adopts a pure vision-driven approach (OCR/CV/VLM), integrates large model technology, and
+  provides a command-line tool hrp. It also supports API testing, performance testing, and UI automation, with a plugin mechanism
+  and high extensibility, suitable for test engineers and developers to quickly build end-to-end testing scenarios.

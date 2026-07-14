@@ -18,8 +18,10 @@ install:
   method: marketplace
   command: /plugin marketplace add anthropics/skills
   notes_zh: 添加官方 skill 市场后安装 canvas-design
+  notes_en: Install canvas-design after adding the official skill marketplace.
 usage:
   first_prompt_zh: 帮我设计一张咖啡店开业促销海报，暖色调，突出"买一送一"
+  first_prompt_en: Help me design a coffee shop opening promotion poster, warm tones, highlighting 'Buy One Get One'.
 quality:
   verified: false
   stars: 160919
@@ -30,3 +32,7 @@ relations:
   - tool-canva
 source:
   repo: https://github.com/anthropics/skills
+name_en: Canvas Design (Official)
+description_en: Anthropic's official visual design skill that enables Claude to generate posters, covers, infographics, and
+  other graphic design drafts (outputting editable design files rather than bitmaps). A core component for graphic design
+  needs.

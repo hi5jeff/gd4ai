@@ -1,0 +1,37 @@
+id: mcp-korean-law-mcp
+type: mcp
+name: korean-law-mcp
+description_zh: 基于韩国法制处42个公开API的MCP服务器，提供法律、判例、行政规则、自治法规、条约等查询，支持引用验证（存在性+内容一致性）、法令影响图、时间点自动对比、条例雷达等功能，适合法律AI助手、Claude Desktop等MCP客户端使用。
+host_tools:
+- any-mcp-client
+scenarios:
+- research
+- search
+- efficiency
+tags:
+- korean-law
+- legal-ai
+- MCP
+- citation-verificatio
+- legal-tech
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 通过npm全局安装后，在MCP客户端（如Claude Desktop、Cursor）中配置该服务器即可使用。
+  notes_en: After global installation via npm, configure the server in an MCP client (such as Claude Desktop, Cursor) to use
+    it.
+config_required: []
+quality:
+  stars: 2199
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/chrisryugj/korean-law-mcp
+usage:
+  first_prompt_zh: 查询민법 제750조의 내용을 알려줘
+  first_prompt_en: Tell me the content of Article 750 of the Civil Code.
+name_en: korean-law-mcp
+description_en: MCP server based on 42 public APIs from the Korean Ministry of Legislation, providing queries for laws, precedents,
+  administrative rules, autonomous regulations, treaties, etc. Supports citation verification (existence + content consistency),
+  statute impact graph, automatic time-point comparison, ordinance radar, etc. Suitable for legal AI assistants, Claude Desktop,
+  and other MCP clients.

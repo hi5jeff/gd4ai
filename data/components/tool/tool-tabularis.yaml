@@ -1,0 +1,40 @@
+id: tool-tabularis
+type: tool
+name: tabularis
+description_zh: Tabularis 是一款开源桌面 SQL 工作空间，支持 PostgreSQL、MySQL/MariaDB、SQLite 等 15+ 种数据库，内置 MCP 服务器，可直接与 Claude、Cursor、Devin
+  等 AI 工具集成，提供 SQL 笔记本和可视化 EXPLAIN 功能。适合数据库开发者、数据分析师以及需要 AI 辅助数据库查询的用户。
+host_tools:
+- claude-code
+- cursor
+- windsurf
+scenarios:
+- database
+- data-analysis
+- devtools
+tags:
+- database-client
+- SQL
+- MCP-server
+- open-source
+- cross-platform
+- AI-assistant
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: Windows 用户使用 winget 安装；macOS 用户使用 brew tap 和 brew install --cask；Linux 用户使用 snap 安装。
+  notes_en: Windows users install via winget; macOS users use brew tap and brew install --cask; Linux users install via snap.
+config_required: []
+quality:
+  stars: 3701
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/TabularisDB/tabularis
+usage:
+  first_prompt_zh: 帮我连接到本地的 PostgreSQL 数据库并显示所有表。
+  first_prompt_en: Help me connect to the local PostgreSQL database and show all tables.
+name_en: tabularis
+description_en: Tabularis is an open-source desktop SQL workspace that supports over 15 databases including PostgreSQL, MySQL/MariaDB,
+  and SQLite. It comes with a built-in MCP server for direct integration with AI tools like Claude, Cursor, and Devin, and
+  offers SQL notebooks and visual EXPLAIN features. Ideal for database developers, data analysts, and users who need AI-assisted
+  database queries.

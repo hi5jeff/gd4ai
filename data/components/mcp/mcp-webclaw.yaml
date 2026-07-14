@@ -1,0 +1,40 @@
+id: mcp-webclaw
+type: mcp
+name: webclaw
+description_zh: webclaw 是一个基于 Rust 的本地优先网页内容提取工具，能将任意 URL 转换为干净的 Markdown、JSON 等 LLM 就绪格式。提供 CLI、REST API 和 MCP 服务器，支持 AI
+  代理和 RAG 管道。适合需要从网页提取结构化数据的开发者、AI 应用构建者。
+host_tools:
+- claude-code
+- cursor
+- any-mcp-client
+scenarios:
+- scraping
+- data-analysis
+- research
+tags:
+- AI
+- 网页抓取
+- Markdown
+- MCP服务器
+- 数据提取
+difficulty: beginner
+install:
+  method: npx
+  command: npx create-webclaw
+  notes_zh: 运行此命令会自动检测并配置支持的 MCP 客户端（如 Claude Code、Cursor 等）。
+  notes_en: Running this command will automatically detect and configure supported MCP clients (such as Claude Code, Cursor,
+    etc.).
+config_required: []
+quality:
+  stars: 1729
+  last_commit: '2026-07-02'
+  verified: false
+source:
+  repo: https://github.com/0xMassi/webclaw
+usage:
+  first_prompt_zh: 帮我提取这个网页的内容：https://example.com
+  first_prompt_en: 'Help me extract the content of this webpage: https://example.com'
+name_en: webclaw
+description_en: webclaw is a Rust-based, local-first web content extraction tool that converts any URL into clean Markdown,
+  JSON, and other LLM-ready formats. It provides CLI, REST API, and MCP server, supporting AI agents and RAG pipelines. Suitable
+  for developers and AI application builders who need to extract structured data from web pages.

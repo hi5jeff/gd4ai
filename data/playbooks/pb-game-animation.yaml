@@ -3,18 +3,55 @@ title_zh: 游戏开发的动画制作工具链
 scenario: game-animation
 audience: intermediate
 summary_zh: 按游戏类型选链路：2D 像素游戏用 Aseprite+Godot（全免费可行），3D 用 Blender MCP 让 AI 辅助建模，Unity 项目直接接 Unity MCP。
-tags: [游戏开发, 动画, 像素, 3D]
+tags:
+- 游戏开发
+- 动画
+- 像素
+- 3D
 components:
-  - {ref: tool-godot, role_zh: 免费游戏引擎——内置完整动画编辑器}
-  - {ref: tool-aseprite, role_zh: 2D 像素角色/特效逐帧动画}
-  - {ref: mcp-blender, role_zh: 3D 路线——AI 辅助 Blender 建模, optional: true}
-  - {ref: mcp-unity, role_zh: Unity 项目——AI 直接操作编辑器, optional: true}
+- ref: tool-godot
+  role_zh: 免费游戏引擎——内置完整动画编辑器
+  role_en: Free game engine – built-in complete animation editor
+- ref: tool-aseprite
+  role_zh: 2D 像素角色/特效逐帧动画
+  role_en: 2D pixel character/effect frame-by-frame animation
+- ref: mcp-blender
+  role_zh: 3D 路线——AI 辅助 Blender 建模
+  optional: true
+  role_en: 3D pipeline – AI-assisted Blender modeling
+- ref: mcp-unity
+  role_zh: Unity 项目——AI 直接操作编辑器
+  optional: true
+  role_en: Unity projects – AI directly operates the editor
 steps:
-  - {title_zh: 定路线, detail_zh: 2D 像素风→Aseprite 画帧动画+Godot 组装；3D→Blender 建模+引擎动画系统；已有 Unity 项目→装 Unity MCP}
-  - {title_zh: 2D 链路, detail_zh: Aseprite 画角色 walk/attack/idle 帧序列导出 spritesheet → Godot 的 AnimatedSprite2D 导入 → AI 写状态机脚本切换动画}
-  - {title_zh: 让 AI 深度参与, detail_zh: Claude Code + Godot：AI 直接写 GDScript 动画状态机；配 Blender MCP 可以用自然语言建 3D 模型}
+- title_zh: 定路线
+  detail_zh: 2D 像素风→Aseprite 画帧动画+Godot 组装；3D→Blender 建模+引擎动画系统；已有 Unity 项目→装 Unity MCP
+  title_en: Define the pipeline
+  detail_en: 2D pixel style → Aseprite for frame animation + Godot assembly; 3D → Blender modeling + engine animation system;
+    existing Unity projects → install Unity MCP
+- title_zh: 2D 链路
+  detail_zh: Aseprite 画角色 walk/attack/idle 帧序列导出 spritesheet → Godot 的 AnimatedSprite2D 导入 → AI 写状态机脚本切换动画
+  title_en: 2D pipeline
+  detail_en: Draw character walk/attack/idle frame sequences in Aseprite, export spritesheet → Import into Godot's AnimatedSprite2D
+    → AI writes state machine script to switch animations
+- title_zh: 让 AI 深度参与
+  detail_zh: Claude Code + Godot：AI 直接写 GDScript 动画状态机；配 Blender MCP 可以用自然语言建 3D 模型
+  title_en: Let AI deeply participate
+  detail_en: 'Claude Code + Godot: AI directly writes GDScript animation state machine; with Blender MCP, you can use natural
+    language to build 3D models'
 first_prompt_zh: 我在做一个 2D 像素平台跳跃游戏（Godot），帮我写角色的动画状态机脚本：idle/run/jump/fall 四个状态，用 AnimatedSprite2D，说明每个动画需要几帧、什么切换条件。
 pitfalls_zh:
-  - Aseprite 官方版付费，预算为零用 LibreSprite 或自编译
-  - Unity MCP 配置较繁琐（插件端+服务端两步），新手建议先走 Godot 路线
-quality: {verified: false}
+- Aseprite 官方版付费，预算为零用 LibreSprite 或自编译
+- Unity MCP 配置较繁琐（插件端+服务端两步），新手建议先走 Godot 路线
+quality:
+  verified: false
+title_en: Animation Production Toolchain for Game Development
+summary_en: 'Choose the pipeline by game type: 2D pixel games use Aseprite+Godot (fully free and feasible), 3D use Blender
+  MCP for AI-assisted modeling, Unity projects directly connect Unity MCP.'
+first_prompt_en: 'I''m making a 2D pixel platformer game (Godot), help me write the character''s animation state machine script:
+  four states idle/run/jump/fall, using AnimatedSprite2D, explain how many frames each animation needs and what the transition
+  conditions are.'
+pitfalls_en:
+- Aseprite official version is paid, for zero budget use LibreSprite or compile from source
+- Unity MCP configuration is relatively cumbersome (plugin side + server side two steps), beginners are advised to take the
+  Godot route first

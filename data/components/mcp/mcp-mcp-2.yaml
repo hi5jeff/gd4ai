@@ -1,0 +1,43 @@
+id: mcp-mcp-2
+type: mcp
+name: Browser MCP
+description_zh: Browser MCP 是一个 MCP 服务器与 Chrome 扩展的组合工具，允许 AI 应用（如 VS Code、Claude、Cursor）直接控制你的浏览器。它利用本地浏览器配置文件，保持登录状态，避免机器人检测和验证码，实现快速、私密的浏览器自动化。适合需要让
+  AI 代理执行网页操作、数据抓取或自动化测试的开发者。
+host_tools:
+- claude-code
+- cursor
+- windsurf
+scenarios:
+- automation
+- web-testing
+- scraping
+tags:
+- 浏览器自动化
+- MCP
+- Chrome扩展
+- AI
+- 隐私
+- 本地
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要安装 Chrome 浏览器和对应的 Chrome 扩展，并在 MCP 客户端中配置服务器地址。
+  notes_en: Requires installing Chrome browser and the corresponding Chrome extension, and configuring the server address
+    in the MCP client.
+config_required:
+- Chrome浏览器
+- Chrome扩展
+quality:
+  stars: 6815
+  last_commit: '2025-04-24'
+  verified: false
+source:
+  repo: https://github.com/BrowserMCP/mcp
+usage:
+  first_prompt_zh: 帮我打开百度首页，然后搜索今天的天气。
+  first_prompt_en: Help me open the Baidu homepage, then search for today's weather.
+name_en: Browser MCP
+description_en: Browser MCP is a combination tool of an MCP server and a Chrome extension, allowing AI applications (such
+  as VS Code, Claude, Cursor) to directly control your browser. It utilizes local browser profiles to maintain login states,
+  avoid bot detection and CAPTCHAs, and achieve fast, private browser automation. Suitable for developers who need AI agents
+  to perform web operations, data scraping, or automated testing.

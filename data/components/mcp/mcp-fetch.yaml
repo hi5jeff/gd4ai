@@ -17,8 +17,10 @@ install:
   method: claude-mcp-add
   command: claude mcp add fetch -- uvx mcp-server-fetch
   notes_zh: 需要 Python 环境的 uv 工具（pip install uv）
+  notes_en: Requires the uv tool in a Python environment (pip install uv)
 usage:
   first_prompt_zh: 抓取 https://example.com 的内容并总结
+  first_prompt_en: Fetch the content of https://example.com and summarize it
 quality:
   verified: false
   stars: 88433
@@ -28,3 +30,6 @@ relations:
   - mcp-playwright
 source:
   repo: https://github.com/modelcontextprotocol/servers
+name_en: Fetch MCP
+description_en: Official web scraping MCP, which fetches content from any URL and converts it to Markdown for AI to read.
+  Lightweight, no full browser required.

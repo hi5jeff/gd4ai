@@ -1,0 +1,41 @@
+id: tool-happy
+type: tool
+name: Happy
+description_zh: Happy 是 Claude Code 和 Codex 的移动端与 Web 客户端，支持端到端加密、实时语音和推送通知。开发者可通过手机或浏览器远程查看 AI 编码代理的进度、处理权限请求和错误，并能在设备间无缝切换。适合需要随时监控
+  AI 编程任务的开发者，开源且无遥测。
+host_tools:
+- web
+- any
+scenarios:
+- coding
+- devtools
+- efficiency
+- communication
+tags:
+- claude-code
+- codex
+- mobile
+- encryption
+- remote-control
+- open-source
+difficulty: beginner
+install:
+  method: npm
+  command: npm install -g happy
+  notes_zh: 需要 Node.js 环境，全局安装后即可使用 `happy` 命令替代 `claude` 或 `codex`。
+  notes_en: Requires Node.js environment. After global installation, use the `happy` command instead of `claude` or `codex`.
+config_required: []
+quality:
+  stars: 22618
+  last_commit: '2026-07-11'
+  verified: false
+source:
+  repo: https://github.com/slopus/happy
+usage:
+  first_prompt_zh: 启动 happy claude，让我在手机上查看编码进度。
+  first_prompt_en: Start happy claude, let me view the coding progress on my phone.
+name_en: Happy
+description_en: Happy is a mobile and web client for Claude Code and Codex, supporting end-to-end encryption, real-time voice,
+  and push notifications. Developers can remotely view the progress of AI coding agents, handle permission requests and errors
+  via phone or browser, and seamlessly switch between devices. Suitable for developers who need to monitor AI programming
+  tasks anytime, open source and no telemetry.

@@ -1,0 +1,41 @@
+id: mcp-browser-tools-mcp
+type: mcp
+name: BrowserTools MCP
+description_zh: 基于MCP协议的浏览器监控与交互工具，通过Chrome扩展捕获浏览器日志、截图、网络请求及SEO/性能审计数据，让Cursor等MCP兼容IDE中的AI代理能实时感知和操作浏览器。适合使用AI编程助手的Web开发者，用于调试、自动化测试和性能分析。
+host_tools:
+- cursor
+- any-mcp-client
+scenarios:
+- web-dev
+- devtools
+- monitoring
+- automation
+tags:
+- browser monitoring
+- MCP server
+- Chrome extension
+- Cursor
+- debugging
+- AI tools
+difficulty: intermediate
+install:
+  method: npx
+  command: npx @agentdeskai/browser-tools-mcp@latest
+  notes_zh: 需同时安装browser-tools-server（终端运行）和Chrome扩展，参考README配置IDE的MCP设置。
+  notes_en: You need to install both browser-tools-server (run in terminal) and the Chrome extension. Refer to the README
+    to configure the IDE's MCP settings.
+config_required: []
+quality:
+  stars: 7270
+  last_commit: '2026-03-18'
+  verified: false
+source:
+  repo: https://github.com/AgentDeskAI/browser-tools-mcp
+usage:
+  first_prompt_zh: 帮我捕获当前浏览器页面的控制台日志和截图。
+  first_prompt_en: Help me capture the console logs and screenshot of the current browser page.
+name_en: BrowserTools MCP
+description_en: A browser monitoring and interaction tool based on the MCP protocol. It captures browser logs, screenshots,
+  network requests, and SEO/performance audit data via a Chrome extension, enabling AI agents in MCP-compatible IDEs like
+  Cursor to perceive and operate the browser in real time. Suitable for web developers using AI coding assistants for debugging,
+  automated testing, and performance analysis.

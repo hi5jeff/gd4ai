@@ -1,0 +1,42 @@
+id: tool-carbon
+type: tool
+name: Carbon
+description_zh: Carbon 是一个面向制造业的开源 ERP、MES 和 QMS 系统，专为复杂装配、合同制造和按订单配置生产设计。它提供 API 优先的架构、自定义字段、嵌套 BOM、可追溯性、MRP、配置器、MCP 客户端/服务器、会计等功能，支持通过
+  Supabase 和 React 构建可扩展的制造管理平台。适合制造企业、系统集成商和需要灵活定制生产管理方案的团队。
+host_tools:
+- web
+scenarios:
+- planning
+- automation
+- efficiency
+tags:
+- ERP
+- MES
+- QMS
+- manufacturing
+- open-source
+- React
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要 Node.js、pnpm、Supabase 数据库和 Redis 缓存，克隆仓库后运行 pnpm install 并配置环境变量。
+  notes_en: Requires Node.js, pnpm, Supabase database, and Redis cache. After cloning the repo, run pnpm install and configure
+    environment variables.
+config_required:
+- Supabase database
+- Redis
+quality:
+  stars: 2255
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/crbnos/carbon
+usage:
+  first_prompt_zh: 开始管理我的制造流程
+  first_prompt_en: Start managing my manufacturing process
+name_en: Carbon
+description_en: Carbon is an open-source ERP, MES, and QMS system for manufacturing, designed for complex assembly, contract
+  manufacturing, and configure-to-order production. It offers an API-first architecture, custom fields, nested BOMs, traceability,
+  MRP, configurator, MCP client/server, accounting, and more, supporting the building of scalable manufacturing management
+  platforms with Supabase and React. Suitable for manufacturing enterprises, system integrators, and teams needing flexible,
+  customized production management solutions.

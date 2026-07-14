@@ -18,6 +18,8 @@ difficulty: intermediate
 install:
   method: web
   notes_zh: aseprite.org 购买下载；或 clone 源码自行编译免费使用；免费替代品 LibreSprite
+  notes_en: 'Purchase and download from aseprite.org; or clone the source code and compile it yourself for free; free alternative:
+    LibreSprite'
 quality:
   verified: false
   stars: 37991
@@ -28,3 +30,6 @@ relations:
   alternatives: []
 source:
   repo: https://github.com/aseprite/aseprite
+name_en: Aseprite
+description_en: The benchmark editor for pixel art and frame-by-frame animation, a powerful tool for game character/effect
+  animation. About $20 one-time purchase, or you can compile the source code yourself for free (open source).

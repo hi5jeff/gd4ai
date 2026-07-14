@@ -1,0 +1,40 @@
+id: skill-ponytail
+type: skill
+name: ponytail
+description_zh: Ponytail 是一个 AI 代理技能，让 Claude Code 等编码助手像懒惰的高级开发者一样思考，用最少的代码完成任务。它平均减少约 54% 的代码量（最高可达 94%），同时降低成本约 20%、提升速度约
+  27%，且保持 100% 安全。适合使用 AI 编码工具的开发者，避免过度工程化，生成简洁高效的代码。
+host_tools:
+- claude-code
+- cursor
+scenarios:
+- coding
+- devtools
+- efficiency
+tags:
+- agent-skills
+- ai-agents
+- claude
+- developer-tools
+- lazy
+- code-reduction
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 通过 npm 全局安装 @dietrichgebert/ponytail 包，或按照官方文档添加到 Claude Code 技能中。
+  notes_en: Install the @dietrichgebert/ponytail package globally via npm, or add it to Claude Code skills following the official
+    documentation.
+config_required: []
+quality:
+  stars: 82491
+  last_commit: '2026-07-10'
+  verified: false
+source:
+  repo: https://github.com/DietrichGebert/ponytail
+usage:
+  first_prompt_zh: 请像懒惰的高级开发者一样，用最少的代码实现一个日期选择器。
+  first_prompt_en: Please implement a date picker with minimal code, like a lazy senior developer.
+name_en: ponytail
+description_en: Ponytail is an AI agent skill that makes coding assistants like Claude Code think like a lazy senior developer,
+  completing tasks with minimal code. It reduces code volume by an average of about 54% (up to 94%), while cutting costs by
+  about 20%, increasing speed by about 27%, and maintaining 100% safety. Suitable for developers using AI coding tools, it
+  avoids over-engineering and generates concise, efficient code.

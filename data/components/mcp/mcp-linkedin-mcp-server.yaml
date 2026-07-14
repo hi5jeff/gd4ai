@@ -1,0 +1,39 @@
+id: mcp-linkedin-mcp-server
+type: mcp
+name: linkedin-mcp-server
+description_zh: 这是一个开源的MCP服务器，允许Claude等AI助手通过用户已登录的浏览器会话读取LinkedIn数据。它可以访问个人资料、公司信息、职位和消息，适合需要从LinkedIn获取结构化数据的AI代理或开发者。用户需自行提供LinkedIn登录状态，服务器在本地运行，确保数据安全。
+host_tools:
+- any-mcp-client
+scenarios:
+- research
+- search
+- automation
+tags:
+- linkedin
+- mcp-server
+- ai-agents
+- social-media
+- data-access
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要Python环境，通过pip或uvx安装，但需先获取LinkedIn浏览器cookie并配置环境变量。
+  notes_en: Requires Python environment, install via pip or uvx, but you need to first obtain LinkedIn browser cookies and
+    configure environment variables.
+config_required:
+- LinkedIn账号
+- 浏览器会话cookie（需手动提取）
+quality:
+  stars: 2765
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/stickerdaniel/linkedin-mcp-server
+usage:
+  first_prompt_zh: 帮我查看某个LinkedIn用户的个人资料。
+  first_prompt_en: Help me view a LinkedIn user's profile.
+name_en: linkedin-mcp-server
+description_en: This is an open-source MCP server that allows AI assistants like Claude to read LinkedIn data through the
+  user's logged-in browser session. It can access profiles, company information, jobs, and messages, making it suitable for
+  AI agents or developers who need structured data from LinkedIn. Users need to provide their own LinkedIn login status; the
+  server runs locally to ensure data security.

@@ -1,0 +1,44 @@
+id: mcp-dbhub
+type: mcp
+name: DBHub
+description_zh: DBHub是一个零依赖、token高效的MCP服务器，实现Model Context Protocol接口，允许MCP兼容客户端（如Claude Desktop、Cursor、Claude Code等）连接并探索多种数据库（PostgreSQL、MySQL、SQL
+  Server、MariaDB、SQLite）。它提供execute_sql和search_objects等工具，支持多连接、只读模式、行限制和查询超时等安全控制，适合开发者通过AI助手安全地操作数据库。
+host_tools:
+- claude-code
+- cursor
+- any-mcp-client
+scenarios:
+- database
+- devtools
+- coding
+- automation
+tags:
+- database
+- MCP
+- AI
+- PostgreSQL
+- MySQL
+- SQLite
+difficulty: intermediate
+install:
+  method: npx
+  command: npx @bytebase/dbhub@latest --transport http --port 8080 --dsn "postgres://user:password@localhost:5432/dbname?sslmode=disable"
+  notes_zh: 需要Node.js >= 22.5.0，并将DSN替换为实际数据库连接字符串。
+  notes_en: Requires Node.js >= 22.5.0, and replace DSN with the actual database connection string.
+config_required:
+- 数据库连接字符串 (DSN)
+quality:
+  stars: 3155
+  last_commit: '2026-07-10'
+  verified: false
+source:
+  repo: https://github.com/bytebase/dbhub
+usage:
+  first_prompt_zh: 连接到我的数据库，并列出所有表。
+  first_prompt_en: Connect to my database and list all tables.
+name_en: DBHub
+description_en: DBHub is a zero-dependency, token-efficient MCP server that implements the Model Context Protocol interface,
+  allowing MCP-compatible clients (such as Claude Desktop, Cursor, Claude Code, etc.) to connect and explore multiple databases
+  (PostgreSQL, MySQL, SQL Server, MariaDB, SQLite). It provides tools like execute_sql and search_objects, supports multi-connection,
+  read-only mode, row limits, and query timeout security controls, making it suitable for developers to safely operate databases
+  through AI assistants.

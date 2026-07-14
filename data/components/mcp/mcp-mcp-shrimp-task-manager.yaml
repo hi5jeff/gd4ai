@@ -1,0 +1,40 @@
+id: mcp-mcp-shrimp-task-manager
+type: mcp
+name: mcp-shrimp-task-manager
+description_zh: Shrimp Task Manager 是一个专为 AI 代理设计的任务管理 MCP 服务器，能将自然语言需求转化为结构化的开发任务，支持依赖追踪、迭代优化和链式思考。它帮助 AI 编码助手（如 Claude Code）在跨会话中保持上下文和进度，适合需要复杂项目拆解、持续开发协作的开发者。
+host_tools:
+- claude-code
+- any-mcp-client
+scenarios:
+- coding
+- planning
+- automation
+- devtools
+tags:
+- task-management
+- ai-agent
+- chain-of-thought
+- mcp-server
+- development
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要 Node.js 18+，克隆仓库后执行 npm install && npm run build，再配置 MCP 客户端指向构建产物。
+  notes_en: Requires Node.js 18+. After cloning the repo, run npm install && npm run build, then configure the MCP client
+    to point to the build output.
+config_required:
+- DATA_DIR路径
+quality:
+  stars: 2131
+  last_commit: '2025-08-21'
+  verified: false
+source:
+  repo: https://github.com/cjo4m06/mcp-shrimp-task-manager
+usage:
+  first_prompt_zh: 初始化项目规则
+  first_prompt_en: Initialize project rules
+name_en: mcp-shrimp-task-manager
+description_en: Shrimp Task Manager is a task management MCP server designed specifically for AI agents. It can convert natural
+  language requirements into structured development tasks, supporting dependency tracking, iterative optimization, and chain-of-thought
+  reasoning. It helps AI coding assistants (such as Claude Code) maintain context and progress across sessions, suitable for
+  developers who need complex project decomposition and continuous development collaboration.

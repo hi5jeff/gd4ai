@@ -2,13 +2,37 @@ id: tool-canva
 type: tool
 name: Canva (AI 功能)
 description_zh: 在线平面设计工具，内置 AI 生图、魔法排版、一键抠图。不会设计软件的人做海报/PPT/社媒图的最低门槛方案，免费版够用。
-host_tools: [web]
-categories: [design-tool]
-scenarios: [graphic-design, marketing, office]
-tags: [平面设计, 海报, 在线, 免费]
+host_tools:
+- web
+categories:
+- design-tool
+scenarios:
+- graphic-design
+- marketing
+- office
+tags:
+- 平面设计
+- 海报
+- 在线
+- 免费
 difficulty: beginner
-install: {method: web, notes_zh: canva.com（国内版 canva.cn）注册即用}
-usage: {first_prompt_zh: 用"魔力设计"输入活动主题，AI 直接出整套海报模板再手动微调}
-quality: {verified: false}
-relations: {works_with: [prompt-poster-design, skill-canvas-design]}
-source: {url: https://www.canva.com}
+install:
+  method: web
+  notes_zh: canva.com（国内版 canva.cn）注册即用
+  notes_en: Sign up at canva.com (or canva.cn for China) and start using it immediately.
+usage:
+  first_prompt_zh: 用"魔力设计"输入活动主题，AI 直接出整套海报模板再手动微调
+  first_prompt_en: Use 'Magic Design' to input the event theme, and AI will generate a complete set of poster templates for
+    you to manually fine-tune.
+quality:
+  verified: false
+relations:
+  works_with:
+  - prompt-poster-design
+  - skill-canvas-design
+source:
+  url: https://www.canva.com
+name_en: Canva (AI Features)
+description_en: An online graphic design tool with built-in AI image generation, Magic Layout, and one-click background removal.
+  It's the easiest way for non-designers to create posters, presentations, and social media graphics. The free version is
+  sufficient.

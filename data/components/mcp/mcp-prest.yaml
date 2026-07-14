@@ -1,0 +1,41 @@
+id: mcp-prest
+type: mcp
+name: pREST
+description_zh: pREST 是一个基于 PostgreSQL 的即时 REST 和 MCP API 工具，无需手写后端即可为现有或新 Postgres 数据库提供 CRUD、自定义 SQL 路由、认证、ACL 和只读 MCP 端点。它采用
+  Go 语言开发，性能高、部署简单，适合需要快速构建 API 的开发者，尤其是使用 Postgres 的团队。
+host_tools:
+- any-mcp-client
+- web
+- desktop
+scenarios:
+- database
+- devtools
+- web-dev
+tags:
+- PostgreSQL
+- REST API
+- MCP
+- low-code
+- Go
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 可通过 Docker、Homebrew 或 Go 安装，需配置 PostgreSQL 连接地址（PREST_PG_URL 或 DATABASE_URL）。
+  notes_en: Can be installed via Docker, Homebrew, or Go. Requires configuring the PostgreSQL connection address (PREST_PG_URL
+    or DATABASE_URL).
+config_required:
+- PostgreSQL数据库连接URL
+quality:
+  stars: 4581
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/prest/prest
+usage:
+  first_prompt_zh: 为我的 PostgreSQL 数据库创建 REST API
+  first_prompt_en: Create a REST API for my PostgreSQL database
+name_en: pREST
+description_en: pREST is an instant REST and MCP API tool based on PostgreSQL, providing CRUD, custom SQL routes, authentication,
+  ACL, and read-only MCP endpoints for existing or new Postgres databases without writing a backend. It is developed in Go,
+  with high performance and simple deployment, suitable for developers who need to quickly build APIs, especially teams using
+  Postgres.

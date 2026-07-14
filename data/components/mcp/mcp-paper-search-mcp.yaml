@@ -1,0 +1,40 @@
+id: mcp-paper-search-mcp
+type: mcp
+name: paper-search-mcp
+description_zh: 基于MCP协议的学术论文搜索与下载工具，支持从arXiv、PubMed、bioRxiv、Semantic Scholar等20+来源并发检索、去重和PDF下载。提供统一的高层接口和模块化连接器，适合研究人员、AI科学家及需要批量获取学术文献的LLM工作流。遵循免费优先策略，无需API
+  key即可使用基础功能。
+host_tools:
+- any-mcp-client
+- claude-code
+scenarios:
+- research
+- search
+- data-analysis
+tags:
+- 学术搜索
+- 论文下载
+- MCP
+- AI科学家
+- arXiv
+- PubMed
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 使用uvx运行，无需安装Python环境，自动获取最新版本。也可通过pip、npx或Docker安装。
+  notes_en: Run with uvx, no need to install Python environment, automatically get the latest version. Can also be installed
+    via pip, npx, or Docker.
+config_required: []
+quality:
+  stars: 2127
+  last_commit: '2026-07-02'
+  verified: false
+source:
+  repo: https://github.com/openags/paper-search-mcp
+usage:
+  first_prompt_zh: 搜索关于量子计算的论文
+  first_prompt_en: Search for papers about quantum computing
+name_en: paper-search-mcp
+description_en: An academic paper search and download tool based on the MCP protocol, supporting concurrent search, deduplication,
+  and PDF download from 20+ sources including arXiv, PubMed, bioRxiv, Semantic Scholar. Provides a unified high-level interface
+  and modular connectors, suitable for researchers, AI scientists, and LLM workflows that need to batch acquire academic literature.
+  Follows a free-first strategy, basic features available without an API key.

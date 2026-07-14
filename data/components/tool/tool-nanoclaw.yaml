@@ -1,0 +1,39 @@
+id: tool-nanoclaw
+type: tool
+name: NanoClaw
+description_zh: NanoClaw 是一个轻量级 AI 助手，基于 Anthropic Agents SDK 构建，在容器中安全运行代理。它支持连接 WhatsApp、Telegram、Slack、Discord、Gmail 等消息应用，具备记忆和定时任务功能。代码库小巧易理解，适合需要安全、可定制
+  AI 助手的开发者和团队。
+host_tools:
+- any
+scenarios:
+- communication
+- automation
+- efficiency
+tags:
+- AI助手
+- 容器安全
+- 消息集成
+- 轻量级
+- 开源
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要 Docker 和 Node.js 环境，运行 bash nanoclaw.sh 脚本会自动安装依赖并引导配置。
+  notes_en: Requires Docker and Node.js environment. Running the bash nanoclaw.sh script will automatically install dependencies
+    and guide you through configuration.
+config_required:
+- Anthropic API密钥
+quality:
+  stars: 30231
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/nanocoai/nanoclaw
+usage:
+  first_prompt_zh: 你好，请介绍一下你的功能。
+  first_prompt_en: Hello, please introduce your features.
+name_en: NanoClaw
+description_en: NanoClaw is a lightweight AI assistant built on the Anthropic Agents SDK, running agents securely in containers.
+  It supports connecting to messaging apps such as WhatsApp, Telegram, Slack, Discord, and Gmail, with memory and scheduled
+  task capabilities. The codebase is small and easy to understand, making it suitable for developers and teams who need a
+  secure, customizable AI assistant.

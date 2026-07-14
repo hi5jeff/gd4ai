@@ -3,18 +3,54 @@ title_zh: 生成高质量美女人像图
 scenario: portrait
 audience: beginner
 summary_zh: 提示词模板 + 生图工具的组合：中文用户用即梦零成本起步，追求质感上 Midjourney，要完全控制用本地 SD。
-tags: [人像, 美女, 生图, 提示词]
+tags:
+- 人像
+- 美女
+- 生图
+- 提示词
 components:
-  - {ref: prompt-portrait-photography, role_zh: 核心——直接可用的人像提示词模板}
-  - {ref: tool-jimeng, role_zh: 免费起步——中文提示词直接出图}
-  - {ref: tool-midjourney, role_zh: 质感升级——预算$10/月时的最佳选择, optional: true}
-  - {ref: tool-sd-webui, role_zh: 进阶——有显卡想无限出图/自定义风格, optional: true}
+- ref: prompt-portrait-photography
+  role_zh: 核心——直接可用的人像提示词模板
+  role_en: Core – Ready-to-use portrait prompt templates
+- ref: tool-jimeng
+  role_zh: 免费起步——中文提示词直接出图
+  role_en: Free start – Chinese prompts directly generate images
+- ref: tool-midjourney
+  role_zh: 质感升级——预算$10/月时的最佳选择
+  optional: true
+  role_en: Quality upgrade – Best choice when budget is $10/month
+- ref: tool-sd-webui
+  role_zh: 进阶——有显卡想无限出图/自定义风格
+  optional: true
+  role_en: Advanced – Have GPU, want unlimited image generation/custom styles
 steps:
-  - {title_zh: 选工具, detail_zh: 零成本→即梦；要质感→Midjourney；有 NVIDIA 显卡想深度玩→SD WebUI}
-  - {title_zh: 套模板出第一批图, detail_zh: 复制人像提示词模板，替换场景/光线/风格关键词，一次生成 4 张选优}
-  - {title_zh: 迭代关键词, detail_zh: 保留好图的种子/关键词，每次只改一个变量（光线→构图→服装），快速收敛到想要的效果}
-first_prompt_zh: "portrait of a beautiful young woman, elegant white dress, golden hour sunlight, shallow depth of field, 85mm lens, photorealistic --ar 3:4"
+- title_zh: 选工具
+  detail_zh: 零成本→即梦；要质感→Midjourney；有 NVIDIA 显卡想深度玩→SD WebUI
+  title_en: Select tool
+  detail_en: Zero cost → Jimeng; Want quality → Midjourney; Have NVIDIA GPU and want to go deep → SD WebUI
+- title_zh: 套模板出第一批图
+  detail_zh: 复制人像提示词模板，替换场景/光线/风格关键词，一次生成 4 张选优
+  title_en: Apply template to generate first batch of images
+  detail_en: Copy the portrait prompt template, replace scene/lighting/style keywords, generate 4 images at once and select
+    the best.
+- title_zh: 迭代关键词
+  detail_zh: 保留好图的种子/关键词，每次只改一个变量（光线→构图→服装），快速收敛到想要的效果
+  title_en: Iterate keywords
+  detail_en: Keep the seed/keywords of good images, change only one variable at a time (lighting → composition → clothing),
+    quickly converge to the desired effect.
+first_prompt_zh: portrait of a beautiful young woman, elegant white dress, golden hour sunlight, shallow depth of field, 85mm
+  lens, photorealistic --ar 3:4
 pitfalls_zh:
-  - 直接写"一个美女"效果差，光线和镜头关键词才是质感来源
-  - 商用需注意肖像权与平台内容政策，真人脸换脸有法律风险
-quality: {verified: false}
+- 直接写"一个美女"效果差，光线和镜头关键词才是质感来源
+- 商用需注意肖像权与平台内容政策，真人脸换脸有法律风险
+quality:
+  verified: false
+title_en: Generate High-Quality Beautiful Female Portraits
+summary_en: 'Prompt templates + image generation tools: Chinese users start with Jimeng at zero cost, go for quality with
+  Midjourney, and use local SD for full control.'
+first_prompt_en: portrait of a beautiful young woman, elegant white dress, golden hour sunlight, shallow depth of field, 85mm
+  lens, photorealistic --ar 3:4
+pitfalls_en:
+- Directly writing 'a beautiful woman' yields poor results; lighting and lens keywords are the source of quality.
+- For commercial use, pay attention to portrait rights and platform content policies; face swapping of real people has legal
+  risks.

@@ -1,0 +1,37 @@
+id: tool-worldmonitor
+type: tool
+name: worldmonitor
+description_zh: World Monitor 是一个实时全球情报仪表盘，利用 AI 进行新闻聚合、地缘政治监控和基础设施跟踪。提供 Web 应用、CLI 和 MCP 服务器，支持多领域变体（科技、金融、商品等），适合需要快速掌握全球动态的分析师、投资者和研究人员。
+host_tools:
+- web
+- any-mcp-client
+scenarios:
+- monitoring
+- research
+tags:
+- 实时情报
+- AI新闻
+- 地缘政治
+- 监控
+- 仪表盘
+- MCP服务器
+difficulty: beginner
+install:
+  method: npx
+  command: npx worldmonitor
+  notes_zh: 需要 Node.js 环境，直接运行 npx 命令即可启动 CLI 或 Web 服务。
+  notes_en: Requires Node.js environment. Run the npx command directly to start the CLI or web service.
+config_required: []
+quality:
+  stars: 61828
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/koala73/worldmonitor
+usage:
+  first_prompt_zh: 显示最新的全球新闻摘要
+  first_prompt_en: Show the latest global news summary
+name_en: worldmonitor
+description_en: World Monitor is a real-time global intelligence dashboard that uses AI for news aggregation, geopolitical
+  monitoring, and infrastructure tracking. It provides a web app, CLI, and MCP server, supporting multi-domain variants (tech,
+  finance, commodities, etc.), suitable for analysts, investors, and researchers who need to quickly grasp global dynamics.

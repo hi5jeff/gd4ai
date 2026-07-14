@@ -1,0 +1,39 @@
+id: tool-lean-ctx
+type: tool
+name: lean-ctx
+description_zh: LeanCTX是一个本地运行的Rust二进制工具，作为AI代理的上下文智能层。它能控制AI读取的内容、压缩上下文（节省60-90% token）、记忆跨会话信息、保护数据安全，并提供可验证的节省账本。适合使用Claude
+  Code等AI编码工具的开发者，零配置即可使用。
+host_tools:
+- any
+scenarios:
+- coding
+- devtools
+- efficiency
+- token-saving
+tags:
+- context-engineering
+- token-saving
+- AI代理
+- Rust
+- 本地优先
+- MCP
+difficulty: beginner
+install:
+  method: manual
+  notes_zh: 需要Rust环境或Node.js，推荐使用cargo install lean-ctx或npm install -g lean-ctx-bin。
+  notes_en: Requires Rust environment or Node.js. Recommended to install via cargo install lean-ctx or npm install -g lean-ctx-bin.
+config_required: []
+quality:
+  stars: 3237
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/yvgude/lean-ctx
+usage:
+  first_prompt_zh: 帮我优化当前项目的上下文，减少token消耗。
+  first_prompt_en: Help me optimize the context of the current project to reduce token consumption.
+name_en: lean-ctx
+description_en: LeanCTX is a locally running Rust binary tool that acts as an intelligent context layer for AI agents. It
+  controls what AI reads, compresses context (saving 60-90% tokens), remembers information across sessions, protects data
+  security, and provides a verifiable savings ledger. Suitable for developers using AI coding tools like Claude Code, zero
+  configuration required.

@@ -1,0 +1,38 @@
+id: mcp-minimax-mcp
+type: mcp
+name: MiniMax-MCP
+description_zh: MiniMax官方MCP服务器，通过模型上下文协议（MCP）提供文本转语音、图像生成和视频生成等AI能力。用户可在支持MCP的客户端中直接调用MiniMax的多模态API，实现从文字到图像、视频、语音的快速创作。适合需要集成AI生成功能的开发者，尤其适用于内容创作、媒体制作和自动化工作流场景。
+host_tools:
+- any-mcp-client
+scenarios:
+- image-gen
+- video-gen
+- media
+- automation
+tags:
+- MCP
+- image-generation
+- text-to-speech
+- video-generation
+- MiniMax
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要先获取MiniMax API密钥，并在MCP客户端中配置服务器参数。
+  notes_en: You need to obtain a MiniMax API key first and configure the server parameters in the MCP client.
+config_required:
+- MiniMax API Key
+quality:
+  stars: 1527
+  last_commit: '2026-05-21'
+  verified: false
+source:
+  repo: https://github.com/MiniMax-AI/MiniMax-MCP
+usage:
+  first_prompt_zh: 帮我生成一张日落海滩的图片，并配上舒缓的背景音乐。
+  first_prompt_en: Help me generate a picture of a sunset beach with soothing background music.
+name_en: MiniMax-MCP
+description_en: MiniMax official MCP server, providing AI capabilities such as text-to-speech, image generation, and video
+  generation through the Model Context Protocol (MCP). Users can directly call MiniMax's multimodal API in MCP-supported clients
+  to quickly create images, videos, and speech from text. Suitable for developers who need to integrate AI generation features,
+  especially for content creation, media production, and automated workflow scenarios.

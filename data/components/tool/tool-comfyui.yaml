@@ -20,6 +20,7 @@ install:
   method: git-clone
   command: git clone https://github.com/comfyanonymous/ComfyUI && cd ComfyUI && pip install -r requirements.txt
   notes_zh: 需要 NVIDIA 显卡 8G+ 显存；也有整合包和云端托管版可选
+  notes_en: Requires NVIDIA GPU with 8GB+ VRAM; also available as an integrated package or cloud-hosted version.
 config_required:
 - NVIDIA 显卡
 - SD 模型文件
@@ -34,3 +35,7 @@ relations:
   - tool-sd-webui
 source:
   repo: https://github.com/comfyanonymous/ComfyUI
+name_en: ComfyUI
+description_en: Open-source local image generation workflow tool (Stable Diffusion ecosystem), node-based orchestration, supports
+  ControlNet for composition control — essential for interior design image generation and precise pose composition. Free but
+  requires a GPU.

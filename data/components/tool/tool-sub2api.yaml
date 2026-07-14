@@ -1,0 +1,44 @@
+id: tool-sub2api
+type: tool
+name: sub2api
+description_zh: Sub2API 是一个开源的一站式 AI API 网关平台，支持将 Claude、OpenAI、Gemini、Grok 等多个订阅统一接入，并提供拼车共享功能，帮助用户高效分摊成本。它原生兼容 Claude Code、Codex
+  等主流工具，无需额外适配即可无缝使用。适合需要管理多个 AI 订阅、降低使用成本或实现团队共享的个人开发者及小型团队。
+host_tools:
+- web
+- claude-code
+- codex
+scenarios:
+- efficiency
+- token-saving
+- devtools
+tags:
+- AI API Gateway
+- 订阅管理
+- 中转服务
+- Claude
+- OpenAI
+- Gemini
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要 Docker 或 Go 1.25+ 环境，并配置 PostgreSQL 15+ 和 Redis 7+ 数据库。
+  notes_en: Requires Docker or Go 1.25+ environment, and configured PostgreSQL 15+ and Redis 7+ databases.
+config_required:
+- 上游 AI 服务 API Key（如 Claude、OpenAI 等）
+- PostgreSQL 连接信息
+- Redis 连接信息
+quality:
+  stars: 31941
+  last_commit: '2026-07-14'
+  verified: false
+source:
+  repo: https://github.com/Wei-Shaw/sub2api
+usage:
+  first_prompt_zh: 帮我配置一个 Claude 订阅的中转端点。
+  first_prompt_en: Help me configure a relay endpoint for a Claude subscription.
+name_en: sub2api
+description_en: Sub2API is an open-source, all-in-one AI API gateway platform that supports unified access to multiple subscriptions
+  such as Claude, OpenAI, Gemini, and Grok, and offers carpool sharing features to help users efficiently split costs. It
+  is natively compatible with mainstream tools like Claude Code and Codex, requiring no additional adaptation for seamless
+  use. It is suitable for individual developers and small teams who need to manage multiple AI subscriptions, reduce usage
+  costs, or achieve team sharing.

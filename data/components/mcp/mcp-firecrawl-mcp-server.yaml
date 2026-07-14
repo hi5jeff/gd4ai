@@ -1,0 +1,41 @@
+id: mcp-firecrawl-mcp-server
+type: mcp
+name: firecrawl-mcp-server
+description_zh: Firecrawl MCP Server 是一个基于 Model Context Protocol 的服务器，为 Claude、Cursor 等 AI 客户端提供强大的网页抓取和搜索能力。支持搜索网页、抓取任意
+  URL 为结构化数据、页面交互（点击、导航）、深度研究等功能，并内置自动重试和限流机制。适合需要从实时网页获取干净、结构化上下文信息的开发者和 AI 代理用户。
+host_tools:
+- cursor
+- claude-code
+- any-mcp-client
+scenarios:
+- scraping
+- search
+- research
+tags:
+- web scraping
+- MCP server
+- Firecrawl
+- content extraction
+- search
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要 Node.js 环境；可设置 FIRECRAWL_API_KEY 环境变量以解锁全部功能，免费层无需 key 但有限制。
+  notes_en: Requires Node.js environment; you can set the FIRECRAWL_API_KEY environment variable to unlock all features. The
+    free tier does not require a key but has limitations.
+config_required:
+- Firecrawl API key (可选)
+quality:
+  stars: 6939
+  last_commit: '2026-07-12'
+  verified: false
+source:
+  repo: https://github.com/firecrawl/firecrawl-mcp-server
+usage:
+  first_prompt_zh: 帮我抓取这个网页的内容并总结要点。
+  first_prompt_en: Help me scrape this webpage and summarize the key points.
+name_en: firecrawl-mcp-server
+description_en: Firecrawl MCP Server is a server based on the Model Context Protocol, providing powerful web scraping and
+  search capabilities for AI clients such as Claude and Cursor. It supports web search, scraping any URL into structured data,
+  page interaction (clicking, navigation), deep research, and other features, with built-in automatic retry and rate limiting.
+  Suitable for developers and AI agent users who need to obtain clean, structured contextual information from live web pages.

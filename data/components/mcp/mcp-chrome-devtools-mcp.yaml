@@ -1,0 +1,40 @@
+id: mcp-chrome-devtools-mcp
+type: mcp
+name: chrome-devtools-mcp
+description_zh: 这是一个MCP服务器，让AI编码助手（如Claude、Cursor等）通过Chrome DevTools直接控制浏览器，实现自动化测试、深度调试和性能分析。它基于Puppeteer，支持网络请求分析、截图、控制台消息检查等功能，适合需要浏览器自动化与调试的开发者使用。
+host_tools:
+- any-mcp-client
+- claude-code
+- cursor
+scenarios:
+- web-dev
+- web-testing
+- automation
+- devtools
+tags:
+- chrome-devtools
+- mcp-server
+- browser-automation
+- debugging
+- puppeteer
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 需要Node.js LTS环境，可通过npx直接运行或全局安装npm包，并配置MCP客户端连接。
+  notes_en: Requires Node.js LTS environment. It can be run directly via npx or installed globally as an npm package, and
+    then configured to connect with an MCP client.
+config_required: []
+quality:
+  stars: 46880
+  last_commit: '2026-07-13'
+  verified: false
+source:
+  repo: https://github.com/ChromeDevTools/chrome-devtools-mcp
+usage:
+  first_prompt_zh: 帮我打开Chrome并分析当前页面的性能。
+  first_prompt_en: Help me open Chrome and analyze the performance of the current page.
+name_en: chrome-devtools-mcp
+description_en: This is an MCP server that allows AI coding assistants (such as Claude, Cursor, etc.) to directly control
+  the browser via Chrome DevTools, enabling automated testing, deep debugging, and performance analysis. It is based on Puppeteer
+  and supports network request analysis, screenshots, console message inspection, and other features, making it suitable for
+  developers who need browser automation and debugging.

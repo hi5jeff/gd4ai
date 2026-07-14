@@ -1,0 +1,37 @@
+id: prompt-get-shit-done
+type: prompt
+name: GSD
+description_zh: GSD是一个轻量级元提示与上下文工程系统，专为Claude Code设计，通过规范驱动开发（SDD）方法提升AI协作效率。它帮助开发者构建精确的提示上下文，适合需要高效管理AI交互的Claude Code用户。注意：原仓库已迁移至open-gsd/gsd-core。
+host_tools:
+- claude-code
+scenarios:
+- coding
+- devtools
+- efficiency
+tags:
+- meta-prompting
+- context-engineering
+- spec-driven-developm
+- Claude Code
+- 提示工程
+- 开发效率
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 该仓库已归档，安装请参考新仓库 open-gsd/gsd-core。
+  notes_en: This repository has been archived. For installation, please refer to the new repository open-gsd/gsd-core.
+config_required: []
+quality:
+  stars: 64749
+  last_commit: '2026-05-31'
+  verified: false
+source:
+  repo: https://github.com/gsd-build/get-shit-done
+usage:
+  first_prompt_zh: 请加载GSD元提示，开始规范驱动开发。
+  first_prompt_en: Please load the GSD meta-prompt to start specification-driven development.
+name_en: GSD
+description_en: 'GSD is a lightweight meta-prompt and context engineering system designed specifically for Claude Code, enhancing
+  AI collaboration efficiency through Specification-Driven Development (SDD). It helps developers build precise prompt contexts,
+  suitable for Claude Code users who need to manage AI interactions efficiently. Note: The original repository has been migrated
+  to open-gsd/gsd-core.'

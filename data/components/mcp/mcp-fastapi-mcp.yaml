@@ -1,0 +1,41 @@
+id: mcp-fastapi-mcp
+type: mcp
+name: fastapi_mcp
+description_zh: FastAPI-MCP 是一个将 FastAPI 端点自动暴露为 MCP（Model Context Protocol）工具的开源库，内置认证支持。它零配置即可使用，能保留请求/响应模型 schema 和 Swagger
+  文档，支持挂载到同一 FastAPI 应用或单独部署。适合 FastAPI 开发者快速为 AI 客户端（如 Claude、Cursor）提供 API 接口。
+host_tools:
+- any-mcp-client
+scenarios:
+- web-dev
+- devtools
+- mcp-dev
+- automation
+tags:
+- fastapi
+- mcp
+- authentication
+- api
+- python
+- zero-config
+difficulty: beginner
+install:
+  method: pip
+  command: pip install fastapi-mcp
+  notes_zh: 需要 Python 3.8+ 环境，推荐使用 uv 包管理器（uv add fastapi-mcp）以获得更快安装速度。
+  notes_en: Requires Python 3.8+ environment. It is recommended to use the uv package manager (uv add fastapi-mcp) for faster
+    installation.
+config_required: []
+quality:
+  stars: 11941
+  last_commit: '2025-11-24'
+  verified: false
+source:
+  repo: https://github.com/tadata-org/fastapi_mcp
+usage:
+  first_prompt_zh: 将我的 FastAPI 应用挂载为 MCP 服务器，并列出所有可用工具。
+  first_prompt_en: Mount my FastAPI application as an MCP server and list all available tools.
+name_en: fastapi_mcp
+description_en: FastAPI-MCP is an open-source library that automatically exposes FastAPI endpoints as MCP (Model Context Protocol)
+  tools, with built-in authentication support. It works with zero configuration, preserves request/response model schemas
+  and Swagger documentation, and supports mounting to the same FastAPI application or standalone deployment. It is suitable
+  for FastAPI developers to quickly provide API interfaces for AI clients (such as Claude, Cursor).
