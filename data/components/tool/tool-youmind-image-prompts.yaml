@@ -1,0 +1,22 @@
+id: tool-youmind-image-prompts
+type: tool
+name: YouMind AI 图片提示词库
+name_en: YouMind AI Image Prompts Library
+description_zh: 收录近 1.5 万条 AI 绘图提示词的开源库，覆盖产品营销、电商主图、海报、头像、社媒配图、游戏素材等 12 大类，每条都是可直接复制的完整提示词。想系统找图片提示词灵感时用它。
+description_en: An open-source library of ~15k AI image-generation prompts across 12 categories (product marketing, e-commerce, posters, avatars, social media, game assets, etc.), each a complete ready-to-copy prompt. Great for systematically browsing image prompt inspiration.
+host_tools: [web, any]
+categories: [prompt-library]
+scenarios: [image-gen, graphic-design, marketing, portrait, ecommerce]
+tags: [提示词库, 图片, 绘图, 素材, 开源]
+difficulty: beginner
+install:
+  method: web
+  notes_zh: 直接在 gd4.ai 搜具体场景（如"香水广告提示词"）即可命中库里的具体条目；也可访问源仓库浏览全部分类
+  notes_en: Search a specific scene on gd4.ai (e.g. "perfume ad prompt") to hit individual entries; or visit the source repo to browse all categories.
+config_required: []
+quality:
+  stars: 0
+  verified: true
+  maintenance_note_zh: gd4.ai 已将其条目逐条加工入库（中文标题+场景标签+质量过滤）
+source:
+  repo: https://github.com/YouMind-OpenLab/ai-image-prompts-skill

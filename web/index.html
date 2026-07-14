@@ -70,6 +70,8 @@
   .step .t { font-weight:600; font-size:14px; }
   .step .d { color:#9aa7c0; font-size:13px; margin-top:4px; line-height:1.6; }
   .pitfall { color:#f0a35e; font-size:13px; line-height:1.7; padding-left:1.2em; text-indent:-1.2em; }
+  .ptags { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 2px; }
+  .ptag { font-size:11px; padding:2px 9px; border-radius:99px; background:#1a2440; color:#8ba0c8; }
   .src a { color:#6ea8ff; text-decoration:none; font-size:12.5px; }
   footer { text-align:center; color:#4a5670; font-size:12px; margin-top:60px; }
 </style>
@@ -207,7 +209,21 @@ function render(d){
   if(d.components && d.components.length && !d.playbook){
     h += `<h2 class="sect">${t('sectionSingle')}</h2>` + d.components.map(compCard).join('');
   }
+  if(d.prompts && d.prompts.length){
+    h += `<h2 class="sect">${t('sectionPrompts')}</h2>` + d.prompts.map(promptCard).join('');
+  }
   $('#result').innerHTML = h;
+}
+
+function promptCard(p){
+  const tags = (p.scene_tags||[]).concat(p.style_tags||[])
+    .map(x=>`<span class="ptag">${esc(x)}</span>`).join('');
+  return `<div class="card">
+    <div class="head"><span class="badge b-prompt">PROMPT</span>
+      <span class="name">${esc(p.title_zh)}</span></div>
+    ${p.summary_zh?`<div class="desc">${esc(p.summary_zh)}</div>`:''}
+    <div class="ptags">${tags}</div>
+    ${cmdBlock(p.content)}</div>`;
 }
 
 // init

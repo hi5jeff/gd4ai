@@ -21,6 +21,27 @@ CREATE TABLE IF NOT EXISTS playbooks (
     search_text TEXT NOT NULL,
     embedding vector(1024)
 );
+-- 细粒度提示词表：可到千万级，独立于 components，用 HNSW 索引扛检索
+CREATE TABLE IF NOT EXISTS prompts (
+    id BIGSERIAL PRIMARY KEY,
+    source_id TEXT NOT NULL,           -- 来源组件 id（关联 components 里的"提示词库"条目）
+    ext_id TEXT,                       -- 源仓库内的原始 id，用于去重/更新
+    title_zh TEXT NOT NULL,            -- LLM 生成的中文短标题
+    summary_zh TEXT,                   -- 一句话说明能生成什么效果
+    content TEXT NOT NULL,             -- 可直接复制的完整提示词原文
+    scene_tags TEXT[] DEFAULT '{}',    -- 细分场景标签（香水广告/美妆/数码…）
+    style_tags TEXT[] DEFAULT '{}',    -- 风格标签
+    tools TEXT[] DEFAULT '{}',         -- 适用工具（midjourney/sd/即梦…）
+    lang TEXT DEFAULT 'en',            -- content 语言
+    quality REAL DEFAULT 0,            -- LLM 质量分 0-1
+    search_text TEXT NOT NULL,         -- 用于向量化的检索文本
+    embedding vector(1024),
+    created_at TIMESTAMPTZ DEFAULT now(),
+    UNIQUE (source_id, ext_id)
+);
+CREATE INDEX IF NOT EXISTS prompts_hnsw ON prompts USING hnsw (embedding vector_cosine_ops);
+CREATE INDEX IF NOT EXISTS prompts_scene ON prompts USING gin (scene_tags);
+
 CREATE TABLE IF NOT EXISTS gap_log (
     id BIGSERIAL PRIMARY KEY,
     query TEXT NOT NULL,

@@ -52,3 +52,19 @@ def hybrid(q: str, table: str = "components", limit: int = 12, type_filter: str 
         s["vec_score"] = score
     ranked = sorted(scores.values(), key=lambda x: -x["rrf"])[:limit]
     return ranked
+
+
+def search_prompts(q: str, limit: int = 8, min_quality: float = 0.5) -> list[dict]:
+    """在细粒度 prompts 表做纯向量检索（HNSW），返回具体提示词。"""
+    vec = embed([q])[0]
+    vec_str = "[" + ",".join(f"{x:.6f}" for x in vec) + "]"
+    with db.pool.connection() as conn:
+        rows = conn.execute(
+            "SELECT id, title_zh, summary_zh, content, scene_tags, style_tags, quality, source_id, "
+            "1 - (embedding <=> %s::vector) AS score FROM prompts "
+            "WHERE quality >= %s ORDER BY embedding <=> %s::vector LIMIT %s",
+            (vec_str, min_quality, vec_str, limit),
+        ).fetchall()
+    return [{"id": r[0], "title_zh": r[1], "summary_zh": r[2], "content": r[3],
+             "scene_tags": r[4], "style_tags": r[5], "quality": r[6],
+             "source_id": r[7], "score": float(r[8])} for r in rows]

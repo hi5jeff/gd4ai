@@ -64,6 +64,35 @@ def _component_card(doc: dict, reason: str = "", reason_en: str = "") -> dict:
     }
 
 
+def _prompt_card(p: dict) -> dict:
+    return {
+        "id": f"prompt-{p['id']}", "type": "prompt-item",
+        "title_zh": p["title_zh"], "summary_zh": p.get("summary_zh", ""),
+        "content": p["content"], "scene_tags": p.get("scene_tags", []),
+        "style_tags": p.get("style_tags", []), "source_id": p.get("source_id"),
+        "score": round(p.get("score", 0), 3),
+    }
+
+
+PROMPTS_ANSWER = {
+    "zh": "为你从提示词库里找到这些最匹配的，可直接复制使用：",
+    "en": "Here are the best-matching prompts from our library, ready to copy:",
+}
+
+
+def _prompts_answer(query: str, prompts: list[dict], lang: str, t0: float) -> dict:
+    out = {
+        "intent": "prompts",
+        "answer": PROMPTS_ANSWER.get(lang, PROMPTS_ANSWER["zh"]),
+        "answer_en": PROMPTS_ANSWER["en"],
+        "components": [], "playbook": None,
+        "prompts": [_prompt_card(p) for p in prompts],
+        "latency_ms": int((time.time() - t0) * 1000),
+    }
+    db.log_query(query, "prompts", out["latency_ms"], [p["id"] for p in out["prompts"]])
+    return out
+
+
 def _no_result(query: str, reason: str, nearest: list[dict], lang: str) -> dict:
     db.log_gap(query, reason)
     msg = NO_RESULT.get(lang, NO_RESULT["zh"])
@@ -85,9 +114,16 @@ def recommend(query: str, lang: str = "zh") -> dict:
 
     comp_hits = retrieval.hybrid(query, "components", limit=14)
     pb_hits = retrieval.hybrid(query, "playbooks", limit=3)
+    # 细粒度提示词检索：命中高分说明用户要的是"具体提示词"而非"提示词来源"
+    prompt_hits = retrieval.search_prompts(query, limit=6, min_quality=0.55)
+    strong_prompts = [p for p in prompt_hits if p["score"] >= 0.6]
 
-    if not comp_hits:
+    if not comp_hits and not strong_prompts:
         return _no_result(query, "检索零命中", [], lang)
+
+    # 只命中提示词、没命中组件 → 直接返回具体提示词（不必走组件编排）
+    if strong_prompts and not comp_hits:
+        return _prompts_answer(query, strong_prompts, lang, t0)
 
     comp_docs = db.get_docs("components", [h["id"] for h in comp_hits])
     pb_docs = db.get_docs("playbooks", [h["id"] for h in pb_hits])
@@ -149,6 +185,7 @@ def recommend(query: str, lang: str = "zh") -> dict:
         "answer_en": result.get("answer", ""),  # LLM outputs in requested lang
         "components": [_component_card(comp_docs[s["id"]], s.get("reason", "")) for s in selected],
         "playbook": playbook,
+        "prompts": [_prompt_card(p) for p in strong_prompts],
         "latency_ms": int((time.time() - t0) * 1000),
     }
     redis.setex(_cache_key(query, lang), config.CACHE_TTL, json.dumps(out, ensure_ascii=False))

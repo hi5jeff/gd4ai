@@ -22,8 +22,18 @@
 - **OSS**: bucket `hi5`, 前缀 `howai/`, 首尔内网 endpoint；凭证在项目根 `.env`（已 gitignore，勿提交）
 - **本项目端口段**: 8070-8074（本机 dev 用，尚未分配服务）
 
-## 数据集三层
-组件库（YAML in git → PG）、方案库 playbook、用法语料。命令/配置从字段拼装，LLM 不现写。
+## 数据集：两层粒度（关键架构）
+- **粗粒度 components 表**（几千条）：工具/skill/role/mcp/"提示词来源" → 回答"推荐个提示词库"
+- **细粒度 prompts 表**（可千万级，HNSW索引）：一条条具体提示词内容 → 回答"香水广告提示词"。字段: source_id/ext_id/title_zh/summary_zh/content/scene_tags/style_tags/quality/embedding。UNIQUE(source_id,ext_id) 去重
+- 检索: orchestrate 同时查 components(hybrid) + prompts(search_prompts 向量, score≥0.6 才算强命中)。只命中prompts→intent=prompts直接返回具体提示词; 命中组件→正常编排+附带prompts
+- **提示词导入管线** `server/app/import_prompts.py`: 源JSON → 批量过LLM(BATCH=8, deepseek-v4-flash 打质量分+中文标题+场景标签, 垃圾丢弃) → BGE-M3向量化 → prompts表。用法: `docker exec howai-api python -m app.import_prompts <source_id> <json> [--limit N] [--min-quality 0.55]`
+- **采集入口路由(待建)**: 新仓库进来先LLM判断 类型(mcp/skill/role/prompt...) + 结构(A单体1条/B合集展开N条/C内容库进prompts表), 按判断路由。用户提交URL复用同一套(LLM审核)
+
+## 踩坑：服务器后台长任务
+- `ssh + docker exec ... &` / `docker exec -d` / 容器内 nohup 都不可靠(ssh管道关闭即被杀)。**用 `systemd-run --unit=X --collect docker exec ...`** 彻底脱离会话。查状态 `systemctl is-active X` / `journalctl -u X`
+
+## 首批提示词源
+- YouMind-OpenLab/ai-image-prompts-skill: 14779条12类, product-marketing.json(5408条)已导入。对应粗粒度组件 tool-youmind-image-prompts
 
 ## MVP 已上线（2026-07-14）
 - **https://gd4.ai 全链路可用**：前端(web/index.html→226 /var/www/gd4ai) → nginx /api 反代 → 227:9000 howai-api 容器
