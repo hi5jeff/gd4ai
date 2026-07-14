@@ -33,6 +33,13 @@ _This file is automatically injected into Claude's context at the start of every
 - 核心约束：闭世界推荐（LLM 只能引用检索返回的组件 id，输出前校验）、查空兜底（宁说没有不许编）、缺口日志驱动采集、意图先分型（单件型 vs 方案型）再检索。
 - 范围扩大确认：不限编程 — 覆盖泛 AI 工具生态（图像生成/平面设计/室内装修等垂直场景）。
 
+## Decisions (第五轮，已写入 DESIGN.md §7.5 修订)
+
+- 初期不买 RDS/托管搜索：用户提供一台专用 ECS（建议 4C8G/100G ESSD, Ubuntu 22.04），我用 Docker Compose 配全套（PG16+pgvector / Meilisearch / Redis / 应用 / 沙箱）。
+- 可行依据：真相源在 git YAML，库可重建；只备份运营数据（每日 pg_dump → OSS）。
+- 安全：数据服务只绑内网，公网仅应用端口+SSH。后期 pg_dump 迁 RDS。
+- 等待用户提供：ECS IP + SSH 凭证（+ 可选 OSS bucket AK 用于备份）。
+
 ## Open questions
 
 - MVP 形态（搜索引擎 vs 对话推荐 vs 两者结合）待用户确认后再进入工程实现。
