@@ -45,7 +45,7 @@ def main():
         try:
             with _lock:
                 snap_e, snap_u = set(existing), set(used_ids)
-            docs, plan = ingest_repo.ingest_one(
+            docs, plan = ingest_repo.ingest_any(
                 repo, args.dry_run, args.max_items, args.min_stars, args.min_year,
                 existing=snap_e, used_ids=snap_u,
                 log=lambda m: print(m, flush=True))

@@ -58,6 +58,89 @@ def gh_raw(owner_repo, path):
         return ""
 
 
+# ---------------- 网页抓取 ----------------
+def fetch_web(url):
+    """抓取网页 HTML → 提取可读正文（去脚本/样式/标签）。返回纯文本。"""
+    req = urllib.request.Request(url, headers={
+        "User-Agent": "Mozilla/5.0 (compatible; gd4ai-bot/1.0)"})
+    with urllib.request.urlopen(req, timeout=40) as r:
+        html = r.read().decode("utf-8", "ignore")
+    # 去掉 script/style/noscript 整块
+    html = re.sub(r"<(script|style|noscript)[^>]*>.*?</\1>", " ", html, flags=re.S | re.I)
+    # 保留链接文本和 href（很多导航站的价值在链接上）
+    html = re.sub(r'<a\s[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',
+                  lambda m: f" {re.sub(r'<[^>]+>', '', m.group(2))} ({m.group(1)}) ", html, flags=re.S | re.I)
+    text = re.sub(r"<[^>]+>", " ", html)
+    text = re.sub(r"&[a-z]+;", " ", text)
+    text = re.sub(r"[ \t]+", " ", text)
+    text = re.sub(r"\n\s*\n+", "\n", text)
+    return text.strip()
+
+
+def chunk_text(text, target=3500):
+    """把纯文本按长度切块。"""
+    lines = text.split("\n")
+    chunks, buf = [], ""
+    for ln in lines:
+        if len(buf) + len(ln) > target and buf:
+            chunks.append(buf)
+            buf = ln
+        else:
+            buf += "\n" + ln
+    if buf.strip():
+        chunks.append(buf)
+    return [c for c in chunks if len(c.strip()) > 80]
+
+
+def ingest_web(url, dry_run=False, max_items=0, min_stars=0, min_year=0,
+               existing=None, used_ids=None, log=print):
+    """摄取一个网页/网站：抓正文 → 切块 → LLM 抽取条目 → 严筛去重。"""
+    if existing is None or used_ids is None:
+        existing, used_ids = load_state()
+    text = fetch_web(url)
+    if len(text) < 200:
+        log(f"[{url}] 网页内容过少({len(text)}字)，跳过")
+        return [], {"structure": "web_empty"}
+    chunks = chunk_text(text)
+    log(f"[{url}] 抓取 {len(text)} 字 → {len(chunks)} 块，并发抽取…")
+    raw_items = []
+    with cf.ThreadPoolExecutor(4) as ex:
+        for items in ex.map(extract_chunk, chunks):
+            raw_items.extend(items)
+    stats, cand = {}, []
+    for it in raw_items:
+        doc, why = make_component(it, used_ids, existing, default_repo=url)
+        stats[why] = stats.get(why, 0) + 1
+        if doc:
+            cand.append(doc)
+    log(f"[{url}] 初筛 {dict(sorted(stats.items(), key=lambda x:-x[1]))} → 候选 {len(cand)}")
+    if min_stars or min_year:
+        def check(doc):
+            u = (doc.get("source") or {}).get("repo", "")
+            if "github.com" not in u:
+                return doc
+            stars, pushed = enrich_github(u)
+            if stars is not None and stars < min_stars:
+                return None
+            if min_year and pushed and pushed[:4].isdigit() and int(pushed[:4]) < min_year:
+                return None
+            if stars is not None:
+                doc["quality"]["stars"] = stars
+            if pushed:
+                doc["quality"]["last_commit"] = pushed
+            return doc
+        with cf.ThreadPoolExecutor(8) as ex:
+            cand = [d for d in ex.map(check, cand) if d]
+        log(f"[{url}] star/年过滤 → 存活 {len(cand)}")
+    docs = cand[:max_items] if max_items else cand
+    if not dry_run:
+        for d in docs:
+            out = DATA / d["type"] / f"{d['id']}.yaml"
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(yaml.dump(d, allow_unicode=True, sort_keys=False, width=120))
+    return docs, {"structure": "web"}
+
+
 # ---------------- ① 勘探 ----------------
 PROBE_PROMPT = """你在为一个"AI工具生态推荐系统"判断一个 GitHub 仓库该怎么导入。
 
@@ -340,15 +423,29 @@ def ingest_one(repo, dry_run=False, max_items=0, min_stars=0, min_year=0,
     return docs, plan
 
 
+def ingest_any(target, dry_run=False, max_items=0, min_stars=0, min_year=0,
+               existing=None, used_ids=None, log=print):
+    """统一入口：自动识别 owner/repo、github URL、普通网页 URL，路由到对应摄取器。"""
+    t = target.strip()
+    is_url = t.startswith("http://") or t.startswith("https://")
+    if is_url and "github.com/" in t:
+        m = re.search(r"github\.com/([^/]+/[^/#?]+)", t)
+        t = m.group(1).rstrip("/").removesuffix(".git") if m else t
+        is_url = False
+    if is_url:
+        return ingest_web(t, dry_run, max_items, min_stars, min_year, existing, used_ids, log)
+    return ingest_one(t, dry_run, max_items, min_stars, min_year, existing, used_ids, log)
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("repo", help="owner/repo")
+    ap.add_argument("repo", help="owner/repo 或 http(s):// 网址")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--max-items", type=int, default=0)
     ap.add_argument("--min-stars", type=int, default=0)
     ap.add_argument("--min-year", type=int, default=0)
     args = ap.parse_args()
-    docs, _ = ingest_one(args.repo, args.dry_run, args.max_items, args.min_stars, args.min_year)
+    docs, _ = ingest_any(args.repo, args.dry_run, args.max_items, args.min_stars, args.min_year)
     print(f"\n共产出 {len(docs)} 条新组件")
     for d in docs[:15]:
         print(f"  [{d['type']}] {d['name']} — {d['description_zh'][:50]}")
