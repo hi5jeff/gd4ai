@@ -99,7 +99,7 @@
 
 <script src="i18n.js"></script>
 <script>
-const $ = id => document.getElementById(id);
+const $ = sel => document.querySelector(sel[0]==='#'||sel[0]==='.' ? sel : '#'+sel);
 const esc = s => (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 function applyLang() {
