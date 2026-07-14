@@ -46,7 +46,8 @@ services:
     image: ghcr.io/huggingface/text-embeddings-inference:cpu-1.7
     container_name: howai-embedding
     restart: unless-stopped
-    command: ["--model-id", "BAAI/bge-m3", "--port", "80"]
+    # max-batch-tokens 必须调小: 默认16384会在4C7G机器上预热时申请8.5GB内存导致OOM
+    command: ["--model-id", "BAAI/bge-m3", "--port", "80", "--max-batch-tokens", "1024", "--auto-truncate"]
     ports:
       - "127.0.0.1:8090:80"
     volumes:

@@ -9,6 +9,8 @@
   - 前端: `root@10.0.0.226`（Alinux4, 4C7G/197G，Docker 24 已装；装 Docker 要 `dnf install docker`，get.docker.com 不支持 alinux）
   - 后端+数据: `root@10.0.0.227`（Ubuntu22.04, 4C7G/99G）— **已部署** `/opt/howai/`：howai-pg(PG16+pgvector, 127.0.0.1:5432) / howai-meili(:7700) / howai-redis(:6379) / howai-embedding(BGE-M3 TEI, :8090)，服务密码在服务器 `/opt/howai/.env`
   - 备份：每日 4 点 cron `pg_dump→OSS`（实测通过）；ossutil 用官方 install.sh 装（老版本 URL 已 404）
+  - 坑：TEI embedding 默认 max-batch-tokens=16384 在 7G 内存机器预热 OOM → compose 里已加 `--max-batch-tokens 1024 --auto-truncate`
+- **域名/HTTPS**: Cloudflare Origin 证书（`gd4.ai` / `*.gd4.ai`）在项目 .env 尾部，前端 nginx HTTPS 用
 - **LLM**: mdbox 网关 `https://api.mdbox.ai/v1`（OpenAI 兼容，key 在 env `MDBOX_API_KEY`）
   - 在线推荐: `deepseek-v4-pro`（实测 8s、JSON 可靠、选择质量最好）
   - 离线加工: `deepseek-v4-flash`

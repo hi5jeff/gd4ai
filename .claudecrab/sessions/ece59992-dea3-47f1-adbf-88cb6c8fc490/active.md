@@ -53,7 +53,9 @@ _This file is automatically injected into Claude's context at the start of every
 - ✅ 227 (Ubuntu22.04 4C7G): provision 完成 — howai-pg(healthy)/howai-meili/howai-redis/howai-embedding 四容器运行，pgvector 已启用，密钥在 /opt/howai/.env
 - ✅ 备份链路实测通过（pg_dump→OSS 内网），cron 每日 4 点；ossutil 用 install.sh 装（原 1.7.19 URL 404 已修）
 - ✅ 226 (Alinux4 4C7G): Docker 24.0.9 已装（注意: get.docker.com 不支持 alinux，用 dnf install docker）
-- ⏳ BGE-M3 模型下载中（~2.2GB），下载完测 localhost:8090/embed
+- ✅ BGE-M3 就绪（127.0.0.1:8090/embed, 1024维）。坑：TEI 默认 max-batch-tokens=16384 在 4C7G 上预热 OOM（申请8.5G），已加 --max-batch-tokens 1024 --auto-truncate
+- ✅ 内存余量健康（used 2.5G / 7.1G）
+- 用户在 .env 追加了 Cloudflare Origin 证书（gd4.ai / *.gd4.ai）→ 前端 HTTPS 用
 - 建议用户改密码/关密码登录（密码已在 .env 明文）
 
 ## Next
