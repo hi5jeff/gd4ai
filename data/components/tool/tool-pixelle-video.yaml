@@ -1,0 +1,19 @@
+id: tool-pixelle-video
+type: tool
+name: Pixelle-Video
+description_zh: 🚀 AI 全自动短视频引擎 | AI Fully Automated Short Video Engine
+host_tools:
+- any
+scenarios:
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+  stars: 25416
+  last_commit: '2026-06-14'
+source:
+  repo: https://github.com/ATH-MaaS/Pixelle-Video

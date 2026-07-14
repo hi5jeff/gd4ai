@@ -1,0 +1,19 @@
+id: tool-real-esrgan
+type: tool
+name: Real-ESRGAN
+description_zh: Real-ESRGAN aims at developing Practical Algorithms for General Image/Video Restoration.
+host_tools:
+- any
+scenarios:
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+  stars: 36130
+  last_commit: '2024-08-06'
+source:
+  repo: https://github.com/xinntao/Real-ESRGAN

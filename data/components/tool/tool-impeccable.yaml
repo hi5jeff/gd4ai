@@ -1,0 +1,19 @@
+id: tool-impeccable
+type: tool
+name: impeccable
+description_zh: The design language that makes your AI harness better at design.
+host_tools:
+- any
+scenarios:
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+  stars: 46514
+  last_commit: '2026-07-14'
+source:
+  repo: https://github.com/pbakaus/impeccable

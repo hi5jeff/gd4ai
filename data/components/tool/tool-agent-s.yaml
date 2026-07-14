@@ -1,0 +1,19 @@
+id: tool-agent-s
+type: tool
+name: Agent-S
+description_zh: 'Agent S: an open agentic framework that uses computers like a human'
+host_tools:
+- any
+scenarios:
+- other
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+  stars: 12013
+  last_commit: '2026-05-13'
+source:
+  repo: https://github.com/simular-ai/Agent-S

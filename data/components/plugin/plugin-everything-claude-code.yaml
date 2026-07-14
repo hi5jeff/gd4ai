@@ -1,0 +1,19 @@
+id: plugin-everything-claude-code
+type: plugin
+name: everything-claude-code
+description_zh: Claude Code toolkit - agents, commands, skills, rules, and hooks for productive AI-assisted development
+host_tools:
+- any
+scenarios:
+- coding
+tags: []
+difficulty: intermediate
+install:
+  method: manual
+  notes_zh: 详见来源链接
+quality:
+  verified: false
+  stars: 444
+  last_commit: '2026-01-23'
+source:
+  repo: https://github.com/WorldFlowAI/everything-claude-code
