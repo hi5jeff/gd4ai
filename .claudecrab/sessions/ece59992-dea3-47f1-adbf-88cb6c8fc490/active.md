@@ -47,13 +47,18 @@ _This file is automatically injected into Claude's context at the start of every
 - 拓扑：226=前端，227=后端+全部数据服务。OSS 凭证在 .env（已 gitignore）。
 - 已产出 infra/docker-compose.yml + provision.sh + backup.sh。
 
-## Blocked
+## 部署进展（第七轮，2026-07-14）
 
-- ⚠️ 两台服务器 SSH 拒绝（无公钥）。已把本机 ~/.ssh/id_ed25519.pub 给用户，等安装后才能部署。
+- ✅ 凭证到手（.env: root@两台, 密码见 .env），两台已装我的公钥，密钥登录 OK
+- ✅ 227 (Ubuntu22.04 4C7G): provision 完成 — howai-pg(healthy)/howai-meili/howai-redis/howai-embedding 四容器运行，pgvector 已启用，密钥在 /opt/howai/.env
+- ✅ 备份链路实测通过（pg_dump→OSS 内网），cron 每日 4 点；ossutil 用 install.sh 装（原 1.7.19 URL 404 已修）
+- ✅ 226 (Alinux4 4C7G): Docker 24.0.9 已装（注意: get.docker.com 不支持 alinux，用 dnf install docker）
+- ⏳ BGE-M3 模型下载中（~2.2GB），下载完测 localhost:8090/embed
+- 建议用户改密码/关密码登录（密码已在 .env 明文）
 
-## Next (机器可登录后)
+## Next
 
-1. 227: 上传 infra/ → 跑 provision.sh → 验证 4 容器 + pgvector + 备份 cron
+1. 验证 embedding 服务就绪
 2. 定稿组件 YAML schema + 种子数据 30~50 条（覆盖六类验收用例）
 3. 后端 API（检索+编排+校验）→ 226 前端
 
