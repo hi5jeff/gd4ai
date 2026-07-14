@@ -130,6 +130,20 @@ success_rate: 0.87            # 用户反馈跑通率
 ### 数据质量的杀手锏：沙箱实测
 定期在容器里真实安装、真实调用每个组件，标记 `verified`。所有竞品都只列 stars，没人告诉用户"这个昨天还能跑通"。这一条就能建立信任。
 
+### 4.4 数据源清单（2026-07-14 实测确认）
+
+| 类别 | 来源 | 获取方式 | 备注 |
+|---|---|---|---|
+| A 官方结构化 | MCP 官方 registry（registry.modelcontextprotocol.io/v0/servers） | API，分页 JSON | ✅实测通；含安装包/端点结构化字段，最优质 |
+| A 官方结构化 | anthropics/skills 官方仓库 | GitHub API | ✅实测通 |
+| A 官方结构化 | 各 plugin marketplace（公开 git 仓库 + marketplace.json） | git clone + 解析 | |
+| B GitHub 生态 | topic 搜索（mcp-server 2万+仓库）、awesome 列表 | GitHub API | ✅实测通；无 token 60 次/时，半自动阶段需用户提供只读 PAT（5000 次/时） |
+| C 第三方目录 | smithery / mcp.so / PulseMCP / glama / claudeskills.info | 网页爬取 | 只做发现线索，回源 GitHub 自行抽取，不搬运编辑内容 |
+| D 非编程场景 | AI 工具目录（toolify/futurepedia 类）、prompt 库（awesome-chatgpt-prompts、civitai 等）、本环境 roles/skills 库 | 爬取/API/CLI | 覆盖平面设计、室内装修、图像生成等 |
+| E 自产（护城河） | 沙箱实测 verified、用户跑通率、缺口日志 | 系统自生成 | 别人抄不走 |
+
+三阶段：种子（手工策展+逐条人工核实，30~50 条）→ 半自动（爬候选→v4-flash 抽取→沙箱实测→入库）→ 全自动增量（每日 cron+缺口驱动）。
+
 ## 5. MVP 路径（避免一上来铺全生态）
 
 **第一阶段（4-6 周）**：
