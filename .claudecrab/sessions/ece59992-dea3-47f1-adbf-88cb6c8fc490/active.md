@@ -58,11 +58,14 @@ _This file is automatically injected into Claude's context at the start of every
 - 用户在 .env 追加了 Cloudflare Origin 证书（gd4.ai / *.gd4.ai）→ 前端 HTTPS 用
 - 建议用户改密码/关密码登录（密码已在 .env 明文）
 
+## 第八轮：GitHub 仓库接入
+
+- ✅ origin = git@github.com:hi5jeff/gd4ai.git，分支已改 main 并推送（推前扫描 git 全历史确认无密码/OSS密钥/证书泄漏）
+
 ## Next
 
-1. 验证 embedding 服务就绪
-2. 定稿组件 YAML schema + 种子数据 30~50 条（覆盖六类验收用例）
-3. 后端 API（检索+编排+校验）→ 226 前端
+1. 定稿组件 YAML schema + 种子数据 30~50 条（覆盖六类验收用例）
+2. 后端 API（检索+编排+校验）→ 226 前端
 
 ## Open questions
 

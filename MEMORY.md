@@ -5,6 +5,7 @@
 需求驱动的泛 AI 工具生态推荐系统（skill/roles/plugin/MCP/prompt 模板），从小白到专家。核心原则：**闭世界推荐——LLM 只能引用库内组件，输出前校验，查空宁说没有**。完整设计见 DESIGN.md。
 
 ## 基础设施（2026-07-14 定型）
+- **GitHub**: `git@github.com:hi5jeff/gd4ai.git`（remote origin，分支 main，SSH 可推）。产品域名 gd4.ai 与仓库名对应。推送前已验证 git 历史无密码/密钥。
 - **服务器**（内网，账号 root，密码在项目 .env；本机公钥已装，直接 `ssh root@IP`）：
   - 前端: `root@10.0.0.226`（Alinux4, 4C7G/197G，Docker 24 已装；装 Docker 要 `dnf install docker`，get.docker.com 不支持 alinux）
   - 后端+数据: `root@10.0.0.227`（Ubuntu22.04, 4C7G/99G）— **已部署** `/opt/howai/`：howai-pg(PG16+pgvector, 127.0.0.1:5432) / howai-meili(:7700) / howai-redis(:6379) / howai-embedding(BGE-M3 TEI, :8090)，服务密码在服务器 `/opt/howai/.env`
