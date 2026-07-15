@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>gd4.ai · 管理后台</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+         background:#0b1020; color:#e8ecf5; min-height:100vh; }
+  .wrap { max-width:1100px; margin:0 auto; padding:30px 18px 80px; }
+  h1 { font-size:24px; font-weight:800; margin-bottom:4px;
+       background:linear-gradient(120deg,#6ea8ff,#9f7bff); -webkit-background-clip:text;
+       background-clip:text; color:transparent; }
+  .sub { color:#9aa7c0; font-size:13px; margin-bottom:20px; }
+  .authbar { display:flex; gap:10px; margin-bottom:20px; }
+  .authbar input { flex:1; max-width:340px; padding:10px 14px; font-size:14px; border-radius:10px;
+        border:1px solid #2a3a63; background:#121a33; color:#e8ecf5; outline:none; }
+  .btn { padding:10px 18px; font-size:14px; font-weight:600; border:none; border-radius:10px;
+         background:linear-gradient(120deg,#6ea8ff,#9f7bff); color:#fff; cursor:pointer; }
+  .btn:disabled { opacity:.5; cursor:wait; }
+  .btn.sm { padding:5px 12px; font-size:12px; border-radius:8px; }
+  .btn.rej { background:none; border:1px solid #6b2a3a; color:#ff8b8b; }
+  .btn.ghost { background:none; border:1px solid #2a3a63; color:#9aa7c0; }
+  .stats { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px; }
+  .stat { background:#121a33; border:1px solid #24304f; border-radius:10px; padding:8px 16px; font-size:13px; }
+  .stat b { font-size:18px; color:#6ea8ff; margin-right:6px; }
+  .filters { display:flex; gap:6px; margin-bottom:14px; flex-wrap:wrap; }
+  .fchip { padding:5px 14px; border-radius:99px; border:1px solid #2a3a63; color:#9aa7c0;
+           font-size:12px; cursor:pointer; background:none; }
+  .fchip.on { background:#173156; color:#6ea8ff; border-color:#6ea8ff; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th, td { text-align:left; padding:10px 8px; border-bottom:1px solid #1c2440; vertical-align:top; }
+  th { color:#9aa7c0; font-weight:600; font-size:12px; }
+  td a { color:#6ea8ff; word-break:break-all; }
+  .st { display:inline-block; padding:2px 9px; border-radius:99px; font-size:11px; font-weight:600; }
+  .st.pending { background:#3a3416; color:#ffd76e; }
+  .st.imported { background:#123a2a; color:#5eead4; }
+  .st.rejected { background:#3a1622; color:#ff8b8b; }
+  .st.failed { background:#3a1622; color:#ff8b8b; }
+  .note { color:#9aa7c0; }
+  .msg { margin:12px 0; font-size:13px; min-height:16px; }
+  .msg.err { color:#ff8b8b; } .msg.ok { color:#5eead4; }
+  .muted { color:#6b7794; font-size:12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>gd4.ai 管理后台</h1>
+  <div class="sub">审核用户提交的资源 URL，一键过 LLM 导入组件库</div>
+
+  <div class="authbar">
+    <input id="token" type="password" placeholder="管理口令 ADMIN_TOKEN" onkeydown="if(event.key==='Enter')load()">
+    <button class="btn" id="loadBtn" onclick="load()">登录 / 刷新</button>
+  </div>
+
+  <div class="msg" id="msg"></div>
+  <div class="stats" id="stats"></div>
+  <div class="filters" id="filters"></div>
+  <table id="tbl" style="display:none">
+    <thead><tr><th>#</th><th>URL / 备注</th><th>状态</th><th>结果</th><th>来源 / 时间</th><th>操作</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let _filter = null;
+const FILTERS = [['','全部'],['pending','待审核'],['imported','已导入'],['rejected','已拒绝'],['failed','失败']];
+
+function token(){ return $('#token').value.trim(); }
+function setMsg(t, cls){ const m=$('#msg'); m.textContent=t; m.className='msg '+(cls||''); }
+function fmt(iso){ if(!iso) return ''; return iso.replace('T',' ').slice(0,16); }
+
+async function api(path, opts){
+  opts = opts || {};
+  opts.headers = Object.assign({'X-Admin-Token': token(), 'Content-Type':'application/json'}, opts.headers||{});
+  const r = await fetch(path, opts);
+  if(r.status === 401) throw new Error('口令错误或未设置');
+  if(!r.ok) throw new Error('HTTP '+r.status);
+  return r.json();
+}
+
+async function load(){
+  if(!token()){ setMsg('请输入管理口令','err'); return; }
+  localStorage.setItem('gd4ai-admin', token());
+  $('#loadBtn').disabled = true; setMsg('加载中…');
+  try{
+    const q = _filter ? ('?status='+_filter) : '';
+    const d = await api('/api/admin/submissions'+q);
+    renderStats(d.stats); renderFilters(); renderRows(d.submissions);
+    setMsg('');
+  }catch(e){ setMsg(e.message,'err'); $('#tbl').style.display='none'; }
+  finally{ $('#loadBtn').disabled = false; }
+}
+
+function renderStats(stats){
+  const order = ['pending','imported','rejected','failed'];
+  const label = {pending:'待审核',imported:'已导入',rejected:'已拒绝',failed:'失败'};
+  $('#stats').innerHTML = order.map(k =>
+    `<div class="stat"><b>${stats[k]||0}</b>${label[k]}</div>`).join('');
+}
+function renderFilters(){
+  $('#filters').innerHTML = FILTERS.map(([v,l]) =>
+    `<button class="fchip ${(_filter||'')===v?'on':''}" onclick="setFilter('${v}')">${l}</button>`).join('');
+}
+function setFilter(v){ _filter = v || null; load(); }
+
+function renderRows(subs){
+  $('#tbl').style.display = 'table';
+  if(!subs.length){ $('#rows').innerHTML = '<tr><td colspan="6" class="muted">暂无记录</td></tr>'; return; }
+  $('#rows').innerHTML = subs.map(s => {
+    const actions = s.status==='pending'
+      ? `<button class="btn sm" onclick="act(${s.id},'ingest',this)">导入</button>
+         <button class="btn sm rej" onclick="act(${s.id},'reject',this)">拒绝</button>`
+      : (s.status==='failed'
+          ? `<button class="btn sm ghost" onclick="act(${s.id},'ingest',this)">重试</button>` : '');
+    return `<tr>
+      <td>${s.id}</td>
+      <td><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.url)}</a>
+          ${s.note?`<div class="note">${esc(s.note)}</div>`:''}</td>
+      <td><span class="st ${esc(s.status)}">${esc(s.status)}</span></td>
+      <td>${esc(s.result||'')}${s.count?` <b>(${s.count})</b>`:''}</td>
+      <td class="muted">${esc(s.source||'')}<br>${fmt(s.created_at)}</td>
+      <td>${actions}</td>
+    </tr>`;
+  }).join('');
+}
+
+async function act(id, action, btn){
+  if(action==='reject' && !confirm('确认拒绝这条提交？')) return;
+  btn.disabled = true; const orig = btn.textContent;
+  btn.textContent = action==='ingest' ? '导入中…' : '…';
+  try{
+    const d = await api(`/api/admin/submissions/${id}/action`, {method:'POST', body: JSON.stringify({action})});
+    setMsg(`#${id} → ${d.status}`, d.status==='imported'?'ok':'');
+    await load();
+  }catch(e){ setMsg(e.message,'err'); btn.disabled=false; btn.textContent=orig; }
+}
+
+// 记住上次口令
+(function(){ const s = localStorage.getItem('gd4ai-admin'); if(s){ $('#token').value = s; load(); } })();
+</script>
+</body>
+</html>

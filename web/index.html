@@ -30,6 +30,25 @@
   .chip { padding:7px 14px; border-radius:99px; border:1px solid #2a3a63; color:#9aa7c0;
           font-size:13px; cursor:pointer; background:none; }
   .chip:hover { border-color:#6ea8ff; color:#6ea8ff; }
+  .submitlink { color:#6ea8ff; font-size:13px; cursor:pointer; opacity:.8; }
+  .submitlink:hover { opacity:1; text-decoration:underline; }
+  .modal { display:none; position:fixed; inset:0; background:rgba(4,8,20,.72);
+           z-index:50; align-items:center; justify-content:center; padding:20px; }
+  .modal.on { display:flex; }
+  .modalbox { background:#121a33; border:1px solid #2a3a63; border-radius:16px;
+              padding:26px; max-width:460px; width:100%; }
+  .modalbox h3 { font-size:19px; margin-bottom:8px; }
+  .modalbox p { color:#9aa7c0; font-size:13px; line-height:1.6; margin-bottom:16px; }
+  .modalbox input { width:100%; padding:12px 14px; font-size:14px; border-radius:10px;
+        border:1px solid #2a3a63; background:#0b1020; color:#e8ecf5; outline:none; margin-bottom:10px; }
+  .modalbox input:focus { border-color:#6ea8ff; }
+  .modalmsg { font-size:13px; min-height:18px; margin:2px 0 10px; }
+  .modalmsg.ok { color:#5eead4; } .modalmsg.err { color:#ff8b8b; }
+  .modalbtns { display:flex; gap:10px; justify-content:flex-end; }
+  .mbtn { padding:10px 20px; font-size:14px; font-weight:600; border:none; border-radius:10px;
+          background:linear-gradient(120deg,#6ea8ff,#9f7bff); color:#fff; cursor:pointer; }
+  .mbtn:disabled { opacity:.5; cursor:wait; }
+  .mbtn.ghost { background:none; border:1px solid #2a3a63; color:#9aa7c0; }
   .loading { text-align:center; padding:40px 0; color:#9aa7c0; display:none; }
   .spinner { width:36px; height:36px; border:3px solid #2a3a63; border-top-color:#6ea8ff;
              border-radius:50%; margin:0 auto 14px; animation:spin 1s linear infinite; }
@@ -97,6 +116,23 @@
   </div>
   <div id="result"></div>
   <footer id="footer"></footer>
+  <div style="text-align:center;margin-top:10px">
+    <a class="submitlink" id="submitLink" onclick="openSubmit()"></a>
+  </div>
+</div>
+
+<div class="modal" id="submitModal" onclick="if(event.target===this)closeSubmit()">
+  <div class="modalbox">
+    <h3 id="smTitle"></h3>
+    <p id="smDesc"></p>
+    <input id="smUrl" maxlength="500">
+    <input id="smNote" maxlength="500">
+    <div class="modalmsg" id="smMsg"></div>
+    <div class="modalbtns">
+      <button class="mbtn ghost" onclick="closeSubmit()" id="smClose"></button>
+      <button class="mbtn" onclick="doSubmit()" id="smSubmit"></button>
+    </div>
+  </div>
 </div>
 
 <script src="i18n.js"></script>
@@ -114,9 +150,36 @@ function applyLang() {
   $('#btn').textContent = t('btn');
   $('#loadingText').textContent = t('loading');
   $('#footer').textContent = t('footer');
+  $('#submitLink').textContent = t('submitLink');
+  $('#smTitle').textContent = t('submitTitle');
+  $('#smDesc').textContent = t('submitDesc');
+  $('#smUrl').placeholder = t('submitUrlPh');
+  $('#smNote').placeholder = t('submitNotePh');
+  $('#smClose').textContent = t('submitClose');
+  $('#smSubmit').textContent = t('submitBtn');
   // chips
   const [labels, vals] = [t('chips'), t('chipValues')];
   $('#chips').innerHTML = labels.map((l,i) => `<button class="chip" onclick="ask('${esc(vals[i])}')">${esc(l)}</button>`).join('');
+}
+
+function openSubmit(){ $('#smMsg').textContent=''; $('#smMsg').className='modalmsg';
+  $('#submitModal').classList.add('on'); $('#smUrl').focus(); }
+function closeSubmit(){ $('#submitModal').classList.remove('on'); }
+async function doSubmit(){
+  const url = $('#smUrl').value.trim();
+  if(url.length < 5){ $('#smUrl').focus(); return; }
+  const btn = $('#smSubmit'); btn.disabled = true; btn.textContent = t('submitting');
+  const msg = $('#smMsg'); msg.className='modalmsg'; msg.textContent='';
+  try{
+    const r = await fetch('/api/submit', {method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({url, note: $('#smNote').value.trim()})});
+    const d = await r.json();
+    if(!r.ok || !d.ok) throw new Error();
+    msg.className='modalmsg ok'; msg.textContent = d.duplicate ? t('submitDup') : t('submitOk');
+    $('#smUrl').value=''; $('#smNote').value='';
+    setTimeout(closeSubmit, 1600);
+  }catch(e){ msg.className='modalmsg err'; msg.textContent = t('submitErr'); }
+  finally{ btn.disabled=false; btn.textContent=t('submitBtn'); }
 }
 
 function ask(q){ $('#q').value = q; go(); }

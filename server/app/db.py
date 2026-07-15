@@ -56,6 +56,18 @@ CREATE TABLE IF NOT EXISTS query_log (
     result_ids JSONB,
     created_at TIMESTAMPTZ DEFAULT now()
 );
+CREATE TABLE IF NOT EXISTS submissions (
+    id BIGSERIAL PRIMARY KEY,
+    url TEXT NOT NULL,
+    note TEXT,
+    status TEXT NOT NULL DEFAULT 'pending',  -- pending / imported / rejected / failed
+    result TEXT,
+    count INT DEFAULT 0,
+    source TEXT DEFAULT 'user',
+    created_at TIMESTAMPTZ DEFAULT now(),
+    processed_at TIMESTAMPTZ
+);
+CREATE INDEX IF NOT EXISTS submissions_status ON submissions (status, created_at DESC);
 """
 
 
@@ -91,3 +103,64 @@ def log_query(query: str, intent: str, latency_ms: int, result_ids: list[str]):
             "INSERT INTO query_log (query, intent, latency_ms, result_ids) VALUES (%s, %s, %s, %s)",
             (query, intent, latency_ms, json.dumps(result_ids)),
         )
+
+
+def add_submission(url: str, note: str = "", source: str = "user") -> dict:
+    """登记一条用户提交的 URL。同一 URL 若已存在未处理记录则复用，不重复登记。"""
+    with pool.connection() as conn:
+        row = conn.execute(
+            "SELECT id, status FROM submissions WHERE url = %s AND status = 'pending' LIMIT 1",
+            (url,),
+        ).fetchone()
+        if row:
+            return {"id": row[0], "status": row[1], "duplicate": True}
+        row = conn.execute(
+            "INSERT INTO submissions (url, note, source) VALUES (%s, %s, %s) RETURNING id",
+            (url, note, source),
+        ).fetchone()
+        return {"id": row[0], "status": "pending", "duplicate": False}
+
+
+def list_submissions(status: str | None = None, limit: int = 200) -> list[dict]:
+    q = ("SELECT id, url, note, status, result, count, source, created_at, processed_at "
+         "FROM submissions")
+    params = []
+    if status:
+        q += " WHERE status = %s"
+        params.append(status)
+    q += " ORDER BY created_at DESC LIMIT %s"
+    params.append(limit)
+    cols = ["id", "url", "note", "status", "result", "count", "source",
+            "created_at", "processed_at"]
+    with pool.connection() as conn:
+        rows = conn.execute(q, params).fetchall()
+    out = []
+    for r in rows:
+        d = dict(zip(cols, r))
+        for k in ("created_at", "processed_at"):
+            d[k] = d[k].isoformat() if d[k] else None
+        out.append(d)
+    return out
+
+
+def get_submission(sub_id: int) -> dict | None:
+    with pool.connection() as conn:
+        row = conn.execute("SELECT id, url, status FROM submissions WHERE id = %s",
+                           (sub_id,)).fetchone()
+    return {"id": row[0], "url": row[1], "status": row[2]} if row else None
+
+
+def update_submission(sub_id: int, status: str, result: str = "", count: int = 0):
+    with pool.connection() as conn:
+        conn.execute(
+            "UPDATE submissions SET status=%s, result=%s, count=%s, processed_at=now() "
+            "WHERE id=%s",
+            (status, result[:500], count, sub_id),
+        )
+
+
+def submission_stats() -> dict:
+    with pool.connection() as conn:
+        rows = conn.execute(
+            "SELECT status, count(*) FROM submissions GROUP BY status").fetchall()
+    return {r[0]: r[1] for r in rows}

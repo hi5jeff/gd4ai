@@ -343,6 +343,75 @@ def make_component(item, used_ids, existing, default_repo=None,
     return doc, "ok"
 
 
+SUBUNIT_PROMPT = """这是 GitHub 仓库 {repo} 里的一个子项目「{name}」(路径 {path})。
+它的 README/说明:
+---
+{readme}
+---
+判断并输出JSON: {{"name":"友好名称","description_zh":"一句话中文说明这个子项目能干什么(40-80字)","type":"{types}其一","scenarios":["从{scen}选1-3个"],"keep":true/false(是否是有价值的可用应用/工具,占位/空目录=false)}}
+只输出JSON,无markdown。"""
+
+
+def norm_ws(s):
+    """压平多余空白，便于喂给 LLM。"""
+    return re.sub(r"[ \t]+", " ", re.sub(r"\n\s*\n+", "\n", s or "")).strip()
+
+
+def _find_app_dirs(repo, base, depth=4):
+    """递归找叶子应用目录：含 README/代码文件、且不再有有意义子目录的目录。返回 [(name,path)]。"""
+    out = []
+    try:
+        items = gh_json(f"/repos/{repo}/contents/{urllib.parse.quote(base)}") if base else gh_json(f"/repos/{repo}/contents/")
+    except Exception:
+        return out
+    subdirs = [i for i in items if i["type"] == "dir" and not i["name"].startswith(".")
+               and i["name"] not in ("docs", "assets", "images", "__pycache__")]
+    files = [i for i in items if i["type"] == "file"]
+    has_readme = any(f["name"].lower().startswith("readme") for f in files)
+    has_code = any(f["name"].endswith((".py", ".ts", ".js", ".ipynb")) for f in files)
+    # 叶子：有README/代码 且 子目录很少 → 它本身是个 app
+    if base and (has_readme or has_code) and len(subdirs) <= 1:
+        out.append((base.split("/")[-1], base))
+        return out
+    # 还有子目录且没到深度上限 → 继续下钻
+    if subdirs and depth > 0:
+        for sd in subdirs:
+            out.extend(_find_app_dirs(repo, sd["path"], depth - 1))
+    elif base and (has_readme or has_code):
+        # 到底了但本目录有内容 → 也算一个 app
+        out.append((base.split("/")[-1], base))
+    return out
+
+
+def _make_subunit(repo, name, path, meta, used_ids, existing, log):
+    """读子项目 README → LLM 生成描述 → 组件。"""
+    readme = ""
+    for rn in ("README.md", "readme.md", "SKILL.md"):
+        readme = gh_raw(repo, f"{path}/{rn}")
+        if readme:
+            break
+    url = f"https://github.com/{repo}/tree/main/{path}"
+    if url.lower() in existing:
+        return None
+    try:
+        r = llm.chat_json(SUBUNIT_PROMPT.format(
+            repo=repo, name=name, path=path, readme=norm_ws(readme)[:2500] or name,
+            types=TYPES, scen=SCENARIOS), model=config.MODEL_BATCH, max_tokens=1200, retries=2)
+    except Exception:
+        return None
+    if not r.get("keep") or len((r.get("description_zh") or "")) < 10:
+        return None
+    doc, why = make_component({
+        "name": r.get("name") or name, "description_zh": r["description_zh"],
+        "url": url, "kind": "tool",
+        "type": r.get("type") if r.get("type") in TYPES else "tool",
+        "scenarios": r.get("scenarios", []), "ai_related": True, "keep": True,
+    }, used_ids, existing)
+    if doc:
+        doc["quality"]["stars"] = meta.get("stargazers_count")
+    return doc
+
+
 # ---------------- 核心：摄取单个仓库 ----------------
 def load_state():
     """加载全库已有 repo/url 和 id，供去重。批量模式下多仓库共享同一份并累加。"""
@@ -419,12 +488,22 @@ def ingest_one(repo, dry_run=False, max_items=0, min_stars=0, min_year=0,
 
     elif structure == "collection":
         cdir = plan.get("collection_dir")
-        subs = gh_json(f"/repos/{repo}/contents/{urllib.parse.quote(cdir)}") if cdir else []
-        log(f"[{repo}] collection {cdir}/ 下 {len(subs)} 单元")
-        # 仓库本体作为 1 条市场/合集入口
+        # 递归找所有叶子 app 目录(支持多级 monorepo)
+        app_dirs = _find_app_dirs(repo, cdir or "")
+        if max_items:
+            app_dirs = app_dirs[:max_items]
+        log(f"[{repo}] collection: 发现 {len(app_dirs)} 个子项目,读README+LLM生成描述…")
+        with cf.ThreadPoolExecutor(4) as ex:
+            results = list(ex.map(
+                lambda np: _make_subunit(repo, np[0], np[1], meta, used_ids, existing, log),
+                app_dirs))
+        docs = [d for d in results if d]
+        log(f"[{repo}] 展开 {len(docs)} 条子项目")
+        # 仓库本体也作为 1 条合集入口
         d0, _ = make_component({
             "name": meta["name"], "description_zh": (meta.get("description") or meta["name"])[:200],
-            "url": meta["html_url"], "type": "plugin", "scenarios": ["coding"], "ai_related": True,
+            "url": meta["html_url"], "kind": "resource", "type": "plugin",
+            "scenarios": ["coding"], "ai_related": True, "keep": True,
         }, used_ids, existing)
         if d0:
             d0["quality"]["stars"] = meta.get("stargazers_count")

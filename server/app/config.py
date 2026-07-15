@@ -16,3 +16,5 @@ MODEL_BATCH = os.getenv("MODEL_BATCH", "deepseek-v4-flash")   # 离线加工
 
 DATA_DIR = os.getenv("DATA_DIR", "/app/data")
 CACHE_TTL = int(os.getenv("CACHE_TTL", "86400"))  # 推荐结果缓存 24h
+
+ADMIN_TOKEN = os.getenv("ADMIN_TOKEN", "")  # 管理后台口令；空则后台接口拒绝一切访问

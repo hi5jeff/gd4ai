@@ -89,3 +89,20 @@ _This file is automatically injected into Claude's context at the start of every
 - ✅ 前端正式版上226, https://gd4.ai 公网E2E通过(缓存命中秒回, 新问题20s)
 - ✅ SERVERS.md(含明文密码)已gitignore
 - 第十轮完成, 待提交
+
+## 第十一轮:深度collection摄取 + awesome-llm-apps导入(进行中)
+- 修复ingest_repo.py两bug:norm_ws未定义(致_make_subunit全抛异常"展开0条")、_find_app_dirs递归深度2→4且去掉depth=0乱append
+- 深度collection能力:递归找叶子app目录→读各自README→LLM生成描述→逐条入库(以后monorepo通用)
+- dry-run验证:awesome-llm-apps质量高(AI金融/法律/房产/招聘/SEO agent团队等)
+- 正式导入:detached容器 howai-import-llmapps(daemon托管,不依赖ssh),全76个app目录
+- 待:导完查总数→提交
+
+## 第十二轮:用户提交URL + 管理后台(完成)
+- submissions表(db.py)+ add/list/update/get/stats helper
+- POST /api/submit(公开)· GET /api/admin/submissions · POST /api/admin/submissions/{id}/action(ingest/reject),X-Admin-Token鉴权
+- ingest.persist_docs():内存docs直接落PG+Meili+向量(绕过YAML,因api容器/app/data是:ro)
+- _do_ingest用dry_run=True(跳过写只读YAML)+persist_docs真入库
+- 前端:index.html加"+推荐资源"弹窗→/api/submit;新建admin.html(口令登录/统计/筛选/导入·拒绝按钮)
+- ADMIN_TOKEN=2d828b9bb005c26f62070cb7 存227:/opt/howai/.env(gitignored)
+- 端到端验证:submit→admin导入dagger/container-use→组件941→942,公网/api代理OK
+- awesome-llm-apps导入仍在howai-import-llmapps容器后台跑
