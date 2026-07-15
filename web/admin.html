@@ -36,9 +36,13 @@
   td a { color:#6ea8ff; word-break:break-all; }
   .st { display:inline-block; padding:2px 9px; border-radius:99px; font-size:11px; font-weight:600; }
   .st.pending { background:#3a3416; color:#ffd76e; }
+  .st.importing { background:#16303a; color:#6ec8ff; }
   .st.imported { background:#123a2a; color:#5eead4; }
   .st.rejected { background:#3a1622; color:#ff8b8b; }
   .st.failed { background:#3a1622; color:#ff8b8b; }
+  .dot { display:inline-block; width:7px; height:7px; border-radius:50%; background:#6ec8ff;
+         margin-right:5px; animation:pulse 1s infinite; }
+  @keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:1} }
   .note { color:#9aa7c0; }
   .msg { margin:12px 0; font-size:13px; min-height:16px; }
   .msg.err { color:#ff8b8b; } .msg.ok { color:#5eead4; }
@@ -67,8 +71,8 @@
 <script>
 const $ = s => document.querySelector(s);
 const esc = s => (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let _filter = null;
-const FILTERS = [['','全部'],['pending','待审核'],['imported','已导入'],['rejected','已拒绝'],['failed','失败']];
+let _filter = null, _pollTimer = null;
+const FILTERS = [['','全部'],['pending','待审核'],['importing','导入中'],['imported','已导入'],['rejected','已拒绝'],['failed','失败']];
 
 function token(){ return $('#token').value.trim(); }
 function setMsg(t, cls){ const m=$('#msg'); m.textContent=t; m.className='msg '+(cls||''); }
@@ -97,8 +101,8 @@ async function load(){
 }
 
 function renderStats(stats){
-  const order = ['pending','imported','rejected','failed'];
-  const label = {pending:'待审核',imported:'已导入',rejected:'已拒绝',failed:'失败'};
+  const order = ['pending','importing','imported','rejected','failed'];
+  const label = {pending:'待审核',importing:'导入中',imported:'已导入',rejected:'已拒绝',failed:'失败'};
   $('#stats').innerHTML = order.map(k =>
     `<div class="stat"><b>${stats[k]||0}</b>${label[k]}</div>`).join('');
 }
@@ -111,7 +115,12 @@ function setFilter(v){ _filter = v || null; load(); }
 function renderRows(subs){
   $('#tbl').style.display = 'table';
   if(!subs.length){ $('#rows').innerHTML = '<tr><td colspan="6" class="muted">暂无记录</td></tr>'; return; }
+  let importing = false;
   $('#rows').innerHTML = subs.map(s => {
+    if(s.status==='importing') importing = true;
+    const stCell = s.status==='importing'
+      ? `<span class="st importing"><span class="dot"></span>导入中</span>`
+      : `<span class="st ${esc(s.status)}">${esc(s.status)}</span>`;
     const actions = s.status==='pending'
       ? `<button class="btn sm" onclick="act(${s.id},'ingest',this)">导入</button>
          <button class="btn sm rej" onclick="act(${s.id},'reject',this)">拒绝</button>`
@@ -121,22 +130,26 @@ function renderRows(subs){
       <td>${s.id}</td>
       <td><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.url)}</a>
           ${s.note?`<div class="note">${esc(s.note)}</div>`:''}</td>
-      <td><span class="st ${esc(s.status)}">${esc(s.status)}</span></td>
+      <td>${stCell}</td>
       <td>${esc(s.result||'')}${s.count?` <b>(${s.count})</b>`:''}</td>
       <td class="muted">${esc(s.source||'')}<br>${fmt(s.created_at)}</td>
       <td>${actions}</td>
     </tr>`;
   }).join('');
+  // 有「导入中」的记录 → 5秒后自动刷新，直到全部完成
+  clearTimeout(_pollTimer);
+  if(importing) _pollTimer = setTimeout(load, 5000);
 }
 
 async function act(id, action, btn){
   if(action==='reject' && !confirm('确认拒绝这条提交？')) return;
   btn.disabled = true; const orig = btn.textContent;
-  btn.textContent = action==='ingest' ? '导入中…' : '…';
+  btn.textContent = '…';
   try{
     const d = await api(`/api/admin/submissions/${id}/action`, {method:'POST', body: JSON.stringify({action})});
-    setMsg(`#${id} → ${d.status}`, d.status==='imported'?'ok':'');
-    await load();
+    setMsg(d.status==='importing' ? `#${id} 已开始导入，后台运行中（自动刷新结果）` : `#${id} → ${d.status}`,
+           d.status==='rejected'?'':'ok');
+    await load();  // importing 状态会触发自动轮询
   }catch(e){ setMsg(e.message,'err'); btn.disabled=false; btn.textContent=orig; }
 }
 

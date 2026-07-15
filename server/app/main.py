@@ -1,3 +1,4 @@
+import threading
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, Header
 from fastapi.concurrency import run_in_threadpool
@@ -105,10 +106,10 @@ async def admin_action(sub_id: int, req: ActionReq,
         await run_in_threadpool(db.update_submission, sub_id, "rejected", "已拒绝", 0)
         return {"ok": True, "status": "rejected"}
     if req.action == "ingest":
-        # 同步执行(过 LLM，可能数十秒)；导入结果写回记录
-        await run_in_threadpool(_do_ingest, sub_id, sub["url"])
-        result = await run_in_threadpool(db.get_submission, sub_id)
-        return {"ok": True, "status": result["status"]}
+        # 异步：立刻标记「导入中」并返回，后台线程过 LLM 真入库，完成后自动改状态
+        await run_in_threadpool(db.update_submission, sub_id, "importing", "导入中…", 0)
+        threading.Thread(target=_do_ingest, args=(sub_id, sub["url"]), daemon=True).start()
+        return {"ok": True, "status": "importing"}
     raise HTTPException(400, "action 须为 ingest 或 reject")
 
 

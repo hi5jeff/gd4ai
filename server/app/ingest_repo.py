@@ -546,15 +546,26 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("repo", help="owner/repo 或 http(s):// 网址")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--persist", action="store_true",
+                    help="直接落库(PG+Meili+向量)，而非只写 YAML")
     ap.add_argument("--max-items", type=int, default=0)
     ap.add_argument("--min-stars", type=int, default=0)
     ap.add_argument("--min-year", type=int, default=0)
     args = ap.parse_args()
-    docs, _ = ingest_any(args.repo, args.dry_run, args.max_items, args.min_stars, args.min_year)
+    # --persist 时用 dry_run=True 跳过写 YAML(可能只读)，docs 照常产出后直接落库
+    docs, _ = ingest_any(args.repo, args.dry_run or args.persist,
+                         args.max_items, args.min_stars, args.min_year)
     print(f"\n共产出 {len(docs)} 条新组件")
     for d in docs[:15]:
         print(f"  [{d['type']}] {d['name']} — {d['description_zh'][:50]}")
-    print("(dry-run，未落盘)" if args.dry_run else f"✅ 已落盘 {len(docs)} 条")
+    if args.dry_run and not args.persist:
+        print("(dry-run，未落盘)")
+    elif args.persist:
+        from . import ingest
+        n = ingest.persist_docs(docs)
+        print(f"✅ 已落库 {n} 条(PG+Meili+向量)")
+    else:
+        print(f"✅ 已写 YAML {len(docs)} 条(需再跑 app.ingest 才入库)")
 
 
 if __name__ == "__main__":
