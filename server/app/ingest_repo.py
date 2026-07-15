@@ -59,15 +59,36 @@ def gh_raw(owner_repo, path):
 
 
 # ---------------- 网页抓取 ----------------
+FIRECRAWL_KEY = os.environ.get("FIRECRAWL_API_KEY", "")
+
+
+def fetch_firecrawl(url):
+    """用 firecrawl 云 API 抓取,返回干净 Markdown(能渲染JS、正文更全)。失败返回 None。"""
+    if not FIRECRAWL_KEY:
+        return None
+    body = json.dumps({"url": url, "formats": ["markdown"], "onlyMainContent": True}).encode()
+    req = urllib.request.Request("https://api.firecrawl.dev/v2/scrape", data=body,
+        headers={"Authorization": f"Bearer {FIRECRAWL_KEY}", "Content-Type": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=90) as r:
+            d = json.load(r)
+        md = (d.get("data") or {}).get("markdown", "")
+        return md if md and len(md) > 100 else None
+    except Exception as e:
+        print(f"  firecrawl失败({str(e)[:50]}),降级原生抓取", file=sys.stderr)
+        return None
+
+
 def fetch_web(url):
-    """抓取网页 HTML → 提取可读正文（去脚本/样式/标签）。返回纯文本。"""
+    """抓取网页正文。优先 firecrawl(干净markdown/能渲染JS),失败降级原生 HTML 清洗。"""
+    md = fetch_firecrawl(url)
+    if md:
+        return md
     req = urllib.request.Request(url, headers={
         "User-Agent": "Mozilla/5.0 (compatible; gd4ai-bot/1.0)"})
     with urllib.request.urlopen(req, timeout=40) as r:
         html = r.read().decode("utf-8", "ignore")
-    # 去掉 script/style/noscript 整块
     html = re.sub(r"<(script|style|noscript)[^>]*>.*?</\1>", " ", html, flags=re.S | re.I)
-    # 保留链接文本和 href（很多导航站的价值在链接上）
     html = re.sub(r'<a\s[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',
                   lambda m: f" {re.sub(r'<[^>]+>', '', m.group(2))} ({m.group(1)}) ", html, flags=re.S | re.I)
     text = re.sub(r"<[^>]+>", " ", html)
@@ -78,8 +99,13 @@ def fetch_web(url):
 
 
 def chunk_text(text, target=3500):
-    """把纯文本按长度切块。"""
-    lines = text.split("\n")
+    """把纯文本按长度切块。超长单行强制按字符硬切(防某行过长成一个巨块被LLM漏掉)。"""
+    lines = []
+    for ln in text.split("\n"):
+        while len(ln) > target:
+            lines.append(ln[:target])
+            ln = ln[target:]
+        lines.append(ln)
     chunks, buf = [], ""
     for ln in lines:
         if len(buf) + len(ln) > target and buf:
