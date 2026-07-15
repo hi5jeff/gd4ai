@@ -159,6 +159,24 @@ def update_submission(sub_id: int, status: str, result: str = "", count: int = 0
         )
 
 
+def component_url_exists(url: str) -> str | None:
+    """URL 是否已在组件库；命中则返回该组件名，否则 None。用于给重复提交清晰反馈。"""
+    core = url.strip().lower().rstrip("/")
+    for pre in ("https://", "http://", "www."):
+        if core.startswith(pre):
+            core = core[len(pre):]
+    core = core.removesuffix(".git")
+    if not core:
+        return None
+    with pool.connection() as conn:
+        row = conn.execute(
+            "SELECT name FROM components WHERE lower(doc->'source'->>'repo') LIKE %s "
+            "OR lower(doc->'source'->>'url') LIKE %s LIMIT 1",
+            (f"%{core}%", f"%{core}%"),
+        ).fetchone()
+    return row[0] if row else None
+
+
 def submission_stats() -> dict:
     with pool.connection() as conn:
         rows = conn.execute(

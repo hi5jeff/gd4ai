@@ -414,11 +414,25 @@ def _make_subunit(repo, name, path, meta, used_ids, existing, log):
 
 # ---------------- 核心：摄取单个仓库 ----------------
 def load_state():
-    """加载全库已有 repo/url 和 id，供去重。批量模式下多仓库共享同一份并累加。"""
+    """加载全库已有 repo/url 和 id，供去重。真相在数据库；YAML 只是种子，作补充。"""
     existing = existing_repos()
     used_ids = set()
     for f in DATA.rglob("*.yaml"):
         used_ids.add(yaml.safe_load(f.read_text())["id"])
+    # 叠加数据库里已有组件的 URL / id —— 很多组件只在 DB(经 persist_docs 直接落库)、无 YAML
+    try:
+        from . import db as _db
+        if _db.pool.closed:
+            _db.pool.open()
+        with _db.pool.connection() as conn:
+            for cid, doc in conn.execute("SELECT id, doc FROM components").fetchall():
+                used_ids.add(cid)
+                src = doc.get("source") or {}
+                for x in (src.get("repo"), src.get("url")):
+                    if x:
+                        existing.add(x.lower().rstrip("/"))
+    except Exception:
+        pass
     return existing, used_ids
 
 
@@ -561,7 +575,9 @@ def main():
     if args.dry_run and not args.persist:
         print("(dry-run，未落盘)")
     elif args.persist:
-        from . import ingest
+        from . import ingest, db
+        if db.pool.closed:
+            db.pool.open()  # 独立 CLI 不走 FastAPI lifespan，须手动开池
         n = ingest.persist_docs(docs)
         print(f"✅ 已落库 {n} 条(PG+Meili+向量)")
     else:

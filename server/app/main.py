@@ -90,7 +90,11 @@ def _do_ingest(sub_id: int, url: str):
         if n:
             db.update_submission(sub_id, "imported", f"入库 {n} 条组件", n)
         else:
-            db.update_submission(sub_id, "failed", "未抽取到有效组件（可能不含AI相关内容）", 0)
+            dup = db.component_url_exists(url)
+            if dup:
+                db.update_submission(sub_id, "imported", f"已在库中：{dup}（无需重复）", 0)
+            else:
+                db.update_submission(sub_id, "failed", "未抽取到有效组件（可能不含AI相关内容/无法访问）", 0)
     except Exception as e:
         db.update_submission(sub_id, "failed", f"导入出错: {str(e)[:200]}", 0)
 
