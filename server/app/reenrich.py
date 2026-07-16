@@ -60,10 +60,20 @@ THIN = ("(doc->'install'->>'notes_zh' = '详见来源链接' OR doc->'usage' IS 
         "     OR coalesce(doc->'source'->>'url','') <> '')")
 
 
+def persist(chunk):
+    """增量落库：重新向量化 + PG upsert + Meili。中途挂也不丢已落的部分。"""
+    if not chunk:
+        return
+    ingest.upsert("components", chunk)
+    ingest.meili_index("components", chunk,
+                       ["type", "scenarios", "host_tools", "difficulty"])
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--workers", type=int, default=4)
+    ap.add_argument("--chunk", type=int, default=40, help="每多少条增量入库一次")
     args = ap.parse_args()
 
     db.pool.open()
@@ -73,30 +83,23 @@ def main():
         if args.limit:
             q += f" LIMIT {args.limit}"
         rows = conn.execute(q).fetchall()
-    print(f"待重理解的薄组件: {len(rows)}")
+    print(f"待重理解的薄组件: {len(rows)}", flush=True)
 
-    updated, stats = [], {"无源": 0, "LLM空": 0}
-    done = 0
+    buf, stats = [], {"无源": 0, "LLM空": 0}
+    done = saved = 0
     with cf.ThreadPoolExecutor(args.workers) as ex:
         for cid, res in ex.map(reenrich_one, rows):
             done += 1
             if isinstance(res, dict):
-                updated.append(res)
+                buf.append(res)
             else:
                 stats[res] = stats.get(res, 0) + 1
-            if done % 25 == 0:
-                print(f"  进度 {done}/{len(rows)}，已理解 {len(updated)}，跳过 {dict(stats)}")
-
-    print(f"理解完成：更新 {len(updated)}，跳过 {dict(stats)}")
-    if not updated:
-        print("无可更新")
-        return
-    # 重新向量化（新描述更丰富→检索也更准）+ 落 PG + Meili + 清缓存
-    ingest.upsert("components", updated)
-    ingest.meili_index("components", updated,
-                       ["type", "scenarios", "host_tools", "difficulty"])
+            if len(buf) >= args.chunk:            # 满一批 → 立即落库
+                persist(buf); saved += len(buf); buf = []
+                print(f"  已落库 {saved} 条（进度 {done}/{len(rows)}，跳过 {dict(stats)}）", flush=True)
+    persist(buf); saved += len(buf)               # 收尾余量
     ingest.flush_reco_cache()
-    print(f"✅ 已重入库 {len(updated)} 条（PG+向量+Meili），推荐缓存已清")
+    print(f"✅ 完成：重入库 {saved} 条（增量落库，PG+向量+Meili），跳过 {dict(stats)}，缓存已清", flush=True)
 
 
 if __name__ == "__main__":
