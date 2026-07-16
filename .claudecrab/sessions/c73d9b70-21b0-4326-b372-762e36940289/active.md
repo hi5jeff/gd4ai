@@ -115,9 +115,3 @@ _This file is automatically injected into Claude's context at the start of every
 - ponytail#4是已在库(误报已修), 同名多条是不同来源URL(非重复)
 - 教训: 别挂长Monitor(会话断则死), 直接查状态
 - 队列: #4 ponytail已处理(dup跳过), #5-9 五条真实用户提交待审
-
-## 分工(用户2026-07-16定,重要)
-- 主session(我): 实时响应/开发/决策/指挥, 绝不挂长Monitor
-- monitor分身 = c73d9b70: 监控类长任务派给它
-  - 派: clone run c73d9b70 "盯住X完成报结果" → job id
-  - 收: clone result <job> (异步查,不--wait)

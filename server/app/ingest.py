@@ -84,6 +84,19 @@ def meili_index(index: str, docs: list[dict], filterables: list[str]):
     })
 
 
+def flush_reco_cache():
+    """清空推荐结果缓存(rec:*)。新内容入库后必须清，否则旧查询 24h 内看不到新组件。"""
+    try:
+        import redis as redis_lib
+        r = redis_lib.from_url(config.REDIS_URL, decode_responses=True)
+        keys = list(r.scan_iter("rec:*"))
+        if keys:
+            r.delete(*keys)
+        return len(keys)
+    except Exception:
+        return 0
+
+
 def persist_docs(docs: list[dict]):
     """把内存中的组件 doc 直接落 PG(向量)+Meili，供后台审核通过后即时入库。"""
     comps = [d for d in docs if d.get("id") and d.get("type")]
@@ -91,6 +104,7 @@ def persist_docs(docs: list[dict]):
         return 0
     upsert("components", comps)
     meili_index("components", comps, ["type", "scenarios", "host_tools", "difficulty"])
+    flush_reco_cache()  # 让新组件立即出现在推荐里
     return len(comps)
 
 
