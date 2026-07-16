@@ -3,8 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>gd4.ai — AI Tool Ecosystem Recommendations</title>
-<meta name="description" content="Tell us what you want to build, we give you a ready-to-run AI tool stack. Skills, MCPs, plugins, prompts — all verified.">
+<title>gd4.ai — 说出需求，给你一套能跑通的 AI 工具方案 | 技能·MCP·插件·角色·提示词推荐</title>
+<meta name="description" content="gd4.ai 是需求驱动的 AI 工具生态推荐引擎：描述你想做的事，直接得到该用哪些 Skill、MCP、插件、角色和提示词，附安装配置与上手步骤。覆盖 Claude Code、Cursor、Codex 等，1400+ 人工核实资源，从新手到专家可用。">
+<meta name="keywords" content="AI工具推荐,Claude Code 技能,MCP 推荐,AI 提示词库,Cursor 插件,AI Agent 角色,Skill,prompt,AI 工具导航,gd4.ai">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="gd4.ai">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="canonical" href="https://gd4.ai/">
+<link rel="alternate" href="https://gd4.ai/" hreflang="zh-CN">
+<link rel="alternate" href="https://gd4.ai/" hreflang="en">
+<link rel="alternate" href="https://gd4.ai/" hreflang="x-default">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0b0c'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' fill='%23e7ad5f' text-anchor='middle'%3Eg%3C/text%3E%3C/svg%3E">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="gd4.ai">
+<meta property="og:url" content="https://gd4.ai/">
+<meta property="og:title" content="gd4.ai — 说出需求，给你一套能跑通的 AI 工具方案">
+<meta property="og:description" content="需求驱动的 AI 工具生态推荐：该用哪些 Skill·MCP·插件·角色·提示词，附安装配置与上手步骤。1400+ 人工核实资源。">
+<meta property="og:image" content="https://gd4.ai/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en_US">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="gd4.ai — 说出需求，给你一套能跑通的 AI 工具方案">
+<meta name="twitter:description" content="需求驱动的 AI 工具生态推荐：Skill·MCP·插件·角色·提示词，附上手步骤。1400+ 人工核实资源。">
+<meta name="twitter:image" content="https://gd4.ai/og.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "gd4.ai",
+  "alternateName": "gd4 AI 工具推荐",
+  "url": "https://gd4.ai/",
+  "description": "需求驱动的 AI 工具生态推荐引擎：描述需求，得到该用的 Skill、MCP、插件、角色、提示词及上手步骤。",
+  "inLanguage": ["zh-CN","en"],
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": { "@type": "EntryPoint", "urlTemplate": "https://gd4.ai/?q={search_term_string}" },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "gd4.ai",
+  "url": "https://gd4.ai/",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "描述你想做的事，gd4.ai 推荐该用哪些 AI 工具（Skill/MCP/插件/角色/提示词）并给出安装配置与上手步骤。"
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -235,8 +288,8 @@
   </header>
 
   <section class="hero">
-    <div class="eyebrow rise" style="animation-delay:.04s"><span class="dot"></span><span id="eyebrow"></span></div>
-    <h1 class="headline rise" id="subtitle" style="animation-delay:.12s"></h1>
+    <div class="eyebrow rise" style="animation-delay:.04s"><span class="dot"></span><span id="eyebrow">精选 AI 工具生态</span></div>
+    <h1 class="headline rise" id="subtitle" style="animation-delay:.12s">说出你想做的事，得到一套能直接跑通的 AI 工具方案</h1>
     <div class="search rise" style="animation-delay:.2s">
       <span class="sicon" id="searchIcon"></span>
       <input id="q" maxlength="200" onkeydown="if(event.key==='Enter')go()">
@@ -251,6 +304,14 @@
     <span id="loadingText"></span>
   </div>
   <div id="result"></div>
+  <noscript>
+    <div style="color:#b3b3ba;font-size:15px;line-height:1.8;margin-top:24px">
+      <p>gd4.ai 是一个需求驱动的 AI 工具生态推荐引擎。描述你想做的事，我们直接告诉你该用哪些
+      AI 技能（Skill）、MCP 服务器、插件、专家角色和提示词，并附上安装配置与上手第一步。</p>
+      <p>覆盖 Claude Code、Cursor、Codex 等主流 AI 编程与创作工具，收录 1400+ 条人工核实的资源，
+      涵盖工程开发、平面设计、电商、游戏、室内装修、营销文案等场景，从新手到专家都能用。</p>
+    </div>
+  </noscript>
 
   <footer class="foot">
     <span id="footer"></span>
@@ -484,6 +545,9 @@ function promptCard(p){
 // init
 applyLang();
 loadStats();
+// 可分享的搜索深链 ?q=...（配合结构化数据 SearchAction）
+(function(){ try{ const p = new URLSearchParams(location.search).get('q');
+  if(p && p.trim().length>=2){ $('#q').value = p.trim(); go(); } }catch(e){} })();
 </script>
 </body>
 </html>
