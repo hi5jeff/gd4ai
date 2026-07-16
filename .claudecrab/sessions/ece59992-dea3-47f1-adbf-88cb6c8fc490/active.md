@@ -121,3 +121,12 @@ _This file is automatically injected into Claude's context at the start of every
 - monitor分身 = c73d9b70: 监控类长任务派给它
   - 派: clone run c73d9b70 "盯住X完成报结果" → job id
   - 收: clone result <job> (异步查,不--wait)
+
+## 第十四~十六轮:让LLM真读懂资源 + 合集拆条
+- understand()/apply_understanding(): grounded读懂 是什么/怎么用/对谁有帮助, 填install/usage; 绝不编造
+- reenrich.py: 修951条薄组件, 增量入库(每40落一次). 约330条skillhub(source是API地址)抓不到源→跳过不编
+- 文件合集处理器: parse_frontmatter + _tree_content_files + ingest_file_collection + CLI --files-as
+  - 修"每个.md是一个角色/skill"的仓库(如agency-agents-zh 266角色/wshobson类)之前塌成1条的问题
+- agency-agents-zh: 266角色导入中(容器howai-roles), role类目6→~270
+- 后台容器: howai-reenrich(重理解) + howai-roles(角色); monitor分身盯 job b60ef748 + ad83867d
+- 教训重申: 内容库/合集要拆到单元, 每单元也要LLM读懂(不是存搜)

@@ -421,6 +421,53 @@ def norm_ws(s):
     return re.sub(r"[ \t]+", " ", re.sub(r"\n\s*\n+", "\n", s or "")).strip()
 
 
+def parse_frontmatter(text):
+    """解析 markdown 头部的 YAML frontmatter，返回 dict（无则空 dict）。"""
+    m = re.match(r'^---\s*\n(.*?)\n---\s*\n', text, re.S)
+    if not m:
+        return {}
+    out = {}
+    for line in m.group(1).split("\n"):
+        km = re.match(r'\s*([A-Za-z_][\w-]*)\s*:\s*(.+?)\s*$', line)
+        if km:
+            out[km.group(1).lower()] = km.group(2).strip().strip('"\'')
+    return out
+
+
+# 文件即单元的仓库里，这些不是"内容单元"，跳过
+_SKIP_FILES = ("readme", "catalog", "contributing", "upstream", "license",
+               "changelog", "code_of_conduct", "security", "agent-list", "index")
+_SKIP_DIRS = (".github", "docs", "assets", "images", "examples", "scripts",
+              "integrations", "node_modules", "test", "tests")
+
+
+def _tree_content_files(repo, ext=".md"):
+    """递归列出仓库里所有内容定义文件（.md，排除 README/docs 等非单元文件）。返回 [path]。"""
+    for br in ("main", "master"):
+        try:
+            t = gh_json(f"/repos/{repo}/git/trees/{br}?recursive=1")
+        except Exception:
+            continue
+        if not t.get("tree"):
+            continue
+        out = []
+        for b in t["tree"]:
+            if b.get("type") != "blob":
+                continue
+            p = b["path"]
+            if not p.lower().endswith(ext):
+                continue
+            parts = p.lower().split("/")
+            if any(d in _SKIP_DIRS for d in parts[:-1]):
+                continue
+            stem = parts[-1].rsplit(".", 1)[0]
+            if stem in _SKIP_FILES or "/" not in p:   # 跳过根目录文件和索引类
+                continue
+            out.append(p)
+        return out
+    return []
+
+
 def _find_app_dirs(repo, base, depth=4):
     """递归找叶子应用目录：含 README/代码文件、且不再有有意义子目录的目录。返回 [(name,path)]。"""
     out = []
@@ -621,6 +668,51 @@ def ingest_any(target, dry_run=False, max_items=0, min_stars=0, min_year=0,
     return ingest_one(t, dry_run, max_items, min_stars, min_year, existing, used_ids, log)
 
 
+def _make_file_unit(repo, path, default_type, meta, used_ids, existing, log):
+    """一个定义文件（.md）→ 读 frontmatter + LLM 理解人设/用法 → 一条组件。"""
+    text = gh_raw(repo, path)
+    if not text or len(text) < 120:
+        return None
+    fm = parse_frontmatter(text)
+    name = (fm.get("name") or path.rsplit("/", 1)[-1].rsplit(".", 1)[0].replace("-", " ")).strip()
+    url = f"https://github.com/{repo}/blob/main/{path}"
+    if url.lower() in existing:
+        return None
+    desc0 = (fm.get("description") or name)[:200]
+    doc, why = make_component({
+        "name": name, "description_zh": desc0, "url": url,
+        "type": default_type, "kind": "resource" if default_type == "role" else "tool",
+        "scenarios": [], "ai_related": True, "keep": True,
+    }, used_ids, existing, source_text=text)     # source_text→understand() 读懂怎么用/对谁有帮助
+    if doc:
+        doc["quality"]["stars"] = meta.get("stargazers_count")
+    return doc
+
+
+def ingest_file_collection(repo, default_type="role", dry_run=False, max_items=0,
+                           existing=None, used_ids=None, log=print):
+    """文件即单元的仓库（每个 .md 是一个角色/技能定义）→ 逐文件成条。"""
+    if existing is None or used_ids is None:
+        existing, used_ids = load_state()
+    meta = gh_json(f"/repos/{repo}")
+    files = _tree_content_files(repo)
+    if max_items:
+        files = files[:max_items]
+    log(f"[{repo}] 文件合集: 发现 {len(files)} 个定义文件, 逐个读懂…")
+    with cf.ThreadPoolExecutor(4) as ex:
+        results = list(ex.map(
+            lambda p: _make_file_unit(repo, p, default_type, meta, used_ids, existing, log),
+            files))
+    docs = [d for d in results if d]
+    log(f"[{repo}] 文件合集: 收录 {len(docs)} 条")
+    if not dry_run:
+        for d in docs:
+            out = DATA / d["type"] / f"{d['id']}.yaml"
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(yaml.dump(d, allow_unicode=True, sort_keys=False, width=120))
+    return docs, {"structure": "file_collection"}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("repo", help="owner/repo 或 http(s):// 网址")
@@ -630,10 +722,16 @@ def main():
     ap.add_argument("--max-items", type=int, default=0)
     ap.add_argument("--min-stars", type=int, default=0)
     ap.add_argument("--min-year", type=int, default=0)
+    ap.add_argument("--files-as", default="",
+                    help="文件即单元的仓库：每个.md当一条，指定类型(如 role/skill)")
     args = ap.parse_args()
-    # --persist 时用 dry_run=True 跳过写 YAML(可能只读)，docs 照常产出后直接落库
-    docs, _ = ingest_any(args.repo, args.dry_run or args.persist,
-                         args.max_items, args.min_stars, args.min_year)
+    dry = args.dry_run or args.persist   # persist 时跳过写只读 YAML，docs 照常产出后落库
+    if args.files_as:
+        m = re.search(r"github\.com/([^/]+/[^/#?]+)", args.repo)
+        repo = (m.group(1) if m else args.repo).rstrip("/").removesuffix(".git")
+        docs, _ = ingest_file_collection(repo, args.files_as, dry, args.max_items)
+    else:
+        docs, _ = ingest_any(args.repo, dry, args.max_items, args.min_stars, args.min_year)
     print(f"\n共产出 {len(docs)} 条新组件")
     for d in docs[:15]:
         print(f"  [{d['type']}] {d['name']} — {d['description_zh'][:50]}")

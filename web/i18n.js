@@ -46,6 +46,8 @@ const I18N = {
     submitClose: '关闭',
     statsTools: '个已验证工具',
     statsCurated: '人工核实 · 持续扩充',
+    statsResources: '个已验证资源',
+    statsPrompts: '条提示词',
   },
   en: {
     logo: 'gd4.ai',
@@ -93,6 +95,8 @@ const I18N = {
     submitClose: 'Close',
     statsTools: 'verified tools',
     statsCurated: 'human-checked · growing',
+    statsResources: 'verified resources',
+    statsPrompts: 'prompts',
   },
 };
 

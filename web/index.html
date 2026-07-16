@@ -107,11 +107,13 @@
   .chip:hover{ color:var(--tx); border-color:var(--line2); background:var(--panel); transform:translateY(-2px); }
   .chip:hover .i{ color:var(--acc); }
   /* live stats under search */
-  .hstats{ display:flex; align-items:center; gap:9px; margin-top:18px; color:var(--faint);
-           font-size:12.5px; }
-  .hstats .k{ color:var(--mut); font-variant-numeric:tabular-nums; font-weight:600; }
+  .hstats{ display:flex; align-items:center; flex-wrap:wrap; gap:8px 10px; margin-top:18px;
+           color:var(--faint); font-size:12.5px; }
+  .hstats .k{ color:var(--tx); font-variant-numeric:tabular-nums; font-weight:700; }
   .hstats .sep{ width:3px; height:3px; border-radius:50%; background:var(--line2); }
   .hstats .pill{ display:inline-flex; align-items:center; gap:6px; }
+  .hstats .g{ color:var(--mut); font-variant-numeric:tabular-nums; }
+  .hstats .g b{ color:var(--tx); font-weight:600; }
   .hstats .live{ width:6px; height:6px; border-radius:50%; background:var(--t-skill);
                  box-shadow:0 0 0 3px rgba(121,203,175,.14); animation:blink 2.6s ease-in-out infinite; }
 
@@ -270,7 +272,7 @@
   </div>
 </div>
 
-<script src="i18n.js?v=20260716b"></script>
+<script src="i18n.js?v=20260716c"></script>
 <script>
 const $ = sel => document.querySelector(sel[0]==='#'||sel[0]==='.' ? sel : '#'+sel);
 const esc = s => (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -329,17 +331,24 @@ function applyLang() {
   paintStats();
 }
 
-let _toolCount = 0;
+let _stats = null;
+const TYPE_ORDER = ['skill','tool','role','plugin','mcp','workflow'];
 function paintStats(){
   const el = $('#hstats'); if(!el) return;
-  if(!_toolCount){ el.innerHTML=''; return; }
-  el.innerHTML = `<span class="pill"><span class="live"></span></span>`
-    + `<span class="k">${_toolCount.toLocaleString()}</span><span>${esc(t('statsTools'))}</span>`
-    + `<span class="sep"></span><span>${esc(t('statsCurated'))}</span>`;
+  if(!_stats || !_stats.total){ el.innerHTML=''; return; }
+  const bt = _stats.by_type || {};
+  let h = `<span class="pill"><span class="live"></span></span>`
+    + `<span class="k">${_stats.total.toLocaleString()}</span><span>${esc(t('statsResources'))}</span>`
+    + `<span class="sep"></span>`;
+  h += TYPE_ORDER.filter(ty=>bt[ty]).map(ty=>
+    `<span class="g"><b>${bt[ty].toLocaleString()}</b> ${esc(tt(ty))}</span>`).join('');
+  if(_stats.prompts) h += `<span class="sep"></span>`
+    + `<span class="g"><b>${_stats.prompts.toLocaleString()}</b> ${esc(t('statsPrompts'))}</span>`;
+  el.innerHTML = h;
 }
 function loadStats(){
-  fetch('/api/health').then(r=>r.json()).then(d=>{
-    if(d && d.pg_components){ _toolCount = d.pg_components; paintStats(); }
+  fetch('/api/stats').then(r=>r.json()).then(d=>{
+    if(d && d.total){ _stats = d; paintStats(); }
   }).catch(()=>{});
 }
 

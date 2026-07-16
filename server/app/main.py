@@ -1,4 +1,6 @@
+import json
 import threading
+import time
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, Header
 from fastapi.concurrency import run_in_threadpool
@@ -126,6 +128,34 @@ async def admin_action(sub_id: int, req: ActionReq,
         threading.Thread(target=_do_ingest, args=(sub_id, sub["url"]), daemon=True).start()
         return {"ok": True, "status": "importing"}
     raise HTTPException(400, "action 须为 ingest 或 reject")
+
+
+def _stats_overview():
+    """库存概览：总数 + 按类型分组 + 提示词数。Redis 缓存 1 小时，每小时最多查一次库。"""
+    key = "stats:overview"
+    try:
+        cached = orchestrate.redis.get(key)
+        if cached:
+            return json.loads(cached)
+    except Exception:
+        pass
+    with db.pool.connection() as conn:
+        rows = conn.execute(
+            "SELECT doc->>'type', count(*) FROM components GROUP BY 1").fetchall()
+        prompts = conn.execute("SELECT count(*) FROM prompts").fetchone()[0]
+    by_type = {r[0]: r[1] for r in rows if r[0]}
+    out = {"total": sum(by_type.values()), "by_type": by_type,
+           "prompts": prompts, "updated_at": int(time.time())}
+    try:
+        orchestrate.redis.setex(key, 3600, json.dumps(out))
+    except Exception:
+        pass
+    return out
+
+
+@app.get("/api/stats")
+async def stats():
+    return await run_in_threadpool(_stats_overview)
 
 
 @app.get("/api/health")
