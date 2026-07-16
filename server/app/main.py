@@ -10,6 +10,11 @@ from . import db, orchestrate, retrieval, config, ingest, ingest_repo
 async def lifespan(app: FastAPI):
     db.pool.open()
     db.init_schema()
+    # 每次启动(即每次部署)清推荐缓存，避免旧编排/prompt 的陈旧结果赖在 Redis 里
+    try:
+        ingest.flush_reco_cache()
+    except Exception:
+        pass
     yield
     db.pool.close()
 
