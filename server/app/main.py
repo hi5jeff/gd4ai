@@ -110,6 +110,12 @@ async def admin_action(sub_id: int, req: ActionReq,
         await run_in_threadpool(db.update_submission, sub_id, "rejected", "已拒绝", 0)
         return {"ok": True, "status": "rejected"}
     if req.action == "ingest":
+        # 导入前先判重：URL 已在库则直接跳过，不浪费 LLM
+        dup = await run_in_threadpool(db.component_url_exists, sub["url"])
+        if dup:
+            await run_in_threadpool(db.update_submission, sub_id, "imported",
+                                    f"已在库中：{dup}（跳过，未重复导入）", 0)
+            return {"ok": True, "status": "imported", "duplicate": True}
         # 异步：立刻标记「导入中」并返回，后台线程过 LLM 真入库，完成后自动改状态
         await run_in_threadpool(db.update_submission, sub_id, "importing", "导入中…", 0)
         threading.Thread(target=_do_ingest, args=(sub_id, sub["url"]), daemon=True).start()
