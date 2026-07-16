@@ -18,3 +18,5 @@ DATA_DIR = os.getenv("DATA_DIR", "/app/data")
 CACHE_TTL = int(os.getenv("CACHE_TTL", "86400"))  # 推荐结果缓存 24h
 
 ADMIN_TOKEN = os.getenv("ADMIN_TOKEN", "")  # 管理后台口令；空则后台接口拒绝一切访问
+# OpenAI 兼容 API 的密钥（逗号分隔）；空则 /v1 接口停用
+API_KEYS = set(k.strip() for k in os.getenv("API_KEYS", "").split(",") if k.strip())
