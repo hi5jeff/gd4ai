@@ -24,7 +24,30 @@
     font-family:"Inter",-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
     background:var(--bg); color:var(--tx); min-height:100vh; line-height:1.5;
     font-feature-settings:"cv02","cv03","cv04","ss01"; -webkit-font-smoothing:antialiased;
-    background-image:radial-gradient(60rem 40rem at 80% -10%, rgba(231,173,95,.05), transparent 60%);
+  }
+  /* living background: two slow-drifting glows + faint grain */
+  .bgfx{ position:fixed; inset:0; z-index:-2; overflow:hidden; pointer-events:none; }
+  .bgfx b{ position:absolute; border-radius:50%; filter:blur(90px); }
+  .bgfx b:nth-child(1){ width:44rem; height:44rem; top:-17rem; right:-9rem; opacity:.55;
+    background:radial-gradient(circle,rgba(231,173,95,.16),transparent 70%);
+    animation:drift1 24s ease-in-out infinite; }
+  .bgfx b:nth-child(2){ width:36rem; height:36rem; bottom:-19rem; left:-12rem; opacity:.42;
+    background:radial-gradient(circle,rgba(122,142,240,.13),transparent 70%);
+    animation:drift2 30s ease-in-out infinite; }
+  .bgfx b:nth-child(3){ width:22rem; height:22rem; top:34%; left:52%; opacity:.3;
+    background:radial-gradient(circle,rgba(121,203,175,.10),transparent 70%);
+    animation:drift1 34s ease-in-out infinite reverse; }
+  @keyframes drift1{ 50%{ transform:translate(-4rem,3rem) scale(1.12);} }
+  @keyframes drift2{ 50%{ transform:translate(3.5rem,-3rem) scale(1.1);} }
+  .grain{ position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.025; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+  /* entrance + reveal motion */
+  @keyframes rise{ from{ opacity:0; transform:translateY(16px);} to{ opacity:1; transform:none;} }
+  .rise{ opacity:0; animation:rise .62s cubic-bezier(.22,.7,.2,1) forwards; }
+  @media (prefers-reduced-motion:reduce){
+    .rise{ animation:none; opacity:1; }
+    .bgfx b{ animation:none; }
   }
   .wrap{ max-width:768px; margin:0 auto; padding:0 22px 96px; }
   svg.i{ width:1em; height:1em; display:inline-block; vertical-align:-.14em; flex-shrink:0; }
@@ -48,7 +71,8 @@
             letter-spacing:.14em; text-transform:uppercase; color:var(--mut);
             border:1px solid var(--line); border-radius:999px; padding:5px 12px 5px 11px; }
   .eyebrow .dot{ width:5px; height:5px; border-radius:50%; background:var(--acc);
-                 box-shadow:0 0 0 3px var(--acc-soft); }
+                 box-shadow:0 0 0 3px var(--acc-soft); animation:blink 2.6s ease-in-out infinite; }
+  @keyframes blink{ 0%,100%{ box-shadow:0 0 0 3px var(--acc-soft);} 50%{ box-shadow:0 0 0 6px rgba(231,173,95,0);} }
   .headline{ font-family:"Instrument Serif","Songti SC","Noto Serif SC",Georgia,serif;
              font-weight:400; font-size:clamp(34px,6vw,52px); line-height:1.08;
              letter-spacing:-.01em; margin:20px 0 4px; max-width:16em; color:#f4f2ee; }
@@ -70,7 +94,8 @@
   .search button:hover{ filter:brightness(1.06); }
   .search button:active{ transform:translateY(1px); }
   .search button:disabled{ opacity:.5; cursor:wait; filter:none; }
-  .search button .i{ font-size:16px; }
+  .search button .i{ font-size:16px; transition:transform .18s cubic-bezier(.2,.7,.2,1); }
+  .search button:hover .i{ transform:translateX(3px); }
 
   /* chips */
   .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
@@ -78,8 +103,17 @@
          color:var(--mut); background:none; border:1px solid var(--line);
          border-radius:9px; padding:8px 13px; cursor:pointer; transition:all .14s; }
   .chip .i{ font-size:15px; color:var(--faint); transition:color .14s; }
-  .chip:hover{ color:var(--tx); border-color:var(--line2); background:var(--panel); }
+  .chip{ transition:color .14s, border-color .14s, background .14s, transform .14s; }
+  .chip:hover{ color:var(--tx); border-color:var(--line2); background:var(--panel); transform:translateY(-2px); }
   .chip:hover .i{ color:var(--acc); }
+  /* live stats under search */
+  .hstats{ display:flex; align-items:center; gap:9px; margin-top:18px; color:var(--faint);
+           font-size:12.5px; }
+  .hstats .k{ color:var(--mut); font-variant-numeric:tabular-nums; font-weight:600; }
+  .hstats .sep{ width:3px; height:3px; border-radius:50%; background:var(--line2); }
+  .hstats .pill{ display:inline-flex; align-items:center; gap:6px; }
+  .hstats .live{ width:6px; height:6px; border-radius:50%; background:var(--t-skill);
+                 box-shadow:0 0 0 3px rgba(121,203,175,.14); animation:blink 2.6s ease-in-out infinite; }
 
   /* loading */
   .loading{ display:none; align-items:center; gap:12px; padding:34px 2px; color:var(--mut);
@@ -186,6 +220,8 @@
 </style>
 </head>
 <body>
+<div class="bgfx"><b></b><b></b><b></b></div>
+<div class="grain"></div>
 <div class="wrap">
   <header class="topbar">
     <div class="brand">gd4<span class="dot">.</span>ai</div>
@@ -197,14 +233,15 @@
   </header>
 
   <section class="hero">
-    <div class="eyebrow"><span class="dot"></span><span id="eyebrow"></span></div>
-    <h1 class="headline" id="subtitle"></h1>
-    <div class="search">
+    <div class="eyebrow rise" style="animation-delay:.04s"><span class="dot"></span><span id="eyebrow"></span></div>
+    <h1 class="headline rise" id="subtitle" style="animation-delay:.12s"></h1>
+    <div class="search rise" style="animation-delay:.2s">
       <span class="sicon" id="searchIcon"></span>
       <input id="q" maxlength="200" onkeydown="if(event.key==='Enter')go()">
       <button id="btn" onclick="go()"><span id="btnText"></span><span id="btnIcon"></span></button>
     </div>
-    <div class="chips" id="chips"></div>
+    <div class="chips rise" id="chips" style="animation-delay:.28s"></div>
+    <div class="hstats rise" id="hstats" style="animation-delay:.36s"></div>
   </section>
 
   <div class="loading" id="loading">
@@ -233,7 +270,7 @@
   </div>
 </div>
 
-<script src="i18n.js"></script>
+<script src="i18n.js?v=20260716b"></script>
 <script>
 const $ = sel => document.querySelector(sel[0]==='#'||sel[0]==='.' ? sel : '#'+sel);
 const esc = s => (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -289,6 +326,21 @@ function applyLang() {
   const [labels, vals] = [t('chips'), t('chipValues')];
   $('#chips').innerHTML = labels.map((l,i) =>
     `<button class="chip" onclick="ask('${esc(vals[i])}')">${ic(CHIP_ICONS[i]||'grid')}<span>${esc(l)}</span></button>`).join('');
+  paintStats();
+}
+
+let _toolCount = 0;
+function paintStats(){
+  const el = $('#hstats'); if(!el) return;
+  if(!_toolCount){ el.innerHTML=''; return; }
+  el.innerHTML = `<span class="pill"><span class="live"></span></span>`
+    + `<span class="k">${_toolCount.toLocaleString()}</span><span>${esc(t('statsTools'))}</span>`
+    + `<span class="sep"></span><span>${esc(t('statsCurated'))}</span>`;
+}
+function loadStats(){
+  fetch('/api/health').then(r=>r.json()).then(d=>{
+    if(d && d.pg_components){ _toolCount = d.pg_components; paintStats(); }
+  }).catch(()=>{});
 }
 
 function openSubmit(){ $('#smMsg').textContent=''; $('#smMsg').className='modalmsg';
@@ -400,6 +452,13 @@ function render(d){
     h += `<h2 class="sect">${ic('sparkle')}${t('sectionPrompts')}</h2>` + d.prompts.map(promptCard).join('');
   }
   $('#result').innerHTML = h;
+  // 结果错峰浮现
+  requestAnimationFrame(()=>{
+    $('#result').querySelectorAll('.answer, h2.sect, .card').forEach((el,i)=>{
+      el.style.animationDelay = Math.min(i*40, 400) + 'ms';
+      el.classList.add('rise');
+    });
+  });
 }
 
 function promptCard(p){
@@ -415,6 +474,7 @@ function promptCard(p){
 
 // init
 applyLang();
+loadStats();
 </script>
 </body>
 </html>
