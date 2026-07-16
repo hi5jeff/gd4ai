@@ -17,9 +17,11 @@ PROMPT = """你是 gd4.ai 的 AI 工具推荐编排器。用户需求："{query}
 
 规则：
 1. selected 里的 id 必须来自候选组件列表；playbook_id 必须来自候选方案包列表或为 null
-2. 只选真正相关的，宁少勿滥（通常 1-5 个）；组件描述与需求无关就不要选
-3. 如果所有候选都与需求无关，返回 {{"no_match": true}}
-4. intent_type: 用户要单个工具/提示词="single"，要完成一件完整的事="playbook"
+2. 选出所有真正相关的组件（通常 2-6 个），无关的不选；相关的宁全勿漏
+3. **凡是专为用户所述任务打造的对口组件（名称/说明与需求高度吻合，如"网站UI设计"对应的UI/UX设计skill），必须选入，且排在前面；不要因为已经选了通用工具就把它省略**
+4. 组playbook工作流时，也要把上述对口的专用组件一并选进 selected，不能只给通用件（如只给"设计师+Figma+图像生成"却漏掉专门的UI设计skill）
+5. 如果所有候选都与需求无关，返回 {{"no_match": true}}
+6. intent_type: 用户要单个工具/提示词="single"，要完成一件完整的事="playbook"
 
 **所有面向用户的文本字段（answer / reason / name / desc）必须用「用户提问所用的语言」输出**（中文问→中文，英文问→英文，日文问→日文，任意语言同理）。库里数据是中文的，你负责翻译成用户语言。界面语言仅供参考，以实际提问语言为准。
 - name: 组件的名称（专有名词/产品名保留原文，其余按用户语言）
@@ -110,7 +112,7 @@ def recommend(query: str, lang: str = "zh") -> dict:
         out["cached"] = True
         return out
 
-    comp_hits = retrieval.hybrid(query, "components", limit=14)
+    comp_hits = retrieval.hybrid(query, "components", limit=18)
     pb_hits = retrieval.hybrid(query, "playbooks", limit=3)
     # 细粒度提示词检索：命中高分说明用户要的是"具体提示词"而非"提示词来源"
     prompt_hits = retrieval.search_prompts(query, limit=6, min_quality=0.55)
