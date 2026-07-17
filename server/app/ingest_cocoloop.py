@@ -38,6 +38,28 @@ def fetch_slugs():
     return sorted(slugs)
 
 
+def enumerate_ids(max_id, workers=8):
+    """遍历 /skills/<id> 详情页收集全部 slug（ID 空间稀疏，404 跳过）。"""
+    def one(i):
+        try:
+            html = _get(f"{HUB}/skills/{i}", timeout=20).decode("utf-8", "ignore")
+        except Exception:
+            return None
+        m = re.search(r"bss/skills/([A-Za-z0-9._-]+)", html)
+        if not m:
+            return None
+        s = m.group(1)
+        return s[:-4] if s.lower().endswith(".zip") else s
+    out = set()
+    with cf.ThreadPoolExecutor(workers) as ex:
+        for i, s in zip(range(1, max_id + 1), ex.map(one, range(1, max_id + 1))):
+            if s:
+                out.add(s)
+            if i % 500 == 0:
+                print(f"  枚举 {i}/{max_id}，已得 {len(out)} 个 slug", flush=True)
+    return sorted(out)
+
+
 def fetch_skill(slug):
     """下载 skill zip → 读 SKILL.md + _meta.json。带版本号失败则去版本重试。失败返回 None。"""
     tried = [slug]
@@ -81,21 +103,36 @@ def fetch_skill(slug):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--slugs", default="", help="逗号分隔；留空则从 hub 枚举")
+    ap.add_argument("--enumerate", action="store_true", help="遍历详情页 ID 拿全量 slug")
+    ap.add_argument("--max-id", type=int, default=7700)
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--persist", action="store_true")
     ap.add_argument("--workers", type=int, default=4)
+    ap.add_argument("--chunk", type=int, default=40)
     args = ap.parse_args()
-
-    slugs = [s.strip() for s in args.slugs.split(",") if s.strip()] or fetch_slugs()
-    if args.limit:
-        slugs = slugs[: args.limit]
-    print(f"待处理 skill: {len(slugs)}", flush=True)
 
     from . import db
     if db.pool.closed:
         db.pool.open()
     existing, used = ir.load_state()
+
+    if args.slugs.strip():
+        slugs = [s.strip() for s in args.slugs.split(",") if s.strip()]
+    elif args.enumerate:
+        print(f"枚举 /skills/1..{args.max_id} …", flush=True)
+        slugs = enumerate_ids(args.max_id, max(args.workers, 8))
+    else:
+        slugs = fetch_slugs()
+    # 断点续跑：已在库(按 zip URL，含去版本形式)的直接跳过，不重复下载
+    def done(slug):
+        base = re.sub(r"-\d+(\.\d+)*$", "", slug)
+        return (f"{DL}/{slug}.zip".lower() in existing
+                or f"{DL}/{base}.zip".lower() in existing)
+    fresh = [s for s in slugs if not done(s)]
+    if args.limit:
+        fresh = fresh[: args.limit]
+    print(f"枚举得 {len(slugs)}，去掉已在库后待处理 {len(fresh)}", flush=True)
 
     def process(slug):
         sk = fetch_skill(slug)
@@ -109,21 +146,26 @@ def main():
         }, used, existing, source_text=sk["skill_md"])   # understand() 基于 SKILL.md
         return (slug, doc if doc else why)
 
-    docs, skipped = [], {}
+    buf, skipped = [], {}
+    got = saved = 0
     with cf.ThreadPoolExecutor(args.workers) as ex:
-        for slug, res in ex.map(process, slugs):
+        for slug, res in ex.map(process, fresh):
             if isinstance(res, dict):
-                docs.append(res)
-                print(f"  ✓ {res['name']} — {res['description_zh'][:44]}", flush=True)
+                buf.append(res)
+                got += 1
             else:
                 skipped[res] = skipped.get(res, 0) + 1
-    print(f"产出 {len(docs)} 条，跳过 {skipped}", flush=True)
-
+            if not args.dry_run and args.persist and len(buf) >= args.chunk:
+                saved += ingest.persist_docs(buf); buf = []
+                print(f"  已落库 {saved}（产出 {got}，跳过 {skipped}）", flush=True)
+    print(f"产出 {got} 条，跳过 {skipped}", flush=True)
     if args.dry_run or not args.persist:
         print("(未落库)")
         return
-    n = ingest.persist_docs(docs)
-    print(f"✅ 落库 {n} 条（PG+Meili+向量）", flush=True)
+    if buf:
+        saved += ingest.persist_docs(buf)
+    ingest.flush_reco_cache()
+    print(f"✅ 落库 {saved} 条（增量，PG+Meili+向量）", flush=True)
 
 
 if __name__ == "__main__":
