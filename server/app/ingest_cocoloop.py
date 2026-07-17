@@ -1,14 +1,14 @@
-"""从 CocoLoop hub 导入 skills：枚举 slug → 下载 zip → 读 SKILL.md + _meta.json
-→ understand()（基于真实 SKILL.md，grounded）→ 一条 skill 组件。
+"""从 CocoLoop hub 导入 skills（详情页驱动）：
+遍历 /skills/<id> 详情页 → 取中文显示名 + 下载按钮链接 + 作者 → 下载 zip 读 SKILL.md
+→ understand()（grounded）→ 一条 skill 组件。source 用详情页 URL；安装说明用 CocoLoop 统一方式。
 
 用法（howai-api 容器内）:
-    python -m app.ingest_cocoloop [--slugs a,b] [--limit N] [--dry-run] [--persist]
-    留空 --slugs 时自动从 hub 首页/搜索页枚举可见 skill。
+    python -m app.ingest_cocoloop --enumerate --max-id 7700 --persist [--workers 5]
+    python -m app.ingest_cocoloop --ids 1430,100 --dry-run     # 指定 ID 试跑
 """
 import argparse
 import concurrent.futures as cf
 import io
-import json
 import re
 import urllib.request
 import zipfile
@@ -16,7 +16,10 @@ import zipfile
 from . import ingest, ingest_repo as ir
 
 HUB = "https://hub.cocoloop.cn"
-DL = "https://dl.cocoloop.cn/bss/skills"
+
+INSTALL_NOTE = ("CocoLoop / OpenClaw 生态 skill。安装：把 skill 包放入你的 Agent"
+                "（Claude Code 等）的 skills 目录，或用 CocoLoop 客户端一键安装。"
+                "下载：{dl}")
 
 
 def _get(url, timeout=40):
@@ -25,85 +28,61 @@ def _get(url, timeout=40):
         return r.read()
 
 
-def fetch_slugs():
-    """从 hub 首页 + 搜索页枚举可见 skill slug。"""
-    slugs = set()
-    for path in ("/", "/search"):
-        try:
-            html = _get(HUB + path).decode("utf-8", "ignore")
-        except Exception:
-            continue
-        for m in re.findall(r"bss/skills/([A-Za-z0-9._-]+)", html):
-            slugs.add(m[:-4] if m.lower().endswith(".zip") else m)
-    return sorted(slugs)
+def parse_detail(sid, html):
+    """从详情页 HTML 抽取 {id, name, author, dl_url, source_url}；非 skill 页返回 None。"""
+    dl = re.search(r'href="(https://dl\.cocoloop\.cn/bss/skills/[^"]+\.zip)"', html)
+    if not dl:
+        return None
+    name = ""
+    tm = re.search(r"<title>([^<]*)</title>", html)
+    if tm:
+        t = tm.group(1)
+        if " - " in t:
+            t = t.split(" - ", 1)[1]
+        name = t.split("|")[0].strip()
+    if not name:                       # 兜底：JSON name 字段
+        nm = re.search(r'"name":"([^"]{3,60})"', html)
+        name = nm.group(1) if nm else f"skill {sid}"
+    am = re.search(r'"(?:owner|author|creator)":"([^"]{2,40})"', html)
+    return {"id": sid, "name": name[:80],
+            "author": (am.group(1) if am else ""),
+            "dl_url": dl.group(1), "source_url": f"{HUB}/skills/{sid}"}
 
 
-def enumerate_ids(max_id, workers=8):
-    """遍历 /skills/<id> 详情页收集全部 slug（ID 空间稀疏，404 跳过）。"""
+def enumerate_details(max_id, workers=8):
+    """遍历 /skills/<id> 收集详情记录（ID 稀疏，404/非skill页跳过）。"""
     def one(i):
         try:
             html = _get(f"{HUB}/skills/{i}", timeout=20).decode("utf-8", "ignore")
         except Exception:
             return None
-        m = re.search(r"bss/skills/([A-Za-z0-9._-]+)", html)
-        if not m:
-            return None
-        s = m.group(1)
-        return s[:-4] if s.lower().endswith(".zip") else s
-    out = set()
+        return parse_detail(i, html)
+    out = []
     with cf.ThreadPoolExecutor(workers) as ex:
-        for i, s in zip(range(1, max_id + 1), ex.map(one, range(1, max_id + 1))):
-            if s:
-                out.add(s)
+        for i, rec in zip(range(1, max_id + 1), ex.map(one, range(1, max_id + 1))):
+            if rec:
+                out.append(rec)
             if i % 500 == 0:
-                print(f"  枚举 {i}/{max_id}，已得 {len(out)} 个 slug", flush=True)
-    return sorted(out)
+                print(f"  枚举 {i}/{max_id}，已得 {len(out)} 个 skill", flush=True)
+    return out
 
 
-def fetch_skill(slug):
-    """下载 skill zip → 读 SKILL.md + _meta.json。带版本号失败则去版本重试。失败返回 None。"""
-    tried = [slug]
-    base = re.sub(r"-\d+(\.\d+)*$", "", slug)
-    if base != slug:
-        tried.append(base)
-    for s in tried:
-        try:
-            data = _get(f"{DL}/{s}.zip")
-            z = zipfile.ZipFile(io.BytesIO(data))
-        except Exception:
-            continue
-        names = z.namelist()
-        md_name = (next((n for n in names if n.lower().endswith("skill.md")), None)
-                   or next((n for n in names if n.lower().endswith("readme.md")), None))
-        skill_md = z.read(md_name).decode("utf-8", "ignore") if md_name else ""
-        meta = {}
-        if "_meta.json" in names:
-            try:
-                meta = json.loads(z.read("_meta.json"))
-            except Exception:
-                pass
-        if len(skill_md) < 40 and not meta:
-            continue
-        # 标题优先级：_meta.displayName > SKILL.md 首个 #H1 > 去版本的 slug
-        h1 = re.search(r"^#\s+(.+?)\s*$",
-                       re.sub(r"^---.*?---\s*", "", skill_md, flags=re.S), re.M)
-        name = (meta.get("displayName")
-                or (h1.group(1) if h1 else "")
-                or base.replace("-", " ")).strip()[:80]
-        return {
-            "slug": s,
-            "name": name,
-            "owner": meta.get("owner", ""),
-            "skill_md": skill_md,
-            "url": f"{DL}/{s}.zip",
-        }
-    return None
+def fetch_md(dl_url):
+    """下载 skill zip → SKILL.md（无则 README.md）。"""
+    try:
+        z = zipfile.ZipFile(io.BytesIO(_get(dl_url)))
+    except Exception:
+        return ""
+    names = z.namelist()
+    n = (next((n for n in names if n.lower().endswith("skill.md")), None)
+         or next((n for n in names if n.lower().endswith("readme.md")), None))
+    return z.read(n).decode("utf-8", "ignore") if n else ""
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--slugs", default="", help="逗号分隔；留空则从 hub 枚举")
-    ap.add_argument("--enumerate", action="store_true", help="遍历详情页 ID 拿全量 slug")
+    ap.add_argument("--ids", default="", help="逗号分隔的详情页 ID；试跑用")
+    ap.add_argument("--enumerate", action="store_true")
     ap.add_argument("--max-id", type=int, default=7700)
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--dry-run", action="store_true")
@@ -117,45 +96,51 @@ def main():
         db.pool.open()
     existing, used = ir.load_state()
 
-    if args.slugs.strip():
-        slugs = [s.strip() for s in args.slugs.split(",") if s.strip()]
-    elif args.enumerate:
-        print(f"枚举 /skills/1..{args.max_id} …", flush=True)
-        slugs = enumerate_ids(args.max_id, max(args.workers, 8))
+    if args.ids.strip():
+        recs = []
+        for sid in [x.strip() for x in args.ids.split(",") if x.strip()]:
+            try:
+                r = parse_detail(sid, _get(f"{HUB}/skills/{sid}").decode("utf-8", "ignore"))
+                if r:
+                    recs.append(r)
+            except Exception:
+                pass
     else:
-        slugs = fetch_slugs()
-    # 断点续跑：已在库(按 zip URL，含去版本形式)的直接跳过，不重复下载
-    def done(slug):
-        base = re.sub(r"-\d+(\.\d+)*$", "", slug)
-        return (f"{DL}/{slug}.zip".lower() in existing
-                or f"{DL}/{base}.zip".lower() in existing)
-    fresh = [s for s in slugs if not done(s)]
+        print(f"枚举 /skills/1..{args.max_id} …", flush=True)
+        recs = enumerate_details(args.max_id, max(args.workers, 8))
+    # 断点续跑：详情页 URL 已在库则跳过
+    fresh = [r for r in recs if r["source_url"].lower() not in existing]
     if args.limit:
         fresh = fresh[: args.limit]
-    print(f"枚举得 {len(slugs)}，去掉已在库后待处理 {len(fresh)}", flush=True)
+    print(f"枚举得 {len(recs)}，去掉已在库后待处理 {len(fresh)}", flush=True)
 
-    def process(slug):
-        sk = fetch_skill(slug)
-        if not sk:
-            return (slug, "下载/解析失败")
-        desc0 = ir.norm_ws(sk["skill_md"])[:200] or sk["name"]
+    def process(rec):
+        md = fetch_md(rec["dl_url"])
+        if len(md) < 40:
+            return (rec, "SKILL.md太薄")
         doc, why = ir.make_component({
-            "name": sk["name"], "description_zh": desc0, "url": sk["url"],
-            "type": "skill", "kind": "tool", "scenarios": [],
-            "ai_related": True, "keep": True,
-        }, used, existing, source_text=sk["skill_md"])   # understand() 基于 SKILL.md
-        return (slug, doc if doc else why)
+            "name": rec["name"], "description_zh": ir.norm_ws(md)[:200] or rec["name"],
+            "url": rec["source_url"], "type": "skill", "kind": "tool",
+            "scenarios": [], "ai_related": True, "keep": True,
+        }, used, existing, source_text=md)   # understand() 基于 SKILL.md 出描述/第一步
+        if doc:
+            doc.setdefault("install", {})["notes_zh"] = INSTALL_NOTE.format(dl=rec["dl_url"])
+            if rec["author"]:
+                doc.setdefault("quality", {})["author"] = rec["author"]
+            return (rec, doc)
+        return (rec, why)
 
     buf, skipped = [], {}
     got = saved = 0
     with cf.ThreadPoolExecutor(args.workers) as ex:
-        for slug, res in ex.map(process, fresh):
+        for rec, res in ex.map(process, fresh):
             if isinstance(res, dict):
-                buf.append(res)
-                got += 1
+                buf.append(res); got += 1
+                if args.dry_run:
+                    print(f"  ✓ {res['name']} — {res['description_zh'][:46]}", flush=True)
             else:
                 skipped[res] = skipped.get(res, 0) + 1
-            if not args.dry_run and args.persist and len(buf) >= args.chunk:
+            if args.persist and not args.dry_run and len(buf) >= args.chunk:
                 saved += ingest.persist_docs(buf); buf = []
                 print(f"  已落库 {saved}（产出 {got}，跳过 {skipped}）", flush=True)
     print(f"产出 {got} 条，跳过 {skipped}", flush=True)
