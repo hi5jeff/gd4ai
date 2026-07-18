@@ -106,6 +106,45 @@ Shareable search deep links work too: `https://gd4.ai/?q=build an e-commerce sit
 
 ---
 
+## API (OpenAI-compatible)
+
+With an API key you can call gd4.ai's recommender exactly like the OpenAI API — any OpenAI-compatible client (LangChain, Cursor custom model, Chatbox, Dify, …) works by filling in three fields.
+
+| | |
+|---|---|
+| **Base URL** | `https://gd4.ai/v1` |
+| **Model** | `gd4-recommend` |
+| **Auth** | `Authorization: Bearer <YOUR_API_KEY>` |
+
+> Request an API key from us (self-serve signup isn't open yet). Supports `stream: true`; answers come back in the language you asked in.
+
+**curl**
+```bash
+curl https://gd4.ai/v1/chat/completions \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gd4-recommend",
+    "messages": [{"role": "user", "content": "I want to build an e-commerce site"}]
+  }'
+```
+
+**Python (official openai SDK, no changes)**
+```python
+from openai import OpenAI
+
+client = OpenAI(base_url="https://gd4.ai/v1", api_key="YOUR_API_KEY")
+resp = client.chat.completions.create(
+    model="gd4-recommend",
+    messages=[{"role": "user", "content": "add a token-saving skill to my AI coding setup"}],
+)
+print(resp.choices[0].message.content)
+```
+
+You get a full runnable plan (which components + how to install/configure + the first step + sources), same as the web app — and it obeys the closed-world rule: if it's not in the library, it says so instead of fabricating.
+
+---
+
 ## How it works
 
 ```
