@@ -17,6 +17,8 @@ import urllib.request
 from . import ingest, ingest_repo as ir
 
 API = "https://www.modelscope.cn/api/v1/dolphin/mcpServers"
+SKILL_API = "https://www.modelscope.cn/api/v1/dolphin/skills"
+SKILL_SITE = "https://www.modelscope.cn/skills/"
 SITE = "https://www.modelscope.cn/mcp/servers/"
 
 
@@ -29,6 +31,49 @@ def fetch_page(page, size=30, query=""):
         d = json.load(r)
     ms = (d.get("Data") or {}).get("McpServer") or {}
     return ms.get("McpServers") or [], ms.get("TotalCount") or 0
+
+
+def fetch_skill_page(page, size=24, query="", sort="Default"):
+    """Skills 广场分页。返回 (items, total)。条目在 SkillCollection[].Skill。"""
+    body = json.dumps({"PageSize": size, "PageNumber": page, "Query": query,
+                       "Sort": sort, "Criterion": [], "WithTopCollection": True}).encode()
+    req = urllib.request.Request(SKILL_API, data=body, method="PUT", headers={
+        "Content-Type": "application/json", "User-Agent": "Mozilla/5.0 (gd4ai-bot)"})
+    with urllib.request.urlopen(req, timeout=40) as r:
+        d = json.load(r)
+    data = d.get("Data") or {}
+    items = [c.get("Skill") for c in (data.get("SkillCollection") or [])
+             if c.get("Type") == "Skill" and c.get("Skill")]
+    return items, data.get("TotalCount") or 0
+
+
+def skill_to_doc(it, used, existing):
+    """Skills API 条目 → 组件 doc（中文描述齐全，无需 LLM）。"""
+    name = (it.get("DisplayName") or it.get("Name") or "").strip()
+    desc = (it.get("Description") or it.get("DescriptionEn") or "").strip()
+    if len(name) < 2 or len(desc) < 10:
+        return None, "名称/描述不足"
+    path = it.get("Path") or f'{it.get("Owner","")}/{it.get("Name","")}'
+    url = SKILL_SITE + path.strip("/") if path.strip("/") else (it.get("SourceURL") or "")
+    doc, why = ir.make_component({
+        "name": name, "description_zh": desc, "url": url,
+        "type": "skill", "kind": "tool",
+        "scenarios": [], "ai_related": True, "keep": True,
+    }, used, existing)
+    if not doc:
+        return None, why
+    tags = [str(t)[:20] for t in ([it.get("L1"), it.get("L2")] + (it.get("Tags") or []))
+            if t][:6]
+    if tags:
+        doc["tags"] = tags
+    q = doc.setdefault("quality", {})
+    if it.get("SourceStar"):
+        q["stars"] = it["SourceStar"]
+    if it.get("DownloadCount"):
+        q["downloads"] = it["DownloadCount"]
+    if it.get("SourceURL"):
+        doc["source"]["origin"] = it["SourceURL"]
+    return doc, "ok"
 
 
 def to_doc(it, used, existing):
@@ -73,6 +118,8 @@ def main():
     ap.add_argument("--size", type=int, default=30)
     ap.add_argument("--query", default="")
     ap.add_argument("--min-calls", type=int, default=0, help="调用量低于此值跳过（质量门槛）")
+    ap.add_argument("--skills", action="store_true", help="导 Skills 广场而非 MCP")
+    ap.add_argument("--min-downloads", type=int, default=0, help="Skills 下载量门槛")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--persist", action="store_true")
     ap.add_argument("--chunk", type=int, default=60)
@@ -87,7 +134,8 @@ def main():
     got = saved = 0
     for page in range(1, args.pages + 1):
         try:
-            items, total = fetch_page(page, args.size, args.query)
+            items, total = (fetch_skill_page(page, args.size, args.query) if args.skills
+                            else fetch_page(page, args.size, args.query))
         except Exception as e:
             print(f"  第{page}页失败: {str(e)[:80]}", flush=True)
             continue
@@ -96,10 +144,16 @@ def main():
         if not items:
             break
         for it in items:
-            if args.min_calls and (it.get("CallVolume") or 0) < args.min_calls:
-                skipped["调用量不足"] = skipped.get("调用量不足", 0) + 1
-                continue
-            doc, why = to_doc(it, used, existing)
+            if args.skills:
+                if args.min_downloads and (it.get("DownloadCount") or 0) < args.min_downloads:
+                    skipped["下载量不足"] = skipped.get("下载量不足", 0) + 1
+                    continue
+                doc, why = skill_to_doc(it, used, existing)
+            else:
+                if args.min_calls and (it.get("CallVolume") or 0) < args.min_calls:
+                    skipped["调用量不足"] = skipped.get("调用量不足", 0) + 1
+                    continue
+                doc, why = to_doc(it, used, existing)
             if doc:
                 buf.append(doc); got += 1
                 if args.dry_run and got <= 12:
