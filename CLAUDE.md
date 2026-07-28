@@ -239,7 +239,6 @@ this tool only toggles plugins already in the library.
 Your role for this project is defined in [`ROLE.md`](./ROLE.md). **Read it first** before responding, and let it shape your tone, focus, and what you proactively bring up.
 <!-- ROLE_REF_END -->
 
-
 See WORKSPACE.md for related bots in this workspace.
 
 <!-- MDBOX_MULTIMODAL_BEGIN -->
