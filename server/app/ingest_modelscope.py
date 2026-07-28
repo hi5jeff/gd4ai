@@ -53,8 +53,13 @@ def skill_to_doc(it, used, existing):
     desc = (it.get("Description") or it.get("DescriptionEn") or "").strip()
     if len(name) < 2 or len(desc) < 10:
         return None, "名称/描述不足"
-    path = it.get("Path") or f'{it.get("Owner","")}/{it.get("Name","")}'
-    url = SKILL_SITE + path.strip("/") if path.strip("/") else (it.get("SourceURL") or "")
+    # 详情页 URL = /skills/<owner>/<name>；Path 字段只有 owner，需拼上 Name
+    owner = (it.get("Path") or it.get("Owner") or it.get("Organization") or "").strip("/")
+    sname = (it.get("Name") or "").strip("/")
+    if owner and sname:
+        url = f"{SKILL_SITE}{owner}/{sname}"
+    else:
+        url = it.get("SourceURL") or ""
     doc, why = ir.make_component({
         "name": name, "description_zh": desc, "url": url,
         "type": "skill", "kind": "tool",
