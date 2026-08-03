@@ -130,3 +130,10 @@ _This file is automatically injected into Claude's context at the start of every
 - agency-agents-zh: 266角色导入中(容器howai-roles), role类目6→~270
 - 后台容器: howai-reenrich(重理解) + howai-roles(角色); monitor分身盯 job b60ef748 + ad83867d
 - 教训重申: 内容库/合集要拆到单元, 每单元也要LLM读懂(不是存搜)
+
+## 第十七轮:build-your-own-x AI 教程导入(完成)
+- 分析 codecrafters-io/build-your-own-x(533k stars,教程索引):AI 相关的就 3 个分区(AI Model/Neural Network/Visual Recognition System)
+- 精选 13 条入库(kind=knowledge):LLMs-from-scratch、RAG-from-scratch、Diffusion Models、Karpathy Zero-to-Hero、Build Deep Learning、SlowTorch、CNN intro、OCR、LSTM 音乐生成、车牌识别、人脸识别流水线等
+- GitHub 托管的条目跑 understand() 补「怎么用/对谁有帮助」(grounded 从 README);外部链接用手工 desc
+- 端对端验证:问「我想从零学LLM」→ LLMs-from-scratch 排第一,install 字段有真实 git clone 命令 + setup 目录说明
+- 组件总数 7086: tool 6447 / resource 306 / knowledge 116 / (无kind) 217
